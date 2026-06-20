@@ -63,9 +63,9 @@ Right now I'm exploring local AI systems, agentic automation, scientific softwar
 
 **Work is my laboratory.**
 
-Most of my projects start with a question, a few notes, a test, and then a prototype. I move between software, AI, physics, systems and markets because each field gives me another way to understand the others.
+I'm always studying, learning, questioning and going deeper into how things work: software, AI, physics, systems, markets and tools. I like connecting ideas that look distant, testing them, refining them and turning what I learn into something practical.
 
-For me, knowledge becomes real when it can be tested, modeled, automated or turned into something useful.
+For me, knowledge feels complete when it becomes a tool, a workflow, a simulation or a system you can actually run.
 
 ---
 
