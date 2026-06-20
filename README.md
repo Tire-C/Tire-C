@@ -63,9 +63,9 @@ Right now I'm exploring local AI systems, agentic automation, scientific softwar
 
 **Work is my laboratory.**
 
-I study because I like understanding how things work: software, AI, physics, systems, markets and tools. Then I test, build, break, fix and turn what I learn into something practical.
+I'm always studying, learning, questioning and going deeper into how things work: software, AI, physics, systems, markets and tools. I like connecting ideas that look distant, testing them, refining them and turning what I learn into something practical.
 
-I like useful tools, growing systems and ideas that still feel alive after you turn them into code.
+For me, knowledge feels complete when it becomes a tool, a workflow, a simulation or a system you can actually run.
 
 ---
 
