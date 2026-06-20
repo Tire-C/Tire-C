@@ -1,3 +1,4 @@
+![Tire profile banner](assets/banner.jpg)
 # Hi, I'm Tire
 
 **Developer · AI Systems Builder · Science & Technology Researcher**
