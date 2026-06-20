@@ -1,6 +1,6 @@
 # Hi, I'm Tire
 
-**Developer · AI Systems Builder · Research-Minded Technologist**
+**Developer · AI Systems Builder · Science & Technology Researcher**
 
 I build tools, workflows and systems at the intersection of **code, intelligence, science and curiosity**.
 
@@ -63,9 +63,9 @@ Right now I'm exploring local AI systems, agentic automation, scientific softwar
 
 **Work is my laboratory.**
 
-I learn by building, testing, breaking things, fixing them, and connecting different fields: software, AI, physics, systems, markets and scientific curiosity.
+I study because I like understanding how things work: software, AI, physics, systems, markets and tools. Then I test, build, break, fix and turn what I learn into something practical.
 
-What drives me is the need to study, understand, discover and turn knowledge into something useful. I like tools that evolve, systems that grow, and ideas that still feel alive after you turn them into code.
+I like useful tools, growing systems and ideas that still feel alive after you turn them into code.
 
 ---
 
