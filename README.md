@@ -48,6 +48,10 @@ I'm a self-taught developer and builder focused on AI systems, automation, softw
 ![VS Code](https://img.shields.io/badge/VS%20Code-333333?style=flat&logo=visualstudiocode)
 ![PowerShell](https://img.shields.io/badge/PowerShell-333333?style=flat&logo=powershell)
 ![Markdown](https://img.shields.io/badge/Markdown-333333?style=flat&logo=markdown)
+![Jupyter](https://img.shields.io/badge/Jupyter-333333?style=flat&logo=jupyter)
+![LaTeX](https://img.shields.io/badge/LaTeX-333333?style=flat&logo=latex)
+![arXiv](https://img.shields.io/badge/arXiv-333333?style=flat&logo=arxiv)
+![Zotero](https://img.shields.io/badge/Zotero-333333?style=flat&logo=zotero)
 
 I mostly work with **Python**, **JavaScript**, web technologies, GitHub, VS Code, PowerShell, Markdown-based documentation and AI-assisted development workflows.
 
