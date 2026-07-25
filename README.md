@@ -1,64 +1,43 @@
-# Tire — Cheikh T. Tireira
+# Hi, I'm Tire
 
-**AI Systems Engineer · Software Developer · Automation Architect**
+**Developer · AI Systems Builder · Science & Technology Researcher**
 
-I design and build intelligent systems that connect **AI agents, software, automation, knowledge and real-world tools**.
+I build tools, workflows and systems at the intersection of **code, intelligence, science and curiosity**.
 
-I am a self-taught developer with a mechanical and experimental mindset. I learn by building: work is my school, code is my laboratory, and every project is a way to turn a new discipline into a functioning system.
+I'm a self-taught developer and builder focused on AI systems, automation, software tools, scientific thinking and experimental workflows. For me, code is more than syntax: it is a laboratory where ideas become tools, questions become experiments, and curiosity becomes something you can actually run.
 
-> I do not just use AI tools. I design the workflows, skills, interfaces and infrastructure around them.
+> I don't just use AI tools — I design workflows, skills and systems around them.
 
-## Current Mission
+---
 
-### GENoS
+## Core Areas
 
-My main long-term project is **GENoS**: a personal AI operating system and agent orchestrator designed to connect voice, local tools, coding agents, automations, knowledge systems and physical devices through one coherent identity and execution layer.
+- Artificial Intelligence
+- Agentic Systems & AI Workflows
+- Python / JavaScript Development
+- Web Tools & Automation
+- Scientific Computing
+- Physics, Mechanics & Quantum Thinking
+- Systems Engineering
+- Knowledge Systems & LLMs
+- Trading Algorithms
+- Experimental Tools
 
-The goal is not another chatbot. It is an evolving operational system capable of understanding objectives, selecting tools, coordinating agents, executing work and improving the way information becomes action.
+---
 
 ## What I Build
 
-- AI agent architectures and multi-agent workflows
-- Local-first voice and automation systems
-- Agent skills, MCP integrations and developer tooling
-- Full-stack web applications and interactive interfaces
-- Knowledge engines and structured research systems
-- Trading, market-analysis and decision-support algorithms
-- Portable workstations and reproducible automation environments
-- Experimental software that connects physical, digital and scientific systems
+- AI skills and agentic tools
+- Local AI workflows
+- Automation scripts and developer utilities
+- Web tools and small software products
+- Trading and market-analysis algorithms
+- Scientific experiments and simulations
+- Practical tools for real-world problem solving
 
-## Core Competencies
+---
 
-**AI Engineering**  
-Agent orchestration, prompt and context architecture, tool use, skills, MCP, local AI workflows, voice interfaces and human-in-the-loop control.
-
-**Software Development**  
-Python, JavaScript, HTML, CSS, databases, APIs, Git, GitHub, deployment, debugging and AI-assisted engineering.
-
-**Automation & Systems**  
-CLI workflows, PowerShell, process automation, environment design, validation pipelines and practical system integration.
-
-**Scientific & Mechanical Thinking**  
-Mechanics, CNC foundations, physics-driven reasoning, experimentation, measurement and iterative verification.
-
-**Markets & Quantitative Work**  
-Crypto, forex, commodities, technical analysis, fundamental analysis and custom trading algorithms.
-
-## Selected Projects
-
-### [Terminator](https://github.com/Tire-C/terminator-skill)
-An environment-adaptive orchestration skill for AI agents. It discovers the tools available in the current environment, builds a workflow, coordinates execution and verifies the result with concrete evidence.
-
-### [Book Skills Creator](https://github.com/Tire-C/book-skills-creator)
-A structured system for turning books and long-form knowledge into reusable, installable AI skills.
-
-### [Final Review Skill](https://github.com/Tire-C/final-review-skill)
-A universal final-review protocol for validating software, documents, repositories and complex deliverables before release.
-
-### [Orbital](https://github.com/Tire-C/orbital)
-A scientific web application inspired by atomic structure, quantum models and the Aufbau principle.
-
-## Technology
+## Tech Stack
 
 ![Python](https://img.shields.io/badge/Python-333333?style=flat&logo=python)
 ![JavaScript](https://img.shields.io/badge/JavaScript-333333?style=flat&logo=javascript)
@@ -70,17 +49,28 @@ A scientific web application inspired by atomic structure, quantum models and th
 ![PowerShell](https://img.shields.io/badge/PowerShell-333333?style=flat&logo=powershell)
 ![Markdown](https://img.shields.io/badge/Markdown-333333?style=flat&logo=markdown)
 ![Jupyter](https://img.shields.io/badge/Jupyter-333333?style=flat&logo=jupyter)
+![LaTeX](https://img.shields.io/badge/LaTeX-333333?style=flat&logo=latex)
+![arXiv](https://img.shields.io/badge/arXiv-333333?style=flat&logo=arxiv)
+![Zotero](https://img.shields.io/badge/Zotero-333333?style=flat&logo=zotero)
 
-## How I Work
+I mostly work with **Python**, **JavaScript**, web technologies, GitHub, VS Code, PowerShell, Markdown-based documentation and AI-assisted development workflows.
 
-- I learn disciplines by building real systems around them.
-- I prefer operational proof over theoretical claims.
-- I use AI as an engineering multiplier, not as a substitute for judgment.
-- I connect ideas across software, mechanics, physics, markets and cognition.
-- I treat every finished project as infrastructure for the next one.
+---
 
-## Direction
+## Current Focus
 
-I am building toward intelligent systems that can collect, reorganize and operationalize information continuously — systems that grow through use, coordinate specialized agents and turn knowledge into verified action.
+Right now I'm exploring local AI systems, agentic automation, scientific software, knowledge engines, developer tools and market-analysis systems — especially tools that can grow over time instead of staying as one-off experiments.
 
-**Always building. Always learning. Always connecting systems.**
+---
+
+## Philosophy
+
+**Work is my laboratory.**
+
+I'm always studying, learning, questioning and going deeper into how things work: software, AI, physics, systems, markets and tools. I like connecting ideas that look distant, testing them, refining them and turning what I learn into something practical.
+
+For me, knowledge feels complete when it becomes a tool, a workflow, a simulation or a system you can actually run.
+
+---
+
+Always building. Always learning. Always connecting ideas.
