@@ -1,4 +1,6 @@
 import assert from 'node:assert/strict';
+import {pathToFileURL} from 'node:url';
+import {resolve} from 'node:path';
 import {createServer} from 'node:http';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {execFileSync} from 'node:child_process';
@@ -65,6 +67,29 @@ const reduced=await browser.newPage({viewport:{width:1280,height:720},reducedMot
 await reduced.goto(url);await reduced.waitForFunction(()=>window.odyssey?.ready);
 const before=await reduced.evaluate(()=>odyssey.info());await reduced.waitForTimeout(150);const after=await reduced.evaluate(()=>odyssey.info());
 check('Reduced motion starts paused on creator, no automatic motion',()=>{assert.equal(before.playing,false);assert.equal(before.current,24);assert.equal(after.current,before.current)});
+const offline=await browser.newPage({viewport:{width:1280,height:720}});
+const externalRequests=[];offline.on('request',req=>{if(/^https?:/.test(req.url()))externalRequests.push(req.url())});
+await offline.goto(pathToFileURL(resolve('.build/odyssey.html')).href+'?test=1');
+await offline.waitForFunction(()=>window.odyssey?.ready);
+await offline.evaluate(()=>odyssey.seek(24));
+check('Standalone HTML works without network or installation',()=>assert.deepEqual(externalRequests,[]));
+const initialCanvas=await offline.evaluate(()=>document.querySelector('canvas').toDataURL());
+await offline.getByRole('button',{name:'Inspect 3D',exact:true}).click();
+await offline.mouse.move(640,350);await offline.mouse.down();await offline.mouse.move(860,390,{steps:12});await offline.mouse.up();
+const rotatedCanvas=await offline.evaluate(()=>document.querySelector('canvas').toDataURL());
+check('Interactive inspection rotates the 3D image',()=>assert.notEqual(initialCanvas,rotatedCanvas));
+await offline.getByRole('button',{name:'Return to film',exact:true}).click();
+const restoredCanvas=await offline.evaluate(()=>document.querySelector('canvas').toDataURL());
+check('Returning from inspection restores the exact cinematic pose',()=>assert.equal(initialCanvas,restoredCanvas));
+await offline.getByRole('button',{name:'Play animation',exact:true}).click();
+await offline.waitForTimeout(500);
+const advanced=await offline.evaluate(()=>odyssey.info().current);
+check('Real-time playback advances the timeline',()=>assert(advanced>24.1));
+await offline.getByRole('button',{name:'Pause animation',exact:true}).click();
+const paused=await offline.evaluate(()=>odyssey.info().current);await offline.waitForTimeout(150);
+const advancedPaused=await offline.evaluate(()=>odyssey.info().current);
+check('Pause freezes the timeline',()=>assert.equal(paused,advancedPaused));
+await offline.close();
 // Exercise the actual GitHub-rendered Markdown image, not an inline SVG substitute.
 let svgCompatibility={verified:false};
 try{
@@ -83,10 +108,10 @@ try{
 await browser.close();
 const browserCompatibility=[];
 for(const [name,engine] of [['Firefox',firefox],['WebKit',webkit]]){
- let other;
+ let other,p,errs=[];
  try{
-  other=await engine.launch({headless:true,env:{...process.env,LIBGL_ALWAYS_SOFTWARE:'1'},...(name==='Firefox'?{firefoxUserPrefs:{'webgl.force-enabled':true,'webgl.disabled':false,'gfx.webrender.software':true}}:{})});
-  const p=await other.newPage({viewport:{width:1280,height:720}}),errs=[];
+  other=await engine.launch({headless:name!=='Firefox',env:{...process.env,LIBGL_ALWAYS_SOFTWARE:'1'},...(name==='Firefox'?{firefoxUserPrefs:{'webgl.force-enabled':true,'webgl.disabled':false,'gfx.webrender.software':true}}:{})});
+  p=await other.newPage({viewport:{width:1280,height:720}});
   p.on('pageerror',e=>errs.push(e.message));
   await p.goto(url+'/?test=1');await p.waitForFunction(()=>window.odyssey?.ready,{},{timeout:20000});
   await p.addStyleTag({content:'#ui{visibility:hidden}'});
@@ -95,7 +120,7 @@ for(const [name,engine] of [['Firefox',firefox],['WebKit',webkit]]){
   const data=PNG.sync.read(screenshot);let lit=0;for(let i=1;i<data.data.length;i+=4)if(data.data[i]>20)lit++;
   if(lit<1000||errs.length)throw new Error('Missing geometry or runtime errors: '+errs.join(';'));
   browserCompatibility.push({name,rendered:true,info:await p.evaluate(()=>odyssey.info()),errors:errs});
- }catch(e){browserCompatibility.push({name,rendered:false,error:e.message,interpretation:'Remote software-rendering compatibility not established; not proof of hardware incompatibility.'})}
+ }catch(e){browserCompatibility.push({name,rendered:false,error:e.message,errors:errs,interpretation:'Remote software-rendering compatibility not established; not proof of hardware incompatibility.'})}
  finally{if(other)await other.close()}
 }
 server.close();

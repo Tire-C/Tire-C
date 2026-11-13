@@ -40,7 +40,7 @@ jobs:
       - name: Render and test with software WebGL
         id: tests
         working-directory: odyssey
-        run: npm test
+        run: xvfb-run -a npm test
       - name: Preserve review evidence on experimental branch only
         if: always()
         env:

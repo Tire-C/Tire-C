@@ -40,7 +40,9 @@ function render(t){
  body.uniforms.opacity.value=desk.uniforms.opacity.value=state.body*state.fade;
  for(const c of [head,body,desk])c.mesh.visible=current<25;
  finale.mesh.visible=current>=25;finale.uniforms.morph.value=state.signature;finale.uniforms.opacity.value=state.fade;
- finale.uniforms.glyphSize.value=.024+state.signature*.031;
+ finale.uniforms.glyphSize.value=.024+state.signature*.026;
+ finale.uniforms.minimumPixels.value=2;
+ finale.uniforms.lodStrength.value=1-state.signature;
  if(!contextLost)renderer.render(scene,camera);
  document.querySelector('#scrub').value=current;
  document.querySelector('#time').textContent=current.toFixed(1)+' / '+DURATION;

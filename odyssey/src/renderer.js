@@ -23,6 +23,7 @@ uniform float turbulence;
 uniform float viewportHeight;
 uniform float minimumPixels;
 uniform float cutaway;
+uniform float lodStrength;
 varying float vDensity;
 varying float vCut;
 varying vec2 vUv;
@@ -45,6 +46,7 @@ void main(){
  size=max(size,minimumPixels*2.0*max(.0001,-center.z)/(projectionMatrix[1][1]*viewportHeight));
  float facing=abs(dot(worldN,normalize(cameraPosition-(modelMatrix*vec4(p,1.0)).xyz)));
  vCut=cutaway*smoothstep(2.10,2.23,p.y)*smoothstep(.15,.45,facing);
+ vDensity=mix(1.0,vDensity,lodStrength);
  vDensity*=1.0-smoothstep(65.0,120.0,projected);
  // Glyphs remain in world space; only the small typographic quad faces the camera.
  center.xy+=position.xy*size;
@@ -82,7 +84,7 @@ export function binaryCloud(data,texture,{size=.2,fog=100,intensity=1.4}={}){
  g.setAttribute('digit',new THREE.InstancedBufferAttribute(Float32Array.from({length:data.count},()=>random()>.5?1:0),1));
  g.setAttribute('seed',new THREE.InstancedBufferAttribute(Float32Array.from({length:data.count},()=>random()),1));
  g.instanceCount=data.count;
- const uniforms={glyphAtlas:{value:texture},morph:{value:0},glyphSize:{value:size},time:{value:0},turbulence:{value:0},opacity:{value:1},fogDistance:{value:fog},intensity:{value:intensity},viewportHeight:{value:720},minimumPixels:{value:4.2},cutaway:{value:0}};
+ const uniforms={glyphAtlas:{value:texture},morph:{value:0},glyphSize:{value:size},time:{value:0},turbulence:{value:0},opacity:{value:1},fogDistance:{value:fog},intensity:{value:intensity},viewportHeight:{value:720},minimumPixels:{value:4.2},cutaway:{value:0},lodStrength:{value:1}};
  const material=new THREE.ShaderMaterial({uniforms,vertexShader:vertex,fragmentShader:fragment,depthTest:true,depthWrite:true,transparent:false,side:THREE.DoubleSide});
  const mesh=new THREE.Mesh(g,material);mesh.frustumCulled=false;
  return {mesh,uniforms,setTargets(a,b){g.setAttribute('toWeight',new THREE.InstancedBufferAttribute(b.w,1));g.setAttribute('fromSpin',new THREE.InstancedBufferAttribute(a.spin||new Float32Array(a.count*4),4));g.setAttribute('toSpin',new THREE.InstancedBufferAttribute(b.spin||new Float32Array(b.count*4),4));for(const [key,value] of Object.entries({fromPosition:a.p,toPosition:b.p,fromNormal:a.n,toNormal:b.n}))g.setAttribute(key,new THREE.InstancedBufferAttribute(value,3));g.setAttribute('weight',new THREE.InstancedBufferAttribute(a.w,1))}};
