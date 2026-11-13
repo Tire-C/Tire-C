@@ -1,6 +1,6 @@
 # Rendering diagnostics — review candidate
 
-Source commit: 008cdd321a83c0513bf67990af679cd8e0f45689
+Source commit: 80037349db39a4e41ace5b7075cad698bc1028f2
 
 Remote CPU rendering with Chromium / SwiftShader. These images are test evidence, never the animation product.
 
@@ -11,29 +11,30 @@ Remote CPU rendering with Chromium / SwiftShader. These images are test evidence
 - PASS Final phrase exact and held for 3.5 seconds
 - PASS Eight genuine 3D environments inside the head
 - PASS Software rendering explicitly identified
-- FAIL Frame 0 contains monochrome rendered geometry
-- FAIL Frame 1 contains monochrome rendered geometry
-- FAIL Frame 2.6 contains monochrome rendered geometry
-- FAIL Frame 4.6 contains monochrome rendered geometry
-- FAIL Frame 6.6 contains monochrome rendered geometry
-- FAIL Frame 8.6 contains monochrome rendered geometry
-- FAIL Frame 10.6 contains monochrome rendered geometry
-- FAIL Frame 12.6 contains monochrome rendered geometry
-- FAIL Frame 14.6 contains monochrome rendered geometry
-- FAIL Frame 16 contains monochrome rendered geometry
-- FAIL Frame 17.5 contains monochrome rendered geometry
-- FAIL Frame 19 contains monochrome rendered geometry
-- FAIL Frame 20.5 contains monochrome rendered geometry
-- FAIL Frame 22 contains monochrome rendered geometry
-- FAIL Frame 24 contains monochrome rendered geometry
-- FAIL Frame 25.8 contains monochrome rendered geometry
-- FAIL Frame 27 contains monochrome rendered geometry
-- FAIL Frame 28.5 contains monochrome rendered geometry
-- FAIL Frame 30.5 contains monochrome rendered geometry
+- PASS Frame 0 contains monochrome rendered geometry
+- PASS Frame 1 contains monochrome rendered geometry
+- PASS Frame 2.6 contains monochrome rendered geometry
+- PASS Frame 4.6 contains monochrome rendered geometry
+- PASS Frame 6.6 contains monochrome rendered geometry
+- PASS Frame 8.6 contains monochrome rendered geometry
+- PASS Frame 10.6 contains monochrome rendered geometry
+- PASS Frame 12.6 contains monochrome rendered geometry
+- PASS Frame 14.6 contains monochrome rendered geometry
+- PASS Frame 16 contains monochrome rendered geometry
+- PASS Frame 17.5 contains monochrome rendered geometry
+- PASS Frame 19 contains monochrome rendered geometry
+- PASS Frame 20.5 contains monochrome rendered geometry
+- PASS Frame 22 contains monochrome rendered geometry
+- PASS Frame 24 contains monochrome rendered geometry
+- PASS Frame 25.8 contains monochrome rendered geometry
+- PASS Frame 27 contains monochrome rendered geometry
+- PASS Frame 28.5 contains monochrome rendered geometry
+- PASS Frame 30.5 contains monochrome rendered geometry
 - PASS Random-access timeline is pixel deterministic
 - PASS No JavaScript or shader errors
 - PASS Instanced rendering uses at most five draw calls
 - PASS Reduced motion starts paused on creator, no automatic motion
+- PASS Actual GitHub README SVG declarative animation changes pixels
 
 ## 0 s — Immersion
 

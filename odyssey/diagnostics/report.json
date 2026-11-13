@@ -1,6 +1,6 @@
 {
-  "sourceCommit": "008cdd321a83c0513bf67990af679cd8e0f45689",
-  "runId": "43502891719",
+  "sourceCommit": "80037349db39a4e41ace5b7075cad698bc1028f2",
+  "runId": "43503695654",
   "environment": "GitHub Actions ubuntu-24.04 standard public runner",
   "rendering": "Chromium / ANGLE SwiftShader software on remote CPU; NO real GPU validation",
   "baseline": "0f00154f3651c7bed8cf8660780bb3c1750ed9bc",
@@ -143,8 +143,18 @@
   ],
   "benchmark": {
     "medianMs": 0.10000000000582077,
-    "p95Ms": 1.3999999999941792,
+    "p95Ms": 1,
     "note": "Synchronous SwiftShader diagnostic. Not real GPU or display frame rate."
+  },
+  "svgCompatibility": {
+    "verified": true,
+    "animated": true,
+    "src": "/Tire-C/Tire-C/raw/work/binary-mind-odyssey/odyssey/compatibility/probe.svg",
+    "context": "Actual GitHub rendered Markdown image in remote Chromium",
+    "hashes": [
+      "5bae638c4685d63cc6ae0a05cd08f30de0c35620d5e60ce1788d2f3ae5944000",
+      "598f9bac93dc1642757b25e5c2ca501a6cd57789cd4314a64cda897d4568f853"
+    ]
   },
   "checks": [
     {
@@ -177,98 +187,79 @@
     },
     {
       "name": "Frame 0 contains monochrome rendered geometry",
-      "pass": false,
-      "error": "non-green geometry"
+      "pass": true
     },
     {
       "name": "Frame 1 contains monochrome rendered geometry",
-      "pass": false,
-      "error": "non-green geometry"
+      "pass": true
     },
     {
       "name": "Frame 2.6 contains monochrome rendered geometry",
-      "pass": false,
-      "error": "non-green geometry"
+      "pass": true
     },
     {
       "name": "Frame 4.6 contains monochrome rendered geometry",
-      "pass": false,
-      "error": "non-green geometry"
+      "pass": true
     },
     {
       "name": "Frame 6.6 contains monochrome rendered geometry",
-      "pass": false,
-      "error": "non-green geometry"
+      "pass": true
     },
     {
       "name": "Frame 8.6 contains monochrome rendered geometry",
-      "pass": false,
-      "error": "non-green geometry"
+      "pass": true
     },
     {
       "name": "Frame 10.6 contains monochrome rendered geometry",
-      "pass": false,
-      "error": "non-green geometry"
+      "pass": true
     },
     {
       "name": "Frame 12.6 contains monochrome rendered geometry",
-      "pass": false,
-      "error": "non-green geometry"
+      "pass": true
     },
     {
       "name": "Frame 14.6 contains monochrome rendered geometry",
-      "pass": false,
-      "error": "non-green geometry"
+      "pass": true
     },
     {
       "name": "Frame 16 contains monochrome rendered geometry",
-      "pass": false,
-      "error": "non-green geometry"
+      "pass": true
     },
     {
       "name": "Frame 17.5 contains monochrome rendered geometry",
-      "pass": false,
-      "error": "non-green geometry"
+      "pass": true
     },
     {
       "name": "Frame 19 contains monochrome rendered geometry",
-      "pass": false,
-      "error": "non-green geometry"
+      "pass": true
     },
     {
       "name": "Frame 20.5 contains monochrome rendered geometry",
-      "pass": false,
-      "error": "non-green geometry"
+      "pass": true
     },
     {
       "name": "Frame 22 contains monochrome rendered geometry",
-      "pass": false,
-      "error": "non-green geometry"
+      "pass": true
     },
     {
       "name": "Frame 24 contains monochrome rendered geometry",
-      "pass": false,
-      "error": "non-green geometry"
+      "pass": true
     },
     {
       "name": "Frame 25.8 contains monochrome rendered geometry",
-      "pass": false,
-      "error": "non-green geometry"
+      "pass": true
     },
     {
       "name": "Frame 27 contains monochrome rendered geometry",
-      "pass": false,
-      "error": "non-green geometry"
+      "pass": true
     },
     {
       "name": "Frame 28.5 contains monochrome rendered geometry",
-      "pass": false,
-      "error": "non-green geometry"
+      "pass": true
     },
     {
       "name": "Frame 30.5 contains monochrome rendered geometry",
-      "pass": false,
-      "error": "non-green geometry"
+      "pass": true
     },
     {
       "name": "Random-access timeline is pixel deterministic",
@@ -285,35 +276,19 @@
     {
       "name": "Reduced motion starts paused on creator, no automatic motion",
       "pass": true
+    },
+    {
+      "name": "Actual GitHub README SVG declarative animation changes pixels",
+      "pass": true
     }
   ],
-  "failures": [
-    "Frame 0 contains monochrome rendered geometry: non-green geometry",
-    "Frame 1 contains monochrome rendered geometry: non-green geometry",
-    "Frame 2.6 contains monochrome rendered geometry: non-green geometry",
-    "Frame 4.6 contains monochrome rendered geometry: non-green geometry",
-    "Frame 6.6 contains monochrome rendered geometry: non-green geometry",
-    "Frame 8.6 contains monochrome rendered geometry: non-green geometry",
-    "Frame 10.6 contains monochrome rendered geometry: non-green geometry",
-    "Frame 12.6 contains monochrome rendered geometry: non-green geometry",
-    "Frame 14.6 contains monochrome rendered geometry: non-green geometry",
-    "Frame 16 contains monochrome rendered geometry: non-green geometry",
-    "Frame 17.5 contains monochrome rendered geometry: non-green geometry",
-    "Frame 19 contains monochrome rendered geometry: non-green geometry",
-    "Frame 20.5 contains monochrome rendered geometry: non-green geometry",
-    "Frame 22 contains monochrome rendered geometry: non-green geometry",
-    "Frame 24 contains monochrome rendered geometry: non-green geometry",
-    "Frame 25.8 contains monochrome rendered geometry: non-green geometry",
-    "Frame 27 contains monochrome rendered geometry: non-green geometry",
-    "Frame 28.5 contains monochrome rendered geometry: non-green geometry",
-    "Frame 30.5 contains monochrome rendered geometry: non-green geometry"
-  ],
+  "failures": [],
   "shots": [
     {
       "t": 0,
       "file": "frame-0.png",
-      "coverage": 0.16504774305555556,
-      "hash": "4d2ed494b9cc2fa82e64554fde40337735c8adc74d57ca88f05dfa9bd9e6a1e6",
+      "coverage": 0.15698133680555557,
+      "hash": "c19941cbb9ea7d2eb9bf700bd83e59fe0cc0bf492bb41ee4076fa5795603a245",
       "state": {
         "t": 0,
         "world": 0,
@@ -344,8 +319,8 @@
     {
       "t": 1,
       "file": "frame-1.png",
-      "coverage": 0.11985134548611111,
-      "hash": "d629bd2813a25f7f4f68e277e74af05db6f82f82c0178bf4ec4691f1d219c7ad",
+      "coverage": 0.11134657118055556,
+      "hash": "4f0401181f93faad8e237d757f42bfa4e03a992af336a84c29cc5bd8d66b6e8d",
       "state": {
         "t": 1,
         "world": 0,
@@ -376,8 +351,8 @@
     {
       "t": 2.6,
       "file": "frame-2_6.png",
-      "coverage": 0.18449110243055555,
-      "hash": "5ead709a82bf95b3bdb9e4e369e74781e3a5d7b179f050da13895e52bccba5a7",
+      "coverage": 0.17212565104166666,
+      "hash": "761b87db4eec91be7efdc833bfd10cf8ec873c1518e00184733ed86a2a1b4bf2",
       "state": {
         "t": 2.6,
         "world": 1,
@@ -408,8 +383,8 @@
     {
       "t": 4.6,
       "file": "frame-4_6.png",
-      "coverage": 0.19884006076388888,
-      "hash": "18a75b66168eebc50a90b173d4184649c2f9cea3ae455bb93673ea0de5a04388",
+      "coverage": 0.19004231770833332,
+      "hash": "669e6e982d919603790f2cc487404b85031eef9a185a1b4328498f1c9aadfc12",
       "state": {
         "t": 4.6,
         "world": 2,
@@ -440,8 +415,8 @@
     {
       "t": 6.6,
       "file": "frame-6_6.png",
-      "coverage": 0.16826822916666667,
-      "hash": "4c934e8d353c01757f65e487fa6832d3dbb80d9037af24a4efd65423626d08ec",
+      "coverage": 0.16155381944444444,
+      "hash": "ec23c90c7d8f907254d90f78f034c4b341d59380c388ec57b19b5f8765ff2d72",
       "state": {
         "t": 6.6,
         "world": 3,
@@ -472,8 +447,8 @@
     {
       "t": 8.6,
       "file": "frame-8_6.png",
-      "coverage": 0.37442274305555556,
-      "hash": "a5318b670e876648ae1ba59afd58051cb43e20a2566626fb7b94184d1d70d208",
+      "coverage": 0.36841905381944445,
+      "hash": "34f2f37a7fdca4b1ec02f8480e01bba3e85093ac1a548ac478c80e5fb13362fc",
       "state": {
         "t": 8.6,
         "world": 4,
@@ -504,8 +479,8 @@
     {
       "t": 10.6,
       "file": "frame-10_6.png",
-      "coverage": 0.22785047743055556,
-      "hash": "5e5cb37b27c6befce89833caa487e287373e1ad9daa8b3d02dbf1def0c689229",
+      "coverage": 0.22011610243055554,
+      "hash": "c949d0a4e2b8e2f2e069006048dd714715b4121e13f31d085e424b67658a6029",
       "state": {
         "t": 10.6,
         "world": 5,
@@ -536,8 +511,8 @@
     {
       "t": 12.6,
       "file": "frame-12_6.png",
-      "coverage": 0.2156597222222222,
-      "hash": "561cbf4f95a8fe58382b2000f3e0900ea4638567240eca8db2098ba3310c0829",
+      "coverage": 0.20604817708333334,
+      "hash": "0997435baeb43a5bb6d735626c1b65779e1d6637344f97ad37fcaf2ea80d7be8",
       "state": {
         "t": 12.6,
         "world": 6,
@@ -568,8 +543,8 @@
     {
       "t": 14.6,
       "file": "frame-14_6.png",
-      "coverage": 0.17825520833333333,
-      "hash": "6fe50e82aa3980d6f3c609ea2fc5ee3230b7ce71fea48640ba7a50a8f2d3ff91",
+      "coverage": 0.1707150607638889,
+      "hash": "e9e1c5cc606ca3fb90650908e81a4cab99aff85c552a7b60821ccb3b258c5cd3",
       "state": {
         "t": 14.6,
         "world": 7,
@@ -600,8 +575,8 @@
     {
       "t": 16,
       "file": "frame-16.png",
-      "coverage": 0.18980034722222222,
-      "hash": "99b9818492c78f5e907b0b2552d1e712175446445640376f9cae8dbfc0c0c602",
+      "coverage": 0.18145182291666667,
+      "hash": "f5692bbabaeb535866e88f89af2ece012152e6d6081360d6e17d78162f7d0002",
       "state": {
         "t": 16,
         "world": 7,
@@ -632,8 +607,8 @@
     {
       "t": 17.5,
       "file": "frame-17_5.png",
-      "coverage": 0.2324197048611111,
-      "hash": "b9f6be9047fc88b969c2687cc9ba59f45605b91d8fee6178c3c9e34b82ec2846",
+      "coverage": 0.173935546875,
+      "hash": "071585097af94a067bb524581a93680845f22368d4b894d8f930f207d99b6e53",
       "state": {
         "t": 17.5,
         "world": 7,
@@ -664,8 +639,8 @@
     {
       "t": 19,
       "file": "frame-19.png",
-      "coverage": 0.24805447048611112,
-      "hash": "ea61e3ec15a2a80693f48ce6e8bf4cb44f90da700df9ed29fd538fafe38274f2",
+      "coverage": 0.19946614583333333,
+      "hash": "5d7ba608019ec1e763e15f168d254dbbb9c5ee49d723434be797d75b90833060",
       "state": {
         "t": 19,
         "world": 7,
@@ -696,8 +671,8 @@
     {
       "t": 20.5,
       "file": "frame-20_5.png",
-      "coverage": 0.13810872395833335,
-      "hash": "f566e9f0204ea7ca7f9373eee418d80c1c55c21fe6d114ffaa9028f0fdcf3f13",
+      "coverage": 0.12043511284722222,
+      "hash": "05a9ef673967474c9815c8a3a9c8f5361c6bf7a24bda0d1d7bed77dccb1e76a2",
       "state": {
         "t": 20.5,
         "world": 7,
@@ -728,8 +703,8 @@
     {
       "t": 22,
       "file": "frame-22.png",
-      "coverage": 0.15737196180555554,
-      "hash": "6c50d17e314d7abee7fdafd9c8029bc0fcba8b7cf45eef01610dca49b176b9fc",
+      "coverage": 0.14382269965277777,
+      "hash": "36ccc4425289700fbfe1a059ab3bc3bcb67ec5bd5c806bd20ad443cf7cff8c38",
       "state": {
         "t": 22,
         "world": 7,
@@ -760,8 +735,8 @@
     {
       "t": 24,
       "file": "frame-24.png",
-      "coverage": 0.05408854166666666,
-      "hash": "1355df4f4a503051b83bcade74f78b10aa6dc64b044294f5cfe0ff2855ad0a0e",
+      "coverage": 0.045287543402777776,
+      "hash": "85a36274e501698ceab864b7b90281abdd5099d6c5a7520e095486694cfe5532",
       "state": {
         "t": 24,
         "world": 7,
@@ -792,8 +767,8 @@
     {
       "t": 25.8,
       "file": "frame-25_8.png",
-      "coverage": 0.03962348090277778,
-      "hash": "150a006c2a75eb882146b0ee150c771dbc24f980702dbf41517183139f471a28",
+      "coverage": 0.03241102430555556,
+      "hash": "3c44ef2b67cc7590bfe600dc679c594ab97736310b298d205934750218c6ccf8",
       "state": {
         "t": 25.8,
         "world": 7,
@@ -824,8 +799,8 @@
     {
       "t": 27,
       "file": "frame-27.png",
-      "coverage": 0.020636935763888888,
-      "hash": "d74f3ce109f6ceab52191ac536df376c40e255d1c5b725e091a2134777638a52",
+      "coverage": 0.017027994791666667,
+      "hash": "4fc1d1b46781a2b5d6cfa463324d77c3863f3b48190de48dade6e583234d2cbf",
       "state": {
         "t": 27,
         "world": 7,
@@ -856,8 +831,8 @@
     {
       "t": 28.5,
       "file": "frame-28_5.png",
-      "coverage": 0.011834852430555556,
-      "hash": "12b98f24ddbc71d093664e39fb3eba51ad91cb15deee27d47f3990f7ccea6c0e",
+      "coverage": 0.006606987847222222,
+      "hash": "40027b8ae3c0f0d20297532a08bcfd2efb99ea7de6f349ed589170521d8e4ed9",
       "state": {
         "t": 28.5,
         "world": 7,
@@ -888,8 +863,8 @@
     {
       "t": 30.5,
       "file": "frame-30_5.png",
-      "coverage": 0.011838107638888888,
-      "hash": "91a1ca3ec3f231a782093e8cbed42c95d0f219395945ae59d5806981aa3d5b5c",
+      "coverage": 0.006606987847222222,
+      "hash": "40027b8ae3c0f0d20297532a08bcfd2efb99ea7de6f349ed589170521d8e4ed9",
       "state": {
         "t": 30.5,
         "world": 7,
