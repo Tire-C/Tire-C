@@ -1,6 +1,6 @@
 # Rendering diagnostics — review candidate
 
-Source commit: 80037349db39a4e41ace5b7075cad698bc1028f2
+Source commit: c44aeadc83974310dc01398322d73b8eba936bd8
 
 Remote CPU rendering with Chromium / SwiftShader. These images are test evidence, never the animation product.
 
@@ -12,7 +12,9 @@ Remote CPU rendering with Chromium / SwiftShader. These images are test evidence
 - PASS Eight genuine 3D environments inside the head
 - PASS Software rendering explicitly identified
 - PASS Frame 0 contains monochrome rendered geometry
+- PASS Frame 0.6 contains monochrome rendered geometry
 - PASS Frame 1 contains monochrome rendered geometry
+- PASS Frame 1.6 contains monochrome rendered geometry
 - PASS Frame 2.6 contains monochrome rendered geometry
 - PASS Frame 4.6 contains monochrome rendered geometry
 - PASS Frame 6.6 contains monochrome rendered geometry
@@ -21,9 +23,16 @@ Remote CPU rendering with Chromium / SwiftShader. These images are test evidence
 - PASS Frame 12.6 contains monochrome rendered geometry
 - PASS Frame 14.6 contains monochrome rendered geometry
 - PASS Frame 16 contains monochrome rendered geometry
+- PASS Frame 17 contains monochrome rendered geometry
 - PASS Frame 17.5 contains monochrome rendered geometry
+- PASS Frame 18 contains monochrome rendered geometry
+- PASS Frame 18.5 contains monochrome rendered geometry
 - PASS Frame 19 contains monochrome rendered geometry
+- PASS Frame 19.5 contains monochrome rendered geometry
+- PASS Frame 20 contains monochrome rendered geometry
 - PASS Frame 20.5 contains monochrome rendered geometry
+- PASS Frame 21 contains monochrome rendered geometry
+- PASS Frame 21.5 contains monochrome rendered geometry
 - PASS Frame 22 contains monochrome rendered geometry
 - PASS Frame 24 contains monochrome rendered geometry
 - PASS Frame 25.8 contains monochrome rendered geometry
@@ -33,6 +42,8 @@ Remote CPU rendering with Chromium / SwiftShader. These images are test evidence
 - PASS Random-access timeline is pixel deterministic
 - PASS No JavaScript or shader errors
 - PASS Instanced rendering uses at most five draw calls
+- PASS Three spatial viewpoints produce distinct rendered images
+- PASS Portrait signature has visible horizontal margins
 - PASS Reduced motion starts paused on creator, no automatic motion
 - PASS Actual GitHub README SVG declarative animation changes pixels
 
@@ -40,9 +51,17 @@ Remote CPU rendering with Chromium / SwiftShader. These images are test evidence
 
 ![Diagnostic at 0 seconds](frame-0.png)
 
+## 0.6 s — Immersion
+
+![Diagnostic at 0.6 seconds](frame-0_6.png)
+
 ## 1 s — Immersion
 
 ![Diagnostic at 1 seconds](frame-1.png)
+
+## 1.6 s — Immersion
+
+![Diagnostic at 1.6 seconds](frame-1_6.png)
 
 ## 2.6 s — Programming
 
@@ -76,17 +95,45 @@ Remote CPU rendering with Chromium / SwiftShader. These images are test evidence
 
 ![Diagnostic at 16 seconds](frame-16.png)
 
+## 17 s — The mind
+
+![Diagnostic at 17 seconds](frame-17.png)
+
 ## 17.5 s — The mind
 
 ![Diagnostic at 17.5 seconds](frame-17_5.png)
+
+## 18 s — The mind
+
+![Diagnostic at 18 seconds](frame-18.png)
+
+## 18.5 s — The mind
+
+![Diagnostic at 18.5 seconds](frame-18_5.png)
 
 ## 19 s — The mind
 
 ![Diagnostic at 19 seconds](frame-19.png)
 
+## 19.5 s — The mind
+
+![Diagnostic at 19.5 seconds](frame-19_5.png)
+
+## 20 s — The mind
+
+![Diagnostic at 20 seconds](frame-20.png)
+
 ## 20.5 s — The mind
 
 ![Diagnostic at 20.5 seconds](frame-20_5.png)
+
+## 21 s — The mind
+
+![Diagnostic at 21 seconds](frame-21.png)
+
+## 21.5 s — The mind
+
+![Diagnostic at 21.5 seconds](frame-21_5.png)
 
 ## 22 s — The creator
 
