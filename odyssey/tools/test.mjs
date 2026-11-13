@@ -31,7 +31,7 @@ await page.addStyleTag({content:'#ui{visibility:hidden}'});
 const info=await page.evaluate(()=>odyssey.info()),geometry=await page.evaluate(()=>odyssey.geometry());
 check('Eight genuine 3D environments inside the head',()=>{assert.equal(geometry.length,8);for(const g of geometry){for(let a=0;a<3;a++)assert(g.max[a]-g.min[a]>5,g.name+' is flat');assert(g.radius*UNIVERSE_SCALE<.28)}}); 
 check('Software rendering explicitly identified',()=>assert.match(info.renderer,/SwiftShader/i));
-for(const t of [0,1,2.6,4.6,6.6,8.6,10.6,12.6,14.6,16,17.5,19,20.5,22,24,25.8,27,28.5,30.5]){
+for(const t of [0,.6,1,1.6,2.6,4.6,6.6,8.6,10.6,12.6,14.6,16,17,17.5,18,18.5,19,19.5,20,20.5,21,21.5,22,24,25.8,27,28.5,30.5]){
  const state=await page.evaluate(t=>odyssey.seek(t),t);
  const filename='frame-'+String(t).replace('.','_')+'.png',buffer=await page.locator('canvas').screenshot({path:'diagnostics/'+filename});
  const png=PNG.sync.read(buffer);let lit=0,green=0,white=0;
@@ -45,10 +45,22 @@ await page.evaluate(()=>odyssey.seek(3));await page.evaluate(()=>odyssey.seek(20
 check('Random-access timeline is pixel deterministic',()=>assert.equal(hash(a),hash(b)));
 check('No JavaScript or shader errors',()=>assert.deepEqual(errors,[]));
 check('Instanced rendering uses at most five draw calls',()=>assert(info.drawCalls<=5));
+await page.evaluate(()=>odyssey.seek(24));
+const orbitHashes=[];
+for(const [name,pos] of [['side',[4,2.8,.2]],['back',[2,2.8,-4]],['front',[-3,2.8,4]]]){
+ await page.evaluate(pos=>odyssey.viewFrom(pos,[0,1.35,.4]),pos);
+ const image=await page.locator('canvas').screenshot({path:'diagnostics/orbit-'+name+'.png'});orbitHashes.push(hash(image));
+}
+check('Three spatial viewpoints produce distinct rendered images',()=>assert.equal(new Set(orbitHashes).size,3));
+await page.evaluate(()=>odyssey.seek(24));
 const bench=await page.evaluate(async()=>{const samples=[];for(let i=0;i<45;i++){const a=performance.now();odyssey.seek(i*.3);const gl=document.querySelector('canvas').getContext('webgl2');gl.finish();samples.push(performance.now()-a)}samples.sort((a,b)=>a-b);return {medianMs:samples[22],p95Ms:samples[42],note:'Synchronous SwiftShader diagnostic. Not real GPU or display frame rate.'}});
 await page.setViewportSize({width:390,height:844});await page.evaluate(()=>odyssey.seek(24));
 await page.locator('canvas').screenshot({path:'diagnostics/mobile-creator.png'});
-await page.evaluate(()=>odyssey.seek(29));await page.locator('canvas').screenshot({path:'diagnostics/mobile-signature.png'});
+await page.evaluate(()=>odyssey.seek(29));const mobileSignature=await page.locator('canvas').screenshot({path:'diagnostics/mobile-signature.png'});
+const mobilePNG=PNG.sync.read(mobileSignature);let left=mobilePNG.width,right=0;
+for(let y=0;y<mobilePNG.height;y++)for(let x=0;x<mobilePNG.width;x++)if(mobilePNG.data[(y*mobilePNG.width+x)*4+1]>25){left=Math.min(left,x);right=Math.max(right,x)}
+check('Portrait signature has visible horizontal margins',()=>{assert(left>15);assert(right<mobilePNG.width-15)});
+
 const reduced=await browser.newPage({viewport:{width:1280,height:720},reducedMotion:'reduce'});
 await reduced.goto(url);await reduced.waitForFunction(()=>window.odyssey?.ready);
 const before=await reduced.evaluate(()=>odyssey.info());await reduced.waitForTimeout(150);const after=await reduced.evaluate(()=>odyssey.info());

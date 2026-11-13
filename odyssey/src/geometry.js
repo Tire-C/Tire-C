@@ -1,8 +1,8 @@
 import {TAU,rng,norm,cross,add,mul,sub,lerp} from './math.js';
 // Only spatial samples are produced. No solid mesh is ever sent to the renderer.
 export class Cloud {
- constructor(seed=42){this.p=[];this.n=[];this.w=[];this.random=rng(seed)}
- point(p,n=[0,1,0],w=1){this.p.push(...p);this.n.push(...norm(n));this.w.push(w)}
+ constructor(seed=42){this.p=[];this.n=[];this.w=[];this.motion=[0,0,0,0];this.s=[];this.random=rng(seed)}
+ point(p,n=[0,1,0],w=1){this.p.push(...p);this.n.push(...norm(n));this.w.push(w);this.s.push(...this.motion)}
  ellipsoid(c,r,count,w=1,deform=null){
   for(let i=0;i<count;i++){const y=1-2*(i+.5)/count,a=i*2.3999632297,s=Math.sqrt(1-y*y),n=[s*Math.cos(a),y,s*Math.sin(a)];
    let p=n.map((x,j)=>c[j]+x*r[j]);if(deform)p=deform(p,n);this.point(p,n.map((x,j)=>x/r[j]),w)}
@@ -22,9 +22,9 @@ export class Cloud {
   for(let i=0;i<count;i++){const a=i/count*TAU,b=i*2.3999632297,rr=r+minor*Math.cos(b),p=[rr*Math.cos(a),minor*Math.sin(b),rr*Math.sin(a)],n=[Math.cos(a),.2,Math.sin(a)];if(axis===0){[p[0],p[1]]=[p[1],p[0]];[n[0],n[1]]=[n[1],n[0]]}if(axis===2){[p[1],p[2]]=[p[2],p[1]];[n[1],n[2]]=[n[2],n[1]]}this.point(add(c,p),n,w)}
  }
  data(count=this.w.length,bound=Infinity){
-  const p=new Float32Array(count*3),n=new Float32Array(count*3),w=new Float32Array(count);
-  for(let i=0;i<count;i++){const k=Math.floor(i*this.w.length/count),v=this.p.slice(k*3,k*3+3),len=Math.hypot(...v),s=Math.min(1,bound/len);p.set(v.map(x=>x*s),i*3);n.set(this.n.slice(k*3,k*3+3),i*3);w[i]=this.w[k]}
-  return {p,n,w,count};
+  const p=new Float32Array(count*3),n=new Float32Array(count*3),w=new Float32Array(count),spin=new Float32Array(count*4);
+  for(let i=0;i<count;i++){const k=Math.floor(i*this.w.length/count),v=this.p.slice(k*3,k*3+3),len=Math.hypot(...v),s=Math.min(1,bound/len);p.set(v.map(x=>x*s),i*3);n.set(this.n.slice(k*3,k*3+3),i*3);w[i]=this.w[k];spin.set(this.s.slice(k*4,k*4+4),i*4)}
+  return {p,n,w,spin,count};
  }
 }
 export function worlds(count=28000){
@@ -45,7 +45,9 @@ export function worlds(count=28000){
   }
   if(k===2){
    c.ellipsoid([0,0,0],[2.6,2.6,2.6],2200);
+   c.motion=[0,0,0,.12];
    for(let j=0;j<7;j++)for(let i=0;i<1300;i++){const a=i/1300*TAU,r=7+j*1.1,b=j*Math.PI/7,p=[r*Math.cos(a),r*Math.sin(a)*Math.sin(b),r*Math.sin(a)*Math.cos(b)];c.point(p,norm(p),.65);if(i%200===0)c.ellipsoid(p,[.5,.5,.5],100,1)}
+   c.motion=[0,0,0,0];
    for(let j=-16;j<=16;j+=3)for(let i=0;i<450;i++){const a=i/450*TAU,r=13+5*Math.sin(a*2+j*.15);c.point([r*Math.cos(a),j,r*Math.sin(a)],[0,1,0],.35)}
   }
   if(k===3){
@@ -75,9 +77,11 @@ export function worlds(count=28000){
   }
   if(k===7){
    for(const [cx,cy,cz,r,teeth] of [[-7,0,0,7,18],[6,0,0,6,15],[0,10,-7,4.5,12],[0,-10,6,4.5,12]]){
+    c.motion=[cx,cy,cz,cx<0?.24:-.28];
     for(let j=0;j<4;j++)for(let i=0;i<2400;i++){const a=i/2400*TAU,rr=r+(Math.cos(a*teeth)>.1?.8:0),z=cz+(j-1.5)*.7;c.point([cx+rr*Math.cos(a),cy+rr*Math.sin(a),z],[Math.cos(a),Math.sin(a),0],.9)}
     c.ring([cx,cy,cz],r*.45,1000,2,.65,.55);c.tube([cx,cy,cz-5],[cx,cy,cz+5],.7,750);
     for(let j=0;j<6;j++){const a=j/6*TAU;c.tube([cx+Math.cos(a)*r*.45,cy+Math.sin(a)*r*.45,cz],[cx+Math.cos(a)*r,cy+Math.sin(a)*r,cz],.35,300)}}
+   c.motion=[0,0,0,0];
    for(let x=-20;x<=20;x+=5)c.tube([x,-16,-15],[x,16,-15],.2,240,.3)
   }
   out.push({name:names[k],...c.data(count,34)});

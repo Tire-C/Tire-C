@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import {ramp,lerp} from './math.js';
-export const DURATION=32,HEAD=[0,2.15,0],UNIVERSE_SCALE=.008;
+export const DURATION=32,HEAD=[0,2.28,0],UNIVERSE_SCALE=.008;
 const route=new THREE.CatmullRomCurve3([[0,1,24],[4,-2,12],[-11,5,15],[12,4,11],[-10,5,13],[13,9,16],[-8,3,15],[9,-2,16],[5,2,14]].map(p=>new THREE.Vector3(...p)),false,'catmullrom',.4);
 export function cameraAt(t){
  let position,target,roll=0;
@@ -10,8 +10,8 @@ export function cameraAt(t){
   const p=route.getPoint(Math.min(1,u));
   position=p.toArray().map((x,i)=>HEAD[i]+x*UNIVERSE_SCALE);
   target=[...HEAD];roll=.035*Math.sin(t*.55)*(1-ramp(t,14.5,16));
- }else if(t<22){position=lerp([.04,2.166,.112],[1.05,2.36,1.65],ramp(t,16,22));target=[...HEAD]}
- else if(t<25){position=lerp([1.05,2.36,1.65],[3.4,2.9,4.7],ramp(t,22,25));target=lerp(HEAD,[0,1.25,.35],ramp(t,22,25))}
+ }else if(t<22){position=lerp([.04,2.296,.112],[1.05,2.49,1.65],ramp(t,16,22));target=[...HEAD]}
+ else if(t<25){position=lerp([1.05,2.49,1.65],[3.4,2.9,4.7],ramp(t,22,25));target=lerp(HEAD,[0,1.25,.35],ramp(t,22,25))}
  else {position=lerp([3.4,2.9,4.7],[5,3.6,7],ramp(t,25,28));target=lerp([0,1.25,.35],[0,1.3,.2],ramp(t,25,28))}
  return {position,target,roll};
 }
