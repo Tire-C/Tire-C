@@ -1,6 +1,6 @@
 # Rendering diagnostics — review candidate
 
-Source commit: 7fdbf2d890a1c176a4088ac705a04639eb7b2f86
+Source commit: f20e011a36523c302efac61372b6ecfe0e4a88cf
 
 Remote CPU rendering with Chromium / SwiftShader. These images are test evidence, never the animation product.
 
@@ -37,14 +37,19 @@ Remote CPU rendering with Chromium / SwiftShader. These images are test evidence
 - PASS Frame 24 contains monochrome rendered geometry
 - PASS Frame 25.8 contains monochrome rendered geometry
 - PASS Frame 27 contains monochrome rendered geometry
-- FAIL Frame 28.5 contains monochrome rendered geometry
-- FAIL Frame 30.5 contains monochrome rendered geometry
+- PASS Frame 28.5 contains monochrome rendered geometry
+- PASS Frame 30.5 contains monochrome rendered geometry
 - PASS Random-access timeline is pixel deterministic
 - PASS No JavaScript or shader errors
 - PASS Instanced rendering uses at most five draw calls
 - PASS Three spatial viewpoints produce distinct rendered images
 - PASS Portrait signature has visible horizontal margins
 - PASS Reduced motion starts paused on creator, no automatic motion
+- PASS Standalone HTML works without network or installation
+- PASS Interactive inspection rotates the 3D image
+- PASS Returning from inspection restores the exact cinematic pose
+- PASS Real-time playback advances the timeline
+- PASS Pause freezes the timeline
 - PASS Actual GitHub README SVG declarative animation changes pixels
 
 ## 0 s — Immersion

@@ -1,6 +1,6 @@
 {
-  "sourceCommit": "7fdbf2d890a1c176a4088ac705a04639eb7b2f86",
-  "runId": "43504522269",
+  "sourceCommit": "f20e011a36523c302efac61372b6ecfe0e4a88cf",
+  "runId": "43505233274",
   "environment": "GitHub Actions ubuntu-24.04 standard public runner",
   "rendering": "Chromium / ANGLE SwiftShader software on remote CPU; NO real GPU validation",
   "baseline": "0f00154f3651c7bed8cf8660780bb3c1750ed9bc",
@@ -142,8 +142,8 @@
     }
   ],
   "benchmark": {
-    "medianMs": 647.5999999999767,
-    "p95Ms": 692.2999999999884,
+    "medianMs": 531.3999999999942,
+    "p95Ms": 608.6000000000058,
     "note": "Pixel-readback SwiftShader diagnostic on remote CPU. Not real GPU or display frame rate."
   },
   "svgCompatibility": {
@@ -152,16 +152,28 @@
     "src": "/Tire-C/Tire-C/raw/work/binary-mind-odyssey/odyssey/compatibility/probe.svg",
     "context": "Actual GitHub rendered Markdown image in remote Chromium",
     "hashes": [
-      "bf22c19d5e74c8c2883cd0d13c17e44fbacd2b427bcb8ac5e41010cfa130d325",
-      "4dd3b4b5fd605e6a609ca6578d0e840a6098e25de01e8af5d493b49bca0be592"
+      "8d7b41a524e7185458ebefabfafdcab0ea0d4d2b12bb484c9c49ed470c64448a",
+      "2c275b874a5d0cd8948d0017a3982b2d29a640bbcd431e8e056b36205f1e95d1"
     ]
   },
   "browserCompatibility": [
     {
       "name": "Firefox",
-      "rendered": false,
-      "error": "page.waitForFunction: Timeout 20000ms exceeded.",
-      "interpretation": "Remote software-rendering compatibility not established; not proof of hardware incompatibility."
+      "rendered": true,
+      "info": {
+        "renderer": "llvmpipe, or similar",
+        "webgl": "WebGL 2.0",
+        "worldCount": 8,
+        "worldPoints": 28000,
+        "headPoints": 11510,
+        "bodyPoints": 20500,
+        "deskPoints": 18979,
+        "playing": false,
+        "reduced": false,
+        "current": 24,
+        "drawCalls": 4
+      },
+      "errors": []
     },
     {
       "name": "WebKit",
@@ -317,13 +329,11 @@
     },
     {
       "name": "Frame 28.5 contains monochrome rendered geometry",
-      "pass": false,
-      "error": "nearly empty frame: 0.0013020833333333333"
+      "pass": true
     },
     {
       "name": "Frame 30.5 contains monochrome rendered geometry",
-      "pass": false,
-      "error": "nearly empty frame: 0.0013020833333333333"
+      "pass": true
     },
     {
       "name": "Random-access timeline is pixel deterministic",
@@ -350,14 +360,31 @@
       "pass": true
     },
     {
+      "name": "Standalone HTML works without network or installation",
+      "pass": true
+    },
+    {
+      "name": "Interactive inspection rotates the 3D image",
+      "pass": true
+    },
+    {
+      "name": "Returning from inspection restores the exact cinematic pose",
+      "pass": true
+    },
+    {
+      "name": "Real-time playback advances the timeline",
+      "pass": true
+    },
+    {
+      "name": "Pause freezes the timeline",
+      "pass": true
+    },
+    {
       "name": "Actual GitHub README SVG declarative animation changes pixels",
       "pass": true
     }
   ],
-  "failures": [
-    "Frame 28.5 contains monochrome rendered geometry: nearly empty frame: 0.0013020833333333333",
-    "Frame 30.5 contains monochrome rendered geometry: nearly empty frame: 0.0013020833333333333"
-  ],
+  "failures": [],
   "shots": [
     {
       "t": 0,
@@ -1130,8 +1157,8 @@
     {
       "t": 25.8,
       "file": "frame-25_8.png",
-      "coverage": 0.03992621527777778,
-      "hash": "ebdf7711fa64682ed9d3e03781b855fca13ab22a8957d7e4af9a7f4bad21fd15",
+      "coverage": 0.03908528645833333,
+      "hash": "8984fefe20caa17f21d97001f2030a25dc4f801e448e6040a699a75b1e04a723",
       "state": {
         "t": 25.8,
         "world": 7,
@@ -1162,8 +1189,8 @@
     {
       "t": 27,
       "file": "frame-27.png",
-      "coverage": 0.02880425347222222,
-      "hash": "feef7f74d5414cab80e8fef557b36a409f5815542a46da619baa1720326e6ee3",
+      "coverage": 0.02781684027777778,
+      "hash": "7c0f7d7bf8b3ca8b3ad047c89cf69d2bc6d709cb0fdfa20ffd8213780075e677",
       "state": {
         "t": 27,
         "world": 7,
@@ -1194,8 +1221,8 @@
     {
       "t": 28.5,
       "file": "frame-28_5.png",
-      "coverage": 0.0013020833333333333,
-      "hash": "53671ba950ebbb9dd004965d5f2a00da13a2516d47081bdc09462e2196abc73d",
+      "coverage": 0.003740234375,
+      "hash": "5fca2ccc26c275c695bf169dd1a82ba85a4bc6562100307cce76e487e11a0b56",
       "state": {
         "t": 28.5,
         "world": 7,
@@ -1226,8 +1253,8 @@
     {
       "t": 30.5,
       "file": "frame-30_5.png",
-      "coverage": 0.0013020833333333333,
-      "hash": "53671ba950ebbb9dd004965d5f2a00da13a2516d47081bdc09462e2196abc73d",
+      "coverage": 0.003740234375,
+      "hash": "5fca2ccc26c275c695bf169dd1a82ba85a4bc6562100307cce76e487e11a0b56",
       "state": {
         "t": 30.5,
         "world": 7,
