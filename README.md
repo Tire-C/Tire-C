@@ -1,3 +1,5 @@
+![Hi, I am Tire - Terminal Binary Odyssey](./assets/terminal-odyssey.svg)
+
 # Hi, I'm Tire
 
 **Developer · AI Systems Builder · Science & Technology Researcher**
