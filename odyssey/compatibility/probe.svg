@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="100" viewBox="0 0 320 100" role="img" aria-label="Declarative SVG compatibility probe">
+<rect width="320" height="100" fill="black"/>
+<g fill="#00ff40" font-family="monospace" font-size="28">
+<text x="24" y="40">0<animate attributeName="x" values="24;270;24" dur="3s" repeatCount="indefinite"/></text>
+<text x="160" y="80">1<animate attributeName="opacity" values="1;.1;1" dur="2s" repeatCount="indefinite"/></text>
+</g></svg>

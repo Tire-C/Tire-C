@@ -27,6 +27,7 @@ const browser=await chromium.launch({headless:true,args:['--use-angle=swiftshade
 const page=await browser.newPage({viewport:{width:1280,height:720},deviceScaleFactor:1});
 const errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
 await page.goto(url+'/?test=1');await page.waitForFunction(()=>window.odyssey?.ready);
+await page.addStyleTag({content:'#ui{visibility:hidden}'});
 const info=await page.evaluate(()=>odyssey.info()),geometry=await page.evaluate(()=>odyssey.geometry());
 check('Eight genuine 3D environments inside the head',()=>{assert.equal(geometry.length,8);for(const g of geometry){for(let a=0;a<3;a++)assert(g.max[a]-g.min[a]>5,g.name+' is flat');assert(g.radius*UNIVERSE_SCALE<.28)}}); 
 check('Software rendering explicitly identified',()=>assert.match(info.renderer,/SwiftShader/i));
@@ -52,8 +53,23 @@ const reduced=await browser.newPage({viewport:{width:1280,height:720},reducedMot
 await reduced.goto(url);await reduced.waitForFunction(()=>window.odyssey?.ready);
 const before=await reduced.evaluate(()=>odyssey.info());await reduced.waitForTimeout(150);const after=await reduced.evaluate(()=>odyssey.info());
 check('Reduced motion starts paused on creator, no automatic motion',()=>{assert.equal(before.playing,false);assert.equal(before.current,24);assert.equal(after.current,before.current)});
+// Exercise the actual GitHub-rendered Markdown image, not an inline SVG substitute.
+let svgCompatibility={verified:false};
+try{
+ const svgPage=await browser.newPage({viewport:{width:1100,height:800}});
+ await svgPage.goto('https://github.com/Tire-C/Tire-C/blob/work/binary-mind-odyssey/odyssey/compatibility/README.md',{waitUntil:'domcontentloaded',timeout:45000});
+ const img=svgPage.getByRole('img',{name:'SVG declarative animation probe',exact:true});
+ await img.waitFor({state:'visible',timeout:20000});
+ await img.scrollIntoViewIfNeeded();await svgPage.waitForTimeout(300);
+ const s0=await img.screenshot({path:'diagnostics/svg-github-a.png'});
+ await svgPage.waitForTimeout(700);
+ const s1=await img.screenshot({path:'diagnostics/svg-github-b.png'});
+ svgCompatibility={verified:true,animated:hash(s0)!==hash(s1),src:await img.getAttribute('src'),context:'Actual GitHub rendered Markdown image in remote Chromium',hashes:[hash(s0),hash(s1)]};
+ check('Actual GitHub README SVG declarative animation changes pixels',()=>assert.equal(svgCompatibility.animated,true));
+ await svgPage.close();
+}catch(e){svgCompatibility={verified:false,error:e.message};failures.push('GitHub SVG observation unavailable: '+e.message)}
 await browser.close();server.close();
-const report={sourceCommit:process.env.GITHUB_SHA,runId:process.env.GITHUB_RUN_ID,environment:'GitHub Actions ubuntu-24.04 standard public runner',rendering:'Chromium / ANGLE SwiftShader software on remote CPU; NO real GPU validation',baseline:BASE,readmeBlob:BLOB,readmeSha256:hash(original),info,geometry,benchmark:bench,checks,failures,shots,limits:['Artistic acceptance requires human review of the diagnostic frames and running program.','Firefox, WebKit and physical GPU not validated in this run.','GitHub README SVG image-context compatibility needs a separate actual GitHub observation.','Mobile composition must be visually inspected.']};
+const report={sourceCommit:process.env.GITHUB_SHA,runId:process.env.GITHUB_RUN_ID,environment:'GitHub Actions ubuntu-24.04 standard public runner',rendering:'Chromium / ANGLE SwiftShader software on remote CPU; NO real GPU validation',baseline:BASE,readmeBlob:BLOB,readmeSha256:hash(original),info,geometry,benchmark:bench,svgCompatibility,checks,failures,shots,limits:['Artistic acceptance requires human review of the diagnostic frames and running program.','Firefox, WebKit and physical GPU not validated in this run.','GitHub README SVG image-context compatibility needs a separate actual GitHub observation.','Mobile composition must be visually inspected.']};
 await writeFile('diagnostics/report.json',JSON.stringify(report,null,2)+'\n');
 await writeFile('diagnostics/README.md','# Rendering diagnostics — review candidate\n\nSource commit: '+process.env.GITHUB_SHA+'\n\nRemote CPU rendering with Chromium / SwiftShader. These images are test evidence, never the animation product.\n\n'+checks.map(c=>'- '+(c.pass?'PASS':'FAIL')+' '+c.name).join('\n')+'\n\n'+shots.map(s=>'## '+s.t+' s — '+s.state.name+'\n\n![Diagnostic at '+s.t+' seconds]('+s.file+')\n').join('\n')+'\n## Portrait checks\n\n![Creator](mobile-creator.png)\n\n![Signature](mobile-signature.png)\n');
 console.log(JSON.stringify({info,benchmark:bench,checks,failures},null,2));

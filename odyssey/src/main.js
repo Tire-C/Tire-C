@@ -14,18 +14,22 @@ const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(53,1,.00015,100
 const worldData=worlds(),parts=creator(),all=join(Object.values(parts));
 const cosmos=binaryCloud(worldData[0],texture,{size:.28,fog:.55,intensity:1.7});
 cosmos.mesh.position.set(...HEAD);cosmos.mesh.scale.setScalar(UNIVERSE_SCALE);cosmos.uniforms.turbulence.value=2;
-const head=binaryCloud(parts.head,texture,{size:.022,fog:25,intensity:1.6});
+const head=binaryCloud(parts.head,texture,{size:.022,fog:25,intensity:1.35});
 const body=binaryCloud(parts.body,texture,{size:.025,fog:25,intensity:1.7});
 const desk=binaryCloud(parts.desk,texture,{size:.024,fog:25,intensity:1.6});
 const finale=binaryCloud(all,texture,{size:.024,fog:40,intensity:1.7});finale.setTargets(all,signature(all.count));
 for(const cloud of [cosmos,head,body,desk,finale])scene.add(cloud.mesh);
 let activeWorld=-1,current=reduced.matches?24:0,playing=!reduced.matches&&!test,last=0,contextLost=false;
-function resize(){renderer.setSize(innerWidth,innerHeight,false);camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();render(current)}
+function resize(){renderer.setSize(innerWidth,innerHeight,false);camera.aspect=innerWidth/innerHeight;camera.fov=THREE.MathUtils.radToDeg(2*Math.atan(Math.tan(THREE.MathUtils.degToRad(53)/2)*Math.max(1,1.5/camera.aspect)));camera.updateProjectionMatrix();for(const c of [cosmos,head,body,desk,finale])c.uniforms.viewportHeight.value=innerHeight*renderer.getPixelRatio();render(current)}
 function render(t){
  current=Math.max(0,Math.min(DURATION,t));
  const state=stateAt(current),pose=cameraAt(current);
  camera.position.set(...pose.position);camera.up.set(Math.sin(pose.roll),Math.cos(pose.roll),0);camera.lookAt(...pose.target);camera.updateMatrixWorld();
  if(activeWorld!==state.world){cosmos.setTargets(worldData[state.world],worldData[state.next]);activeWorld=state.world}
+ cosmos.uniforms.minimumPixels.value=2.3;
+ cosmos.uniforms.fogDistance.value=.55+2*ramp(current,16,19);
+ cosmos.uniforms.intensity.value=1.7+1.5*ramp(current,16,19);
+ head.uniforms.cutaway.value=ramp(current,17,18.5)*(1-ramp(current,21.5,23.5));
  cosmos.uniforms.morph.value=state.morph;cosmos.uniforms.time.value=current;
  cosmos.uniforms.opacity.value=(1-ramp(current,24.5,26))*state.fade;
  cosmos.mesh.visible=current<26;
