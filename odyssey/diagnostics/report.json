@@ -1,6 +1,6 @@
 {
-  "sourceCommit": "c44aeadc83974310dc01398322d73b8eba936bd8",
-  "runId": "43504093216",
+  "sourceCommit": "7fdbf2d890a1c176a4088ac705a04639eb7b2f86",
+  "runId": "43504522269",
   "environment": "GitHub Actions ubuntu-24.04 standard public runner",
   "rendering": "Chromium / ANGLE SwiftShader software on remote CPU; NO real GPU validation",
   "baseline": "0f00154f3651c7bed8cf8660780bb3c1750ed9bc",
@@ -142,9 +142,9 @@
     }
   ],
   "benchmark": {
-    "medianMs": 0.10000000000582077,
-    "p95Ms": 1.3999999999941792,
-    "note": "Synchronous SwiftShader diagnostic. Not real GPU or display frame rate."
+    "medianMs": 647.5999999999767,
+    "p95Ms": 692.2999999999884,
+    "note": "Pixel-readback SwiftShader diagnostic on remote CPU. Not real GPU or display frame rate."
   },
   "svgCompatibility": {
     "verified": true,
@@ -152,10 +152,36 @@
     "src": "/Tire-C/Tire-C/raw/work/binary-mind-odyssey/odyssey/compatibility/probe.svg",
     "context": "Actual GitHub rendered Markdown image in remote Chromium",
     "hashes": [
-      "6be61a88b4ae432fea5cb0432a56c0c3cfd5f68ead0d9ff4abeb2bf8fbf85d87",
-      "d89910d2b12670a31d95967e4efea8cd045dd4db3d32e6a7eea7cf2006170a00"
+      "bf22c19d5e74c8c2883cd0d13c17e44fbacd2b427bcb8ac5e41010cfa130d325",
+      "4dd3b4b5fd605e6a609ca6578d0e840a6098e25de01e8af5d493b49bca0be592"
     ]
   },
+  "browserCompatibility": [
+    {
+      "name": "Firefox",
+      "rendered": false,
+      "error": "page.waitForFunction: Timeout 20000ms exceeded.",
+      "interpretation": "Remote software-rendering compatibility not established; not proof of hardware incompatibility."
+    },
+    {
+      "name": "WebKit",
+      "rendered": true,
+      "info": {
+        "renderer": "Apple GPU",
+        "webgl": "WebGL 2.0",
+        "worldCount": 8,
+        "worldPoints": 28000,
+        "headPoints": 11510,
+        "bodyPoints": 20500,
+        "deskPoints": 18979,
+        "playing": false,
+        "reduced": false,
+        "current": 24,
+        "drawCalls": 4
+      },
+      "errors": []
+    }
+  ],
   "checks": [
     {
       "name": "README is byte-for-byte identical to baseline",
@@ -291,11 +317,13 @@
     },
     {
       "name": "Frame 28.5 contains monochrome rendered geometry",
-      "pass": true
+      "pass": false,
+      "error": "nearly empty frame: 0.0013020833333333333"
     },
     {
       "name": "Frame 30.5 contains monochrome rendered geometry",
-      "pass": true
+      "pass": false,
+      "error": "nearly empty frame: 0.0013020833333333333"
     },
     {
       "name": "Random-access timeline is pixel deterministic",
@@ -326,7 +354,10 @@
       "pass": true
     }
   ],
-  "failures": [],
+  "failures": [
+    "Frame 28.5 contains monochrome rendered geometry: nearly empty frame: 0.0013020833333333333",
+    "Frame 30.5 contains monochrome rendered geometry: nearly empty frame: 0.0013020833333333333"
+  ],
   "shots": [
     {
       "t": 0,
@@ -428,7 +459,7 @@
       "t": 1.6,
       "file": "frame-1_6.png",
       "coverage": 0.2881174045138889,
-      "hash": "c8f4842e9c0f7abdeb365b70b0cfa23691c835e7087bdd75029da308020d20a3",
+      "hash": "57f80a595c0708cd8acbfd89e5940da5e123959e07c7748abe577a0ddb86afe0",
       "state": {
         "t": 1.6,
         "world": 0,
@@ -1099,8 +1130,8 @@
     {
       "t": 25.8,
       "file": "frame-25_8.png",
-      "coverage": 0.032412109375,
-      "hash": "96995dda751184267211d8344bdd22f57791016c29fdfee247c028954fa87a52",
+      "coverage": 0.03992621527777778,
+      "hash": "ebdf7711fa64682ed9d3e03781b855fca13ab22a8957d7e4af9a7f4bad21fd15",
       "state": {
         "t": 25.8,
         "world": 7,
@@ -1131,8 +1162,8 @@
     {
       "t": 27,
       "file": "frame-27.png",
-      "coverage": 0.017027994791666667,
-      "hash": "4fc1d1b46781a2b5d6cfa463324d77c3863f3b48190de48dade6e583234d2cbf",
+      "coverage": 0.02880425347222222,
+      "hash": "feef7f74d5414cab80e8fef557b36a409f5815542a46da619baa1720326e6ee3",
       "state": {
         "t": 27,
         "world": 7,
@@ -1163,8 +1194,8 @@
     {
       "t": 28.5,
       "file": "frame-28_5.png",
-      "coverage": 0.006606987847222222,
-      "hash": "40027b8ae3c0f0d20297532a08bcfd2efb99ea7de6f349ed589170521d8e4ed9",
+      "coverage": 0.0013020833333333333,
+      "hash": "53671ba950ebbb9dd004965d5f2a00da13a2516d47081bdc09462e2196abc73d",
       "state": {
         "t": 28.5,
         "world": 7,
@@ -1195,8 +1226,8 @@
     {
       "t": 30.5,
       "file": "frame-30_5.png",
-      "coverage": 0.006606987847222222,
-      "hash": "40027b8ae3c0f0d20297532a08bcfd2efb99ea7de6f349ed589170521d8e4ed9",
+      "coverage": 0.0013020833333333333,
+      "hash": "53671ba950ebbb9dd004965d5f2a00da13a2516d47081bdc09462e2196abc73d",
       "state": {
         "t": 30.5,
         "world": 7,
@@ -1227,7 +1258,7 @@
   ],
   "limits": [
     "Artistic acceptance requires human review of the diagnostic frames and running program.",
-    "Firefox, WebKit and physical GPU not validated in this run.",
+    "Physical GPU not validated. See per-engine software compatibility results.",
     "GitHub README SVG image-context compatibility needs a separate actual GitHub observation.",
     "Mobile composition must be visually inspected."
   ]

@@ -1,6 +1,6 @@
 # Rendering diagnostics — review candidate
 
-Source commit: c44aeadc83974310dc01398322d73b8eba936bd8
+Source commit: 7fdbf2d890a1c176a4088ac705a04639eb7b2f86
 
 Remote CPU rendering with Chromium / SwiftShader. These images are test evidence, never the animation product.
 
@@ -37,8 +37,8 @@ Remote CPU rendering with Chromium / SwiftShader. These images are test evidence
 - PASS Frame 24 contains monochrome rendered geometry
 - PASS Frame 25.8 contains monochrome rendered geometry
 - PASS Frame 27 contains monochrome rendered geometry
-- PASS Frame 28.5 contains monochrome rendered geometry
-- PASS Frame 30.5 contains monochrome rendered geometry
+- FAIL Frame 28.5 contains monochrome rendered geometry
+- FAIL Frame 30.5 contains monochrome rendered geometry
 - PASS Random-access timeline is pixel deterministic
 - PASS No JavaScript or shader errors
 - PASS Instanced rendering uses at most five draw calls
