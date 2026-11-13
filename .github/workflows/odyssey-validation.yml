@@ -1,0 +1,61 @@
+name: Odyssey remote validation
+on:
+  push:
+    branches: [work/binary-mind-odyssey]
+    paths:
+      - 'odyssey/src/**'
+      - 'odyssey/tools/**'
+      - 'odyssey/index.html'
+      - 'odyssey/package.json'
+      - '.github/workflows/odyssey-validation.yml'
+permissions:
+  contents: write
+concurrency:
+  group: odyssey-validation
+  cancel-in-progress: true
+jobs:
+  render:
+    if: github.repository == 'Tire-C/Tire-C' && github.ref == 'refs/heads/work/binary-mind-odyssey'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Protect original profile
+        run: |
+          test "$(git hash-object README.md)" = "1d0114fe01e78f186042fc760e37b66d6cf9c090"
+          git diff --exit-code 0f00154f3651c7bed8cf8660780bb3c1750ed9bc -- README.md
+      - name: Install pinned dependencies on remote CPU
+        working-directory: odyssey
+        run: |
+          if test -f package-lock.json; then npm ci --ignore-scripts --no-audit --no-fund; else npm install --ignore-scripts --no-audit --no-fund; fi
+          npx playwright install --with-deps chromium
+      - name: Build standalone application
+        working-directory: odyssey
+        run: npm run build
+      - name: Render and test with software WebGL
+        id: tests
+        working-directory: odyssey
+        run: npm test
+      - name: Preserve review evidence on experimental branch only
+        if: always()
+        env:
+          EXPECTED_SHA: ${{ github.sha }}
+        run: |
+          if ! test -f odyssey/diagnostics/report.json; then exit 0; fi
+          remote_sha="$(git ls-remote origin refs/heads/work/binary-mind-odyssey | cut -f1)"
+          if test "$remote_sha" != "$EXPECTED_SHA"; then echo "Branch advanced; refusing stale evidence commit"; exit 0; fi
+          mkdir -p odyssey/review
+          cp odyssey/.build/odyssey.html odyssey/review/odyssey.html
+          cp odyssey/.build/THREE-LICENSE.txt odyssey/review/THREE-LICENSE.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add odyssey/diagnostics odyssey/review odyssey/package-lock.json
+          git diff --cached --quiet && exit 0
+          git diff --exit-code 0f00154f3651c7bed8cf8660780bb3c1750ed9bc -- README.md
+          git commit -m "Record remote software-rendering evidence [skip ci]"
+          git push origin HEAD:refs/heads/work/binary-mind-odyssey

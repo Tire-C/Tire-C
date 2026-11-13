@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#000000"><title>Tire — Binary Mind Odyssey</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#000;color:#00ff70;font-family:ui-monospace,Consolas,monospace}
+canvas{display:block;width:100%;height:100%}#ui{position:fixed;bottom:18px;left:24px;right:24px;display:flex;align-items:center;gap:14px;opacity:.35;transition:opacity .25s;font-size:11px}
+#ui:hover,#ui:focus-within{opacity:1}button{font:inherit;border:1px solid #126830;color:#00ff70;background:#000;padding:8px 12px;cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid #00ff70}input{accent-color:#00ff70;flex:1;min-width:30px}#time{min-width:75px;text-align:right}#message{position:fixed;top:35%;left:10%;right:10%;text-align:center;line-height:1.8}#message:empty{display:none}.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}@media(max-width:600px){#ui{left:12px;right:12px;gap:6px}#time{display:none}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head><body>
+<canvas id="stage" aria-label="A procedural three-dimensional journey through binary worlds, revealed inside the mind of a programmer." role="img"></canvas>
+<div id="message" role="status"></div>
+<div id="ui"><button id="play" aria-label="Pause animation">Pause</button><button id="restart">Restart</button><label class="sr" for="scrub">Animation timeline</label><input id="scrub" type="range" min="0" max="32" step=".01" value="0"><span id="time"></span></div>
+<p class="sr">Binary Mind Odyssey. Programming, physics, chemistry, mathematics, astronomy, artificial intelligence and engineering become a universe inside a human mind. The camera reveals its creator at a computer. Hi, I am Tire.</p>
+<script type="module" src="./src/main.js"></script></body></html>

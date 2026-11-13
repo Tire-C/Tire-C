@@ -1,0 +1,18 @@
+{
+  "name": "tire-binary-mind-odyssey",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "test": "node tools/test.mjs"
+  },
+  "dependencies": {
+    "three": "0.180.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.11",
+    "playwright": "1.56.1",
+    "pngjs": "7.0.0"
+  }
+}

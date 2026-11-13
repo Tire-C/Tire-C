@@ -1,0 +1,19 @@
+{
+  "repository": "Tire-C/Tire-C",
+  "commit": "0f00154f3651c7bed8cf8660780bb3c1750ed9bc",
+  "readmeBlob": "1d0114fe01e78f186042fc760e37b66d6cf9c090",
+  "readmeBytes": 3117,
+  "initialFiles": [
+    "README.md"
+  ],
+  "initialBranches": [
+    "main"
+  ],
+  "previousPrototype": {
+    "commit": "eff19cf70a71f5f6818a5bc2fca0187995e86a07",
+    "path": "assets/terminal-odyssey.svg",
+    "blob": "6a204b81e91e7307bc6c5babc571767ab5ac8b48",
+    "bytes": 343180
+  },
+  "authorization": "Public experimental branch and standard free GitHub Actions runners only. No main, original README or Pages changes."
+}
