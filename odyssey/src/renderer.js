@@ -13,6 +13,7 @@ attribute vec3 toPosition;
 attribute vec3 fromNormal;
 attribute vec3 toNormal;
 attribute float weight;
+attribute float toWeight;
 attribute float digit;
 attribute float seed;
 uniform float morph;
@@ -49,7 +50,7 @@ void main(){
  center.xy+=position.xy*size;
  gl_Position=projectionMatrix*center;
  vUv=uv;vDigit=digit;vSeed=seed;vDepth=-center.z;
- vLight=weight*(.25+.75*max(0.0,dot(worldN,normalize(vec3(-.5,.85,1.0)))));
+ vLight=mix(weight,toWeight,morph)*(.25+.75*max(0.0,dot(worldN,normalize(vec3(-.5,.85,1.0)))));
 }`;
 const fragment=`
 uniform sampler2D glyphAtlas;
@@ -65,7 +66,7 @@ varying float vSeed;
 varying float vDepth;
 void main(){
  float a=texture2D(glyphAtlas,vec2((vUv.x+vDigit)*.5,vUv.y)).a;
- if(a<.43||vSeed>opacity*vDensity*(1.0-.98*vCut))discard;
+ if(vLight<.015||a<.43||vSeed>opacity*vDensity*(1.0-.98*vCut))discard;
  float fog=exp(-vDepth/fogDistance);
  float light=clamp(vLight*intensity*fog,0.0,1.0);
  gl_FragColor=vec4(vec3(0.0,1.0,.25)*light,1.0);
@@ -76,6 +77,7 @@ export function binaryCloud(data,texture,{size=.2,fog=100,intensity=1.4}={}){
  for(const [key,value] of Object.entries({fromPosition:data.p,toPosition:data.p,fromNormal:data.n,toNormal:data.n}))g.setAttribute(key,new THREE.InstancedBufferAttribute(value,3));
  g.setAttribute('fromSpin',new THREE.InstancedBufferAttribute(data.spin||new Float32Array(data.count*4),4));
  g.setAttribute('toSpin',new THREE.InstancedBufferAttribute(data.spin||new Float32Array(data.count*4),4));
+ g.setAttribute('toWeight',new THREE.InstancedBufferAttribute(data.w,1));
  const random=rng(987);g.setAttribute('weight',new THREE.InstancedBufferAttribute(data.w,1));
  g.setAttribute('digit',new THREE.InstancedBufferAttribute(Float32Array.from({length:data.count},()=>random()>.5?1:0),1));
  g.setAttribute('seed',new THREE.InstancedBufferAttribute(Float32Array.from({length:data.count},()=>random()),1));
@@ -83,5 +85,5 @@ export function binaryCloud(data,texture,{size=.2,fog=100,intensity=1.4}={}){
  const uniforms={glyphAtlas:{value:texture},morph:{value:0},glyphSize:{value:size},time:{value:0},turbulence:{value:0},opacity:{value:1},fogDistance:{value:fog},intensity:{value:intensity},viewportHeight:{value:720},minimumPixels:{value:4.2},cutaway:{value:0}};
  const material=new THREE.ShaderMaterial({uniforms,vertexShader:vertex,fragmentShader:fragment,depthTest:true,depthWrite:true,transparent:false,side:THREE.DoubleSide});
  const mesh=new THREE.Mesh(g,material);mesh.frustumCulled=false;
- return {mesh,uniforms,setTargets(a,b){g.setAttribute('fromSpin',new THREE.InstancedBufferAttribute(a.spin||new Float32Array(a.count*4),4));g.setAttribute('toSpin',new THREE.InstancedBufferAttribute(b.spin||new Float32Array(b.count*4),4));for(const [key,value] of Object.entries({fromPosition:a.p,toPosition:b.p,fromNormal:a.n,toNormal:b.n}))g.setAttribute(key,new THREE.InstancedBufferAttribute(value,3));g.setAttribute('weight',new THREE.InstancedBufferAttribute(a.w,1))}};
+ return {mesh,uniforms,setTargets(a,b){g.setAttribute('toWeight',new THREE.InstancedBufferAttribute(b.w,1));g.setAttribute('fromSpin',new THREE.InstancedBufferAttribute(a.spin||new Float32Array(a.count*4),4));g.setAttribute('toSpin',new THREE.InstancedBufferAttribute(b.spin||new Float32Array(b.count*4),4));for(const [key,value] of Object.entries({fromPosition:a.p,toPosition:b.p,fromNormal:a.n,toNormal:b.n}))g.setAttribute(key,new THREE.InstancedBufferAttribute(value,3));g.setAttribute('weight',new THREE.InstancedBufferAttribute(a.w,1))}};
 }

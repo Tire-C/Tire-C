@@ -34,12 +34,12 @@ Diagnostics are still images for inspection, never playback frames. All animatio
 - `renderer.js`: instanced typographic quads, real depth test/write, glyph alpha cutout, directional luminance, atmospheric distance attenuation, seeded opacity dissolve and GPU morphing.
 - `timeline.js`: absolute-time camera and scene state; random access never relies on accumulated simulation state.
 - `signature.js`: typography sampled into world-space positions and assembled from the existing creator glyphs.
-- `main.js`: UI, pause/scrub, reduced motion, capped pixel density and graphics-context handling.
+- `main.js`: UI, pause/scrub, interactive 3D orbit inspection, reduced motion, capped pixel density and graphics-context handling.
 - `tools/`: remote build and diagnostic test suite.
 
 A binary glyph uses a camera-facing quad at an actual 3D center. The quad is a typographic primitive, not a flat representation of its containing object. Different depths, occlusion and perspective are evaluated for every glyph.
 
-Worlds morph through stable particle indices with a bounded curved displacement. A single camera traverses the internal universe and retreats into the surrounding human scene. The universe is already inside the skull throughout: it is not replaced by an unrelated symbol during the reveal.
+Worlds morph through stable particle indices with a bounded curved displacement. Orbital samples and mechanical assemblies also move through explicit per-instance 3D rotations. A single camera traverses the internal universe and retreats into the surrounding human scene. The universe is already inside the skull throughout: it is not replaced by an unrelated symbol during the reveal.
 
 ## Cloud and cost boundary
 
@@ -64,7 +64,7 @@ No README integration or deploy is authorized by the experimental-branch approva
 
 The previous SVG survives in commit `eff19cf70a71f5f6818a5bc2fca0187995e86a07`. Inspection found planar translate/scale/rotate groups, with a simulated camera based on group zoom. It was not reused as geometry.
 
-An SVG embedded as an image cannot run the JavaScript/WebGL engine. Declarative SVG animation may be useful as a separate entry point, but its actual GitHub image-context behavior and artistic adequacy must be tested before proposing profile insertion. No SVG replacement is silently published into the root README.
+An SVG embedded as an image cannot run the JavaScript/WebGL engine. A dedicated probe in compatibility/README.md has been observed through the actual GitHub-rendered Markdown in remote Chromium: basic SMIL position/opacity animation changed pixels without JavaScript. This confirms basic compatibility only. It does not establish that an SVG can reproduce this engine or satisfy the requested artistic quality. No SVG replacement is silently published into the root README.
 
 ## Development commands (remote environment only)
 

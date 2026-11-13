@@ -3,7 +3,7 @@ import {createServer} from 'node:http';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
-import {chromium} from 'playwright';
+import {chromium,firefox,webkit} from 'playwright';
 import {PNG} from 'pngjs';
 import {cameraAt,stateAt,DURATION,UNIVERSE_SCALE} from '../src/timeline.js';
 const BASE='0f00154f3651c7bed8cf8660780bb3c1750ed9bc',BLOB='1d0114fe01e78f186042fc760e37b66d6cf9c090';
@@ -53,7 +53,7 @@ for(const [name,pos] of [['side',[4,2.8,.2]],['back',[2,2.8,-4]],['front',[-3,2.
 }
 check('Three spatial viewpoints produce distinct rendered images',()=>assert.equal(new Set(orbitHashes).size,3));
 await page.evaluate(()=>odyssey.seek(24));
-const bench=await page.evaluate(async()=>{const samples=[];for(let i=0;i<45;i++){const a=performance.now();odyssey.seek(i*.3);const gl=document.querySelector('canvas').getContext('webgl2');gl.finish();samples.push(performance.now()-a)}samples.sort((a,b)=>a-b);return {medianMs:samples[22],p95Ms:samples[42],note:'Synchronous SwiftShader diagnostic. Not real GPU or display frame rate.'}});
+const bench=await page.evaluate(async()=>{const samples=[];for(let i=0;i<45;i++){const a=performance.now();odyssey.seek(i*.3);const gl=document.querySelector('canvas').getContext('webgl2');gl.readPixels(0,0,1,1,gl.RGBA,gl.UNSIGNED_BYTE,new Uint8Array(4));samples.push(performance.now()-a)}samples.sort((a,b)=>a-b);return {medianMs:samples[22],p95Ms:samples[42],note:'Pixel-readback SwiftShader diagnostic on remote CPU. Not real GPU or display frame rate.'}});
 await page.setViewportSize({width:390,height:844});await page.evaluate(()=>odyssey.seek(24));
 await page.locator('canvas').screenshot({path:'diagnostics/mobile-creator.png'});
 await page.evaluate(()=>odyssey.seek(29));const mobileSignature=await page.locator('canvas').screenshot({path:'diagnostics/mobile-signature.png'});
@@ -80,8 +80,26 @@ try{
  check('Actual GitHub README SVG declarative animation changes pixels',()=>assert.equal(svgCompatibility.animated,true));
  await svgPage.close();
 }catch(e){svgCompatibility={verified:false,error:e.message};failures.push('GitHub SVG observation unavailable: '+e.message)}
-await browser.close();server.close();
-const report={sourceCommit:process.env.GITHUB_SHA,runId:process.env.GITHUB_RUN_ID,environment:'GitHub Actions ubuntu-24.04 standard public runner',rendering:'Chromium / ANGLE SwiftShader software on remote CPU; NO real GPU validation',baseline:BASE,readmeBlob:BLOB,readmeSha256:hash(original),info,geometry,benchmark:bench,svgCompatibility,checks,failures,shots,limits:['Artistic acceptance requires human review of the diagnostic frames and running program.','Firefox, WebKit and physical GPU not validated in this run.','GitHub README SVG image-context compatibility needs a separate actual GitHub observation.','Mobile composition must be visually inspected.']};
+await browser.close();
+const browserCompatibility=[];
+for(const [name,engine] of [['Firefox',firefox],['WebKit',webkit]]){
+ let other;
+ try{
+  other=await engine.launch({headless:true,env:{...process.env,LIBGL_ALWAYS_SOFTWARE:'1'},...(name==='Firefox'?{firefoxUserPrefs:{'webgl.force-enabled':true,'webgl.disabled':false,'gfx.webrender.software':true}}:{})});
+  const p=await other.newPage({viewport:{width:1280,height:720}}),errs=[];
+  p.on('pageerror',e=>errs.push(e.message));
+  await p.goto(url+'/?test=1');await p.waitForFunction(()=>window.odyssey?.ready,{},{timeout:20000});
+  await p.addStyleTag({content:'#ui{visibility:hidden}'});
+  await p.evaluate(()=>odyssey.seek(24));
+  const screenshot=await p.locator('canvas').screenshot({path:'diagnostics/'+name.toLowerCase()+'-creator.png'});
+  const data=PNG.sync.read(screenshot);let lit=0;for(let i=1;i<data.data.length;i+=4)if(data.data[i]>20)lit++;
+  if(lit<1000||errs.length)throw new Error('Missing geometry or runtime errors: '+errs.join(';'));
+  browserCompatibility.push({name,rendered:true,info:await p.evaluate(()=>odyssey.info()),errors:errs});
+ }catch(e){browserCompatibility.push({name,rendered:false,error:e.message,interpretation:'Remote software-rendering compatibility not established; not proof of hardware incompatibility.'})}
+ finally{if(other)await other.close()}
+}
+server.close();
+const report={sourceCommit:process.env.GITHUB_SHA,runId:process.env.GITHUB_RUN_ID,environment:'GitHub Actions ubuntu-24.04 standard public runner',rendering:'Chromium / ANGLE SwiftShader software on remote CPU; NO real GPU validation',baseline:BASE,readmeBlob:BLOB,readmeSha256:hash(original),info,geometry,benchmark:bench,svgCompatibility,browserCompatibility,checks,failures,shots,limits:['Artistic acceptance requires human review of the diagnostic frames and running program.','Physical GPU not validated. See per-engine software compatibility results.','GitHub README SVG image-context compatibility needs a separate actual GitHub observation.','Mobile composition must be visually inspected.']};
 await writeFile('diagnostics/report.json',JSON.stringify(report,null,2)+'\n');
 await writeFile('diagnostics/README.md','# Rendering diagnostics — review candidate\n\nSource commit: '+process.env.GITHUB_SHA+'\n\nRemote CPU rendering with Chromium / SwiftShader. These images are test evidence, never the animation product.\n\n'+checks.map(c=>'- '+(c.pass?'PASS':'FAIL')+' '+c.name).join('\n')+'\n\n'+shots.map(s=>'## '+s.t+' s — '+s.state.name+'\n\n![Diagnostic at '+s.t+' seconds]('+s.file+')\n').join('\n')+'\n## Portrait checks\n\n![Creator](mobile-creator.png)\n\n![Signature](mobile-signature.png)\n');
 console.log(JSON.stringify({info,benchmark:bench,checks,failures},null,2));

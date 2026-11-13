@@ -33,7 +33,7 @@ jobs:
         working-directory: odyssey
         run: |
           if test -f package-lock.json; then npm ci --ignore-scripts --no-audit --no-fund; else npm install --ignore-scripts --no-audit --no-fund; fi
-          npx playwright install --with-deps chromium
+          npx playwright install --with-deps chromium firefox webkit
       - name: Build standalone application
         working-directory: odyssey
         run: npm run build
