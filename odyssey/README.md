@@ -6,6 +6,8 @@ A deterministic WebGL 2 program. Every visible surface is a spatial cloud of 0/1
 
 ## Review
 
+See [revision 2: character, pacing and visual review](REVISION_2.md).
+
 The remote workflow creates [a self-contained application](review/odyssey.html), [rendered diagnostic frames](diagnostics/README.md) and [machine-readable evidence](diagnostics/report.json). The HTML includes its code and dependencies; it requires no build or installation to observe in a browser. GitHub serves HTML source as a download, not an interactive page. Pages is deliberately not enabled.
 
 Diagnostics are still images for inspection, never playback frames. All animation geometry, camera motion and morphs are evaluated at runtime. Rendering software in CI validates actual GLSL/WebGL pixels but does not establish real GPU frame rates.
@@ -14,23 +16,24 @@ Diagnostics are still images for inspection, never playback frames. All animatio
 
 | Time | Scene |
 |---|---|
-| 0–2 s | Twisting spatial binary tunnel |
-| 2–4 s | Multilevel data architecture |
-| 4–6 s | Atomic and field structures |
-| 6–8 s | Molecular helix and cages |
-| 8–10 s | Mathematical surfaces and projected hypercube |
-| 10–12 s | Spiral galaxy and ringed planet |
-| 12–14 s | Neural architecture |
-| 14–16 s | Mechanical assemblies |
-| 16–22 s | Continuous camera withdrawal from the cranial volume |
-| 22–25 s | Seated creator, hands, keyboard, monitor and chair |
-| 25–28 s | Spatial glyph morph into the signature |
-| 28–31.5 s | Hi, I am Tire |
-| 31.5–32 s | Fade into the next journey |
+| 0–1.71 s | Twisting spatial binary tunnel |
+| 1.71–3.43 s | Multilevel data architecture |
+| 3.43–5.14 s | Atomic and field structures |
+| 5.14–6.86 s | Molecular helix and cages |
+| 6.86–8.57 s | Mathematical surfaces and projected hypercube |
+| 8.57–10.29 s | Spiral galaxy and ringed planet |
+| 10.29–12.00 s | Neural architecture |
+| 12.00–13.71 s | Mechanical assemblies |
+| 13.71–18.86 s | Continuous camera withdrawal from the cranial volume |
+| 18.86–21.43 s | Seated creator, hands, keyboard, monitor and chair |
+| 21.43–24.00 s | Spatial glyph morph into the signature |
+| 24.00–27.50 s | Hi, I am Tire |
+| 27.50–28.00 s | Fade into the next journey |
 
 ## Architecture
 
-- `geometry.js`: seeded surface/volume sampling; all eight environments fit a sphere of radius 34. With scale 0.008 their radius is at most 0.272 world units, inside the cranial vault.
+- `geometry.js`: seeded surface/volume sampling; all eight environments fit a sphere of radius 34. With scale 0.0038 their radius is at most 0.1292 world units, inside the cranial vault.
+- `character.js`: original anatomical surface sampling, recessed facial features, short procedural coils, clothing sections, tapered limbs, posed fingers and workstation. No external character assets or proprietary likenesses.
 - `renderer.js`: instanced typographic quads, real depth test/write, glyph alpha cutout, directional luminance, atmospheric distance attenuation, seeded opacity dissolve and GPU morphing.
 - `timeline.js`: absolute-time camera and scene state; random access never relies on accumulated simulation state.
 - `signature.js`: typography sampled into world-space positions and assembled from the existing creator glyphs.
@@ -45,7 +48,7 @@ Worlds morph through stable particle indices with a bounded curved displacement.
 
 Only `ubuntu-24.04` standard GitHub-hosted runners on this public repository. No paid runner, API, GPU rental, artifact-storage upload, Pages deployment or external hosting. Dependencies, browser binaries, build and tests are confined to the disposable remote runner. Small review outputs are committed to this experimental branch with a head-SHA check. No credentials are embedded.
 
-CI uses Chromium with ANGLE SwiftShader: **software rasterization on remote CPU, not a physical GPU test**. Browser playback on the viewer's device uses its available WebGL implementation. The 32-second duration is deliberate: seven domains and the reveal need room.
+CI uses Chromium with ANGLE SwiftShader: **software rasterization on remote CPU, not a physical GPU test**. Browser playback on the viewer's device uses its available WebGL implementation. Revision 2 shortens the cycle from 32 to 28 seconds. The moving story runs 16.7% faster (14.3% shorter), while the final 3.5-second reading hold and half-second fade remain unchanged. All eight scientific environment generators are preserved exactly.
 
 ## Profile preservation and later integration
 
@@ -68,6 +71,6 @@ An SVG embedded as an image cannot run the JavaScript/WebGL engine. A dedicated 
 
 ## Development commands (remote environment only)
 
-`npm ci --ignore-scripts`, `npx playwright install --with-deps chromium`, `npm run build`, `npm test`.
+`npm ci --ignore-scripts`, `npx playwright install --with-deps chromium firefox webkit`, `npm run build`, `xvfb-run -a npm test`.
 
 The first remote run generates the dependency lock; subsequent runs use it. Dependencies are pinned directly. The standalone build retains upstream license notices and includes Three.js's MIT license alongside it.

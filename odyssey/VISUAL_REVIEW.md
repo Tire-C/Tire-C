@@ -1,3 +1,7 @@
+# Documento storico — prima versione
+
+La versione corrente è descritta in [REVISION_2.md](REVISION_2.md). Il rapporto qui sotto conserva le verifiche della prima versione.
+
 # Prima versione da valutare — verifica tecnica e visiva
 
 Stato: candidato per valutazione personale, non approvato per il profilo e non dichiarato successo artistico definitivo.
