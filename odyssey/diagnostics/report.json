@@ -1,7 +1,7 @@
 {
   "revision": 2,
-  "sourceCommit": "6e1e89783fe7339a984d1c4b972a3db8e8d02b20",
-  "runId": "43591647129",
+  "sourceCommit": "367b3066d022ebe6e1a9537de77f794926d4e297",
+  "runId": "43592033689",
   "environment": "GitHub Actions ubuntu-24.04 standard public runner",
   "rendering": "Chromium / ANGLE SwiftShader software on remote CPU; NO real GPU validation",
   "baseline": "0f00154f3651c7bed8cf8660780bb3c1750ed9bc",
@@ -144,18 +144,19 @@
     }
   ],
   "benchmark": {
-    "medianMs": 286.5999999999767,
-    "p95Ms": 330.8999999999651,
+    "medianMs": 289.3999999999942,
+    "p95Ms": 340.5,
     "note": "Pixel-readback SwiftShader diagnostic on remote CPU. Not real GPU or display frame rate."
   },
+  "transitionError": 0,
   "svgCompatibility": {
     "verified": true,
     "animated": true,
     "src": "/Tire-C/Tire-C/raw/work/binary-mind-odyssey/odyssey/compatibility/probe.svg",
     "context": "Actual GitHub rendered Markdown image in remote Chromium",
     "hashes": [
-      "50eb84555004d1f1365b08c56a2b3be6a95dd544768559390bf5a0caec800682",
-      "35b30a67f5901d47d903f8d54e197dbe9c86fcdd86987b67bc0da9570aeea79b"
+      "e2e9be2774f9eede676d48c6610d04227f3d3f979e964192d5f63983dba59600",
+      "f74e4a33293c8e80a75f1c9919abc5f9f798904caedab9bdbffb6e4311380b24"
     ]
   },
   "browserCompatibility": [
@@ -348,11 +349,19 @@
       "pass": true
     },
     {
+      "name": "Creator-to-signature handover preserves glyph appearance without a visible cut",
+      "pass": true
+    },
+    {
       "name": "Random-access timeline is pixel deterministic",
       "pass": true
     },
     {
       "name": "No JavaScript or shader errors",
+      "pass": true
+    },
+    {
+      "name": "Invisible creator does not consume draw calls during immersion",
       "pass": true
     },
     {
@@ -1169,8 +1178,8 @@
     {
       "t": 22.114285714285717,
       "file": "r2-frame-22_11.png",
-      "coverage": 0.041244574652777775,
-      "hash": "ae7d4938f4a880d648009484ccf4abc86a8ec4a2a2c58029fe90be0079911a4a",
+      "coverage": 0.04398654513888889,
+      "hash": "51ee2118807e18be1fc31150548c5af953453f7dbf07149713544000c3611062",
       "state": {
         "t": 22.114285714285717,
         "world": 7,
@@ -1201,8 +1210,8 @@
     {
       "t": 23.142857142857142,
       "file": "r2-frame-23_14.png",
-      "coverage": 0.030018446180555554,
-      "hash": "4443067dab858612dede5aca127eb9a386958e27a65cc4b9edd0d474fa8d3d07",
+      "coverage": 0.02796875,
+      "hash": "e12260e9c19a8c9e1d6b4a32cebdbc2c01edd6a78aec3a30a5b7ff00a5633ff2",
       "state": {
         "t": 23.142857142857142,
         "world": 7,

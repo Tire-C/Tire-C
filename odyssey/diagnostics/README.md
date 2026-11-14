@@ -1,6 +1,6 @@
 # Rendering diagnostics — review candidate
 
-Source commit: 6e1e89783fe7339a984d1c4b972a3db8e8d02b20
+Source commit: 367b3066d022ebe6e1a9537de77f794926d4e297
 
 Remote CPU rendering with Chromium / SwiftShader. These images are test evidence, never the animation product.
 
@@ -41,8 +41,10 @@ Remote CPU rendering with Chromium / SwiftShader. These images are test evidence
 - PASS Frame 23.142857142857142 contains monochrome rendered geometry
 - PASS Frame 24.5 contains monochrome rendered geometry
 - PASS Frame 26.5 contains monochrome rendered geometry
+- PASS Creator-to-signature handover preserves glyph appearance without a visible cut
 - PASS Random-access timeline is pixel deterministic
 - PASS No JavaScript or shader errors
+- PASS Invisible creator does not consume draw calls during immersion
 - PASS Instanced rendering uses at most five draw calls
 - PASS Three spatial viewpoints produce distinct rendered images
 - PASS Portrait signature has visible horizontal margins
