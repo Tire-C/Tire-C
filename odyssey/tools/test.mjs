@@ -47,10 +47,20 @@ for(const story of [0,.6,1,1.6,2.6,4.6,6.6,8.6,10.6,12.6,14.6,16,17,17.5,18,18.5
  check('Frame '+t+' contains monochrome rendered geometry',()=>{assert(coverage>.002,'nearly empty frame: '+coverage);assert(green/Math.max(1,lit)>.995,'non-green geometry')});
  shots.push({t,file:filename,coverage,hash:hash(buffer),state});
 }
+const boundary=playbackTime(25);
+await page.evaluate(t=>odyssey.seek(t),boundary-1e-7);
+const preMorph=PNG.sync.read(await page.locator('canvas').screenshot());
+await page.evaluate(t=>odyssey.seek(t),boundary+1e-7);
+const postMorph=PNG.sync.read(await page.locator('canvas').screenshot());
+let transitionError=0;
+for(let i=1;i<preMorph.data.length;i+=4)transitionError+=Math.abs(preMorph.data[i]-postMorph.data[i]);
+transitionError/=preMorph.width*preMorph.height;
+check('Creator-to-signature handover preserves glyph appearance without a visible cut',()=>assert(transitionError<.08,'Mean green-channel difference: '+transitionError));
 await page.evaluate(()=>odyssey.seek(17.571428571428573));const a=await page.locator('canvas').screenshot();
 await page.evaluate(()=>odyssey.seek(3));await page.evaluate(()=>odyssey.seek(17.571428571428573));const b=await page.locator('canvas').screenshot();
 check('Random-access timeline is pixel deterministic',()=>assert.equal(hash(a),hash(b)));
 check('No JavaScript or shader errors',()=>assert.deepEqual(errors,[]));
+check('Invisible creator does not consume draw calls during immersion',()=>assert.equal(info.drawCalls,1));
 check('Instanced rendering uses at most five draw calls',()=>assert(info.drawCalls<=5));
 await page.evaluate(()=>odyssey.seek(odyssey.creatorTime));
 const orbitHashes=[];
@@ -141,7 +151,7 @@ for(const [name,engine] of [['Firefox',firefox],['WebKit',webkit]]){
  finally{if(other)await other.close()}
 }
 server.close();
-const report={revision:2,sourceCommit:process.env.GITHUB_SHA,runId:process.env.GITHUB_RUN_ID,environment:'GitHub Actions ubuntu-24.04 standard public runner',rendering:'Chromium / ANGLE SwiftShader software on remote CPU; NO real GPU validation',baseline:BASE,readmeBlob:BLOB,readmeSha256:hash(original),info,geometry,benchmark:bench,svgCompatibility,browserCompatibility,checks,failures,shots,portraitShots,limits:['Artistic acceptance requires human review of the diagnostic frames and running program.','Physical GPU not validated. See per-engine software compatibility results.','GitHub README SVG image-context compatibility needs a separate actual GitHub observation.','Mobile composition must be visually inspected.']};
+const report={revision:2,sourceCommit:process.env.GITHUB_SHA,runId:process.env.GITHUB_RUN_ID,environment:'GitHub Actions ubuntu-24.04 standard public runner',rendering:'Chromium / ANGLE SwiftShader software on remote CPU; NO real GPU validation',baseline:BASE,readmeBlob:BLOB,readmeSha256:hash(original),info,geometry,benchmark:bench,transitionError,svgCompatibility,browserCompatibility,checks,failures,shots,portraitShots,limits:['Artistic acceptance requires human review of the diagnostic frames and running program.','Physical GPU not validated. See per-engine software compatibility results.','GitHub README SVG image-context compatibility needs a separate actual GitHub observation.','Mobile composition must be visually inspected.']};
 await writeFile('diagnostics/report.json',JSON.stringify(report,null,2)+'\n');
 await writeFile('diagnostics/README.md','# Rendering diagnostics — review candidate\n\nSource commit: '+process.env.GITHUB_SHA+'\n\nRemote CPU rendering with Chromium / SwiftShader. These images are test evidence, never the animation product.\n\n'+checks.map(c=>'- '+(c.pass?'PASS':'FAIL')+' '+c.name).join('\n')+'\n\n'+shots.map(s=>'## '+s.t.toFixed(2)+' s — '+s.state.name+'\n\n![Diagnostic at '+s.t+' seconds]('+s.file+')\n').join('\n')+'\n## Character study\n\n'+portraitShots.map(f=>'!['+f+']('+f+')').join('\n\n')+'\n\n## Portrait checks\n\n![Creator](r2-mobile-creator.png)\n\n![Signature](r2-mobile-signature.png)\n');
 console.log(JSON.stringify({info,benchmark:bench,checks,failures},null,2));

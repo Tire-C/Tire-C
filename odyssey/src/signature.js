@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import {rng} from './math.js';
 import {cameraAt} from './timeline.js';
 // Glyph locations are sampled from typography, then lifted into a genuine world-space plane.
 // The only rendered marks are still 0 and 1; the phrase itself is not a DOM overlay.
@@ -13,7 +14,17 @@ export function signature(count){
  return {p,n,w,count};
 }
 export function join(parts){
- const count=parts.reduce((s,d)=>s+d.count,0),p=new Float32Array(count*3),n=new Float32Array(count*3),w=new Float32Array(count);let at=0;
- for(const d of parts){p.set(d.p,at*3);n.set(d.n,at*3);w.set(d.w,at);at+=d.count}
- return {p,n,w,count};
+ const count=parts.reduce((s,d)=>s+d.count,0),p=new Float32Array(count*3),n=new Float32Array(count*3),w=new Float32Array(count),
+  glyphScale=new Float32Array(count),minimum=new Float32Array(count),digit=new Float32Array(count),seed=new Float32Array(count);
+ let at=0;
+ for(const d of parts){
+  p.set(d.p,at*3);n.set(d.n,at*3);w.set(d.w.map(v=>v*(d.gain??1)),at);
+  glyphScale.fill(d.glyphScale??1,at,at+d.count);minimum.fill(d.minimum??0,at,at+d.count);
+  // Match the independent clouds' digit and dissolve RNG exactly at the morph handover.
+  const random=rng(987);
+  digit.set(Float32Array.from({length:d.count},()=>random()>.5?1:0),at);
+  seed.set(Float32Array.from({length:d.count},()=>random()),at);
+  at+=d.count;
+ }
+ return {p,n,w,glyphScale,minimum,digit,seed,count};
 }

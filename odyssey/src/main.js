@@ -12,13 +12,17 @@ try{renderer=new THREE.WebGLRenderer({canvas,antialias:true,powerPreference:'low
 catch(e){message.textContent='This experience needs WebGL 2. Your browser could not create a graphics context.';throw e}
 renderer.setClearColor(0x000000,1);renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.outputColorSpace=THREE.LinearSRGBColorSpace;
 const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(53,1,.00015,100),texture=atlas();
-const worldData=worlds(),parts=creator(),all=join(Object.values(parts));
+const worldData=worlds(),parts=creator(),all=join([
+ {...parts.head,glyphScale:.012/.024,minimum:2.4,gain:1.4/1.7},
+ {...parts.body,glyphScale:.019/.024,minimum:3.1,gain:1.65/1.7},
+ {...parts.desk,glyphScale:1,minimum:4.2,gain:1.6/1.7}
+]);
 const cosmos=binaryCloud(worldData[0],texture,{size:.28,fog:.55,intensity:1.7});
 cosmos.mesh.position.set(...HEAD);cosmos.mesh.scale.setScalar(UNIVERSE_SCALE);cosmos.uniforms.turbulence.value=2;
 const head=binaryCloud(parts.head,texture,{size:.012,fog:25,intensity:1.40});
 const body=binaryCloud(parts.body,texture,{size:.019,fog:25,intensity:1.65});
 const desk=binaryCloud(parts.desk,texture,{size:.024,fog:25,intensity:1.6});
-const finale=binaryCloud(all,texture,{size:.019,fog:40,intensity:1.7});finale.setTargets(all,signature(all.count));
+const finale=binaryCloud(all,texture,{size:.024,fog:40,intensity:1.7});finale.setTargets(all,signature(all.count));
 for(const cloud of [cosmos,head,body,desk,finale])scene.add(cloud.mesh);
 const controls=new OrbitControls(camera,canvas);controls.enabled=false;controls.enableDamping=false;
 controls.addEventListener('change',()=>{if(controls.enabled&&!contextLost)renderer.render(scene,camera)});
@@ -41,7 +45,8 @@ function render(t){
  body.uniforms.opacity.value=desk.uniforms.opacity.value=state.body*state.fade;
  for(const c of [head,body,desk])c.mesh.visible=story<25&&c.uniforms.opacity.value>0;
  finale.mesh.visible=story>=25;finale.uniforms.morph.value=state.signature;finale.uniforms.opacity.value=state.fade;
- finale.uniforms.glyphSize.value=.019+state.signature*.031;
+ finale.uniforms.glyphSize.value=.024+state.signature*.026;
+ finale.uniforms.fogDistance.value=25+state.signature*15;
  finale.uniforms.minimumPixels.value=2;
  finale.uniforms.lodStrength.value=1-state.signature;
  if(!contextLost)renderer.render(scene,camera);
