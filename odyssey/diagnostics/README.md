@@ -1,6 +1,6 @@
 # Rendering diagnostics — review candidate
 
-Source commit: f183f857c6fec61d1430dc9fba8fc7c08b941225
+Source commit: 6e1e89783fe7339a984d1c4b972a3db8e8d02b20
 
 Remote CPU rendering with Chromium / SwiftShader. These images are test evidence, never the animation product.
 

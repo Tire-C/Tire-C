@@ -1,7 +1,7 @@
 {
   "revision": 2,
-  "sourceCommit": "f183f857c6fec61d1430dc9fba8fc7c08b941225",
-  "runId": "43591128188",
+  "sourceCommit": "6e1e89783fe7339a984d1c4b972a3db8e8d02b20",
+  "runId": "43591647129",
   "environment": "GitHub Actions ubuntu-24.04 standard public runner",
   "rendering": "Chromium / ANGLE SwiftShader software on remote CPU; NO real GPU validation",
   "baseline": "0f00154f3651c7bed8cf8660780bb3c1750ed9bc",
@@ -13,13 +13,13 @@
     "revision": 2,
     "worldCount": 8,
     "worldPoints": 28000,
-    "headPoints": 28536,
+    "headPoints": 24712,
     "bodyPoints": 30814,
     "deskPoints": 20363,
     "playing": false,
     "reduced": false,
     "current": 0,
-    "drawCalls": 4
+    "drawCalls": 1
   },
   "geometry": [
     {
@@ -144,8 +144,8 @@
     }
   ],
   "benchmark": {
-    "medianMs": 876.6999999999825,
-    "p95Ms": 940.7999999999884,
+    "medianMs": 286.5999999999767,
+    "p95Ms": 330.8999999999651,
     "note": "Pixel-readback SwiftShader diagnostic on remote CPU. Not real GPU or display frame rate."
   },
   "svgCompatibility": {
@@ -154,8 +154,8 @@
     "src": "/Tire-C/Tire-C/raw/work/binary-mind-odyssey/odyssey/compatibility/probe.svg",
     "context": "Actual GitHub rendered Markdown image in remote Chromium",
     "hashes": [
-      "1fe0b2c47348ea7e4e17ede9a40b58b78bb40b0b015a15253651f61f1c076f8a",
-      "c52aae5bc1c724eda541557e87e6e2b146a7d202c22901fb0d43f33accd5ce4c"
+      "50eb84555004d1f1365b08c56a2b3be6a95dd544768559390bf5a0caec800682",
+      "35b30a67f5901d47d903f8d54e197dbe9c86fcdd86987b67bc0da9570aeea79b"
     ]
   },
   "browserCompatibility": [
@@ -168,7 +168,7 @@
         "revision": 2,
         "worldCount": 8,
         "worldPoints": 28000,
-        "headPoints": 28536,
+        "headPoints": 24712,
         "bodyPoints": 30814,
         "deskPoints": 20363,
         "playing": false,
@@ -187,7 +187,7 @@
         "revision": 2,
         "worldCount": 8,
         "worldPoints": 28000,
-        "headPoints": 28536,
+        "headPoints": 24712,
         "bodyPoints": 30814,
         "deskPoints": 20363,
         "playing": false,
@@ -426,8 +426,8 @@
           ],
           "roll": 0
         },
-        "calls": 4,
-        "triangles": 215426
+        "calls": 1,
+        "triangles": 56000
       }
     },
     {
@@ -458,8 +458,8 @@
           ],
           "roll": 0.011341505993820394
         },
-        "calls": 4,
-        "triangles": 215426
+        "calls": 1,
+        "triangles": 56000
       }
     },
     {
@@ -490,8 +490,8 @@
           ],
           "roll": 0.018294053012573076
         },
-        "calls": 4,
-        "triangles": 215426
+        "calls": 1,
+        "triangles": 56000
       }
     },
     {
@@ -522,8 +522,8 @@
           ],
           "roll": 0.02697586076146393
         },
-        "calls": 4,
-        "triangles": 215426
+        "calls": 1,
+        "triangles": 56000
       }
     },
     {
@@ -554,8 +554,8 @@
           ],
           "roll": 0.03465365961180123
         },
-        "calls": 4,
-        "triangles": 215426
+        "calls": 1,
+        "triangles": 56000
       }
     },
     {
@@ -586,8 +586,8 @@
           ],
           "roll": 0.020096025192410043
         },
-        "calls": 4,
-        "triangles": 215426
+        "calls": 1,
+        "triangles": 56000
       }
     },
     {
@@ -618,8 +618,8 @@
           ],
           "roll": -0.016422701445105437
         },
-        "calls": 4,
-        "triangles": 215426
+        "calls": 1,
+        "triangles": 56000
       }
     },
     {
@@ -650,8 +650,8 @@
           ],
           "roll": -0.03499457255007016
         },
-        "calls": 4,
-        "triangles": 215426
+        "calls": 1,
+        "triangles": 56000
       }
     },
     {
@@ -682,8 +682,8 @@
           ],
           "roll": -0.015324103314210143
         },
-        "calls": 4,
-        "triangles": 215426
+        "calls": 1,
+        "triangles": 56000
       }
     },
     {
@@ -714,8 +714,8 @@
           ],
           "roll": 0.021092664894769055
         },
-        "calls": 4,
-        "triangles": 215426
+        "calls": 1,
+        "triangles": 56000
       }
     },
     {
@@ -746,8 +746,8 @@
           ],
           "roll": 0.03436704180343867
         },
-        "calls": 4,
-        "triangles": 215426
+        "calls": 1,
+        "triangles": 56000
       }
     },
     {
@@ -778,15 +778,15 @@
           ],
           "roll": 0
         },
-        "calls": 4,
-        "triangles": 215426
+        "calls": 1,
+        "triangles": 56000
       }
     },
     {
       "t": 14.571428571428571,
       "file": "r2-frame-14_57.png",
-      "coverage": 0.19561631944444444,
-      "hash": "b094feb1e8e78b577bfb0820cad4f5cb446bd01e32142ac1401afdc91ad39b10",
+      "coverage": 0.18343641493055557,
+      "hash": "ae17e4e943a83ebe409940cf31db45455c8bacd0893e98cae0f0f8013ab23477",
       "state": {
         "t": 14.571428571428571,
         "world": 7,
@@ -810,15 +810,15 @@
           ],
           "roll": 0
         },
-        "calls": 4,
-        "triangles": 215426
+        "calls": 2,
+        "triangles": 105424
       }
     },
     {
       "t": 15,
       "file": "r2-frame-15_00.png",
-      "coverage": 0.312373046875,
-      "hash": "bb5da6629de2bec0bba0707c9b8256c56f9e08c1554ad147a2481bc6a1d7ad97",
+      "coverage": 0.27833550347222225,
+      "hash": "503fe07f7ec56adb7585b0db023efcd7225e7ae7e2aab6208978425763935776",
       "state": {
         "t": 15,
         "world": 7,
@@ -842,15 +842,15 @@
           ],
           "roll": 0
         },
-        "calls": 4,
-        "triangles": 215426
+        "calls": 2,
+        "triangles": 105424
       }
     },
     {
       "t": 15.428571428571429,
       "file": "r2-frame-15_43.png",
-      "coverage": 0.5125065104166666,
-      "hash": "4fc48678b45b6a8d7746aa7906f45c1cb4095e68585e93263dd7f033f3ad50c2",
+      "coverage": 0.4402994791666667,
+      "hash": "b11b035197552f4d0e4afeaa84f3a53b72f8b64113b7e511f8e29ec15dce292d",
       "state": {
         "t": 15.428571428571429,
         "world": 7,
@@ -874,15 +874,15 @@
           ],
           "roll": 0
         },
-        "calls": 4,
-        "triangles": 215426
+        "calls": 2,
+        "triangles": 105424
       }
     },
     {
       "t": 15.857142857142858,
       "file": "r2-frame-15_86.png",
-      "coverage": 0.2573741319444444,
-      "hash": "af1f455d8689fe508d566d1814e817b1ef8077d7a90e12f10eb20364753f313b",
+      "coverage": 0.22982096354166667,
+      "hash": "00dca28d8ae9d8d0915866f2c47a0d94428a96fd42381e085d37356e03629dd4",
       "state": {
         "t": 15.857142857142858,
         "world": 7,
@@ -906,15 +906,15 @@
           ],
           "roll": 0
         },
-        "calls": 4,
-        "triangles": 215426
+        "calls": 2,
+        "triangles": 105424
       }
     },
     {
       "t": 16.285714285714285,
       "file": "r2-frame-16_29.png",
-      "coverage": 0.14851019965277779,
-      "hash": "449687dceb17c9d77c2246ad4ed7e82916648b6dd93def1e005be4361022c424",
+      "coverage": 0.13694444444444445,
+      "hash": "186a0f088fa98a8f12d81626aca7482423f3796db4365328a76c724811f2d8ca",
       "state": {
         "t": 16.285714285714285,
         "world": 7,
@@ -939,14 +939,14 @@
           "roll": 0
         },
         "calls": 4,
-        "triangles": 215426
+        "triangles": 207778
       }
     },
     {
       "t": 16.714285714285715,
       "file": "r2-frame-16_71.png",
-      "coverage": 0.10129774305555556,
-      "hash": "0aa2c9cde8f0c990d36cd5baeb3c9b5e920a0d936d17719c08d448951bf651cc",
+      "coverage": 0.09451714409722223,
+      "hash": "97a4db35b5d1f660dce48841b349664231537f81b72bc643fde254f6a82f2b03",
       "state": {
         "t": 16.714285714285715,
         "world": 7,
@@ -971,14 +971,14 @@
           "roll": 0
         },
         "calls": 4,
-        "triangles": 215426
+        "triangles": 207778
       }
     },
     {
       "t": 17.142857142857142,
       "file": "r2-frame-17_14.png",
-      "coverage": 0.09409613715277777,
-      "hash": "b5f922e11cb1e24db0d1a80492db28655fbc20dc675fe4b6befd29f21f56cd95",
+      "coverage": 0.08846788194444444,
+      "hash": "48e4c7e242fb8ec508ef1246b7490e6edf4a465aeab469735238db918b05d399",
       "state": {
         "t": 17.142857142857142,
         "world": 7,
@@ -1003,14 +1003,14 @@
           "roll": 0
         },
         "calls": 4,
-        "triangles": 215426
+        "triangles": 207778
       }
     },
     {
       "t": 17.571428571428573,
       "file": "r2-frame-17_57.png",
-      "coverage": 0.09784071180555555,
-      "hash": "4282431a647f7fccac4c7e4b83dc8f1c1a5317250a85c42d9c298356c131eca2",
+      "coverage": 0.09239800347222223,
+      "hash": "1d2fee1f47252e8dbb3356175c2127a83e854026f8049c8a280ed4ee9c82ab0a",
       "state": {
         "t": 17.571428571428573,
         "world": 7,
@@ -1035,14 +1035,14 @@
           "roll": 0
         },
         "calls": 4,
-        "triangles": 215426
+        "triangles": 207778
       }
     },
     {
       "t": 18,
       "file": "r2-frame-18_00.png",
-      "coverage": 0.099072265625,
-      "hash": "d6be60228c393fce4a92bb8447a869f05e9229701d38541a30bb70fdd08b660f",
+      "coverage": 0.09437174479166667,
+      "hash": "f6734b9b5d7e6342ff81d02aed7e6b9fb7ae8d9284fd71adbf9af4b37224f238",
       "state": {
         "t": 18,
         "world": 7,
@@ -1067,14 +1067,14 @@
           "roll": 0
         },
         "calls": 4,
-        "triangles": 215426
+        "triangles": 207778
       }
     },
     {
       "t": 18.428571428571427,
       "file": "r2-frame-18_43.png",
-      "coverage": 0.09763563368055556,
-      "hash": "b352e2f4f395034858651382d889e6f2b8ef71d33d1b93243f1c2182e07e4212",
+      "coverage": 0.09311197916666666,
+      "hash": "8168d1934e5eba6ca7114f8c5f1c25e15bdd0f739a9009b35e03734859e5bf18",
       "state": {
         "t": 18.428571428571427,
         "world": 7,
@@ -1099,14 +1099,14 @@
           "roll": 0
         },
         "calls": 4,
-        "triangles": 215426
+        "triangles": 207778
       }
     },
     {
       "t": 18.857142857142858,
       "file": "r2-frame-18_86.png",
-      "coverage": 0.10008246527777778,
-      "hash": "fc8e143a33288ad3aa76ef4a025ed3dcf53d64d798d77846ecc010b94489d7e5",
+      "coverage": 0.09550130208333334,
+      "hash": "3b1c0734102f12ed02c82a4eb2639d02ebf4e9ad410a7a45209763822c64baf3",
       "state": {
         "t": 18.857142857142858,
         "world": 7,
@@ -1131,14 +1131,14 @@
           "roll": 0
         },
         "calls": 4,
-        "triangles": 215426
+        "triangles": 207778
       }
     },
     {
       "t": 20.571428571428573,
       "file": "r2-frame-20_57.png",
-      "coverage": 0.05373589409722222,
-      "hash": "d797155fdb0ef440c108c40c92e505e8871990a4417215ac4b76c30b721aedc7",
+      "coverage": 0.05315863715277778,
+      "hash": "8fe3ef37eb8c1553556f1218ee7c0f891029536e0e9445389869f848078977b9",
       "state": {
         "t": 20.571428571428573,
         "world": 7,
@@ -1163,14 +1163,14 @@
           "roll": 0
         },
         "calls": 4,
-        "triangles": 215426
+        "triangles": 207778
       }
     },
     {
       "t": 22.114285714285717,
       "file": "r2-frame-22_11.png",
-      "coverage": 0.04187934027777778,
-      "hash": "21f05974e5fd4f09668a1b55ca25c8e8c6839782cc06e4a5a98be334c73543a4",
+      "coverage": 0.041244574652777775,
+      "hash": "ae7d4938f4a880d648009484ccf4abc86a8ec4a2a2c58029fe90be0079911a4a",
       "state": {
         "t": 22.114285714285717,
         "world": 7,
@@ -1195,14 +1195,14 @@
           "roll": 0
         },
         "calls": 2,
-        "triangles": 215426
+        "triangles": 207778
       }
     },
     {
       "t": 23.142857142857142,
       "file": "r2-frame-23_14.png",
-      "coverage": 0.029717881944444444,
-      "hash": "ab6b5d3ea02dafa0bdb887fff3fab43c04baa9c108d5ba2bb811df8cd40453e6",
+      "coverage": 0.030018446180555554,
+      "hash": "4443067dab858612dede5aca127eb9a386958e27a65cc4b9edd0d474fa8d3d07",
       "state": {
         "t": 23.142857142857142,
         "world": 7,
@@ -1227,7 +1227,7 @@
           "roll": 0
         },
         "calls": 1,
-        "triangles": 159426
+        "triangles": 151778
       }
     },
     {
@@ -1259,7 +1259,7 @@
           "roll": 0
         },
         "calls": 1,
-        "triangles": 159426
+        "triangles": 151778
       }
     },
     {
@@ -1291,7 +1291,7 @@
           "roll": 0
         },
         "calls": 1,
-        "triangles": 159426
+        "triangles": 151778
       }
     }
   ],
