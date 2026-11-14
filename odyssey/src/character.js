@@ -6,8 +6,12 @@ const gaussian=(x,s)=>Math.exp(-.5*(x/s)**2);
 const clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v));
 function profile(rows,t){
  let k=0;while(k<rows.length-2&&t>rows[k+1][0])k++;
- const f=clamp((t-rows[k][0])/(rows[k+1][0]-rows[k][0])),s=f*f*(3-2*f);
- return rows[k].slice(1).map((x,i)=>x+(rows[k+1][i+1]-x)*s);
+ const a=rows[k],b=rows[k+1],prev=rows[Math.max(0,k-1)],next=rows[Math.min(rows.length-1,k+2)],
+  dt=b[0]-a[0],s=clamp((t-a[0])/dt);
+ return a.slice(1).map((x,i)=>{
+  const y=b[i+1],m0=(y-prev[i+1])/(b[0]-prev[0])*dt,m1=(next[i+1]-x)/(next[0]-a[0])*dt;
+  return (2*s*s*s-3*s*s+1)*x+(s*s*s-2*s*s+s)*m0+(-2*s*s*s+3*s*s)*y+(s*s*s-s*s)*m1;
+ });
 }
 function sample(c,nu,nv,fn,weight=()=>1,transform=p=>p){
  const eps=.00008;
@@ -24,7 +28,7 @@ function headTransform(p){
  return [p[0],1.88+y*Math.cos(pitch)-z*Math.sin(pitch),.025+y*Math.sin(pitch)+z*Math.cos(pitch)];
 }
 const headRows=[
- [0,.025,.052,.035,.098],[.055,.081,.096,.065,.072],[.15,.130,.139,.115,.040],
+ [0,.055,.052,.035,.098],[.055,.103,.096,.065,.072],[.15,.145,.139,.115,.040],
  [.28,.166,.153,.158,.022],[.46,.186,.166,.187,.010],[.65,.184,.173,.199,0],
  [.80,.167,.158,.184,-.006],[.93,.115,.115,.132,-.010],[1,.001,.001,.001,-.012]
 ];
@@ -38,10 +42,10 @@ function face(u,v){
  for(const s of [-1,1]){
   dz+=.018*G(s*.124,2.066,.040,.043)-.030*G(s*.078,2.112,.047,.024);
   dz+=.016*G(s*.078,2.147,.051,.015);
-  dz+=.022*G(s*.038,2.017,.022,.019);
+  dz+=.027*G(s*.038,2.021,.025,.022);
   dz-=.009*G(s*.065,1.985,.011,.029);
  }
- dz+=.040*G(0,2.083,.025,.066)+.074*G(0,2.029,.038,.023);
+ dz+=.028*G(0,2.083,.029,.066)+.041*G(0,2.032,.050,.029);
  dz-=.010*G(0,1.987,.014,.016);
  dz+=.025*G(0,1.967,.054,.010)+.030*G(0,1.943,.058,.012);
  dz-=.010*G(0,1.954,.061,.0035);
@@ -50,10 +54,14 @@ function face(u,v){
 function skinWeight(u,v){
  const p=face(u,v),x=p[0],y=p[1],front=Math.cos(v*TAU);
  let w=.80;
+ const hairline=.65+.09*Math.max(0,front);if(u>hairline)w*=.40;
  if(front>.45){
   for(const s of [-1,1]){
-   const dx=(x-s*.078)/.043,eye=(dx*dx+((y-2.111)/.012)**2);
-   if(eye<1)w*=.14+.22*Math.abs(dx); // dark, almond-shaped eye openings
+   const dx=(x-s*.078)/.036,eye=(dx*dx+((y-2.111)/.011)**2);
+   if(eye<1){
+    const iris=Math.hypot(x-s*.078,y-2.108);
+    w*=iris<.004?.09:iris<.009?.30:.70;
+   } // Sclera, iris and pupil remain green binary samples inside the recessed lids.
    const browY=2.148+.006*Math.cos(clamp(dx,-1,1)*Math.PI/2);
    if(Math.abs(dx)<1.12)w*=1-.68*gaussian(y-browY,.0045);
    w*=1-.88*gaussian(x-s*.031,.010)*gaussian(y-2.010,.0045);
@@ -87,33 +95,31 @@ export function buildCharacter(Cloud){
  const head=new Cloud(1),body=new Cloud(2),desk=new Cloud(3);
  sample(head,100,156,face,skinWeight,headTransform);
  // Upper and lower eyelid rims follow the recessed orbital surface.
- for(const s of [-1,1])for(const side of [-1,1])for(let i=0;i<100;i++){
-  const dx=-1+2*i/99,x=s*.078+dx*.043,y=2.111+side*.012*Math.sqrt(Math.max(0,1-dx*dx)),
+ for(const s of [-1,1])for(const side of [-1,1])for(let i=0;i<32;i++){
+  const dx=-1+2*i/31,x=s*.078+dx*.036,y=2.111+side*.011*Math.sqrt(Math.max(0,1-dx*dx)),
    u=(y-1.835)/.505,width=profile(headRows,u)[0],v=Math.asin(x/width)/TAU,p=face(u,v);
-  p[2]+=.003;head.point(headTransform(p),[0,0,1],side>0?.82:.53);
+  p[2]+=.003;head.point(headTransform(p),[0,0,1],side>0?.44:.32);
  }
  // Anatomically placed ears: pinna, recessed concha and curved helix; original geometry.
  for(const s of [-1,1]){
   sample(head,38,42,(u,v)=>{
    const a=v*TAU,r=Math.sqrt(Math.max(0,1-(2*u-1)**2));
-   return [s*(.182+.025*r*Math.cos(a)),2.073+(2*u-1)*.060,.003+.034*r*Math.sin(a)];
-  },(u,v)=>.50+.16*Math.cos(v*TAU),headTransform);
-  for(let i=0;i<180;i++){const a=i/180*TAU;head.point(headTransform([s*(.199+.008*Math.cos(a)),2.073+.050*Math.sin(a),.009+.021*Math.cos(a)]),[s,.2,.3],.73)}
+   return [s*(.182+.025*r*Math.cos(a)-.017*gaussian(2*u-1,.55)*Math.max(0,Math.cos(a))**3),2.073+(2*u-1)*.060,.003+.034*r*Math.sin(a)];
+  },(u,v)=>.28+.20*Math.abs(2*u-1),headTransform);
+  for(let i=0;i<180;i++){const a=i/180*TAU;head.point(headTransform([s*(.199+.008*Math.cos(a)),2.073+.050*Math.sin(a),.009+.021*Math.cos(a)]),[s,.2,.3],.53)}
  }
  // Short coiled top with a graduated temple fade. No downloaded model or franchise asset.
- for(let i=0;i<410;i++){
-  const f=(i+.5)/410,a=i*2.3999632297,y=.18+.82*f,r=Math.sqrt(1-y*y),front=(Math.cos(a)+1)/2;
-  const p=[.192*r*Math.sin(a),2.145+.218*y,.213*r*Math.cos(a)-.012];
-  if(p[1]<2.160+.052*front)continue;
-  const n=norm([p[0]/.192,(p[1]-2.145)/.218,(p[2]+.012)/.213]),u=norm(cross(n,[0,0,1])),v=cross(n,u);
-  for(let j=0;j<18;j++){
-   const t=j/17,angle=t*TAU*1.3,rr=.0085*(.75+.25*Math.sin(t*Math.PI));
-   const q=add(p,add(mul(n,.004+.012*Math.sin(t*Math.PI)),add(mul(u,rr*Math.cos(angle)),mul(v,rr*Math.sin(angle)))));
-   head.point(headTransform(q),n,.44+.15*Math.sin(t*Math.PI));
+ for(let i=0;i<460;i++){
+  const a=i*2.3999632297,front=Math.max(0,Math.cos(a)),u0=.62+.375*(i+.5)/460;
+  if(u0<.65+.09*front)continue;
+  const p=face(u0,a/TAU),n=norm([p[0]/.186,(p[1]-2.10)/.24,p[2]/.20]),
+   u=norm(cross(n,[0,0,1])),v=cross(n,u),length=.003+.011*clamp((u0-.65)/.22);
+  for(let j=0;j<14;j++){
+   const t=j/13,angle=t*TAU*1.35,rr=.0065*(.8+.2*Math.sin(t*Math.PI));
+   const q=add(p,add(mul(n,.002+length*Math.sin(t*Math.PI)),add(mul(u,rr*Math.cos(angle)),mul(v,rr*Math.sin(angle)))));
+   head.point(headTransform(q),n,.42+.16*Math.sin(t*Math.PI));
   }
  }
- // Small temple stubble samples are part of the scalp, not extra particles.
- sample(head,20,100,(u,v)=>{const a=v*TAU,front=(Math.cos(a)+1)/2;return face(.55+u*(.16+.04*front),v)},()=>.25,headTransform);
 
  // Tapered neck flows into the crew neck and jaw; head leans slightly toward the monitor.
  sweep(body,[[0,1.735,-.015],[0,1.82,.025],[0,1.925,.048]],[[.105,.096],[.097,.092],[.092,.089]],900,.72,0);
@@ -130,8 +136,8 @@ export function buildCharacter(Cloud){
  ellipse(body,[0,1.808,.028],.134,.108,240,.65);
  // A restrained seam rather than a logo keeps the garment original.
  for(const s of [-1,1]){
-  sweep(body,[[s*.295,1.707,-.009],[s*.381,1.584,.101],[s*.421,1.350,.310],[s*.340,1.347,.505],[s*.240,1.365,.682]],
-   [[.143,.144],[.130,.139],[.112,.118],[.100,.095],[.071,.064]],2800,.65,.035);
+  sweep(body,[[s*.295,1.645,-.009],[s*.381,1.555,.101],[s*.421,1.350,.310],[s*.340,1.347,.505],[s*.240,1.365,.682]],
+   [[.125,.125],[.124,.130],[.112,.118],[.100,.095],[.071,.064]],2800,.65,.035);
   sweep(body,[[s*.254,1.361,.654],[s*.231,1.366,.700]],[[.077,.070],[.073,.067]],420,.86,.015);
   sweep(body,[[s*.230,1.366,.699],[s*.221,1.365,.757]],[[.054,.036],[.060,.034]],280,.78,0);
   body.ellipsoid([s*.220,1.363,.785],[.072,.031,.074],600,.84);

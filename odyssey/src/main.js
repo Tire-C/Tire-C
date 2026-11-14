@@ -39,7 +39,7 @@ function render(t){
  cosmos.mesh.visible=story<26;
  head.uniforms.opacity.value=state.head*state.fade;
  body.uniforms.opacity.value=desk.uniforms.opacity.value=state.body*state.fade;
- for(const c of [head,body,desk])c.mesh.visible=story<25;
+ for(const c of [head,body,desk])c.mesh.visible=story<25&&c.uniforms.opacity.value>0;
  finale.mesh.visible=story>=25;finale.uniforms.morph.value=state.signature;finale.uniforms.opacity.value=state.fade;
  finale.uniforms.glyphSize.value=.019+state.signature*.031;
  finale.uniforms.minimumPixels.value=2;
