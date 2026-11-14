@@ -1,3 +1,4 @@
+import {buildCharacter} from './character.js';
 import {TAU,rng,norm,cross,add,mul,sub,lerp} from './math.js';
 // Only spatial samples are produced. No solid mesh is ever sent to the renderer.
 export class Cloud {
@@ -89,55 +90,4 @@ export function worlds(count=28000){
  return out;
 }
 
-export function creator(){
- const head=new Cloud(1),body=new Cloud(2),desk=new Cloud(3);
- // Cranial vault, tapered mandible and projected facial landmarks. Front is +Z.
- head.ellipsoid([0,2.15,0],[.36,.49,.34],6500,.85,(p,n)=>{
-  const lower=Math.max(0,-n[1]);p[0]*=1-.27*lower;p[2]+=.035*Math.max(0,n[2]);return p});
- head.ellipsoid([0,1.97,.19],[.245,.23,.23],1400,.82);
- head.ellipsoid([0,2.13,.354],[.055,.115,.092],650,1);
- head.ellipsoid([0,2.055,.39],[.072,.04,.045],220,.9);
- for(const s of [-1,1]){
-  head.ellipsoid([s*.345,2.13,0],[.055,.115,.075],420,.7);
-  head.ellipsoid([s*.125,2.23,.31],[.098,.032,.045],300,.95);
-  head.ellipsoid([s*.13,2.18,.332],[.065,.025,.025],180,.24);
-  head.ellipsoid([s*.17,2.09,.30],[.10,.075,.06],250,.9);
- }
- head.tube([-.095,1.99,.359],[.095,1.99,.359],.015,180,.55);
- head.ellipsoid([0,1.9,.24],[.12,.065,.09],260,.9);
- body.tube([0,1.71,0],[0,1.91,0],.13,700,.7);
- body.ellipsoid([0,1.42,-.035],[.37,.40,.23],3400,.65);
- body.ellipsoid([0,1.05,0],[.34,.21,.26],1400,.7);
- for(const s of [-1,1]){
-  body.ellipsoid([s*.35,1.63,0],[.16,.17,.17],650,.75);
-  body.tube([s*.36,1.61,.02],[s*.44,1.28,.31],.115,1000,.8);
-  body.ellipsoid([s*.44,1.28,.31],[.12,.12,.12],350,.8);
-  body.tube([s*.44,1.28,.31],[s*.26,1.36,.70],.085,900,.85);
-  body.ellipsoid([s*.25,1.36,.75],[.10,.045,.13],500,.95);
-  for(let f=0;f<4;f++)body.tube([s*.25+(f-1.5)*.04,1.36,.81],[s*.25+(f-1.5)*.04,1.34,.92],.016,75,1);
-  body.tube([s*.19,.99,.04],[s*.25,.86,.58],.15,1500,.65);
-  body.ellipsoid([s*.25,.86,.58],[.16,.15,.16],450,.8);
-  body.tube([s*.25,.84,.58],[s*.28,.22,.48],.10,1200,.75);
-  body.ellipsoid([s*.28,.12,.62],[.12,.095,.25],650,.7);
- }
- // Chair: separate seat, curved back, column and five legs.
- desk.box([0,.93,-.04],[.78,.12,.70],.045,.45);
- desk.box([0,1.40,-.33],[.72,.72,.10],.045,.38);
- desk.tube([0,.18,-.1],[0,.86,-.1],.06,500,.5);
- for(let i=0;i<5;i++){const a=i/5*TAU;desk.tube([0,.2,-.1],[.48*Math.cos(a),.10,-.1+.48*Math.sin(a)],.035,180,.45)}
- desk.box([0,1.24,1.04],[1.95,.07,.84],.045,.65);
- for(const s of [-1,1])for(const z of [.69,1.39])desk.box([s*.87,.63,z],[.06,1.18,.06],.05,.4);
- // Monitor has a thick shell, bezel, stand, and binary lines on the inward-facing screen.
- desk.box([0,1.80,1.29],[1.10,.66,.075],.032,.56);
- desk.box([0,1.42,1.31],[.07,.24,.08],.03,.6);
- desk.box([0,1.30,1.26],[.36,.035,.23],.025,.65);
- for(let j=0;j<15;j++){const y=2.05-j*.033,len=12+(j*17)%26;for(let i=0;i<len;i++)desk.point([-.46+i*.021,y,1.245],[0,0,-1],.95)}
- desk.box([0,1.30,.86],[.70,.028,.25],.022,.7);
- for(let j=0;j<5;j++)for(let i=0;i<14;i++)desk.box([-.32+i*.048,1.325,.76+j*.045],[.036,.012,.03],.024,.9);
- desk.ellipsoid([.55,1.32,.87],[.05,.025,.075],180,.8);
- desk.box([.78,.47,1.12],[.29,.78,.43],.035,.4);
- for(let j=0;j<14;j++)desk.line([.65,.75-j*.034,.9],[.9,.75-j*.034,.9],.02,.7);
- // Floor is a sparse binary lattice, not a filled plane.
- for(let j=-14;j<=14;j++){desk.line([-2.1,.015,j*.15],[2.1,.015,j*.15],.10,.14);desk.line([j*.15,.015,-2.1],[j*.15,.015,2.1],.10,.14)}
- return {head:head.data(),body:body.data(),desk:desk.data()};
-}
+export function creator(){return buildCharacter(Cloud)}

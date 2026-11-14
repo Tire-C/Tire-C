@@ -7,7 +7,7 @@ export function signature(count){
  const ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.font='bold 150px monospace';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText('Hi, I am Tire',700,120);
  const pixels=ctx.getImageData(0,0,c.width,c.height).data,pts=[];
  for(let y=25;y<220;y+=5)for(let x=20;x<1380;x+=4)if(pixels[(y*c.width+x)*4+3]>180)pts.push([(x-700)*.006,(120-y)*.006,0]);
- const pose=cameraAt(28),camera=new THREE.PerspectiveCamera();camera.position.set(...pose.position);camera.lookAt(...pose.target);
+ const pose=cameraAt(24),camera=new THREE.PerspectiveCamera();camera.position.set(...pose.position);camera.lookAt(...pose.target);
  const center=new THREE.Vector3(0,1.3,.2),p=new Float32Array(count*3),n=new Float32Array(count*3),w=new Float32Array(count);
  for(let i=0;i<count;i++){const v=new THREE.Vector3(...pts[i%pts.length]).applyQuaternion(camera.quaternion).add(center);p.set(v.toArray(),i*3);n.set([0,0,1],i*3);w[i]=i<pts.length?1:0}
  return {p,n,w,count};

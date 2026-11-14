@@ -45,7 +45,7 @@ void main(){
  vDensity=min(1.0,pow(projected/minimumPixels,2.0));
  size=max(size,minimumPixels*2.0*max(.0001,-center.z)/(projectionMatrix[1][1]*viewportHeight));
  float facing=abs(dot(worldN,normalize(cameraPosition-(modelMatrix*vec4(p,1.0)).xyz)));
- vCut=cutaway*smoothstep(2.10,2.23,p.y)*smoothstep(.15,.45,facing);
+ vCut=cutaway*smoothstep(2.125,2.190,p.y)*smoothstep(.15,.45,facing);
  vDensity=mix(1.0,vDensity,lodStrength);
  vDensity*=1.0-smoothstep(65.0,120.0,projected);
  // Glyphs remain in world space; only the small typographic quad faces the camera.

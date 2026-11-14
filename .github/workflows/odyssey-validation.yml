@@ -47,6 +47,8 @@ jobs:
           EXPECTED_SHA: ${{ github.sha }}
         run: |
           if ! test -f odyssey/diagnostics/report.json; then exit 0; fi
+          report_sha=$(node -p "require('./odyssey/diagnostics/report.json').sourceCommit")
+          if test "$report_sha" != "$EXPECTED_SHA"; then echo "No current report; refusing stale evidence commit"; exit 0; fi
           remote_sha="$(git ls-remote origin refs/heads/work/binary-mind-odyssey | cut -f1)"
           if test "$remote_sha" != "$EXPECTED_SHA"; then echo "Branch advanced; refusing stale evidence commit"; exit 0; fi
           mkdir -p odyssey/review
