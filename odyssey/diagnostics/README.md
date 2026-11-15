@@ -1,6 +1,6 @@
 # Rendering diagnostics — review candidate
 
-Source commit: 008983788dde5a3e736e8825b43718fbb612157f
+Source commit: ea39297353cda40293c4236ab26860a1eb26efc0
 
 Remote CPU rendering with Chromium / SwiftShader. These images are test evidence, never the animation product.
 
@@ -17,7 +17,7 @@ Remote CPU rendering with Chromium / SwiftShader. These images are test evidence
 - PASS Only binary instanced geometry writes visible colour
 - PASS Depth proxies are invisible and anatomical
 - PASS Every approved world has secondary 3D dynamics
-- FAIL Three populated activity layers and substantial secondary objects in every world
+- PASS Three populated activity layers and substantial secondary objects in every world
 - PASS Frame 0 contains monochrome rendered geometry
 - PASS Frame 0.33 contains monochrome rendered geometry
 - PASS Frame 0.55 contains monochrome rendered geometry

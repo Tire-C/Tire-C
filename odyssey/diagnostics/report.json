@@ -1,7 +1,7 @@
 {
   "revision": 4,
-  "sourceCommit": "008983788dde5a3e736e8825b43718fbb612157f",
-  "runId": "43724188517",
+  "sourceCommit": "ea39297353cda40293c4236ab26860a1eb26efc0",
+  "runId": "43753898633",
   "environment": "GitHub Actions ubuntu-24.04 standard public runner",
   "rendering": "Chromium / ANGLE SwiftShader software on remote CPU; NO real GPU validation",
   "baseline": "0f00154f3651c7bed8cf8660780bb3c1750ed9bc",
@@ -32,7 +32,7 @@
       19068
     ],
     "activityBounds": [
-      35.405432911608834,
+      33.77369928809706,
       32.83413581352068,
       30.923519753988707,
       31.12542616724271,
@@ -263,7 +263,7 @@
     }
   ],
   "anatomyAudit": {
-    "sourceCommit": "008983788dde5a3e736e8825b43718fbb612157f",
+    "sourceCommit": "ea39297353cda40293c4236ab26860a1eb26efc0",
     "upstream": {
       "repository": "makehumancommunity/makehuman",
       "commit": "a8bc2d54ff0ac92e78ff71431b1023eda42bf482",
@@ -514,21 +514,21 @@
       "world": 0,
       "story": 1,
       "changed": true,
-      "activityMotionPixels": 21017,
-      "secondaryContributionPixels": 17971,
-      "coverage": 0.11176974826388889,
+      "activityMotionPixels": 21593,
+      "secondaryContributionPixels": 18341,
+      "coverage": 0.112158203125,
       "occupiedTiles": 12,
       "tiles": [
         4777,
-        7733,
-        7687,
+        7999,
+        7738,
         4139,
-        6459,
-        15709,
-        13350,
+        6482,
+        15682,
+        13362,
         4732,
-        10155,
-        11911,
+        9970,
+        12129,
         11272,
         5083
       ]
@@ -696,8 +696,8 @@
     }
   ],
   "benchmark": {
-    "medianMs": 295.19999999998254,
-    "p95Ms": 346.3999999999942,
+    "medianMs": 364.79999999998836,
+    "p95Ms": 410.8999999999651,
     "note": "Pixel-readback SwiftShader diagnostic on remote CPU. Not real GPU or display frame rate."
   },
   "transitionError": 0,
@@ -707,8 +707,8 @@
     "src": "/Tire-C/Tire-C/raw/work/binary-mind-odyssey/odyssey/compatibility/probe.svg",
     "context": "Actual GitHub rendered Markdown image in remote Chromium",
     "hashes": [
-      "750d9c266530446461dc653244218e9208ec73a74f489a8b10879ae4e1f19da8",
-      "5d058b4c48fdf6835145dd9fd71d8a247f1f409b9ae6876082550666175dfb5d"
+      "23163b8336aef17c2eb5896ce90b268424a80e32d6bf9882ab169ed584086961",
+      "0e86a89fecd9d6f40954f8748e29ed19f0cf0cb000c795412ed5d059286c7d02"
     ]
   },
   "browserCompatibility": [
@@ -740,7 +740,7 @@
           19068
         ],
         "activityBounds": [
-          35.405432911608834,
+          33.77369928809706,
           32.83413581352068,
           30.923519753988707,
           31.12542616724271,
@@ -878,7 +878,7 @@
           19068
         ],
         "activityBounds": [
-          35.405432911608834,
+          33.77369928809706,
           32.83413581352068,
           30.923519753988707,
           31.12542616724271,
@@ -1044,8 +1044,7 @@
     },
     {
       "name": "Three populated activity layers and substantial secondary objects in every world",
-      "pass": false,
-      "error": "Secondary structures leave the cranial universe"
+      "pass": true
     },
     {
       "name": "Frame 0 contains monochrome rendered geometry",
@@ -1224,9 +1223,7 @@
       "pass": true
     }
   ],
-  "failures": [
-    "Three populated activity layers and substantial secondary objects in every world: Secondary structures leave the cranial universe"
-  ],
+  "failures": [],
   "shots": [
     {
       "t": 0,
@@ -1264,8 +1261,8 @@
     {
       "t": 0.33,
       "file": "r4-frame-0_33.png",
-      "coverage": 0.1220193142361111,
-      "hash": "855d983af55c47a7a66baeda818eecf4ce99afb640651c54692de238970e4fff",
+      "coverage": 0.12219401041666667,
+      "hash": "5087237adabd77f705540fae4d6e034ea05f7e0f9505980fecccd84236a137b7",
       "state": {
         "t": 0.33,
         "world": 0,
@@ -1297,8 +1294,8 @@
     {
       "t": 0.55,
       "file": "r4-frame-0_55.png",
-      "coverage": 0.11176974826388889,
-      "hash": "6644ccc81130df496fb5e4d8d411e846b9ac8b91779998f71771d7815d1055c4",
+      "coverage": 0.112158203125,
+      "hash": "779dd2b4d9dc9d67e2fd1cc613a056aad605e7fe16805090cbd2189caa35bb09",
       "state": {
         "t": 0.55,
         "world": 0,
@@ -1330,8 +1327,8 @@
     {
       "t": 0.8800000000000001,
       "file": "r4-frame-0_88.png",
-      "coverage": 0.1680685763888889,
-      "hash": "b3b296b31bc5dc6d9d3f8d43b6c373494e7021739d60caf345e1f4edc129ef4c",
+      "coverage": 0.16847005208333332,
+      "hash": "7130e5a33b654f68947cc752bdc58bdbb47361f50cd7e23c6007da73229516e5",
       "state": {
         "t": 0.8800000000000001,
         "world": 0,
