@@ -1,5 +1,5 @@
 {
-  "sourceCommit": "b0ffa022e1a4781c6b11d4c2673743f77c4f6d56",
+  "sourceCommit": "81fed245b352a3f79ec4ae47e51b97e89ad07545",
   "upstream": {
     "repository": "makehumancommunity/makehuman",
     "commit": "a8bc2d54ff0ac92e78ff71431b1023eda42bf482",
@@ -39,6 +39,26 @@
         "path": "LICENSE.md",
         "gitBlob": "5d1a49d31ebdaa46b06c52eae2c005c678a63ffa",
         "size": 3598
+      },
+      {
+        "path": "makehuman/data/eyes/high-poly/high-poly.mhclo",
+        "gitBlob": "22bc5f77f398c59088804f7f4c9bb0e39d38661d",
+        "size": 72490
+      },
+      {
+        "path": "makehuman/data/eyes/high-poly/high-poly.obj",
+        "gitBlob": "01562a9caf4dca9ebb1fd5c24db083c17e724330",
+        "size": 100882
+      },
+      {
+        "path": "makehuman/data/targets/eyes/l-eye-height1-incr.target",
+        "gitBlob": "92d07424d66dce950602a58bb3a7ac831d54c2a4",
+        "size": 4053
+      },
+      {
+        "path": "makehuman/data/targets/eyes/r-eye-height1-incr.target",
+        "gitBlob": "d767359af03d60777d07955f7dd6e01fc1c1d4e6",
+        "size": 3586
       }
     ]
   },
@@ -60,6 +80,18 @@
       "gitBlob": "8d156ed42db13219844e01bf4ab3185d9205befa",
       "size": 12618,
       "sha256": "001d0d135d964daf4ad99ba46a0f77c5bc2378f04e53c2b5a20242ab19cbf265"
+    },
+    {
+      "path": "makehuman/data/targets/eyes/l-eye-height1-incr.target",
+      "gitBlob": "92d07424d66dce950602a58bb3a7ac831d54c2a4",
+      "size": 4053,
+      "sha256": "75ce5285db2e3721ae5434c8a9d27669eb632da7e588000a112d34264216de20"
+    },
+    {
+      "path": "makehuman/data/targets/eyes/r-eye-height1-incr.target",
+      "gitBlob": "d767359af03d60777d07955f7dd6e01fc1c1d4e6",
+      "size": 3586,
+      "sha256": "daab8f4115ade91e776f9bb4622926ddd20cff2ddcfe74e1ff3654132b727933"
     },
     {
       "path": "makehuman/data/rigs/default.mhskel",
@@ -84,6 +116,18 @@
       "gitBlob": "5d1a49d31ebdaa46b06c52eae2c005c678a63ffa",
       "size": 3598,
       "sha256": "edd99571ca62698f78c943fd4fffb159a413c315fa0d4819d3cec5cadaf8b4f1"
+    },
+    {
+      "path": "makehuman/data/eyes/high-poly/high-poly.obj",
+      "gitBlob": "01562a9caf4dca9ebb1fd5c24db083c17e724330",
+      "size": 100882,
+      "sha256": "da2493215b708a344c33dc72f2a9a5b8fa985dcc5a70ad3b208995cf871da8e1"
+    },
+    {
+      "path": "makehuman/data/eyes/high-poly/high-poly.mhclo",
+      "gitBlob": "22bc5f77f398c59088804f7f4c9bb0e39d38661d",
+      "size": 72490,
+      "sha256": "b183cfe37120ab726f9b3f2ea6cd3a64c44ce7b4bd91a77c841cf70c04f83a0d"
     }
   ],
   "pose": {
@@ -158,21 +202,22 @@
     0.077174351857739
   ],
   "counts": {
-    "head": 24612,
+    "head": 24861,
     "body": 24598,
-    "hairCoils": 669,
-    "headSurfaceRows": 17922
+    "hairCoils": 667,
+    "headSurfaceRows": 18191,
+    "ocularGlyphs": 296
   },
   "bounds": {
     "head": [
       [
-        -0.1392610149796723,
+        -0.13828846850858503,
         1.9254962769850748,
-        -0.06297146473775035
+        -0.0633500599749256
       ],
       [
         0.138288468508585,
-        2.3567802213099216,
+        2.3567422852992324,
         0.26242672383185567
       ]
     ],
@@ -188,6 +233,15 @@
         0.8495613855726917
       ]
     ]
+  },
+  "visibility": {
+    "min": 0.43,
+    "mean": 0.9530580777660377
+  },
+  "ocularGeometry": {
+    "vertices": 1064,
+    "faces": 1020,
+    "sampledEyeGlyphs": 296
   },
   "pipeline": "Pinned CC0 anatomy, original skeletal pose and garments; ray-intersected, surface-conforming anatomical microtypography replaces stochastic facial point sprites. Remote CPU generation; depth-only meshes never write colour."
 }

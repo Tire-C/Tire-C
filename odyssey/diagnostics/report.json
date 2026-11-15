@@ -1,7 +1,7 @@
 {
   "revision": 4,
-  "sourceCommit": "b0ffa022e1a4781c6b11d4c2673743f77c4f6d56",
-  "runId": "43722670160",
+  "sourceCommit": "81fed245b352a3f79ec4ae47e51b97e89ad07545",
+  "runId": "43723451348",
   "environment": "GitHub Actions ubuntu-24.04 standard public runner",
   "rendering": "Chromium / ANGLE SwiftShader software on remote CPU; NO real GPU validation",
   "baseline": "0f00154f3651c7bed8cf8660780bb3c1750ed9bc",
@@ -122,7 +122,7 @@
     ],
     "worldCount": 8,
     "worldPoints": 28000,
-    "headPoints": 24612,
+    "headPoints": 24861,
     "bodyPoints": 27154,
     "deskPoints": 20363,
     "playing": false,
@@ -253,7 +253,7 @@
     }
   ],
   "anatomyAudit": {
-    "sourceCommit": "b0ffa022e1a4781c6b11d4c2673743f77c4f6d56",
+    "sourceCommit": "81fed245b352a3f79ec4ae47e51b97e89ad07545",
     "upstream": {
       "repository": "makehumancommunity/makehuman",
       "commit": "a8bc2d54ff0ac92e78ff71431b1023eda42bf482",
@@ -293,6 +293,26 @@
           "path": "LICENSE.md",
           "gitBlob": "5d1a49d31ebdaa46b06c52eae2c005c678a63ffa",
           "size": 3598
+        },
+        {
+          "path": "makehuman/data/eyes/high-poly/high-poly.mhclo",
+          "gitBlob": "22bc5f77f398c59088804f7f4c9bb0e39d38661d",
+          "size": 72490
+        },
+        {
+          "path": "makehuman/data/eyes/high-poly/high-poly.obj",
+          "gitBlob": "01562a9caf4dca9ebb1fd5c24db083c17e724330",
+          "size": 100882
+        },
+        {
+          "path": "makehuman/data/targets/eyes/l-eye-height1-incr.target",
+          "gitBlob": "92d07424d66dce950602a58bb3a7ac831d54c2a4",
+          "size": 4053
+        },
+        {
+          "path": "makehuman/data/targets/eyes/r-eye-height1-incr.target",
+          "gitBlob": "d767359af03d60777d07955f7dd6e01fc1c1d4e6",
+          "size": 3586
         }
       ]
     },
@@ -314,6 +334,18 @@
         "gitBlob": "8d156ed42db13219844e01bf4ab3185d9205befa",
         "size": 12618,
         "sha256": "001d0d135d964daf4ad99ba46a0f77c5bc2378f04e53c2b5a20242ab19cbf265"
+      },
+      {
+        "path": "makehuman/data/targets/eyes/l-eye-height1-incr.target",
+        "gitBlob": "92d07424d66dce950602a58bb3a7ac831d54c2a4",
+        "size": 4053,
+        "sha256": "75ce5285db2e3721ae5434c8a9d27669eb632da7e588000a112d34264216de20"
+      },
+      {
+        "path": "makehuman/data/targets/eyes/r-eye-height1-incr.target",
+        "gitBlob": "d767359af03d60777d07955f7dd6e01fc1c1d4e6",
+        "size": 3586,
+        "sha256": "daab8f4115ade91e776f9bb4622926ddd20cff2ddcfe74e1ff3654132b727933"
       },
       {
         "path": "makehuman/data/rigs/default.mhskel",
@@ -338,6 +370,18 @@
         "gitBlob": "5d1a49d31ebdaa46b06c52eae2c005c678a63ffa",
         "size": 3598,
         "sha256": "edd99571ca62698f78c943fd4fffb159a413c315fa0d4819d3cec5cadaf8b4f1"
+      },
+      {
+        "path": "makehuman/data/eyes/high-poly/high-poly.obj",
+        "gitBlob": "01562a9caf4dca9ebb1fd5c24db083c17e724330",
+        "size": 100882,
+        "sha256": "da2493215b708a344c33dc72f2a9a5b8fa985dcc5a70ad3b208995cf871da8e1"
+      },
+      {
+        "path": "makehuman/data/eyes/high-poly/high-poly.mhclo",
+        "gitBlob": "22bc5f77f398c59088804f7f4c9bb0e39d38661d",
+        "size": 72490,
+        "sha256": "b183cfe37120ab726f9b3f2ea6cd3a64c44ce7b4bd91a77c841cf70c04f83a0d"
       }
     ],
     "pose": {
@@ -412,21 +456,22 @@
       0.077174351857739
     ],
     "counts": {
-      "head": 24612,
+      "head": 24861,
       "body": 24598,
-      "hairCoils": 669,
-      "headSurfaceRows": 17922
+      "hairCoils": 667,
+      "headSurfaceRows": 18191,
+      "ocularGlyphs": 296
     },
     "bounds": {
       "head": [
         [
-          -0.1392610149796723,
+          -0.13828846850858503,
           1.9254962769850748,
-          -0.06297146473775035
+          -0.0633500599749256
         ],
         [
           0.138288468508585,
-          2.3567802213099216,
+          2.3567422852992324,
           0.26242672383185567
         ]
       ],
@@ -442,6 +487,15 @@
           0.8495613855726917
         ]
       ]
+    },
+    "visibility": {
+      "min": 0.43,
+      "mean": 0.9530580777660377
+    },
+    "ocularGeometry": {
+      "vertices": 1064,
+      "faces": 1020,
+      "sampledEyeGlyphs": 296
     },
     "pipeline": "Pinned CC0 anatomy, original skeletal pose and garments; ray-intersected, surface-conforming anatomical microtypography replaces stochastic facial point sprites. Remote CPU generation; depth-only meshes never write colour."
   },
@@ -632,8 +686,8 @@
     }
   ],
   "benchmark": {
-    "medianMs": 284.19999999998254,
-    "p95Ms": 329.79999999998836,
+    "medianMs": 286.80000000001746,
+    "p95Ms": 346.79999999998836,
     "note": "Pixel-readback SwiftShader diagnostic on remote CPU. Not real GPU or display frame rate."
   },
   "transitionError": 0,
@@ -643,8 +697,8 @@
     "src": "/Tire-C/Tire-C/raw/work/binary-mind-odyssey/odyssey/compatibility/probe.svg",
     "context": "Actual GitHub rendered Markdown image in remote Chromium",
     "hashes": [
-      "44f082822760b5fa9942fff970a3573cd630734efcf4338fced31f0c7344ec2f",
-      "6ad0045d6e44d02b98bd1d2bec4623de6f087b43e90cb6ce65d6542dad7d1949"
+      "a47173df5cd63900b85af420e32d9222dd1ae7037bd61ad3005611e4ba4ad6af",
+      "3e98a6321aa7906295025ddb81b693fea6670442c5bbb6bdd446e433dad17fbc"
     ]
   },
   "browserCompatibility": [
@@ -766,7 +820,7 @@
         ],
         "worldCount": 8,
         "worldPoints": 28000,
-        "headPoints": 24612,
+        "headPoints": 24861,
         "bodyPoints": 27154,
         "deskPoints": 20363,
         "playing": false,
@@ -894,7 +948,7 @@
         ],
         "worldCount": 8,
         "worldPoints": 28000,
-        "headPoints": 24612,
+        "headPoints": 24861,
         "bodyPoints": 27154,
         "deskPoints": 20363,
         "playing": false,
@@ -1540,8 +1594,8 @@
     {
       "t": 9.233333333333334,
       "file": "r4-frame-9_23.png",
-      "coverage": 0.19820638020833334,
-      "hash": "f8fa7e700203998229532f923e7e427f598ab5b7514a0b4cb8144eb71a2e7bec",
+      "coverage": 0.20289930555555555,
+      "hash": "f0af757bd1277ac5b656c1cdff1f5a8ea63dd74f42ee0f458d5dd7dc319a9f95",
       "state": {
         "t": 9.233333333333334,
         "world": 7,
@@ -1567,14 +1621,14 @@
           "fov": 53
         },
         "calls": 4,
-        "triangles": 121730
+        "triangles": 122228
       }
     },
     {
       "t": 9.450000000000001,
       "file": "r4-frame-9_45.png",
-      "coverage": 0.16195203993055557,
-      "hash": "d6af2dc876a3d140f05130a5f104585deef360162a6ae8fa7cb2e585c871aa71",
+      "coverage": 0.16601671006944443,
+      "hash": "e281650bc58a47dd0271ea2d2df97e0f8d0668c0afb37fc65df86a343defadad",
       "state": {
         "t": 9.450000000000001,
         "world": 7,
@@ -1600,14 +1654,14 @@
           "fov": 53
         },
         "calls": 4,
-        "triangles": 121730
+        "triangles": 122228
       }
     },
     {
       "t": 9.666666666666668,
       "file": "r4-frame-9_67.png",
-      "coverage": 0.1252322048611111,
-      "hash": "441aea1172d25718e8349a085a77c1ae1732fad14369eb2fa9ee36df3dcad341",
+      "coverage": 0.13069986979166667,
+      "hash": "d1720be1c372a0b8a6c3c1c27778a6ab8a10f362edaf5f2d5bbff7f17707eb5a",
       "state": {
         "t": 9.666666666666668,
         "world": 7,
@@ -1633,14 +1687,14 @@
           "fov": 53
         },
         "calls": 4,
-        "triangles": 121730
+        "triangles": 122228
       }
     },
     {
       "t": 9.883333333333335,
       "file": "r4-frame-9_88.png",
-      "coverage": 0.15035047743055555,
-      "hash": "c4fbb740cc8c9e8ebc2d384b950e6fd8baa8ed162930a2fa07b66c7c21a1764f",
+      "coverage": 0.15233289930555555,
+      "hash": "55ae30ca82f8f6de4f54c52726c599b86556dd6709e5da684c327665739aeb9f",
       "state": {
         "t": 9.883333333333335,
         "world": 7,
@@ -1666,14 +1720,14 @@
           "fov": 53
         },
         "calls": 4,
-        "triangles": 121730
+        "triangles": 122228
       }
     },
     {
       "t": 10.100000000000001,
       "file": "r4-frame-10_10.png",
-      "coverage": 0.10937608506944445,
-      "hash": "c06f047d6795e0b0adae36afc307eb2892b9100e3b6351febacff6451020613b",
+      "coverage": 0.11073567708333333,
+      "hash": "b2679648f88d404865bd6e9f1b2b812f9ce33e11d520887e0801503bb6f82ca8",
       "state": {
         "t": 10.100000000000001,
         "world": 7,
@@ -1699,14 +1753,14 @@
           "fov": 53
         },
         "calls": 7,
-        "triangles": 237180
+        "triangles": 237678
       }
     },
     {
       "t": 10.316666666666666,
       "file": "r4-frame-10_32.png",
-      "coverage": 0.07240668402777778,
-      "hash": "b1e38920c71f9308dc6a7f51e4e90033e6dd2f60441f9f136e294da7cc21e752",
+      "coverage": 0.07320095486111111,
+      "hash": "87b3fc00a666c47738d1bd75a46066c774caf5731bcece12000ed74e9a8c29e9",
       "state": {
         "t": 10.316666666666666,
         "world": 7,
@@ -1732,14 +1786,14 @@
           "fov": 53
         },
         "calls": 8,
-        "triangles": 272432
+        "triangles": 273850
       }
     },
     {
       "t": 10.533333333333333,
       "file": "r4-frame-10_53.png",
-      "coverage": 0.04314887152777778,
-      "hash": "63f1851a2a278cc7f69d3055b21de00332a4e5669e22e2e4221e9707382f1d73",
+      "coverage": 0.04331271701388889,
+      "hash": "30d1c8245af5f7116c51668b05e6493aafe36dc3b71cb8e37221572155873afc",
       "state": {
         "t": 10.533333333333333,
         "world": 7,
@@ -1765,14 +1819,14 @@
           "fov": 53
         },
         "calls": 7,
-        "triangles": 257990
+        "triangles": 259408
       }
     },
     {
       "t": 10.75,
       "file": "r4-frame-10_75.png",
-      "coverage": 0.03631293402777778,
-      "hash": "57ba7831e3cba020b3bfd8903688c4f41c21fc8bcf108764ca9173ab204bfbc1",
+      "coverage": 0.03638129340277778,
+      "hash": "90a0e1d962150afaee845eb34845696b74daf9a983b7e00ccf63a19f3f81aa88",
       "state": {
         "t": 10.75,
         "world": 7,
@@ -1798,14 +1852,14 @@
           "fov": 53
         },
         "calls": 7,
-        "triangles": 257990
+        "triangles": 259408
       }
     },
     {
       "t": 10.966666666666667,
       "file": "r4-frame-10_97.png",
-      "coverage": 0.036279296875,
-      "hash": "d020a04c3a4b24b29c7aacd05a248595ffdb72e1f48286f7c2287b342e927cf4",
+      "coverage": 0.03643337673611111,
+      "hash": "4e463c2b217c95457d8e8f0cdb191fec9428527f286b693e642f1b9c8cdf3f52",
       "state": {
         "t": 10.966666666666667,
         "world": 7,
@@ -1831,14 +1885,14 @@
           "fov": 53
         },
         "calls": 7,
-        "triangles": 257990
+        "triangles": 259408
       }
     },
     {
       "t": 11.183333333333334,
       "file": "r4-frame-11_18.png",
-      "coverage": 0.03602973090277778,
-      "hash": "141a43ea059939a1a31525d28614b8921cd9ce55c032a7f27ef8da05cb25e60d",
+      "coverage": 0.03619466145833333,
+      "hash": "4ba204f9f7777e68457e4a524952703144da05dcb8366efcc42922671c5460bc",
       "state": {
         "t": 11.183333333333334,
         "world": 7,
@@ -1864,14 +1918,14 @@
           "fov": 53
         },
         "calls": 7,
-        "triangles": 257990
+        "triangles": 259408
       }
     },
     {
       "t": 11.4,
       "file": "r4-frame-11_40.png",
-      "coverage": 0.03693576388888889,
-      "hash": "557734b99aa878e9bea80354a20084725414c9c5983ebabd4c246b8724838a3f",
+      "coverage": 0.03718098958333333,
+      "hash": "3afea35f65a84983abb0aadb363a8f40993da18b9bd8e27ecc4f815c2c1a51ef",
       "state": {
         "t": 11.4,
         "world": 7,
@@ -1897,14 +1951,14 @@
           "fov": 53
         },
         "calls": 7,
-        "triangles": 257990
+        "triangles": 259408
       }
     },
     {
       "t": 12.6,
       "file": "r4-frame-12_60.png",
-      "coverage": 0.053972439236111114,
-      "hash": "4ebf5a7fdd0748245464f83535d2ff3857306e8ed3a930d8be940f89c8eed7d1",
+      "coverage": 0.05405381944444444,
+      "hash": "ecdadd4e6247398e2503479cffdf3936acbc767a71b3391105268d73c228c760",
       "state": {
         "t": 12.6,
         "world": 7,
@@ -1930,14 +1984,14 @@
           "fov": 53
         },
         "calls": 7,
-        "triangles": 257990
+        "triangles": 259408
       }
     },
     {
       "t": 13.466666666666667,
       "file": "r4-frame-13_47.png",
-      "coverage": 0.0485546875,
-      "hash": "ba27e89bc706cb755ee73ae5b2d0f359ed7b7cf03520e206c9e01bef77ab5a0a",
+      "coverage": 0.048499348958333334,
+      "hash": "23e1a65819a634a9f87bb25598e2059eb5b0f0d783e3610f5828919a2fee5061",
       "state": {
         "t": 13.466666666666667,
         "world": 7,
@@ -1963,14 +2017,14 @@
           "fov": 53
         },
         "calls": 5,
-        "triangles": 257990
+        "triangles": 259408
       }
     },
     {
       "t": 13.866666666666665,
       "file": "r4-frame-13_87.png",
-      "coverage": 0.03390190972222222,
-      "hash": "55658501ff20e9c3326390d29b86e103e8fca2e2664f2670ea709c57caf98be5",
+      "coverage": 0.033950737847222225,
+      "hash": "f800d59eca6506485194c26c33c09c8311386902d3923a949da79bc339e6602e",
       "state": {
         "t": 13.866666666666665,
         "world": 7,
@@ -1996,7 +2050,7 @@
           "fov": 53
         },
         "calls": 1,
-        "triangles": 144258
+        "triangles": 144756
       }
     },
     {
@@ -2029,7 +2083,7 @@
           "fov": 53
         },
         "calls": 1,
-        "triangles": 144258
+        "triangles": 144756
       }
     },
     {
@@ -2062,7 +2116,7 @@
           "fov": 53
         },
         "calls": 1,
-        "triangles": 144258
+        "triangles": 144756
       }
     }
   ],
