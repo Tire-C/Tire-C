@@ -18,7 +18,7 @@ attribute float digit;
 attribute float seed;
 attribute float localGlyphScale;
 attribute float localMinimum;
-attribute float localContrast;
+attribute vec3 localStyle;
 uniform float morph;
 uniform float glyphSize;
 uniform float time;
@@ -55,10 +55,20 @@ void main(){
  vDensity=mix(1.0,vDensity,lodStrength);
  vDensity*=1.0-smoothstep(65.0,120.0,projected);
  // Glyphs remain in world space; only the small typographic quad faces the camera.
- center.xy+=position.xy*size;
+ vec3 up=abs(n.y)>.94?vec3(0.,0.,-1.):vec3(0.,1.,0.);
+ vec3 tangentUp=normalize(up-n*dot(up,n));
+ vec3 tangentRight=normalize(cross(tangentUp,n));
+ vec3 surfaceOffset=(modelViewMatrix*vec4((tangentRight*position.x+tangentUp*position.y)*(size/scale),0.)).xyz;
+ center.xyz+=mix(vec3(position.xy*size,0.),surfaceOffset,localStyle.y*(1.-morph));
  gl_Position=projectionMatrix*center;
  vUv=uv;vDigit=digit;vSeed=seed;vDepth=-center.z;
- vLight=mix(weight,toWeight,morph)*pow(.25+.75*max(0.0,dot(worldN,normalize(vec3(-.5,.85,1.0)))),mix(localContrast*surfaceContrast,1.,morph));
+ float ordinary=pow(.25+.75*max(0.,dot(worldN,normalize(vec3(-.5,.85,1.)))),mix(localStyle.x*surfaceContrast,1.,morph));
+ vec3 viewDirection=normalize(cameraPosition-(modelMatrix*vec4(p,1.)).xyz);
+ vec3 key=normalize(vec3(-.45,.65,1.));
+ float portrait=.12+.62*max(0.,dot(worldN,key))+.24*max(0.,dot(worldN,normalize(vec3(.8,.18,.65))));
+ portrait+=.16*pow(max(0.,dot(worldN,normalize(vec3(.55,.45,-1.)))),2.);
+ portrait+=.08*pow(max(0.,dot(worldN,normalize(key+viewDirection))),22.);
+ vLight=mix(weight,toWeight,morph)*mix(ordinary,portrait,localStyle.z*(1.-morph));
 }`;
 const fragment=`
 uniform sampler2D glyphAtlas;
@@ -79,7 +89,7 @@ void main(){
  float light=clamp(vLight*intensity*fog,0.0,1.0);
  gl_FragColor=vec4(vec3(0.0,1.0,.25)*light,1.0);
 }`;
-export function binaryCloud(data,texture,{size=.2,fog=100,intensity=1.4,contrast=1}={}){
+export function binaryCloud(data,texture,{size=.2,fog=100,intensity=1.4,contrast=1,surface=0,portrait=0}={}){
  const g=new THREE.InstancedBufferGeometry(),q=new THREE.PlaneGeometry(.64,1);
  g.index=q.index;g.setAttribute('position',q.attributes.position);g.setAttribute('uv',q.attributes.uv);
  for(const [key,value] of Object.entries({fromPosition:data.p,toPosition:data.p,fromNormal:data.n,toNormal:data.n}))g.setAttribute(key,new THREE.InstancedBufferAttribute(value,3));
@@ -91,7 +101,8 @@ export function binaryCloud(data,texture,{size=.2,fog=100,intensity=1.4,contrast
  g.setAttribute('seed',new THREE.InstancedBufferAttribute(data.seed||Float32Array.from({length:data.count},()=>random()),1));
  g.setAttribute('localGlyphScale',new THREE.InstancedBufferAttribute(data.glyphScale||data.sampleScale||new Float32Array(data.count).fill(1),1));
  g.setAttribute('localMinimum',new THREE.InstancedBufferAttribute(data.minimum||new Float32Array(data.count),1));
- g.setAttribute('localContrast',new THREE.InstancedBufferAttribute(data.contrast||new Float32Array(data.count).fill(1),1));
+ const style=data.style||Float32Array.from({length:data.count*3},(_,i)=>i%3===0?(data.contrast?.[Math.floor(i/3)]??1):i%3===1?surface:portrait);
+ g.setAttribute('localStyle',new THREE.InstancedBufferAttribute(style,3));
  g.instanceCount=data.count;
  const uniforms={glyphAtlas:{value:texture},morph:{value:0},glyphSize:{value:size},time:{value:0},turbulence:{value:0},opacity:{value:1},fogDistance:{value:fog},intensity:{value:intensity},viewportHeight:{value:720},minimumPixels:{value:4.2},cutaway:{value:0},cutRange:{value:new THREE.Vector2(2.125,2.190)},lodStrength:{value:1},surfaceContrast:{value:contrast}};
  const material=new THREE.ShaderMaterial({uniforms,vertexShader:vertex,fragmentShader:fragment,depthTest:true,depthWrite:true,transparent:false,side:THREE.DoubleSide});

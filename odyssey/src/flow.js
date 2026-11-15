@@ -19,7 +19,7 @@ export function flowWorlds(){
    a.push(...A);b.push(...B);c.push(...C);params.push(mode,rate,phase,world===2?1:0);weight.push(w);digit.push(R()>.5?1:0);seed.push(R());
   }
   function packet(A,B,C,mode,rate,phase,length=18){
-   for(let j=0;j<length;j++)point(A,B,C,mode,rate,phase-j*.0045,.32+.68*(1-j/length)**2);
+   const count=Math.round(length*2.4);for(let j=0;j<count;j++)point(A,B,C,mode,rate*1.8,phase-j*.0035,.40+.60*(1-j/count)**1.4);
   }
   if(world===0)for(let lane=0;lane<24;lane++)packet([lane/24*TAU,0,0],[0,0,0],[0,0,0],4,.18,lane*.137,18);
   if(world===1){
@@ -72,7 +72,7 @@ export function binaryFlow(data,texture){
    else{float z=mix(-32.,32.,q),a=anchorA.x+z*.12,r=7.+2.*sin(z*.19);p=vec3(r*cos(a)+3.*sin(z*.1),r*sin(a),z);}
    if(flow.w>.5){float turn=time*.12;p.xy=mat2(cos(turn),sin(turn),-sin(turn),cos(turn))*p.xy;}
    vec4 center=modelViewMatrix*vec4(p,1.);
-   float size=.34*length(modelMatrix[0].xyz),projected=size*projectionMatrix[1][1]*viewportHeight/(2.*max(.0001,-center.z));
+   float size=.40*length(modelMatrix[0].xyz),projected=size*projectionMatrix[1][1]*viewportHeight/(2.*max(.0001,-center.z));
    vDensity=min(1.,pow(projected/2.2,2.))*(1.-smoothstep(65.,120.,projected));
    size=max(size,2.2*2.*max(.0001,-center.z)/(projectionMatrix[1][1]*viewportHeight));
    center.xy+=position.xy*size;gl_Position=projectionMatrix*center;

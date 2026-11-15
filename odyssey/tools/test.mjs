@@ -16,7 +16,7 @@ const previousGeometry=execFileSync('git',['show','1252ca823180a84221bac03bcdc55
 const currentGeometry=await readFile('src/geometry.js','utf8');
 const worldsSource=s=>s.split('export function worlds')[1].split('export function creator')[0];
 check('Approved scientific worlds preserved exactly',()=>assert.equal(worldsSource(currentGeometry),worldsSource(previousGeometry)));
-check('Revised duration with preserved final hold',()=>{assert.equal(DURATION,24);assert.equal(playbackTime(28),20.5);assert.equal(playbackTime(31.5)-playbackTime(28),3)});
+check('Revised duration with preserved final hold',()=>{assert.equal(DURATION,16);assert.equal(playbackTime(28),14.2);assert.equal(playbackTime(31.5)-playbackTime(28),1.5)});
 const original=execFileSync('git',['show',BASE+':README.md']);
 check('README is byte-for-byte identical to baseline',()=>assert.deepEqual(execFileSync('git',['show','HEAD:README.md']),original));
 check('README original blob',()=>assert.equal(execFileSync('git',['hash-object','../README.md']).toString().trim(),BLOB));
@@ -25,7 +25,7 @@ check('Verified backup',()=>assert.deepEqual(backup,original));
 function hash(b){return createHash('sha256').update(b).digest('hex')}
 for(let t=0;t<DURATION;t+=.01){const a=cameraAt(t),b=cameraAt(t+.001);assert(a.position.every(Number.isFinite));assert(Math.hypot(...a.position.map((v,i)=>v-b.position[i]))<.02)}
 checks.push({name:'Camera continuity and finite coordinates over the complete revised timeline',pass:true});
-check('Final phrase exact and held for 3 seconds',()=>{assert.equal(stateAt(20.5).name,'Hi, I am Tire');assert.equal(stateAt(23.4).signature,1)});
+check('Final phrase exact and held for 1.5 seconds',()=>{assert.equal(stateAt(14.2).name,'Hi, I am Tire');assert.equal(stateAt(15.6).signature,1)});
 const html=await readFile('.build/odyssey.html');
 const server=createServer((req,res)=>{res.writeHead(200,{'content-type':'text/html'});res.end(html)}).listen(0,'127.0.0.1');
 await new Promise(r=>server.once('listening',r));
@@ -39,16 +39,33 @@ await page.addStyleTag({content:'#ui{visibility:hidden}'});
 const info=await page.evaluate(()=>odyssey.info()),geometry=await page.evaluate(()=>odyssey.geometry());
 check('Eight genuine 3D environments inside the head',()=>{assert.equal(geometry.length,8);for(const g of geometry){for(let a=0;a<3;a++)assert(g.max[a]-g.min[a]>5,g.name+' is flat');assert(g.radius*UNIVERSE_SCALE<.082)}}); 
 check('Software rendering explicitly identified',()=>assert.match(info.renderer,/SwiftShader/i));
-const anatomyAudit=JSON.parse(await readFile('diagnostics/r3-character-build.json','utf8'));
+const anatomyAudit=JSON.parse(await readFile('diagnostics/r4-character-build.json','utf8'));
 check('Anatomical source assets pinned and verified in this cloud run',()=>{assert.equal(anatomyAudit.sourceCommit,process.env.GITHUB_SHA);assert.equal(anatomyAudit.verifiedSources.length,7);assert(anatomyAudit.counts.head>8000);assert(anatomyAudit.counts.body>12000)});
 const surfaces=await page.evaluate(()=>odyssey.surfaces());
 check('Only binary instanced geometry writes visible colour',()=>assert(surfaces.every(s=>!s.colorWrite||s.instanced)));
 check('Depth proxies are invisible and anatomical',()=>assert.equal(surfaces.filter(s=>!s.colorWrite).length,2));
-check('Every approved world has secondary 3D dynamics',()=>{assert.equal(info.flowCounts.length,8);assert(info.flowCounts.every(n=>n>100&&n<1500))});
+check('Every approved world has secondary 3D dynamics',()=>{assert.equal(info.flowCounts.length,8);assert(info.flowCounts.every(n=>n>500&&n<2000))});
 
+check('Three populated activity layers and substantial secondary objects in every world',()=>{
+ assert.equal(info.activityCounts.length,8);assert(info.activityCounts.every(n=>n>5000&&n<25000));
+ assert(info.activityLayers.every(l=>l.length===3&&l.every(n=>n>1000)));
+ assert(info.activityObjects.every(l=>l.every(n=>n>=16)));
+});
+function pixelStats(buffer){
+ const p=PNG.sync.read(buffer),tiles=new Array(12).fill(0);let lit=0;
+ for(let y=0;y<p.height;y++)for(let x=0;x<p.width;x++)if(p.data[(y*p.width+x)*4+1]>20){
+  lit++;tiles[Math.min(2,Math.floor(y/p.height*3))*4+Math.min(3,Math.floor(x/p.width*4))]++;
+ }
+ return {coverage:lit/(p.width*p.height),occupiedTiles:tiles.filter(n=>n>100).length,tiles};
+}
+function changedPixels(a,b){
+ const p=PNG.sync.read(a),q=PNG.sync.read(b);let changed=0;
+ for(let i=1;i<p.data.length;i+=4)if(Math.abs(p.data[i]-q.data[i])>12)changed++;
+ return changed;
+}
 for(const story of [0,.6,1,1.6,2.6,4.6,6.6,8.6,10.6,12.6,14.6,16,17,17.5,18,18.5,19,19.5,20,20.5,21,21.5,22,24,25.8,27,28.5,30.5]){
  const t=playbackTime(story),state=await page.evaluate(t=>odyssey.seek(t),t);
- const filename='r3-frame-'+t.toFixed(2).replace('.','_')+'.png',buffer=await page.locator('canvas').screenshot({path:'diagnostics/'+filename});
+ const filename='r4-frame-'+t.toFixed(2).replace('.','_')+'.png',buffer=await page.locator('canvas').screenshot({path:'diagnostics/'+filename});
  const png=PNG.sync.read(buffer);let lit=0,green=0,white=0;
  for(let i=0;i<png.data.length;i+=4){if(png.data[i+1]>18){lit++;if(png.data[i+1]>png.data[i]&&png.data[i+1]>png.data[i+2])green++;else white++}}
  const coverage=lit/(png.width*png.height);
@@ -56,15 +73,18 @@ for(const story of [0,.6,1,1.6,2.6,4.6,6.6,8.6,10.6,12.6,14.6,16,17,17.5,18,18.5
  shots.push({t,file:filename,coverage,hash:hash(buffer),state});
 }
 const flowComparisons=[];
-for(const story of [1,2.6,4.6,6.6,8.6,10.6,12.6,14.6]){
+for(const [world,story] of [1,2.6,4.6,6.6,8.6,10.6,12.6,14.6].entries()){
  await page.evaluate(t=>odyssey.seek(t),playbackTime(story));
  await page.evaluate(t=>odyssey.flowAt(t),story);
- const before=await page.locator('canvas').screenshot({path:story===12.6?'diagnostics/r3-neural-pulse-a.png':undefined});
- await page.evaluate(t=>odyssey.flowAt(t),story+.24);
- const after=await page.locator('canvas').screenshot({path:story===12.6?'diagnostics/r3-neural-pulse-b.png':undefined});
- flowComparisons.push({story,changed:hash(before)!==hash(after)});
+ const before=await page.locator('canvas').screenshot({path:'diagnostics/r4-world-'+world+'-activity-a.png'});
+ await page.evaluate(t=>odyssey.activityOnlyTime(t),story+.32);
+ const after=await page.locator('canvas').screenshot({path:'diagnostics/r4-world-'+world+'-activity-b.png'});
+ await page.evaluate(()=>odyssey.secondaryVisible(false));
+ const absent=await page.locator('canvas').screenshot({path:'diagnostics/r4-world-'+world+'-base-only.png'});
+ flowComparisons.push({world,story,changed:hash(before)!==hash(after),activityMotionPixels:changedPixels(before,after),secondaryContributionPixels:changedPixels(before,absent),...pixelStats(before)});
 }
-check('Secondary motion changes pixels with camera and primary world frozen in all eight worlds',()=>assert(flowComparisons.every(p=>p.changed)));
+check('Secondary assemblies move perceptibly with primary world and camera frozen in all eight worlds',()=>assert(flowComparisons.every(p=>p.activityMotionPixels>300),JSON.stringify(flowComparisons)));
+check('Every world has substantial visible secondary activity and distributed screen occupancy',()=>assert(flowComparisons.every(p=>p.secondaryContributionPixels>1000&&p.occupiedTiles>=8),JSON.stringify(flowComparisons)));
 const boundary=playbackTime(25);
 await page.evaluate(t=>odyssey.seek(t),boundary-1e-7);
 const preMorph=PNG.sync.read(await page.locator('canvas').screenshot());
@@ -74,36 +94,36 @@ let transitionError=0;
 for(let i=1;i<preMorph.data.length;i+=4)transitionError+=Math.abs(preMorph.data[i]-postMorph.data[i]);
 transitionError/=preMorph.width*preMorph.height;
 check('Creator-to-signature handover preserves glyph appearance without a visible cut',()=>assert(transitionError<.08,'Mean green-channel difference: '+transitionError));
-await page.evaluate(()=>odyssey.seek(17.571428571428573));const a=await page.locator('canvas').screenshot();
-await page.evaluate(()=>odyssey.seek(3));await page.evaluate(()=>odyssey.seek(17.571428571428573));const b=await page.locator('canvas').screenshot();
+await page.evaluate(()=>odyssey.seek(odyssey.creatorTime));const a=await page.locator('canvas').screenshot();
+await page.evaluate(()=>odyssey.seek(3));await page.evaluate(()=>odyssey.seek(odyssey.creatorTime));const b=await page.locator('canvas').screenshot();
 check('Random-access timeline is pixel deterministic',()=>assert.equal(hash(a),hash(b)));
 check('No JavaScript or shader errors',()=>assert.deepEqual(errors,[]));
 check('Invisible creator does not consume draw calls during immersion',()=>assert.equal(info.drawCalls,1));
-check('Glyph and depth passes use at most seven draw calls',()=>assert(shots.every(s=>s.state.calls<=7)));
+check('Glyph and depth passes use at most eight draw calls',()=>assert(shots.every(s=>s.state.calls<=8)));
 await page.evaluate(()=>odyssey.seek(odyssey.creatorTime));
 const orbitHashes=[];
 for(const [name,pos] of [['side',[4,2.8,.2]],['back',[2,2.8,-4]],['front',[-3,2.8,4]]]){
  await page.evaluate(pos=>odyssey.viewFrom(pos,[0,1.35,.4]),pos);
- const image=await page.locator('canvas').screenshot({path:'diagnostics/r3-orbit-'+name+'.png'});orbitHashes.push(hash(image));
+ const image=await page.locator('canvas').screenshot({path:'diagnostics/r4-orbit-'+name+'.png'});orbitHashes.push(hash(image));
 }
 check('Three spatial viewpoints produce distinct rendered images',()=>assert.equal(new Set(orbitHashes).size,3));
 const portraitShots=[];
 for(const [name,pos,target] of [
- ['face-front',[0,info.headCenter[1]-.035,info.headCenter[2]+.78],[0,info.headCenter[1]-.065,info.headCenter[2]+.04]],
- ['face-three-quarter',[.55,info.headCenter[1]+.06,info.headCenter[2]+.76],[0,info.headCenter[1]-.065,info.headCenter[2]+.04]],
- ['face-profile',[.85,info.headCenter[1],info.headCenter[2]+.03],[0,info.headCenter[1]-.065,info.headCenter[2]+.04]],
+ ['face-front',[0,info.headCenter[1]-.035,info.headCenter[2]+.68],[0,info.headCenter[1]-.09,info.headCenter[2]+.04]],
+ ['face-three-quarter',[.42,info.headCenter[1]+.02,info.headCenter[2]+.66],[0,info.headCenter[1]-.09,info.headCenter[2]+.04]],
+ ['face-profile',[.85,info.headCenter[1],info.headCenter[2]+.03],[0,info.headCenter[1]-.09,info.headCenter[2]+.04]],
  ['hands',[.75,1.90,1.05],[0,1.35,.77]]
 ]){
  await page.evaluate(({pos,target})=>odyssey.viewFrom(pos,target),{pos,target});
- const filename='r3-'+name+'.png';
+ const filename='r4-'+name+'.png';
  await page.locator('canvas').screenshot({path:'diagnostics/'+filename});portraitShots.push(filename);
 }
 
 await page.evaluate(()=>odyssey.seek(odyssey.creatorTime));
 const bench=await page.evaluate(async()=>{const samples=[];for(let i=0;i<45;i++){const a=performance.now();odyssey.seek(i*odyssey.explorationDuration/45);const gl=document.querySelector('canvas').getContext('webgl2');gl.readPixels(0,0,1,1,gl.RGBA,gl.UNSIGNED_BYTE,new Uint8Array(4));samples.push(performance.now()-a)}samples.sort((a,b)=>a-b);return {medianMs:samples[22],p95Ms:samples[42],note:'Pixel-readback SwiftShader diagnostic on remote CPU. Not real GPU or display frame rate.'}});
 await page.setViewportSize({width:390,height:844});await page.evaluate(()=>odyssey.seek(odyssey.creatorTime));
-await page.locator('canvas').screenshot({path:'diagnostics/r3-mobile-creator.png'});
-await page.evaluate(()=>odyssey.seek(21.5));const mobileSignature=await page.locator('canvas').screenshot({path:'diagnostics/r3-mobile-signature.png'});
+await page.locator('canvas').screenshot({path:'diagnostics/r4-mobile-creator.png'});
+await page.evaluate(()=>odyssey.seek(14.9));const mobileSignature=await page.locator('canvas').screenshot({path:'diagnostics/r4-mobile-signature.png'});
 const mobilePNG=PNG.sync.read(mobileSignature);let left=mobilePNG.width,right=0;
 for(let y=0;y<mobilePNG.height;y++)for(let x=0;x<mobilePNG.width;x++)if(mobilePNG.data[(y*mobilePNG.width+x)*4+1]>25){left=Math.min(left,x);right=Math.max(right,x)}
 check('Portrait signature has visible horizontal margins',()=>{assert(left>15);assert(right<mobilePNG.width-15)});
@@ -161,7 +181,7 @@ for(const [name,engine] of [['Firefox',firefox],['WebKit',webkit]]){
   await p.goto(url+'/?test=1');await p.waitForFunction(()=>window.odyssey?.ready,{},{timeout:20000});
   await p.addStyleTag({content:'#ui{visibility:hidden}'});
   await p.evaluate(()=>odyssey.seek(odyssey.creatorTime));
-  const screenshot=await p.locator('canvas').screenshot({path:'diagnostics/r3-'+name.toLowerCase()+'-creator.png'});
+  const screenshot=await p.locator('canvas').screenshot({path:'diagnostics/r4-'+name.toLowerCase()+'-creator.png'});
   const data=PNG.sync.read(screenshot);let lit=0;for(let i=1;i<data.data.length;i+=4)if(data.data[i]>20)lit++;
   if(lit<1000||errs.length)throw new Error('Missing geometry or runtime errors: '+errs.join(';'));
   browserCompatibility.push({name,rendered:true,info:await p.evaluate(()=>odyssey.info()),errors:errs});
@@ -169,8 +189,8 @@ for(const [name,engine] of [['Firefox',firefox],['WebKit',webkit]]){
  finally{if(other)await other.close()}
 }
 server.close();
-const report={revision:3,sourceCommit:process.env.GITHUB_SHA,runId:process.env.GITHUB_RUN_ID,environment:'GitHub Actions ubuntu-24.04 standard public runner',rendering:'Chromium / ANGLE SwiftShader software on remote CPU; NO real GPU validation',baseline:BASE,readmeBlob:BLOB,readmeSha256:hash(original),info,geometry,anatomyAudit,flowComparisons,benchmark:bench,transitionError,svgCompatibility,browserCompatibility,checks,failures,shots,portraitShots,limits:['Artistic acceptance requires human review of the diagnostic frames and running program.','Physical GPU not validated. See per-engine software compatibility results.','GitHub README SVG image-context compatibility needs a separate actual GitHub observation.','Mobile composition must be visually inspected.']};
+const report={revision:4,sourceCommit:process.env.GITHUB_SHA,runId:process.env.GITHUB_RUN_ID,environment:'GitHub Actions ubuntu-24.04 standard public runner',rendering:'Chromium / ANGLE SwiftShader software on remote CPU; NO real GPU validation',baseline:BASE,readmeBlob:BLOB,readmeSha256:hash(original),info,geometry,anatomyAudit,flowComparisons,benchmark:bench,transitionError,svgCompatibility,browserCompatibility,checks,failures,shots,portraitShots,limits:['Artistic acceptance requires human review of the diagnostic frames and running program.','Physical GPU not validated. See per-engine software compatibility results.','SVG results cover the declarative compatibility probe only, not embedding the WebGL program.','Mobile composition must be visually inspected.']};
 await writeFile('diagnostics/report.json',JSON.stringify(report,null,2)+'\n');
-await writeFile('diagnostics/README.md','# Rendering diagnostics — review candidate\n\nSource commit: '+process.env.GITHUB_SHA+'\n\nRemote CPU rendering with Chromium / SwiftShader. These images are test evidence, never the animation product.\n\n'+checks.map(c=>'- '+(c.pass?'PASS':'FAIL')+' '+c.name).join('\n')+'\n\n'+shots.map(s=>'## '+s.t.toFixed(2)+' s — '+s.state.name+'\n\n![Diagnostic at '+s.t+' seconds]('+s.file+')\n').join('\n')+'\n## Character study\n\n'+portraitShots.map(f=>'!['+f+']('+f+')').join('\n\n')+'\n\n## Portrait checks\n\n![Creator](r3-mobile-creator.png)\n\n![Signature](r3-mobile-signature.png)\n');
+await writeFile('diagnostics/README.md','# Rendering diagnostics — review candidate\n\nSource commit: '+process.env.GITHUB_SHA+'\n\nRemote CPU rendering with Chromium / SwiftShader. These images are test evidence, never the animation product.\n\n'+checks.map(c=>'- '+(c.pass?'PASS':'FAIL')+' '+c.name).join('\n')+'\n\n'+shots.map(s=>'## '+s.t.toFixed(2)+' s — '+s.state.name+'\n\n![Diagnostic at '+s.t+' seconds]('+s.file+')\n').join('\n')+'\n## Character study\n\n'+portraitShots.map(f=>'!['+f+']('+f+')').join('\n\n')+'\n\n## Portrait checks\n\n![Creator](r4-mobile-creator.png)\n\n![Signature](r4-mobile-signature.png)\n');
 console.log(JSON.stringify({info,benchmark:bench,checks,failures},null,2));
 if(failures.length)process.exitCode=1;

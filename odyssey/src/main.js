@@ -3,6 +3,7 @@ import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import {worlds,creator} from './geometry.js';
 import {depthOccluders} from './character.js';
 import meta from './generated/character-meta.json' with {type:'json'};
+import {activityWorlds,binaryActivity,ACTIVITY_DESCRIPTIONS} from './activity.js';
 import {flowWorlds,binaryFlow,FLOW_DESCRIPTIONS} from './flow.js';
 import {atlas,binaryCloud} from './renderer.js';
 import {cameraAt,stateAt,DURATION,HEAD,UNIVERSE_SCALE,storyTime,CREATOR_TIME,playbackTime} from './timeline.js';
@@ -16,41 +17,47 @@ catch(e){message.textContent='This experience needs WebGL 2. Your browser could 
 renderer.setClearColor(0x000000,1);renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.outputColorSpace=THREE.LinearSRGBColorSpace;
 const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(53,1,.00015,100),texture=atlas();
 const worldData=worlds(),parts=creator(),all=join([
- {...parts.head,glyphScale:.0074/.024,minimum:2.1,gain:1.4/1.7,contrast:1.6},
- {...parts.body,glyphScale:.015/.024,minimum:2.7,gain:1.5/1.7,contrast:1.1},
+ {...parts.head,glyphScale:.0056/.024,minimum:1.9,gain:1.65/1.7,contrast:1,surface:.88,portrait:1},
+ {...parts.body,glyphScale:.0115/.024,minimum:2.3,gain:1.65/1.7,contrast:1,surface:.70,portrait:1},
  {...parts.desk,glyphScale:1,minimum:4.2,gain:1.45/1.7}
 ]);
 const cosmos=binaryCloud(worldData[0],texture,{size:.28,fog:.55,intensity:1.7});
 cosmos.mesh.position.set(...HEAD);cosmos.mesh.scale.setScalar(UNIVERSE_SCALE);cosmos.uniforms.turbulence.value=2;
-const head=binaryCloud(parts.head,texture,{size:.0074,fog:25,intensity:1.4,contrast:1.6});
-const body=binaryCloud(parts.body,texture,{size:.015,fog:25,intensity:1.5,contrast:1.1});
+const head=binaryCloud(parts.head,texture,{size:.0056,fog:25,intensity:1.65,surface:.88,portrait:1});
+const body=binaryCloud(parts.body,texture,{size:.0115,fog:25,intensity:1.65,surface:.70,portrait:1});
 const desk=binaryCloud(parts.desk,texture,{size:.024,fog:25,intensity:1.45});
 const finale=binaryCloud(all,texture,{size:.024,fog:40,intensity:1.7});finale.setTargets(all,signature(all.count));
 const flowData=flowWorlds(),flow=binaryFlow(flowData[0],texture),depth=depthOccluders();
+const activityData=activityWorlds(),activity=binaryActivity(activityData[0],texture);
+activity.mesh.position.set(...HEAD);activity.mesh.scale.setScalar(UNIVERSE_SCALE);
 flow.mesh.position.set(...HEAD);flow.mesh.scale.setScalar(UNIVERSE_SCALE);
 head.uniforms.cutRange.value.set(...meta.cutRange);
-for(const cloud of [cosmos,head,body,desk,finale,flow,...depth])scene.add(cloud.mesh);
+for(const cloud of [cosmos,head,body,desk,finale,flow,activity,...depth])scene.add(cloud.mesh);
 const controls=new OrbitControls(camera,canvas);controls.enabled=false;controls.enableDamping=false;
 controls.addEventListener('change',()=>{if(controls.enabled&&!contextLost)renderer.render(scene,camera)});
 let activeWorld=-1,current=reduced.matches?CREATOR_TIME:0,playing=!reduced.matches&&!test,last=0,contextLost=false;
-function resize(){renderer.setSize(innerWidth,innerHeight,false);camera.aspect=innerWidth/innerHeight;camera.fov=THREE.MathUtils.radToDeg(2*Math.atan(Math.tan(THREE.MathUtils.degToRad(53)/2)*Math.max(1,1.5/camera.aspect)));camera.updateProjectionMatrix();for(const c of [cosmos,head,body,desk,finale,flow])c.uniforms.viewportHeight.value=innerHeight*renderer.getPixelRatio();render(current)}
+function resize(){renderer.setSize(innerWidth,innerHeight,false);camera.aspect=innerWidth/innerHeight;camera.fov=THREE.MathUtils.radToDeg(2*Math.atan(Math.tan(THREE.MathUtils.degToRad(53)/2)*Math.max(1,1.5/camera.aspect)));camera.updateProjectionMatrix();for(const c of [cosmos,head,body,desk,finale,flow,activity])c.uniforms.viewportHeight.value=innerHeight*renderer.getPixelRatio();render(current)}
 function render(t){
  current=Math.max(0,Math.min(DURATION,t));
  const story=storyTime(current),state=stateAt(current),pose=cameraAt(current);
+ camera.fov=THREE.MathUtils.radToDeg(2*Math.atan(Math.tan(THREE.MathUtils.degToRad(pose.fov)/2)*Math.max(1,1.5/camera.aspect)));camera.updateProjectionMatrix();
  camera.position.set(...pose.position);camera.up.set(Math.sin(pose.roll),Math.cos(pose.roll),0);camera.lookAt(...pose.target);camera.updateMatrixWorld();
- if(activeWorld!==state.world){cosmos.setTargets(worldData[state.world],worldData[state.next]);flow.setData(flowData[state.world]);activeWorld=state.world}
+ if(activeWorld!==state.world){cosmos.setTargets(worldData[state.world],worldData[state.next]);flow.setData(flowData[state.world]);activity.setData(activityData[state.world]);activeWorld=state.world}
  cosmos.uniforms.minimumPixels.value=2.3;
  cosmos.uniforms.fogDistance.value=.55*UNIVERSE_SCALE/.008+2*ramp(story,16,19);
- head.uniforms.minimumPixels.value=2.1;body.uniforms.minimumPixels.value=2.7;
+ head.uniforms.minimumPixels.value=1.9;body.uniforms.minimumPixels.value=2.3;
  cosmos.uniforms.intensity.value=1.7+1.5*ramp(story,16,19);
  head.uniforms.cutaway.value=ramp(story,17,18.5)*(1-ramp(story,21.5,23.5));
  cosmos.uniforms.morph.value=state.morph;cosmos.uniforms.time.value=story;
  cosmos.uniforms.opacity.value=(1-ramp(story,24.5,26))*state.fade;
  cosmos.mesh.visible=story<26;
- const local=story/2-state.world,flowEnvelope=story<16?ramp(local,0,.12)*(1-ramp(local,.65,1)):1;
+ const local=story/2-state.world,flowEnvelope=story<16?ramp(local,0,.05)*(1-ramp(local,.82,1)):1;
  flow.uniforms.time.value=story;flow.uniforms.opacity.value=flowEnvelope*cosmos.uniforms.opacity.value;
- flow.uniforms.fogDistance.value=cosmos.uniforms.fogDistance.value;flow.uniforms.intensity.value=1.7;
+ flow.uniforms.fogDistance.value=cosmos.uniforms.fogDistance.value;flow.uniforms.intensity.value=2.0;
  flow.mesh.visible=story<26&&flow.uniforms.opacity.value>0;
+ activity.uniforms.time.value=story;activity.uniforms.opacity.value=flowEnvelope*(1-ramp(story,16,20))*state.fade;
+ activity.uniforms.fogDistance.value=cosmos.uniforms.fogDistance.value;activity.uniforms.intensity.value=1.95;
+ activity.mesh.visible=story<20&&activity.uniforms.opacity.value>0;
  head.uniforms.opacity.value=state.head*state.fade;
  body.uniforms.opacity.value=desk.uniforms.opacity.value=state.body*state.fade;
  for(const c of [head,body,desk])c.mesh.visible=story<25&&c.uniforms.opacity.value>0;
@@ -83,10 +90,12 @@ canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();contextLost=tr
 canvas.addEventListener('webglcontextrestored',()=>{contextLost=false;message.textContent='';render(current)});
 const gl=renderer.getContext(),debug=gl.getExtension('WEBGL_debug_renderer_info');
 window.odyssey={ready:true,seek:render,duration:DURATION,creatorTime:CREATOR_TIME,explorationDuration:playbackTime(16),cameraAt,stateAt,
- flowDescriptions:FLOW_DESCRIPTIONS,
- flowAt:t=>{flow.uniforms.time.value=t;renderer.render(scene,camera)},
+ flowDescriptions:FLOW_DESCRIPTIONS,activityDescriptions:ACTIVITY_DESCRIPTIONS,
+ flowAt:t=>{flow.uniforms.time.value=t;activity.uniforms.time.value=t;renderer.render(scene,camera)},
+ activityOnlyTime:t=>{activity.uniforms.time.value=t;renderer.render(scene,camera)},
+ secondaryVisible:visible=>{flow.mesh.visible=visible;activity.mesh.visible=visible;renderer.render(scene,camera)},
  surfaces:()=>scene.children.filter(o=>o.isMesh).map(o=>({colorWrite:o.material.colorWrite,instanced:!!o.geometry.isInstancedBufferGeometry})),
  viewFrom:(position,target)=>{camera.position.set(...position);camera.lookAt(...target);renderer.render(scene,camera)},
- info:()=>({renderer:debug?gl.getParameter(debug.UNMASKED_RENDERER_WEBGL):gl.getParameter(gl.RENDERER),webgl:gl.getParameter(gl.VERSION),revision:3,flowCounts:flowData.map(d=>d.count),headCenter:HEAD,worldCount:worldData.length,worldPoints:worldData[0].count,headPoints:parts.head.count,bodyPoints:parts.body.count,deskPoints:parts.desk.count,playing,reduced:reduced.matches,current,drawCalls:renderer.info.render.calls}),
+ info:()=>({renderer:debug?gl.getParameter(debug.UNMASKED_RENDERER_WEBGL):gl.getParameter(gl.RENDERER),webgl:gl.getParameter(gl.VERSION),revision:4,flowCounts:flowData.map(d=>d.count),activityCounts:activityData.map(d=>d.count),activityLayers:activityData.map(d=>d.layerCounts),activityObjects:activityData.map(d=>d.objectCounts),headCenter:HEAD,worldCount:worldData.length,worldPoints:worldData[0].count,headPoints:parts.head.count,bodyPoints:parts.body.count,deskPoints:parts.desk.count,playing,reduced:reduced.matches,current,drawCalls:renderer.info.render.calls}),
  geometry:()=>worldData.map(d=>({name:d.name,count:d.count,min:[0,1,2].map(a=>{let m=Infinity;for(let i=a;i<d.p.length;i+=3)m=Math.min(m,d.p[i]);return m}),max:[0,1,2].map(a=>{let m=-Infinity;for(let i=a;i<d.p.length;i+=3)m=Math.max(m,d.p[i]);return m}),radius:d.p.reduce((m,_,i)=>i%3?m:Math.max(m,Math.hypot(d.p[i],d.p[i+1],d.p[i+2])),0)}))};
 resize();syncButton();requestAnimationFrame(tick);
