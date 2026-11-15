@@ -1,6 +1,6 @@
 # Rendering diagnostics — review candidate
 
-Source commit: 367b3066d022ebe6e1a9537de77f794926d4e297
+Source commit: c52314f40d84ccfd91d51afe3699a9a5ece0d238
 
 Remote CPU rendering with Chromium / SwiftShader. These images are test evidence, never the animation product.
 
@@ -10,42 +10,47 @@ Remote CPU rendering with Chromium / SwiftShader. These images are test evidence
 - PASS README original blob
 - PASS Verified backup
 - PASS Camera continuity and finite coordinates over the complete revised timeline
-- PASS Final phrase exact and held for 3.5 seconds
+- PASS Final phrase exact and held for 3 seconds
 - PASS Eight genuine 3D environments inside the head
 - PASS Software rendering explicitly identified
+- PASS Anatomical source assets pinned and verified in this cloud run
+- PASS Only binary instanced geometry writes visible colour
+- PASS Depth proxies are invisible and anatomical
+- PASS Every approved world has secondary 3D dynamics
 - PASS Frame 0 contains monochrome rendered geometry
-- PASS Frame 0.5142857142857142 contains monochrome rendered geometry
-- PASS Frame 0.8571428571428571 contains monochrome rendered geometry
-- PASS Frame 1.3714285714285717 contains monochrome rendered geometry
-- PASS Frame 2.2285714285714286 contains monochrome rendered geometry
-- PASS Frame 3.9428571428571426 contains monochrome rendered geometry
-- PASS Frame 5.657142857142857 contains monochrome rendered geometry
-- PASS Frame 7.371428571428571 contains monochrome rendered geometry
-- PASS Frame 9.085714285714285 contains monochrome rendered geometry
-- PASS Frame 10.799999999999999 contains monochrome rendered geometry
-- PASS Frame 12.514285714285714 contains monochrome rendered geometry
-- PASS Frame 13.714285714285714 contains monochrome rendered geometry
-- PASS Frame 14.571428571428571 contains monochrome rendered geometry
-- PASS Frame 15 contains monochrome rendered geometry
-- PASS Frame 15.428571428571429 contains monochrome rendered geometry
-- PASS Frame 15.857142857142858 contains monochrome rendered geometry
-- PASS Frame 16.285714285714285 contains monochrome rendered geometry
-- PASS Frame 16.714285714285715 contains monochrome rendered geometry
-- PASS Frame 17.142857142857142 contains monochrome rendered geometry
+- PASS Frame 0.4392857142857142 contains monochrome rendered geometry
+- PASS Frame 0.7321428571428571 contains monochrome rendered geometry
+- PASS Frame 1.1714285714285715 contains monochrome rendered geometry
+- PASS Frame 1.9035714285714287 contains monochrome rendered geometry
+- PASS Frame 3.367857142857143 contains monochrome rendered geometry
+- PASS Frame 4.832142857142856 contains monochrome rendered geometry
+- PASS Frame 6.296428571428571 contains monochrome rendered geometry
+- PASS Frame 7.760714285714285 contains monochrome rendered geometry
+- PASS Frame 9.225 contains monochrome rendered geometry
+- PASS Frame 10.689285714285715 contains monochrome rendered geometry
+- PASS Frame 11.714285714285714 contains monochrome rendered geometry
+- PASS Frame 12.446428571428571 contains monochrome rendered geometry
+- PASS Frame 12.8125 contains monochrome rendered geometry
+- PASS Frame 13.178571428571429 contains monochrome rendered geometry
+- PASS Frame 13.544642857142858 contains monochrome rendered geometry
+- PASS Frame 13.910714285714286 contains monochrome rendered geometry
+- PASS Frame 14.276785714285714 contains monochrome rendered geometry
+- PASS Frame 14.642857142857142 contains monochrome rendered geometry
+- PASS Frame 15.008928571428571 contains monochrome rendered geometry
+- PASS Frame 15.375 contains monochrome rendered geometry
+- PASS Frame 15.741071428571429 contains monochrome rendered geometry
+- PASS Frame 16.107142857142858 contains monochrome rendered geometry
 - PASS Frame 17.571428571428573 contains monochrome rendered geometry
-- PASS Frame 18 contains monochrome rendered geometry
-- PASS Frame 18.428571428571427 contains monochrome rendered geometry
-- PASS Frame 18.857142857142858 contains monochrome rendered geometry
-- PASS Frame 20.571428571428573 contains monochrome rendered geometry
-- PASS Frame 22.114285714285717 contains monochrome rendered geometry
-- PASS Frame 23.142857142857142 contains monochrome rendered geometry
-- PASS Frame 24.5 contains monochrome rendered geometry
-- PASS Frame 26.5 contains monochrome rendered geometry
-- PASS Creator-to-signature handover preserves glyph appearance without a visible cut
+- PASS Frame 18.889285714285712 contains monochrome rendered geometry
+- PASS Frame 19.767857142857142 contains monochrome rendered geometry
+- PASS Frame 20.928571428571427 contains monochrome rendered geometry
+- PASS Frame 22.642857142857142 contains monochrome rendered geometry
+- PASS Secondary motion changes pixels with camera and primary world frozen in all eight worlds
+- FAIL Creator-to-signature handover preserves glyph appearance without a visible cut
 - PASS Random-access timeline is pixel deterministic
 - PASS No JavaScript or shader errors
 - PASS Invisible creator does not consume draw calls during immersion
-- PASS Instanced rendering uses at most five draw calls
+- PASS Glyph and depth passes use at most seven draw calls
 - PASS Three spatial viewpoints produce distinct rendered images
 - PASS Portrait signature has visible horizontal margins
 - PASS Reduced motion starts paused on creator, no automatic motion
@@ -58,128 +63,128 @@ Remote CPU rendering with Chromium / SwiftShader. These images are test evidence
 
 ## 0.00 s — Immersion
 
-![Diagnostic at 0 seconds](r2-frame-0_00.png)
+![Diagnostic at 0 seconds](r3-frame-0_00.png)
 
-## 0.51 s — Immersion
+## 0.44 s — Immersion
 
-![Diagnostic at 0.5142857142857142 seconds](r2-frame-0_51.png)
+![Diagnostic at 0.4392857142857142 seconds](r3-frame-0_44.png)
 
-## 0.86 s — Immersion
+## 0.73 s — Immersion
 
-![Diagnostic at 0.8571428571428571 seconds](r2-frame-0_86.png)
+![Diagnostic at 0.7321428571428571 seconds](r3-frame-0_73.png)
 
-## 1.37 s — Immersion
+## 1.17 s — Immersion
 
-![Diagnostic at 1.3714285714285717 seconds](r2-frame-1_37.png)
+![Diagnostic at 1.1714285714285715 seconds](r3-frame-1_17.png)
 
-## 2.23 s — Programming
+## 1.90 s — Programming
 
-![Diagnostic at 2.2285714285714286 seconds](r2-frame-2_23.png)
+![Diagnostic at 1.9035714285714287 seconds](r3-frame-1_90.png)
 
-## 3.94 s — Physics
+## 3.37 s — Physics
 
-![Diagnostic at 3.9428571428571426 seconds](r2-frame-3_94.png)
+![Diagnostic at 3.367857142857143 seconds](r3-frame-3_37.png)
 
-## 5.66 s — Chemistry
+## 4.83 s — Chemistry
 
-![Diagnostic at 5.657142857142857 seconds](r2-frame-5_66.png)
+![Diagnostic at 4.832142857142856 seconds](r3-frame-4_83.png)
 
-## 7.37 s — Mathematics
+## 6.30 s — Mathematics
 
-![Diagnostic at 7.371428571428571 seconds](r2-frame-7_37.png)
+![Diagnostic at 6.296428571428571 seconds](r3-frame-6_30.png)
 
-## 9.09 s — Astronomy
+## 7.76 s — Astronomy
 
-![Diagnostic at 9.085714285714285 seconds](r2-frame-9_09.png)
+![Diagnostic at 7.760714285714285 seconds](r3-frame-7_76.png)
 
-## 10.80 s — Intelligence
+## 9.22 s — Intelligence
 
-![Diagnostic at 10.799999999999999 seconds](r2-frame-10_80.png)
+![Diagnostic at 9.225 seconds](r3-frame-9_22.png)
 
-## 12.51 s — Engineering
+## 10.69 s — Engineering
 
-![Diagnostic at 12.514285714285714 seconds](r2-frame-12_51.png)
+![Diagnostic at 10.689285714285715 seconds](r3-frame-10_69.png)
 
-## 13.71 s — The mind
+## 11.71 s — The mind
 
-![Diagnostic at 13.714285714285714 seconds](r2-frame-13_71.png)
+![Diagnostic at 11.714285714285714 seconds](r3-frame-11_71.png)
 
-## 14.57 s — The mind
+## 12.45 s — The mind
 
-![Diagnostic at 14.571428571428571 seconds](r2-frame-14_57.png)
+![Diagnostic at 12.446428571428571 seconds](r3-frame-12_45.png)
 
-## 15.00 s — The mind
+## 12.81 s — The mind
 
-![Diagnostic at 15 seconds](r2-frame-15_00.png)
+![Diagnostic at 12.8125 seconds](r3-frame-12_81.png)
 
-## 15.43 s — The mind
+## 13.18 s — The mind
 
-![Diagnostic at 15.428571428571429 seconds](r2-frame-15_43.png)
+![Diagnostic at 13.178571428571429 seconds](r3-frame-13_18.png)
 
-## 15.86 s — The mind
+## 13.54 s — The mind
 
-![Diagnostic at 15.857142857142858 seconds](r2-frame-15_86.png)
+![Diagnostic at 13.544642857142858 seconds](r3-frame-13_54.png)
 
-## 16.29 s — The mind
+## 13.91 s — The mind
 
-![Diagnostic at 16.285714285714285 seconds](r2-frame-16_29.png)
+![Diagnostic at 13.910714285714286 seconds](r3-frame-13_91.png)
 
-## 16.71 s — The mind
+## 14.28 s — The mind
 
-![Diagnostic at 16.714285714285715 seconds](r2-frame-16_71.png)
+![Diagnostic at 14.276785714285714 seconds](r3-frame-14_28.png)
 
-## 17.14 s — The mind
+## 14.64 s — The mind
 
-![Diagnostic at 17.142857142857142 seconds](r2-frame-17_14.png)
+![Diagnostic at 14.642857142857142 seconds](r3-frame-14_64.png)
 
-## 17.57 s — The mind
+## 15.01 s — The mind
 
-![Diagnostic at 17.571428571428573 seconds](r2-frame-17_57.png)
+![Diagnostic at 15.008928571428571 seconds](r3-frame-15_01.png)
 
-## 18.00 s — The mind
+## 15.38 s — The mind
 
-![Diagnostic at 18 seconds](r2-frame-18_00.png)
+![Diagnostic at 15.375 seconds](r3-frame-15_38.png)
 
-## 18.43 s — The mind
+## 15.74 s — The mind
 
-![Diagnostic at 18.428571428571427 seconds](r2-frame-18_43.png)
+![Diagnostic at 15.741071428571429 seconds](r3-frame-15_74.png)
 
-## 18.86 s — The creator
+## 16.11 s — The creator
 
-![Diagnostic at 18.857142857142858 seconds](r2-frame-18_86.png)
+![Diagnostic at 16.107142857142858 seconds](r3-frame-16_11.png)
 
-## 20.57 s — The creator
+## 17.57 s — The creator
 
-![Diagnostic at 20.571428571428573 seconds](r2-frame-20_57.png)
+![Diagnostic at 17.571428571428573 seconds](r3-frame-17_57.png)
 
-## 22.11 s — Hi, I am Tire
+## 18.89 s — Hi, I am Tire
 
-![Diagnostic at 22.114285714285717 seconds](r2-frame-22_11.png)
+![Diagnostic at 18.889285714285712 seconds](r3-frame-18_89.png)
 
-## 23.14 s — Hi, I am Tire
+## 19.77 s — Hi, I am Tire
 
-![Diagnostic at 23.142857142857142 seconds](r2-frame-23_14.png)
+![Diagnostic at 19.767857142857142 seconds](r3-frame-19_77.png)
 
-## 24.50 s — Hi, I am Tire
+## 20.93 s — Hi, I am Tire
 
-![Diagnostic at 24.5 seconds](r2-frame-24_50.png)
+![Diagnostic at 20.928571428571427 seconds](r3-frame-20_93.png)
 
-## 26.50 s — Hi, I am Tire
+## 22.64 s — Hi, I am Tire
 
-![Diagnostic at 26.5 seconds](r2-frame-26_50.png)
+![Diagnostic at 22.642857142857142 seconds](r3-frame-22_64.png)
 
 ## Character study
 
-![r2-face-front.png](r2-face-front.png)
+![r3-face-front.png](r3-face-front.png)
 
-![r2-face-three-quarter.png](r2-face-three-quarter.png)
+![r3-face-three-quarter.png](r3-face-three-quarter.png)
 
-![r2-face-profile.png](r2-face-profile.png)
+![r3-face-profile.png](r3-face-profile.png)
 
-![r2-hands.png](r2-hands.png)
+![r3-hands.png](r3-hands.png)
 
 ## Portrait checks
 
-![Creator](r2-mobile-creator.png)
+![Creator](r3-mobile-creator.png)
 
-![Signature](r2-mobile-signature.png)
+![Signature](r3-mobile-signature.png)

@@ -1,0 +1,192 @@
+{
+  "sourceCommit": "c52314f40d84ccfd91d51afe3699a9a5ece0d238",
+  "upstream": {
+    "repository": "makehumancommunity/makehuman",
+    "commit": "a8bc2d54ff0ac92e78ff71431b1023eda42bf482",
+    "license": "CC0-1.0 (graphical assets only)",
+    "files": [
+      {
+        "path": "makehuman/data/3dobjs/base.obj",
+        "gitBlob": "d26635e9326e3cca30778fd7b9c00062b03cce09",
+        "size": 1749303
+      },
+      {
+        "path": "makehuman/data/targets/macrodetails/african-male-young.target",
+        "gitBlob": "dd5743e48700267d76596f575bf17b4b5cc3b3e0",
+        "size": 406170
+      },
+      {
+        "path": "makehuman/data/targets/head/head-square.target",
+        "gitBlob": "8d156ed42db13219844e01bf4ab3185d9205befa",
+        "size": 12618
+      },
+      {
+        "path": "makehuman/data/rigs/default.mhskel",
+        "gitBlob": "b02cbecae00143856410d7561adf006d83bf9b3e",
+        "size": 117790
+      },
+      {
+        "path": "makehuman/data/rigs/default_weights.mhw",
+        "gitBlob": "66185806afacf87749be8e5cf6dbf66496b2a6b0",
+        "size": 897521
+      },
+      {
+        "path": "LICENSE.ASSETS.md",
+        "gitBlob": "f3ede1fc3318f8d794e2cb51924186c62f02f71a",
+        "size": 6962
+      },
+      {
+        "path": "LICENSE.md",
+        "gitBlob": "5d1a49d31ebdaa46b06c52eae2c005c678a63ffa",
+        "size": 3598
+      }
+    ]
+  },
+  "verifiedSources": [
+    {
+      "path": "makehuman/data/3dobjs/base.obj",
+      "gitBlob": "d26635e9326e3cca30778fd7b9c00062b03cce09",
+      "size": 1749303,
+      "sha256": "8e761e6624b8f54536409135d1636da63b32486a90d4897f84e121d144f6fb4c"
+    },
+    {
+      "path": "makehuman/data/targets/macrodetails/african-male-young.target",
+      "gitBlob": "dd5743e48700267d76596f575bf17b4b5cc3b3e0",
+      "size": 406170,
+      "sha256": "894abc1fbb3d28543a51fef16f89d5d4bdf9aa2e1534413339811a3d47818b7d"
+    },
+    {
+      "path": "makehuman/data/targets/head/head-square.target",
+      "gitBlob": "8d156ed42db13219844e01bf4ab3185d9205befa",
+      "size": 12618,
+      "sha256": "001d0d135d964daf4ad99ba46a0f77c5bc2378f04e53c2b5a20242ab19cbf265"
+    },
+    {
+      "path": "makehuman/data/rigs/default.mhskel",
+      "gitBlob": "b02cbecae00143856410d7561adf006d83bf9b3e",
+      "size": 117790,
+      "sha256": "99f179bce0aa850b45d4191a1d0d234c5851f881c057439470ded3bddf729a24"
+    },
+    {
+      "path": "makehuman/data/rigs/default_weights.mhw",
+      "gitBlob": "66185806afacf87749be8e5cf6dbf66496b2a6b0",
+      "size": 897521,
+      "sha256": "0f3641d651ae3d00ad6b4ccee43142edb109d3bd909d27d9e4139ef1beed8625"
+    },
+    {
+      "path": "LICENSE.ASSETS.md",
+      "gitBlob": "f3ede1fc3318f8d794e2cb51924186c62f02f71a",
+      "size": 6962,
+      "sha256": "f6089cba01cb570a24712b41ab8a586ccd3cc5ef53dc266ca50b95c288956d2c"
+    },
+    {
+      "path": "LICENSE.md",
+      "gitBlob": "5d1a49d31ebdaa46b06c52eae2c005c678a63ffa",
+      "size": 3598,
+      "sha256": "edd99571ca62698f78c943fd4fffb159a413c315fa0d4819d3cec5cadaf8b4f1"
+    }
+  ],
+  "pose": {
+    "L": {
+      "shoulder": [
+        0.292875,
+        1.7904787484492972,
+        0.01137339273916777
+      ],
+      "elbow": [
+        0.38728241070719194,
+        1.4212625618238919,
+        0.1182385308123684
+      ],
+      "wrist": [
+        0.225,
+        1.371,
+        0.525
+      ],
+      "hip": [
+        0.1707975,
+        1.071495,
+        -0.06154499999999999
+      ],
+      "knee": [
+        0.21004954387384053,
+        0.8792486294096251,
+        0.5430235895676906
+      ],
+      "ankle": [
+        0.255,
+        0.163,
+        0.515
+      ]
+    },
+    "R": {
+      "shoulder": [
+        -0.292875,
+        1.7904787484492972,
+        0.01137339273916777
+      ],
+      "elbow": [
+        -0.38728241070719194,
+        1.4212625618238919,
+        0.1182385308123684
+      ],
+      "wrist": [
+        -0.225,
+        1.371,
+        0.525
+      ],
+      "hip": [
+        -0.1707975,
+        1.071495,
+        -0.06154499999999999
+      ],
+      "knee": [
+        -0.21004954387384053,
+        0.8792486294096251,
+        0.5430235895676906
+      ],
+      "ankle": [
+        -0.255,
+        0.163,
+        0.515
+      ]
+    }
+  },
+  "headCenter": [
+    0.0,
+    2.236584227646061,
+    0.07717522106368835
+  ],
+  "counts": {
+    "head": 21720,
+    "body": 35500,
+    "hairCoils": 385
+  },
+  "bounds": {
+    "head": [
+      [
+        -0.14282762318443323,
+        1.9262905864591655,
+        -0.056694783373379166
+      ],
+      [
+        0.14297309093884186,
+        2.339281197866535,
+        0.2624166231262744
+      ]
+    ],
+    "body": [
+      [
+        -0.4704456050414024,
+        0.021709951951790932,
+        -0.22023475101188536
+      ],
+      [
+        0.4710094188074051,
+        1.966049733455311,
+        0.8493374659125145
+      ]
+    ]
+  },
+  "pipeline": "Pinned CC0 anatomical topology and morph targets; original IK/skinning, clothing, Catmull-Clark and spatial sampling on remote CPU. Depth-only meshes never write colour."
+}
