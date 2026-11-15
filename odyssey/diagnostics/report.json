@@ -1,7 +1,7 @@
 {
   "revision": 4,
-  "sourceCommit": "81fed245b352a3f79ec4ae47e51b97e89ad07545",
-  "runId": "43723451348",
+  "sourceCommit": "008983788dde5a3e736e8825b43718fbb612157f",
+  "runId": "43724188517",
   "environment": "GitHub Actions ubuntu-24.04 standard public runner",
   "rendering": "Chromium / ANGLE SwiftShader software on remote CPU; NO real GPU validation",
   "baseline": "0f00154f3651c7bed8cf8660780bb3c1750ed9bc",
@@ -30,6 +30,16 @@
       12798,
       16461,
       19068
+    ],
+    "activityBounds": [
+      35.405432911608834,
+      32.83413581352068,
+      30.923519753988707,
+      31.12542616724271,
+      31.729724901089586,
+      30.53379865442718,
+      30.44663578796048,
+      29.66832363394986
     ],
     "activityLayers": [
       [
@@ -253,7 +263,7 @@
     }
   ],
   "anatomyAudit": {
-    "sourceCommit": "81fed245b352a3f79ec4ae47e51b97e89ad07545",
+    "sourceCommit": "008983788dde5a3e736e8825b43718fbb612157f",
     "upstream": {
       "repository": "makehumancommunity/makehuman",
       "commit": "a8bc2d54ff0ac92e78ff71431b1023eda42bf482",
@@ -686,8 +696,8 @@
     }
   ],
   "benchmark": {
-    "medianMs": 286.80000000001746,
-    "p95Ms": 346.79999999998836,
+    "medianMs": 295.19999999998254,
+    "p95Ms": 346.3999999999942,
     "note": "Pixel-readback SwiftShader diagnostic on remote CPU. Not real GPU or display frame rate."
   },
   "transitionError": 0,
@@ -697,8 +707,8 @@
     "src": "/Tire-C/Tire-C/raw/work/binary-mind-odyssey/odyssey/compatibility/probe.svg",
     "context": "Actual GitHub rendered Markdown image in remote Chromium",
     "hashes": [
-      "a47173df5cd63900b85af420e32d9222dd1ae7037bd61ad3005611e4ba4ad6af",
-      "3e98a6321aa7906295025ddb81b693fea6670442c5bbb6bdd446e433dad17fbc"
+      "750d9c266530446461dc653244218e9208ec73a74f489a8b10879ae4e1f19da8",
+      "5d058b4c48fdf6835145dd9fd71d8a247f1f409b9ae6876082550666175dfb5d"
     ]
   },
   "browserCompatibility": [
@@ -728,6 +738,16 @@
           12798,
           16461,
           19068
+        ],
+        "activityBounds": [
+          35.405432911608834,
+          32.83413581352068,
+          30.923519753988707,
+          31.12542616724271,
+          31.729724901089586,
+          30.53379865442718,
+          30.44663578796048,
+          29.66832363394986
         ],
         "activityLayers": [
           [
@@ -856,6 +876,16 @@
           12798,
           16461,
           19068
+        ],
+        "activityBounds": [
+          35.405432911608834,
+          32.83413581352068,
+          30.923519753988707,
+          31.12542616724271,
+          31.729724901089586,
+          30.53379865442718,
+          30.44663578796048,
+          29.66832363394986
         ],
         "activityLayers": [
           [
@@ -1014,7 +1044,8 @@
     },
     {
       "name": "Three populated activity layers and substantial secondary objects in every world",
-      "pass": true
+      "pass": false,
+      "error": "Secondary structures leave the cranial universe"
     },
     {
       "name": "Frame 0 contains monochrome rendered geometry",
@@ -1193,7 +1224,9 @@
       "pass": true
     }
   ],
-  "failures": [],
+  "failures": [
+    "Three populated activity layers and substantial secondary objects in every world: Secondary structures leave the cranial universe"
+  ],
   "shots": [
     {
       "t": 0,
@@ -1594,8 +1627,8 @@
     {
       "t": 9.233333333333334,
       "file": "r4-frame-9_23.png",
-      "coverage": 0.20289930555555555,
-      "hash": "f0af757bd1277ac5b656c1cdff1f5a8ea63dd74f42ee0f458d5dd7dc319a9f95",
+      "coverage": 0.198974609375,
+      "hash": "736eb72fe31c072eeb7d320f618588adeac351714060462d53ebb2efd5319792",
       "state": {
         "t": 9.233333333333334,
         "world": 7,
@@ -1609,8 +1642,8 @@
         "camera": {
           "position": [
             0.020092592592592592,
-            2.2408590194057645,
-            0.1283934876602081
+            2.2344701305168755,
+            0.12981324074662787
           ],
           "target": [
             0,
@@ -1627,8 +1660,8 @@
     {
       "t": 9.450000000000001,
       "file": "r4-frame-9_45.png",
-      "coverage": 0.16601671006944443,
-      "hash": "e281650bc58a47dd0271ea2d2df97e0f8d0668c0afb37fc65df86a343defadad",
+      "coverage": 0.16332682291666667,
+      "hash": "e9018197eef77b3717e59e2c24bf428fdf3052a069de16edfa9b1936b82073b7",
       "state": {
         "t": 9.450000000000001,
         "world": 7,
@@ -1642,8 +1675,8 @@
         "camera": {
           "position": [
             0.035601562499999996,
-            2.2398522967977397,
-            0.162159508107739
+            2.2212194842977397,
+            0.16630013310773897
           ],
           "target": [
             0,
@@ -1660,8 +1693,8 @@
     {
       "t": 9.666666666666668,
       "file": "r4-frame-9_67.png",
-      "coverage": 0.13069986979166667,
-      "hash": "d1720be1c372a0b8a6c3c1c27778a6ab8a10f362edaf5f2d5bbff7f17707eb5a",
+      "coverage": 0.128544921875,
+      "hash": "fc479aa4b2d0cb5ddbb657f52d32a473654b6f0f9ffa69bab95e69159ae6379e",
       "state": {
         "t": 9.666666666666668,
         "world": 7,
@@ -1675,8 +1708,8 @@
         "camera": {
           "position": [
             0.059851851851851844,
-            2.2382781552082336,
-            0.2149570679071217
+            2.2005003774304557,
+            0.22335212963551676
           ],
           "target": [
             0,
@@ -1693,8 +1726,8 @@
     {
       "t": 9.883333333333335,
       "file": "r4-frame-9_88.png",
-      "coverage": 0.15233289930555555,
-      "hash": "55ae30ca82f8f6de4f54c52726c599b86556dd6709e5da684c327665739aeb9f",
+      "coverage": 0.19100694444444444,
+      "hash": "e48ad1f6287a1801eb156c288f91ca406b4890ad4e062c4584a6aa0b2357cdf7",
       "state": {
         "t": 9.883333333333335,
         "world": 7,
@@ -1708,8 +1741,8 @@
         "camera": {
           "position": [
             0.09102922453703703,
-            2.2362543608409498,
-            0.2828362249287267
+            2.173862867785394,
+            0.29670100116329456
           ],
           "target": [
             0,
@@ -1726,8 +1759,8 @@
     {
       "t": 10.100000000000001,
       "file": "r4-frame-10_10.png",
-      "coverage": 0.11073567708333333,
-      "hash": "b2679648f88d404865bd6e9f1b2b812f9ce33e11d520887e0801503bb6f82ca8",
+      "coverage": 0.11495985243055555,
+      "hash": "77d3e091d9cfcdaae82877a1986762b4cacb150d0c211e01dfc42f441d04507d",
       "state": {
         "t": 10.100000000000001,
         "world": 7,
@@ -1741,8 +1774,8 @@
         "camera": {
           "position": [
             0.126,
-            2.2339843280477396,
-            0.358974351857739
+            2.1439843280477398,
+            0.378974351857739
           ],
           "target": [
             0,
@@ -1759,8 +1792,8 @@
     {
       "t": 10.316666666666666,
       "file": "r4-frame-10_32.png",
-      "coverage": 0.07320095486111111,
-      "hash": "87b3fc00a666c47738d1bd75a46066c774caf5731bcece12000ed74e9a8c29e9",
+      "coverage": 0.07295030381944445,
+      "hash": "68394a67a4f838c3963547301920834c9acfdf58fe330202cea963760fece46a",
       "state": {
         "t": 10.316666666666666,
         "world": 7,
@@ -1774,8 +1807,8 @@
         "camera": {
           "position": [
             0.16097077546296298,
-            2.23171429525453,
-            0.4351124787867514
+            2.1141057883100856,
+            0.46124770255218345
           ],
           "target": [
             0,
@@ -1792,8 +1825,8 @@
     {
       "t": 10.533333333333333,
       "file": "r4-frame-10_53.png",
-      "coverage": 0.04331271701388889,
-      "hash": "30d1c8245af5f7116c51668b05e6493aafe36dc3b71cb8e37221572155873afc",
+      "coverage": 0.041422526041666664,
+      "hash": "f1dc4dbaeb78abd357cd31dd9ec935e46c4e77390b664cf139d029f7cbba64fe",
       "state": {
         "t": 10.533333333333333,
         "world": 7,
@@ -1807,8 +1840,8 @@
         "camera": {
           "position": [
             0.19214814814814815,
-            2.229690500887246,
-            0.5029916358083564
+            2.087468278665024,
+            0.5345965740799612
           ],
           "target": [
             0,
@@ -1825,8 +1858,8 @@
     {
       "t": 10.75,
       "file": "r4-frame-10_75.png",
-      "coverage": 0.03638129340277778,
-      "hash": "90a0e1d962150afaee845eb34845696b74daf9a983b7e00ccf63a19f3f81aa88",
+      "coverage": 0.036468098958333334,
+      "hash": "961ef986e982a30b348ac76820ac2bc07983dc091cf0123123eb65398debbc86",
       "state": {
         "t": 10.75,
         "world": 7,
@@ -1840,8 +1873,8 @@
         "camera": {
           "position": [
             0.21639843749999998,
-            2.22811635929774,
-            0.555789195607739
+            2.0667491717977398,
+            0.591648570607739
           ],
           "target": [
             0,
@@ -1858,8 +1891,8 @@
     {
       "t": 10.966666666666667,
       "file": "r4-frame-10_97.png",
-      "coverage": 0.03643337673611111,
-      "hash": "4e463c2b217c95457d8e8f0cdb191fec9428527f286b693e642f1b9c8cdf3f52",
+      "coverage": 0.03760416666666667,
+      "hash": "e724d6ca687ff4a8ec98ea2c713ea1e08ab113a770b4ed47b922c9800b93d7ea",
       "state": {
         "t": 10.966666666666667,
         "world": 7,
@@ -1873,8 +1906,8 @@
         "camera": {
           "position": [
             0.23190740740740737,
-            2.227109636689715,
-            0.5895552160552698
+            2.053498525578604,
+            0.62813546296885
           ],
           "target": [
             0,
@@ -1891,8 +1924,8 @@
     {
       "t": 11.183333333333334,
       "file": "r4-frame-11_18.png",
-      "coverage": 0.03619466145833333,
-      "hash": "4ba204f9f7777e68457e4a524952703144da05dcb8366efcc42922671c5460bc",
+      "coverage": 0.03730685763888889,
+      "hash": "063b5782b026cd8a38a8daa6cc93e3c5e41c8100f8192d0cf00ddceb8a5d1e37",
       "state": {
         "t": 11.183333333333334,
         "world": 7,
@@ -1906,8 +1939,8 @@
         "camera": {
           "position": [
             0.2388399884259261,
-            2.2266596270446537,
-            0.6046487827990975
+            2.047575425655764,
+            0.6444452719966283
           ],
           "target": [
             0,
@@ -1924,8 +1957,8 @@
     {
       "t": 11.4,
       "file": "r4-frame-11_40.png",
-      "coverage": 0.03718098958333333,
-      "hash": "3afea35f65a84983abb0aadb363a8f40993da18b9bd8e27ecc4f815c2c1a51ef",
+      "coverage": 0.037266710069444445,
+      "hash": "cfda81f9944d8680d00689539c159e6deee406172f4f05aa1cbd28201fb5d9bc",
       "state": {
         "t": 11.4,
         "world": 7,
@@ -1939,8 +1972,8 @@
         "camera": {
           "position": [
             0.24,
-            2.22658432804774,
-            0.607174351857739
+            2.04658432804774,
+            0.647174351857739
           ],
           "target": [
             0,
@@ -1957,8 +1990,8 @@
     {
       "t": 12.6,
       "file": "r4-frame-12_60.png",
-      "coverage": 0.05405381944444444,
-      "hash": "ecdadd4e6247398e2503479cffdf3936acbc767a71b3391105268d73c228c760",
+      "coverage": 0.05413302951388889,
+      "hash": "271202320cecf55af9c42437bf11abdd79a5a23e53908b5c4848538221db2d4e",
       "state": {
         "t": 12.6,
         "world": 7,
@@ -1972,8 +2005,8 @@
         "camera": {
           "position": [
             1.828148148148148,
-            2.403110291071748,
-            2.695332888661501
+            2.3653325132939704,
+            2.703727950389896
           ],
           "target": [
             0,
@@ -1990,8 +2023,8 @@
     {
       "t": 13.466666666666667,
       "file": "r4-frame-13_47.png",
-      "coverage": 0.048499348958333334,
-      "hash": "23e1a65819a634a9f87bb25598e2059eb5b0f0d783e3610f5828919a2fee5061",
+      "coverage": 0.04887478298611111,
+      "hash": "579a19b14ec96aafb33b7f66b50dfd4abef6600d08c5cd6292e28fc81e413d7e",
       "state": {
         "t": 13.466666666666667,
         "world": 7,
@@ -2023,8 +2056,8 @@
     {
       "t": 13.866666666666665,
       "file": "r4-frame-13_87.png",
-      "coverage": 0.033950737847222225,
-      "hash": "f800d59eca6506485194c26c33c09c8311386902d3923a949da79bc339e6602e",
+      "coverage": 0.03074652777777778,
+      "hash": "2f7dfe0a2d727728f3ea8c61613933fd054c1fda7fd5f7f5471857eb64808fbc",
       "state": {
         "t": 13.866666666666665,
         "world": 7,
