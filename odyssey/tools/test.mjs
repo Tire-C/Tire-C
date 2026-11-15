@@ -33,7 +33,8 @@ const url='http://127.0.0.1:'+server.address().port;
 const browser=await chromium.launch({headless:true,args:['--use-angle=swiftshader','--enable-unsafe-swiftshader','--disable-dev-shm-usage']});
 const page=await browser.newPage({viewport:{width:1280,height:720},deviceScaleFactor:1});
 const errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
-await page.goto(url+'/?test=1');await page.waitForFunction(()=>window.odyssey?.ready);
+await page.goto(url+'/?test=1');
+try{await page.waitForFunction(()=>window.odyssey?.ready)}catch(e){console.error('STARTUP ERRORS',JSON.stringify(errors));throw e}
 await page.addStyleTag({content:'#ui{visibility:hidden}'});
 const info=await page.evaluate(()=>odyssey.info()),geometry=await page.evaluate(()=>odyssey.geometry());
 check('Eight genuine 3D environments inside the head',()=>{assert.equal(geometry.length,8);for(const g of geometry){for(let a=0;a<3;a++)assert(g.max[a]-g.min[a]>5,g.name+' is flat');assert(g.radius*UNIVERSE_SCALE<.082)}}); 

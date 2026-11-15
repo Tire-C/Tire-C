@@ -24,7 +24,7 @@ export function buildCharacter(Cloud){
  }
  // Workstation keeps the established composition; chair gains a curved mesh back and casters.
  desk.box([0,.884,-.02],[.75,.09,.62],.040,.39);
- sample(desk,36,42,(u,v)=>{const x=(v-.5)*.70,y=1.02+u*.61;return [x,y,-.255-.065*Math.sin(u*Math.PI)+.045*(x/.35)**2]},()=>.30);
+ for(let i=0;i<36;i++)for(let j=0;j<42;j++){const u=(i+.5)/36,v=j/42,x=(v-.5)*.70,y=1.02+u*.61;desk.point([x,y,-.255-.065*Math.sin(u*Math.PI)+.045*(x/.35)**2],[-x*.7,0,1],.30)}
  for(const s of [-1,1])desk.tube([s*.33,.90,-.23],[s*.33,1.60,-.23],.021,180,.4);
  desk.tube([0,.18,-.1],[0,.84,-.1],.052,420,.45);
  for(let i=0;i<5;i++){const a=i/5*TAU,p=[.45*Math.cos(a),.10,-.1+.45*Math.sin(a)];desk.tube([0,.2,-.1],p,.028,150,.40);desk.ellipsoid([p[0],.065,p[2]],[.052,.045,.035],110,.46)}

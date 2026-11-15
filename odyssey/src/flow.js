@@ -16,7 +16,7 @@ export function flowWorlds(){
  return Array.from({length:8},(_,world)=>{
   const a=[],b=[],c=[],params=[],weight=[],digit=[],seed=[],R=rng(860+world);
   function point(A,B,C,mode,rate,phase,w=1){
-   a.push(...A);b.push(...B);c.push(...C);params.push(mode,rate,phase,0);weight.push(w);digit.push(R()>.5?1:0);seed.push(R());
+   a.push(...A);b.push(...B);c.push(...C);params.push(mode,rate,phase,world===2?1:0);weight.push(w);digit.push(R()>.5?1:0);seed.push(R());
   }
   function packet(A,B,C,mode,rate,phase,length=18){
    for(let j=0;j<length;j++)point(A,B,C,mode,rate,phase-j*.0045,.32+.68*(1-j/length)**2);
@@ -70,6 +70,7 @@ export function binaryFlow(data,texture){
    else if(flow.x<2.5){float y=mix(anchorA.y,anchorB.y,q);float a=.375*y+8.1+anchorA.x;p=vec3(6.*cos(a),y,6.*sin(a));}
    else if(flow.x<3.5){float u=angle,v=anchorA.x,r=9.+3.*cos(v*3.+u*2.);p=vec3(r*cos(u),4.*sin(v)+2.*sin(u*3.),r*sin(u));}
    else{float z=mix(-32.,32.,q),a=anchorA.x+z*.12,r=7.+2.*sin(z*.19);p=vec3(r*cos(a)+3.*sin(z*.1),r*sin(a),z);}
+   if(flow.w>.5){float turn=time*.12;p.xy=mat2(cos(turn),sin(turn),-sin(turn),cos(turn))*p.xy;}
    vec4 center=modelViewMatrix*vec4(p,1.);
    float size=.34*length(modelMatrix[0].xyz),projected=size*projectionMatrix[1][1]*viewportHeight/(2.*max(.0001,-center.z));
    vDensity=min(1.,pow(projected/2.2,2.))*(1.-smoothstep(65.,120.,projected));
