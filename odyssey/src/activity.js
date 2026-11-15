@@ -35,7 +35,7 @@ export function activityWorlds(){
    let centre=[radius*Math.cos(angle),Math.sin(angle*2+layer)*[4,10,13][layer],radius*Math.sin(angle)];
    const c=new Cloud(700+world*100+layer*20+j);let mode=0,rate=.8+j*.037,axis=[.3,1,.2],amp=1.2;
    if(world===0){
-    centre=[(9+layer*4)*Math.cos(angle),(9+layer*4)*Math.sin(angle),-25+j/[7,11,15][layer]*50];
+    centre=[(9+layer*4)*Math.cos(angle),(9+layer*4)*Math.sin(angle),-23+j/[7,11,15][layer]*46];
     c.ring([0,0,0],1.3,140,2,.65,.08);
     for(let k=0;k<3;k++)c.line([-.9,k*.32-.32,0],[.9,k*.32-.32,0],.12,.83);
     mode=1;axis=[0,0,1];amp=4;rate=.9;
