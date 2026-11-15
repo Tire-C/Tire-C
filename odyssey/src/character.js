@@ -41,7 +41,7 @@ export function buildCharacter(Cloud){
  for(let j=0;j<14;j++)desk.line([.65,.75-j*.034,.9],[.9,.75-j*.034,.9],.02,.7);
  for(let j=-14;j<=14;j++){desk.line([-2.1,.015,j*.15],[2.1,.015,j*.15],.10,.14);desk.line([j*.15,.015,-2.1],[j*.15,.015,2.1],.10,.14)}
 
- head.sampleScale=new Float32Array(head.count).fill(1);head.sampleScale.fill(.82,model.headSurfaceCount);
+ head.sampleScale=new Float32Array(head.count).fill(1);head.sampleScale.fill(.82,model.headSurfaceCount);head.sampleScale.fill(.34,model.headFeatureStart,model.headFeatureEnd);
  const bodyData=body.data();bodyData.sampleScale=new Float32Array(bodyData.count).fill(1);bodyData.sampleScale.fill(.62,0,model.skinCount);
  return {head,body:bodyData,desk:desk.data()};
 }

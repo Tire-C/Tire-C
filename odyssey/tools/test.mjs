@@ -40,7 +40,7 @@ const info=await page.evaluate(()=>odyssey.info()),geometry=await page.evaluate(
 check('Eight genuine 3D environments inside the head',()=>{assert.equal(geometry.length,8);for(const g of geometry){for(let a=0;a<3;a++)assert(g.max[a]-g.min[a]>5,g.name+' is flat');assert(g.radius*UNIVERSE_SCALE<.082)}}); 
 check('Software rendering explicitly identified',()=>assert.match(info.renderer,/SwiftShader/i));
 const anatomyAudit=JSON.parse(await readFile('diagnostics/r4-character-build.json','utf8'));
-check('Anatomical source assets pinned and verified in this cloud run',()=>{assert.equal(anatomyAudit.sourceCommit,process.env.GITHUB_SHA);assert.equal(anatomyAudit.verifiedSources.length,7);assert(anatomyAudit.counts.head>8000);assert(anatomyAudit.counts.body>12000)});
+check('Anatomical source assets pinned and verified in this cloud run',()=>{assert.equal(anatomyAudit.sourceCommit,process.env.GITHUB_SHA);assert.equal(anatomyAudit.verifiedSources.length,11);assert(anatomyAudit.ocularGeometry.sampledEyeGlyphs>40);assert(anatomyAudit.counts.head>8000);assert(anatomyAudit.counts.body>12000)});
 const surfaces=await page.evaluate(()=>odyssey.surfaces());
 check('Only binary instanced geometry writes visible colour',()=>assert(surfaces.every(s=>!s.colorWrite||s.instanced)));
 check('Depth proxies are invisible and anatomical',()=>assert.equal(surfaces.filter(s=>!s.colorWrite).length,2));

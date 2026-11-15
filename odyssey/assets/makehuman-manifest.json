@@ -37,6 +37,26 @@
       "path": "LICENSE.md",
       "gitBlob": "5d1a49d31ebdaa46b06c52eae2c005c678a63ffa",
       "size": 3598
+    },
+    {
+      "path": "makehuman/data/eyes/high-poly/high-poly.mhclo",
+      "gitBlob": "22bc5f77f398c59088804f7f4c9bb0e39d38661d",
+      "size": 72490
+    },
+    {
+      "path": "makehuman/data/eyes/high-poly/high-poly.obj",
+      "gitBlob": "01562a9caf4dca9ebb1fd5c24db083c17e724330",
+      "size": 100882
+    },
+    {
+      "path": "makehuman/data/targets/eyes/l-eye-height1-incr.target",
+      "gitBlob": "92d07424d66dce950602a58bb3a7ac831d54c2a4",
+      "size": 4053
+    },
+    {
+      "path": "makehuman/data/targets/eyes/r-eye-height1-incr.target",
+      "gitBlob": "d767359af03d60777d07955f7dd6e01fc1c1d4e6",
+      "size": 3586
     }
   ]
 }

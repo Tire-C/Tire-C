@@ -28,7 +28,7 @@ for line in asset('makehuman/data/3dobjs/base.obj').splitlines():
     elif line.startswith('g '):group=line[2:];groups.setdefault(group,[])
     elif line.startswith('f '):groups[group].append([int(p.split('/')[0])-1 for p in line.split()[1:]])
 V=np.asarray(V,dtype=float)
-for path,amount in [('makehuman/data/targets/macrodetails/african-male-young.target',1.0),('makehuman/data/targets/head/head-square.target',.05)]:
+for path,amount in [('makehuman/data/targets/macrodetails/african-male-young.target',1.0),('makehuman/data/targets/head/head-square.target',.05),('makehuman/data/targets/eyes/l-eye-height1-incr.target',.55),('makehuman/data/targets/eyes/r-eye-height1-incr.target',.55)]:
     for line in asset(path).splitlines():
         if not line or line[0]=='#':continue
         a=line.split()
@@ -201,10 +201,34 @@ def sample(p,rest,faces,count,distance,weight):
 # only the resulting oriented glyph centres and normals are exported as colour.
 HP=SP.copy();HR=SR.copy();HF=list(headFaces);HK=[0]*len(HF)
 eyeRest={};eyeGaze={}
+# Use the actual CC0 high-resolution corneal/ocular asset, not the low-resolution
+# rig helper sphere. Its declarative mapping fits it to this morphed anatomy.
+ocular_obj=asset('makehuman/data/eyes/high-poly/high-poly.obj')
+ocular_map=asset('makehuman/data/eyes/high-poly/high-poly.mhclo')
+ocular_faces=[];ocular_original=[]
+for line in ocular_obj.splitlines():
+    if line.startswith('v '):ocular_original.append(list(map(float,line.split()[1:4])))
+    elif line.startswith('f '):ocular_faces.append([int(x.split('/')[0])-1 for x in line.split()[1:]])
+offsetScale=np.ones(3)*scale;mapping=[];reading=False
+for line in ocular_map.splitlines():
+    a=line.split()
+    if not a or a[0].startswith('#'):continue
+    if a[0] in ('x_scale','y_scale','z_scale'):
+        axis={'x_scale':0,'y_scale':1,'z_scale':2}[a[0]]
+        offsetScale[axis]=abs(V[int(a[1]),axis]-V[int(a[2]),axis])/float(a[3])
+    elif a[0]=='verts':reading=True
+    elif reading and len(a)==9:mapping.append(a)
+assert len(mapping)==len(ocular_original)
+ocular_rest=[]
+for a in mapping:
+    ids=np.array(list(map(int,a[:3])));w=np.array(list(map(float,a[3:6])));offset=np.array(list(map(float,a[6:])))
+    ocular_rest.append(w@V[ids]+offset*offsetScale)
+ocular_rest=np.asarray(ocular_rest)
+ocular_pos=np.array([point('head',p) for p in ocular_rest])
+start=len(HP);HP=np.concatenate([HP,ocular_pos]);HR=np.concatenate([HR,ocular_rest])
+for face in ocular_faces:
+    HF.append([i+start for i in face]);HK.append(1 if ocular_rest[face,0].mean()>0 else 2)
 for side,kind in [('L',1),('R',2)]:
-    ep,er,ef=subdivide(P,V,groups['helper-'+side.lower()+'-eye'])
-    start=len(HP);HP=np.concatenate([HP,ep]);HR=np.concatenate([HR,er])
-    HF.extend([[i+start for i in f] for f in ef]);HK.extend([kind]*len(ef))
     eyeRest[kind]=J[bones['eye.'+side]['head']]
     eyeGaze[kind]=unit(J[bones['eye.'+side]['tail']]-eyeRest[kind])
 def scalp_line(r):
@@ -214,7 +238,7 @@ def skinTone(r,kind=0):
     x,y,z=r/scale
     if kind:
         facing=np.dot(unit(r-eyeRest[kind]),eyeGaze[kind])
-        return .045 if facing>.984 else .24 if facing>.90 else .88
+        return .025 if facing>.982 else .31 if facing>.90 else .98
     w=.84
     for centre in eyeRest.values():
         # Eyebrows are a narrow anatomical band, not giant painted eye sockets.
@@ -222,20 +246,23 @@ def skinTone(r,kind=0):
     if 8.04<y<8.30 and abs(x)<.41 and z>1.25:w=.68
     if y>scalp_line(r):w=.27
     return w
-def typographic_head():
-    tri=triangles(HF);kinds=np.repeat(np.asarray(HK),2)
+def typographic_head(features=False):
+    tri=triangles(HF);kinds=np.asarray([kind for face,kind in zip(HF,HK) for _ in range(len(face)-2)])
     assert len(kinds)==len(tri)
     restTri=HR[tri];worldN=normals(HP,HF)
     out=[];outRest=[];outKind=[]
     low=restTri[:,:,1].min();high=restTri[:,:,1].max()
     # Vertical pitch and angular kerning are deliberately different, matching
     # the 0.64:1 monospace glyph proportions instead of overlapping point sprites.
-    for row,y in enumerate(np.arange(low+.002,high-.001,.0060)):
+    if features:
+        low=min(c[1] for c in eyeRest.values())-.042;high=max(c[1] for c in eyeRest.values())+.042
+    for row,y in enumerate(np.arange(low+.002,high-.001,.0017 if features else .0060)):
         eligible=np.where((restTri[:,:,1].min(axis=1)<=y)&(restTri[:,:,1].max(axis=1)>=y))[0]
         if not len(eligible):continue
         ts=restTri[eligible];radius=max(.035,float(np.quantile(np.hypot(ts[:,:,0],ts[:,:,2]-.04),.85)))
-        count=max(32,int(2*math.pi*radius/.0038))
+        count=max(32,int(2*math.pi*radius/(.00145 if features else .0038)))
         theta=(np.arange(count)+.5*(row%2))/count*2*math.pi
+        if features:theta=theta[(theta<.70)|(theta>2*math.pi-.70)];count=len(theta)
         directions=np.column_stack([-np.sin(theta),np.zeros(count),-np.cos(theta)])
         origins=np.column_stack([.55*np.sin(theta),np.full(count,y),.04+.55*np.cos(theta)])
         e1=ts[:,1]-ts[:,0];e2=ts[:,2]-ts[:,0]
@@ -253,10 +280,15 @@ def typographic_head():
             if not np.isfinite(distance[ri,ti]):continue
             ids=tri[eligible[ti]];bary=np.array([1-u[ri,ti]-v[ri,ti],u[ri,ti],v[ri,ti]])
             p=bary@HP[ids];r=bary@HR[ids];n=unit(bary@worldN[ids]);kind=int(kinds[eligible[ti]])
-            # Reject interior oral surfaces: they are occluded by the lip volume.
+            if bool(kind)!=features:continue
+            # Anatomically occluded samples never replace eyelids or facial skin.
             out.append([*p,*n,skinTone(r,kind)]);outRest.append(r);outKind.append(kind)
     return np.asarray(out),np.asarray(outRest),outKind
 head,headRest,headKinds=typographic_head()
+eyeGlyphs,eyeGlyphRest,eyeGlyphKinds=typographic_head(True)
+assert len(eyeGlyphs)>40,'No visible ocular geometry; refuse a blind portrait'
+headFeatureStart=len(head);headFeatureEnd=len(head)+len(eyeGlyphs)
+head=np.concatenate([head,eyeGlyphs]);headRest=np.concatenate([headRest,eyeGlyphRest]);headKinds+=eyeGlyphKinds
 neck,neckRest=sample(SP,SR,neckHands,6500,.0045,lambda r,p,n:.82)
 garment,garmentRest=sample(CP,CR,CF,19000,.0115,lambda r,p,n:.73 if r[1]>.30 else .58)
 body=np.concatenate([neck,garment])
@@ -274,6 +306,38 @@ for row,r,kind in zip(head,headRest,headKinds):
         t=j/9;angle=t*math.pi*3+phase;radius=.0038*(.8+.2*math.sin(t*math.pi))
         q=p+n*(.002+length*math.sin(t*math.pi))+radius*(tangent*math.cos(angle)+bitangent*math.sin(angle))
         coils.append([*q,*unit(n+.2*math.cos(angle)*tangent),.62])
+
+# Six directional depth fields provide geometric ambient visibility around
+# eyelids, nose, mouth and ears. No raster image is used in the final product;
+# only a per-glyph scalar survives this remote CPU calculation.
+def anatomical_visibility(points,normal):
+    tri=triangles(HF);weighted=np.zeros(len(points));total=np.zeros(len(points))
+    resolution=384
+    for direction in [(-.45,.65,1),(.65,.35,1),(0,1,.15),(-1,.15,.25),(1,.15,.25),(0,.3,-1)]:
+        light=unit(np.array(direction));u=unit(np.cross(light,[0,1,0]));v=np.cross(u,light)
+        projected=HP@np.column_stack([u,v,light]);lo=projected[:,:2].min(axis=0)-.003;hi=projected[:,:2].max(axis=0)+.003
+        xy=(projected[:,:2]-lo)/(hi-lo)*(resolution-1);depth=np.full((resolution,resolution),-np.inf)
+        for ids in tri:
+            pts=xy[ids];z=projected[ids,2]
+            x0,y0=np.maximum(0,np.floor(pts.min(axis=0)).astype(int));x1,y1=np.minimum(resolution-1,np.ceil(pts.max(axis=0)).astype(int))
+            if x1<x0 or y1<y0:continue
+            a,b,c=pts;den=(b[1]-c[1])*(a[0]-c[0])+(c[0]-b[0])*(a[1]-c[1])
+            if abs(den)<1e-10:continue
+            xx,yy=np.meshgrid(np.arange(x0,x1+1),np.arange(y0,y1+1))
+            w0=((b[1]-c[1])*(xx-c[0])+(c[0]-b[0])*(yy-c[1]))/den
+            w1=((c[1]-a[1])*(xx-c[0])+(a[0]-c[0])*(yy-c[1]))/den;w2=1-w0-w1
+            inside=(w0>=-.001)&(w1>=-.001)&(w2>=-.001)
+            z0=np.where(inside,w0*z[0]+w1*z[1]+w2*z[2],-np.inf)
+            depth[y0:y1+1,x0:x1+1]=np.maximum(depth[y0:y1+1,x0:x1+1],z0)
+        query=points@np.column_stack([u,v,light]);ij=np.rint((query[:,:2]-lo)/(hi-lo)*(resolution-1)).astype(int);ij=np.clip(ij,0,resolution-1)
+        visible=(depth[ij[:,1],ij[:,0]]-query[:,2])<.0018
+        cosine=np.maximum(0,normal@light)
+        weighted+=visible*cosine;total+=cosine
+    return .43+.57*np.divide(weighted,total,out=np.ones_like(total),where=total>1e-8)
+visibility=anatomical_visibility(head[:,:3],head[:,3:6])
+visibility[headFeatureStart:headFeatureEnd]=np.maximum(.82,visibility[headFeatureStart:headFeatureEnd])
+head[:,6]*=visibility
+
 headSurfaceCount=len(head)
 head=np.concatenate([head,np.array(coils)])
 # Compact, quantized spatial samples, not pre-rendered frames.
@@ -294,12 +358,12 @@ headProxy=occluder(HP,HF)
 bodyProxy=occluder(CP,CF)
 brain=point('head',np.array([0,9.35,.35])*scale)
 meta={'head':brain.tolist(),'universeScale':.0024,'cutRange':[float(brain[1]-.045),float(brain[1]+.012)],'pose':pose,'source':MANIFEST['commit']}
-model={'head':cloud(head),'body':cloud(body),'skinCount':len(neck),'headSurfaceCount':headSurfaceCount,'occlusion':{'head':headProxy,'body':bodyProxy},'meta':meta}
+model={'head':cloud(head),'body':cloud(body),'skinCount':len(neck),'headSurfaceCount':headSurfaceCount,'headFeatureStart':headFeatureStart,'headFeatureEnd':headFeatureEnd,'occlusion':{'head':headProxy,'body':bodyProxy},'meta':meta}
 gen=ROOT/'src/generated';gen.mkdir(exist_ok=True)
 (gen/'character-data.json').write_text(json.dumps(model,separators=(',',':'))+'\n')
 (gen/'character-meta.json').write_text(json.dumps(meta,separators=(',',':'))+'\n')
 (ROOT/'assets/MAKEHUMAN-CC0.txt').write_text(license_text)
-audit={'sourceCommit':os.environ.get('GITHUB_SHA'),'upstream':MANIFEST,'verifiedSources':provenance,'pose':pose,'headCenter':brain.tolist(),'counts':{'head':len(head),'body':len(body),'hairCoils':len(centres),'headSurfaceRows':headSurfaceCount},'bounds':{'head':[head[:,:3].min(axis=0).tolist(),head[:,:3].max(axis=0).tolist()],'body':[body[:,:3].min(axis=0).tolist(),body[:,:3].max(axis=0).tolist()]},'pipeline':'Pinned CC0 anatomy, original skeletal pose and garments; ray-intersected, surface-conforming anatomical microtypography replaces stochastic facial point sprites. Remote CPU generation; depth-only meshes never write colour.'}
+audit={'sourceCommit':os.environ.get('GITHUB_SHA'),'upstream':MANIFEST,'verifiedSources':provenance,'pose':pose,'headCenter':brain.tolist(),'counts':{'head':len(head),'body':len(body),'hairCoils':len(centres),'headSurfaceRows':headSurfaceCount,'ocularGlyphs':len(eyeGlyphs)},'bounds':{'head':[head[:,:3].min(axis=0).tolist(),head[:,:3].max(axis=0).tolist()],'body':[body[:,:3].min(axis=0).tolist(),body[:,:3].max(axis=0).tolist()]},'visibility':{'min':float(visibility.min()),'mean':float(visibility.mean())},'ocularGeometry':{'vertices':len(ocular_rest),'faces':len(ocular_faces),'sampledEyeGlyphs':len(eyeGlyphs)},'pipeline':'Pinned CC0 anatomy, original skeletal pose and garments; ray-intersected, surface-conforming anatomical microtypography replaces stochastic facial point sprites. Remote CPU generation; depth-only meshes never write colour.'}
 (ROOT/'diagnostics').mkdir(exist_ok=True)
 (ROOT/'diagnostics/r4-character-build.json').write_text(json.dumps(audit,indent=2)+'\n')
 print(json.dumps({k:v for k,v in audit.items() if k not in ['verifiedSources','upstream']},indent=2))

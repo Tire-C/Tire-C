@@ -33,6 +33,7 @@ varying float vDensity;
 varying float vCut;
 varying vec2 vUv;
 varying float vLight;
+varying float vPortrait;
 varying float vDigit;
 varying float vSeed;
 varying float vDepth;
@@ -68,7 +69,8 @@ void main(){
  float portrait=.12+.62*max(0.,dot(worldN,key))+.24*max(0.,dot(worldN,normalize(vec3(.8,.18,.65))));
  portrait+=.16*pow(max(0.,dot(worldN,normalize(vec3(.55,.45,-1.)))),2.);
  portrait+=.08*pow(max(0.,dot(worldN,normalize(key+viewDirection))),22.);
- vLight=mix(weight,toWeight,morph)*mix(ordinary,portrait,localStyle.z*(1.-morph));
+ vPortrait=localStyle.z*(1.-morph);
+ vLight=mix(weight,toWeight,morph)*mix(ordinary,portrait,vPortrait);
 }`;
 const fragment=`
 uniform sampler2D glyphAtlas;
@@ -79,6 +81,7 @@ varying float vDensity;
 varying float vCut;
 varying vec2 vUv;
 varying float vLight;
+varying float vPortrait;
 varying float vDigit;
 varying float vSeed;
 varying float vDepth;
@@ -86,7 +89,8 @@ void main(){
  float a=texture2D(glyphAtlas,vec2((vUv.x+vDigit)*.5,vUv.y)).a;
  if(vLight<.015||a<.43||vSeed>opacity*vDensity*(1.0-.98*vCut))discard;
  float fog=exp(-vDepth/fogDistance);
- float light=clamp(vLight*intensity*fog,0.0,1.0);
+ float rawLight=vLight*intensity*fog;
+ float light=mix(clamp(rawLight,0.,1.),1.-exp(-rawLight*1.25),vPortrait);
  gl_FragColor=vec4(vec3(0.0,1.0,.25)*light,1.0);
 }`;
 export function binaryCloud(data,texture,{size=.2,fog=100,intensity=1.4,contrast=1,surface=0,portrait=0}={}){
