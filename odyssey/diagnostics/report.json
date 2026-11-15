@@ -1,7 +1,7 @@
 {
-  "revision": 3,
-  "sourceCommit": "7029ce51cd7df005ad24e1101d81333876cfb1e3",
-  "runId": "43660581170",
+  "revision": 4,
+  "sourceCommit": "b0ffa022e1a4781c6b11d4c2673743f77c4f6d56",
+  "runId": "43722670160",
   "environment": "GitHub Actions ubuntu-24.04 standard public runner",
   "rendering": "Chromium / ANGLE SwiftShader software on remote CPU; NO real GPU validation",
   "baseline": "0f00154f3651c7bed8cf8660780bb3c1750ed9bc",
@@ -10,26 +10,120 @@
   "info": {
     "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
     "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
-    "revision": 3,
+    "revision": 4,
     "flowCounts": [
-      432,
-      506,
-      280,
-      420,
-      264,
-      336,
-      330,
-      496
+      1032,
+      1232,
+      672,
+      1008,
+      636,
+      814,
+      795,
+      1184
+    ],
+    "activityCounts": [
+      7221,
+      12501,
+      17880,
+      12270,
+      14910,
+      12798,
+      16461,
+      19068
+    ],
+    "activityLayers": [
+      [
+        1643,
+        2407,
+        3171
+      ],
+      [
+        2763,
+        4167,
+        5571
+      ],
+      [
+        3904,
+        5960,
+        8016
+      ],
+      [
+        2714,
+        4090,
+        5466
+      ],
+      [
+        3274,
+        4970,
+        6666
+      ],
+      [
+        2826,
+        4266,
+        5706
+      ],
+      [
+        3603,
+        5487,
+        7371
+      ],
+      [
+        4156,
+        6356,
+        8556
+      ]
+    ],
+    "activityObjects": [
+      [
+        16,
+        20,
+        24
+      ],
+      [
+        16,
+        20,
+        24
+      ],
+      [
+        16,
+        20,
+        24
+      ],
+      [
+        16,
+        20,
+        24
+      ],
+      [
+        16,
+        20,
+        24
+      ],
+      [
+        16,
+        20,
+        24
+      ],
+      [
+        16,
+        20,
+        24
+      ],
+      [
+        16,
+        20,
+        24
+      ]
     ],
     "headCenter": [
       0,
-      2.236584227646061,
-      0.07717522106368835
+      2.2365843280477398,
+      0.077174351857739
     ],
     "worldCount": 8,
     "worldPoints": 28000,
-    "headPoints": 21720,
-    "bodyPoints": 38056,
+    "headPoints": 24612,
+    "bodyPoints": 27154,
     "deskPoints": 20363,
     "playing": false,
     "reduced": false,
@@ -159,7 +253,7 @@
     }
   ],
   "anatomyAudit": {
-    "sourceCommit": "7029ce51cd7df005ad24e1101d81333876cfb1e3",
+    "sourceCommit": "b0ffa022e1a4781c6b11d4c2673743f77c4f6d56",
     "upstream": {
       "repository": "makehumancommunity/makehuman",
       "commit": "a8bc2d54ff0ac92e78ff71431b1023eda42bf482",
@@ -314,79 +408,232 @@
     },
     "headCenter": [
       0,
-      2.236584227646061,
-      0.07717522106368835
+      2.2365843280477398,
+      0.077174351857739
     ],
     "counts": {
-      "head": 21720,
-      "body": 35500,
-      "hairCoils": 385
+      "head": 24612,
+      "body": 24598,
+      "hairCoils": 669,
+      "headSurfaceRows": 17922
     },
     "bounds": {
       "head": [
         [
-          -0.14282762318443323,
-          1.9262905864591655,
-          -0.056694783373379166
+          -0.1392610149796723,
+          1.9254962769850748,
+          -0.06297146473775035
         ],
         [
-          0.14297309093884186,
-          2.339281197866535,
-          0.2624166231262744
+          0.138288468508585,
+          2.3567802213099216,
+          0.26242672383185567
         ]
       ],
       "body": [
         [
-          -0.4704456050414024,
-          0.021709951951790932,
-          -0.22023475101188536
+          -0.4706637343835019,
+          0.02172099808219212,
+          -0.2202133987381204
         ],
         [
-          0.4710094188074051,
-          1.966049733455311,
-          0.8493374659125145
+          0.47053594407578614,
+          1.9650434116253241,
+          0.8495613855726917
         ]
       ]
     },
-    "pipeline": "Pinned CC0 anatomical topology and morph targets; original IK/skinning, clothing, Catmull-Clark and spatial sampling on remote CPU. Depth-only meshes never write colour."
+    "pipeline": "Pinned CC0 anatomy, original skeletal pose and garments; ray-intersected, surface-conforming anatomical microtypography replaces stochastic facial point sprites. Remote CPU generation; depth-only meshes never write colour."
   },
   "flowComparisons": [
     {
+      "world": 0,
       "story": 1,
-      "changed": true
+      "changed": true,
+      "activityMotionPixels": 21017,
+      "secondaryContributionPixels": 17971,
+      "coverage": 0.11176974826388889,
+      "occupiedTiles": 12,
+      "tiles": [
+        4777,
+        7733,
+        7687,
+        4139,
+        6459,
+        15709,
+        13350,
+        4732,
+        10155,
+        11911,
+        11272,
+        5083
+      ]
     },
     {
+      "world": 1,
       "story": 2.6,
-      "changed": true
+      "changed": true,
+      "activityMotionPixels": 37760,
+      "secondaryContributionPixels": 32832,
+      "coverage": 0.22562608506944445,
+      "occupiedTiles": 12,
+      "tiles": [
+        33990,
+        12976,
+        17516,
+        31607,
+        15552,
+        24124,
+        20742,
+        16042,
+        11674,
+        5094,
+        9721,
+        8899
+      ]
     },
     {
+      "world": 2,
       "story": 4.6,
-      "changed": true
+      "changed": true,
+      "activityMotionPixels": 61980,
+      "secondaryContributionPixels": 53305,
+      "coverage": 0.2762575954861111,
+      "occupiedTiles": 12,
+      "tiles": [
+        15720,
+        12215,
+        14226,
+        35141,
+        6989,
+        24876,
+        42513,
+        19220,
+        28900,
+        24102,
+        25605,
+        5092
+      ]
     },
     {
+      "world": 3,
       "story": 6.6,
-      "changed": true
+      "changed": true,
+      "activityMotionPixels": 47557,
+      "secondaryContributionPixels": 41014,
+      "coverage": 0.19255208333333335,
+      "occupiedTiles": 11,
+      "tiles": [
+        0,
+        5106,
+        14925,
+        20328,
+        10316,
+        22074,
+        16706,
+        15431,
+        10696,
+        40381,
+        15627,
+        5866
+      ]
     },
     {
+      "world": 4,
       "story": 8.6,
-      "changed": true
+      "changed": true,
+      "activityMotionPixels": 64026,
+      "secondaryContributionPixels": 53676,
+      "coverage": 0.4141666666666667,
+      "occupiedTiles": 12,
+      "tiles": [
+        23227,
+        24787,
+        29075,
+        25708,
+        38444,
+        32321,
+        33431,
+        34857,
+        40700,
+        40481,
+        34737,
+        23928
+      ]
     },
     {
+      "world": 5,
       "story": 10.6,
-      "changed": true
+      "changed": true,
+      "activityMotionPixels": 57368,
+      "secondaryContributionPixels": 51014,
+      "coverage": 0.346318359375,
+      "occupiedTiles": 12,
+      "tiles": [
+        7696,
+        17672,
+        56230,
+        43520,
+        16661,
+        38700,
+        37791,
+        36061,
+        3073,
+        29718,
+        14072,
+        17973
+      ]
     },
     {
+      "world": 6,
       "story": 12.6,
-      "changed": true
+      "changed": true,
+      "activityMotionPixels": 123166,
+      "secondaryContributionPixels": 92672,
+      "coverage": 0.2622526041666667,
+      "occupiedTiles": 12,
+      "tiles": [
+        18339,
+        10945,
+        14045,
+        6521,
+        10520,
+        29124,
+        20653,
+        13488,
+        17278,
+        24135,
+        55967,
+        20677
+      ]
     },
     {
+      "world": 7,
       "story": 14.6,
-      "changed": true
+      "changed": true,
+      "activityMotionPixels": 58052,
+      "secondaryContributionPixels": 74871,
+      "coverage": 0.235224609375,
+      "occupiedTiles": 12,
+      "tiles": [
+        7654,
+        15623,
+        40135,
+        15949,
+        7206,
+        19645,
+        21598,
+        23381,
+        7491,
+        14417,
+        17936,
+        25748
+      ]
     }
   ],
   "benchmark": {
-    "medianMs": 361.20000000001164,
-    "p95Ms": 419.80000000001746,
+    "medianMs": 284.19999999998254,
+    "p95Ms": 329.79999999998836,
     "note": "Pixel-readback SwiftShader diagnostic on remote CPU. Not real GPU or display frame rate."
   },
   "transitionError": 0,
@@ -396,8 +643,8 @@
     "src": "/Tire-C/Tire-C/raw/work/binary-mind-odyssey/odyssey/compatibility/probe.svg",
     "context": "Actual GitHub rendered Markdown image in remote Chromium",
     "hashes": [
-      "beca0fdb9478e01c5e553de825c23365ad10c3c82b22e40c57d126056c6ce85a",
-      "aaaaefb2baadff7c79cdf5b15165606351ab03bfd445eee5999bc55394aff021"
+      "44f082822760b5fa9942fff970a3573cd630734efcf4338fced31f0c7344ec2f",
+      "6ad0045d6e44d02b98bd1d2bec4623de6f087b43e90cb6ce65d6542dad7d1949"
     ]
   },
   "browserCompatibility": [
@@ -407,30 +654,124 @@
       "info": {
         "renderer": "llvmpipe, or similar",
         "webgl": "WebGL 2.0",
-        "revision": 3,
+        "revision": 4,
         "flowCounts": [
-          432,
-          506,
-          280,
-          420,
-          264,
-          336,
-          330,
-          496
+          1032,
+          1232,
+          672,
+          1008,
+          636,
+          814,
+          795,
+          1184
+        ],
+        "activityCounts": [
+          7221,
+          12501,
+          17880,
+          12270,
+          14910,
+          12798,
+          16461,
+          19068
+        ],
+        "activityLayers": [
+          [
+            1643,
+            2407,
+            3171
+          ],
+          [
+            2763,
+            4167,
+            5571
+          ],
+          [
+            3904,
+            5960,
+            8016
+          ],
+          [
+            2714,
+            4090,
+            5466
+          ],
+          [
+            3274,
+            4970,
+            6666
+          ],
+          [
+            2826,
+            4266,
+            5706
+          ],
+          [
+            3603,
+            5487,
+            7371
+          ],
+          [
+            4156,
+            6356,
+            8556
+          ]
+        ],
+        "activityObjects": [
+          [
+            16,
+            20,
+            24
+          ],
+          [
+            16,
+            20,
+            24
+          ],
+          [
+            16,
+            20,
+            24
+          ],
+          [
+            16,
+            20,
+            24
+          ],
+          [
+            16,
+            20,
+            24
+          ],
+          [
+            16,
+            20,
+            24
+          ],
+          [
+            16,
+            20,
+            24
+          ],
+          [
+            16,
+            20,
+            24
+          ]
         ],
         "headCenter": [
           0,
-          2.236584227646061,
-          0.07717522106368835
+          2.2365843280477398,
+          0.077174351857739
         ],
         "worldCount": 8,
         "worldPoints": 28000,
-        "headPoints": 21720,
-        "bodyPoints": 38056,
+        "headPoints": 24612,
+        "bodyPoints": 27154,
         "deskPoints": 20363,
         "playing": false,
         "reduced": false,
-        "current": 17.571428571428573,
+        "current": 12.6,
         "drawCalls": 7
       },
       "errors": []
@@ -441,30 +782,124 @@
       "info": {
         "renderer": "Apple GPU",
         "webgl": "WebGL 2.0",
-        "revision": 3,
+        "revision": 4,
         "flowCounts": [
-          432,
-          506,
-          280,
-          420,
-          264,
-          336,
-          330,
-          496
+          1032,
+          1232,
+          672,
+          1008,
+          636,
+          814,
+          795,
+          1184
+        ],
+        "activityCounts": [
+          7221,
+          12501,
+          17880,
+          12270,
+          14910,
+          12798,
+          16461,
+          19068
+        ],
+        "activityLayers": [
+          [
+            1643,
+            2407,
+            3171
+          ],
+          [
+            2763,
+            4167,
+            5571
+          ],
+          [
+            3904,
+            5960,
+            8016
+          ],
+          [
+            2714,
+            4090,
+            5466
+          ],
+          [
+            3274,
+            4970,
+            6666
+          ],
+          [
+            2826,
+            4266,
+            5706
+          ],
+          [
+            3603,
+            5487,
+            7371
+          ],
+          [
+            4156,
+            6356,
+            8556
+          ]
+        ],
+        "activityObjects": [
+          [
+            16,
+            20,
+            24
+          ],
+          [
+            16,
+            20,
+            24
+          ],
+          [
+            16,
+            20,
+            24
+          ],
+          [
+            16,
+            20,
+            24
+          ],
+          [
+            16,
+            20,
+            24
+          ],
+          [
+            16,
+            20,
+            24
+          ],
+          [
+            16,
+            20,
+            24
+          ],
+          [
+            16,
+            20,
+            24
+          ]
         ],
         "headCenter": [
           0,
-          2.236584227646061,
-          0.07717522106368835
+          2.2365843280477398,
+          0.077174351857739
         ],
         "worldCount": 8,
         "worldPoints": 28000,
-        "headPoints": 21720,
-        "bodyPoints": 38056,
+        "headPoints": 24612,
+        "bodyPoints": 27154,
         "deskPoints": 20363,
         "playing": false,
         "reduced": false,
-        "current": 17.571428571428573,
+        "current": 12.6,
         "drawCalls": 7
       },
       "errors": []
@@ -496,7 +931,7 @@
       "pass": true
     },
     {
-      "name": "Final phrase exact and held for 3 seconds",
+      "name": "Final phrase exact and held for 1.5 seconds",
       "pass": true
     },
     {
@@ -524,119 +959,127 @@
       "pass": true
     },
     {
+      "name": "Three populated activity layers and substantial secondary objects in every world",
+      "pass": true
+    },
+    {
       "name": "Frame 0 contains monochrome rendered geometry",
       "pass": true
     },
     {
-      "name": "Frame 0.4392857142857142 contains monochrome rendered geometry",
+      "name": "Frame 0.33 contains monochrome rendered geometry",
       "pass": true
     },
     {
-      "name": "Frame 0.7321428571428571 contains monochrome rendered geometry",
+      "name": "Frame 0.55 contains monochrome rendered geometry",
       "pass": true
     },
     {
-      "name": "Frame 1.1714285714285715 contains monochrome rendered geometry",
+      "name": "Frame 0.8800000000000001 contains monochrome rendered geometry",
       "pass": true
     },
     {
-      "name": "Frame 1.9035714285714287 contains monochrome rendered geometry",
+      "name": "Frame 1.4300000000000002 contains monochrome rendered geometry",
       "pass": true
     },
     {
-      "name": "Frame 3.367857142857143 contains monochrome rendered geometry",
+      "name": "Frame 2.53 contains monochrome rendered geometry",
       "pass": true
     },
     {
-      "name": "Frame 4.832142857142856 contains monochrome rendered geometry",
+      "name": "Frame 3.63 contains monochrome rendered geometry",
       "pass": true
     },
     {
-      "name": "Frame 6.296428571428571 contains monochrome rendered geometry",
+      "name": "Frame 4.73 contains monochrome rendered geometry",
       "pass": true
     },
     {
-      "name": "Frame 7.760714285714285 contains monochrome rendered geometry",
+      "name": "Frame 5.83 contains monochrome rendered geometry",
       "pass": true
     },
     {
-      "name": "Frame 9.225 contains monochrome rendered geometry",
+      "name": "Frame 6.930000000000001 contains monochrome rendered geometry",
       "pass": true
     },
     {
-      "name": "Frame 10.689285714285715 contains monochrome rendered geometry",
+      "name": "Frame 8.030000000000001 contains monochrome rendered geometry",
       "pass": true
     },
     {
-      "name": "Frame 11.714285714285714 contains monochrome rendered geometry",
+      "name": "Frame 8.8 contains monochrome rendered geometry",
       "pass": true
     },
     {
-      "name": "Frame 12.446428571428571 contains monochrome rendered geometry",
+      "name": "Frame 9.233333333333334 contains monochrome rendered geometry",
       "pass": true
     },
     {
-      "name": "Frame 12.8125 contains monochrome rendered geometry",
+      "name": "Frame 9.450000000000001 contains monochrome rendered geometry",
       "pass": true
     },
     {
-      "name": "Frame 13.178571428571429 contains monochrome rendered geometry",
+      "name": "Frame 9.666666666666668 contains monochrome rendered geometry",
       "pass": true
     },
     {
-      "name": "Frame 13.544642857142858 contains monochrome rendered geometry",
+      "name": "Frame 9.883333333333335 contains monochrome rendered geometry",
       "pass": true
     },
     {
-      "name": "Frame 13.910714285714286 contains monochrome rendered geometry",
+      "name": "Frame 10.100000000000001 contains monochrome rendered geometry",
       "pass": true
     },
     {
-      "name": "Frame 14.276785714285714 contains monochrome rendered geometry",
+      "name": "Frame 10.316666666666666 contains monochrome rendered geometry",
       "pass": true
     },
     {
-      "name": "Frame 14.642857142857142 contains monochrome rendered geometry",
+      "name": "Frame 10.533333333333333 contains monochrome rendered geometry",
       "pass": true
     },
     {
-      "name": "Frame 15.008928571428571 contains monochrome rendered geometry",
+      "name": "Frame 10.75 contains monochrome rendered geometry",
       "pass": true
     },
     {
-      "name": "Frame 15.375 contains monochrome rendered geometry",
+      "name": "Frame 10.966666666666667 contains monochrome rendered geometry",
       "pass": true
     },
     {
-      "name": "Frame 15.741071428571429 contains monochrome rendered geometry",
+      "name": "Frame 11.183333333333334 contains monochrome rendered geometry",
       "pass": true
     },
     {
-      "name": "Frame 16.107142857142858 contains monochrome rendered geometry",
+      "name": "Frame 11.4 contains monochrome rendered geometry",
       "pass": true
     },
     {
-      "name": "Frame 17.571428571428573 contains monochrome rendered geometry",
+      "name": "Frame 12.6 contains monochrome rendered geometry",
       "pass": true
     },
     {
-      "name": "Frame 18.889285714285712 contains monochrome rendered geometry",
+      "name": "Frame 13.466666666666667 contains monochrome rendered geometry",
       "pass": true
     },
     {
-      "name": "Frame 19.767857142857142 contains monochrome rendered geometry",
+      "name": "Frame 13.866666666666665 contains monochrome rendered geometry",
       "pass": true
     },
     {
-      "name": "Frame 20.928571428571427 contains monochrome rendered geometry",
+      "name": "Frame 14.414285714285713 contains monochrome rendered geometry",
       "pass": true
     },
     {
-      "name": "Frame 22.642857142857142 contains monochrome rendered geometry",
+      "name": "Frame 15.27142857142857 contains monochrome rendered geometry",
       "pass": true
     },
     {
-      "name": "Secondary motion changes pixels with camera and primary world frozen in all eight worlds",
+      "name": "Secondary assemblies move perceptibly with primary world and camera frozen in all eight worlds",
+      "pass": true
+    },
+    {
+      "name": "Every world has substantial visible secondary activity and distributed screen occupancy",
       "pass": true
     },
     {
@@ -656,7 +1099,7 @@
       "pass": true
     },
     {
-      "name": "Glyph and depth passes use at most seven draw calls",
+      "name": "Glyph and depth passes use at most eight draw calls",
       "pass": true
     },
     {
@@ -700,9 +1143,9 @@
   "shots": [
     {
       "t": 0,
-      "file": "r3-frame-0_00.png",
-      "coverage": 0.1569802517361111,
-      "hash": "c491c8a95951ead00e3d29d593a71fbb6c244b0cb2cca570af2aaa9403982a1d",
+      "file": "r4-frame-0_00.png",
+      "coverage": 0.16329969618055556,
+      "hash": "2a353fa25f5d4fca9179aebb23b1ee7d9ec2afc7ee23fa47a2065b7bbf795890",
       "state": {
         "t": 0,
         "world": 0,
@@ -716,27 +1159,28 @@
         "camera": {
           "position": [
             0,
-            2.238984227646061,
-            0.13477522106368833
+            2.23898432804774,
+            0.141974351857739
           ],
           "target": [
             0,
-            2.236584227646061,
-            0.07717522106368835
+            2.2365843280477398,
+            0.077174351857739
           ],
-          "roll": 0
+          "roll": 0,
+          "fov": 53
         },
         "calls": 1,
         "triangles": 56000
       }
     },
     {
-      "t": 0.4392857142857142,
-      "file": "r3-frame-0_44.png",
-      "coverage": 0.11944010416666667,
-      "hash": "bb8f8200fd93c46e62fe588c3cc6209d967a20269d83a140315de8f3236f80bb",
+      "t": 0.33,
+      "file": "r4-frame-0_33.png",
+      "coverage": 0.1220193142361111,
+      "hash": "855d983af55c47a7a66baeda818eecf4ce99afb640651c54692de238970e4fff",
       "state": {
-        "t": 0.4392857142857142,
+        "t": 0.33,
         "world": 0,
         "next": 1,
         "morph": 0,
@@ -747,28 +1191,29 @@
         "name": "Immersion",
         "camera": {
           "position": [
-            0.0038678399999999996,
-            2.236340387646061,
-            0.12571186106368834
+            0.004534272,
+            2.23526106404774,
+            0.12530491185773898
           ],
           "target": [
-            0,
-            2.236584227646061,
-            0.07717522106368835
+            0.0014738555877566728,
+            2.238227866350348,
+            0.07851237740066656
           ],
-          "roll": 0.011341505993820394
+          "roll": 0.1332986143778317,
+          "fov": 64.40843208779745
         },
-        "calls": 2,
-        "triangles": 56864
+        "calls": 3,
+        "triangles": 72506
       }
     },
     {
-      "t": 0.7321428571428571,
-      "file": "r3-frame-0_73.png",
-      "coverage": 0.11309678819444445,
-      "hash": "759c2545f784374d24c028ce06c902b096b23ce0e0530f914dc44c4fde3a17c9",
+      "t": 0.55,
+      "file": "r4-frame-0_55.png",
+      "coverage": 0.11176974826388889,
+      "hash": "6644ccc81130df496fb5e4d8d411e846b9ac8b91779998f71771d7815d1055c4",
       "state": {
-        "t": 0.7321428571428571,
+        "t": 0.55,
         "world": 0,
         "next": 1,
         "morph": 0,
@@ -779,31 +1224,32 @@
         "name": "Immersion",
         "camera": {
           "position": [
-            0.007079999999999999,
-            2.2341842276460606,
-            0.11857522106368834
+            0.0072,
+            2.2341843280477396,
+            0.11557435185773898
           ],
           "target": [
-            0,
-            2.236584227646061,
-            0.07717522106368835
+            0.0022811749887479147,
+            2.2389605932150856,
+            0.07814406340824123
           ],
-          "roll": 0.018294053012573076
+          "roll": 0.16134368618442535,
+          "fov": 64.96665924180988
         },
-        "calls": 2,
-        "triangles": 56864
+        "calls": 3,
+        "triangles": 72506
       }
     },
     {
-      "t": 1.1714285714285715,
-      "file": "r3-frame-1_17.png",
-      "coverage": 0.28958333333333336,
-      "hash": "6dfdffc35c0f1e6a4f8faea83f321470af15e48c65b67c406b69bf6c47bba60a",
+      "t": 0.8800000000000001,
+      "file": "r4-frame-0_88.png",
+      "coverage": 0.1680685763888889,
+      "hash": "b3b296b31bc5dc6d9d3f8d43b6c373494e7021739d60caf345e1f4edc129ef4c",
       "state": {
-        "t": 1.1714285714285715,
+        "t": 0.8800000000000001,
         "world": 0,
         "next": 1,
-        "morph": 0.3678824299399067,
+        "morph": 0.1447016124233953,
         "head": 0,
         "body": 0,
         "signature": 0,
@@ -811,28 +1257,29 @@
         "name": "Immersion",
         "camera": {
           "position": [
-            0.010199040000000001,
-            2.2318571876460607,
-            0.10933906106368835
+            0.011798783999999998,
+            2.24031757604774,
+            0.10416263985773899
           ],
           "target": [
-            0,
-            2.236584227646061,
-            0.07717522106368835
+            0.0030161000031699897,
+            2.239160001980105,
+            0.0773778128433705
           ],
-          "roll": 0.02697586076146393
+          "roll": 0.11188300063033521,
+          "fov": 62.63685667868807
         },
-        "calls": 2,
-        "triangles": 56864
+        "calls": 3,
+        "triangles": 72506
       }
     },
     {
-      "t": 1.9035714285714287,
-      "file": "r3-frame-1_90.png",
-      "coverage": 0.17321831597222223,
-      "hash": "cef673a903b81ad01132185b18500bf7c40a7b1d337718dd61b39212827db444",
+      "t": 1.4300000000000002,
+      "file": "r4-frame-1_43.png",
+      "coverage": 0.22562608506944445,
+      "hash": "9fc2a08cc6ead1e282a740d23f285e485af678c2c2ee7ccc60f378f53999eaba",
       "state": {
-        "t": 1.9035714285714287,
+        "t": 1.4300000000000002,
         "world": 1,
         "next": 2,
         "morph": 0,
@@ -843,28 +1290,29 @@
         "name": "Programming",
         "camera": {
           "position": [
-            -0.0002121600000000038,
-            2.235614627646061,
-            0.10632082106368834
+            -0.002151168000000006,
+            2.2407177040477397,
+            0.096124751857739
           ],
           "target": [
-            0,
-            2.236584227646061,
-            0.07717522106368835
+            0.0026414391831689372,
+            2.2371851415844595,
+            0.07608927306845686
           ],
-          "roll": 0.03465365961180123
+          "roll": 0.007706501279876455,
+          "fov": 57.16976797020291
         },
-        "calls": 2,
-        "triangles": 56864
+        "calls": 3,
+        "triangles": 72506
       }
     },
     {
-      "t": 3.367857142857143,
-      "file": "r3-frame-3_37.png",
-      "coverage": 0.20154188368055556,
-      "hash": "075c76ea178c63e6341aa5e43c25b56a3f0f68f727f2048866c852af5420496c",
+      "t": 2.53,
+      "file": "r4-frame-2_53.png",
+      "coverage": 0.2762575954861111,
+      "hash": "3a0c77822bb8c0acf2c2d33e765c6f36bf5856567a4eaa4ccc1ceca7f04f621c",
       "state": {
-        "t": 3.367857142857143,
+        "t": 2.53,
         "world": 2,
         "next": 3,
         "morph": 0,
@@ -875,28 +1323,29 @@
         "name": "Physics",
         "camera": {
           "position": [
-            -0.013408320000000012,
-            2.2489125476460607,
-            0.11108146106368835
+            -0.014635776000000008,
+            2.2428988240477397,
+            0.100016207857739
           ],
           "target": [
-            0,
-            2.236584227646061,
-            0.07717522106368835
+            -0.001839158431217041,
+            2.2341953464368145,
+            0.07632939066247531
           ],
-          "roll": 0.020096025192410043
+          "roll": -0.15845753524185885,
+          "fov": 64.99769071933811
         },
-        "calls": 2,
-        "triangles": 56560
+        "calls": 3,
+        "triangles": 71786
       }
     },
     {
-      "t": 4.832142857142856,
-      "file": "r3-frame-4_83.png",
-      "coverage": 0.16351019965277777,
-      "hash": "0251724caf2e92986f93dc24734987f20c325bbfc96dde5e71bdf1c161898bba",
+      "t": 3.63,
+      "file": "r4-frame-3_63.png",
+      "coverage": 0.19255208333333335,
+      "hash": "b46bbda4f26f1696d7b4727220755686a96e1185514c0fb3abe0e75877cdab77",
       "state": {
-        "t": 4.832142857142856,
+        "t": 3.63,
         "world": 3,
         "next": 4,
         "morph": 0,
@@ -907,28 +1356,29 @@
         "name": "Chemistry",
         "camera": {
           "position": [
-            0.017475840000000038,
-            2.2464002276460606,
-            0.10402738106368833
+            0.014094336000000004,
+            2.23746906404774,
+            0.098063951857739
           ],
           "target": [
-            0,
-            2.236584227646061,
-            0.07717522106368835
+            -0.0023870892784735457,
+            2.2389475794774647,
+            0.07864338455401769
           ],
-          "roll": -0.016422701445105437
+          "roll": 0.1578200952039293,
+          "fov": 57.10031170590154
         },
-        "calls": 2,
-        "triangles": 56840
+        "calls": 3,
+        "triangles": 72458
       }
     },
     {
-      "t": 6.296428571428571,
-      "file": "r3-frame-6_30.png",
-      "coverage": 0.372705078125,
-      "hash": "ac312ab2ca20ee0313b7c224268e84e17ec7d02da5dbd234ec9902e6582a74e1",
+      "t": 4.73,
+      "file": "r4-frame-4_73.png",
+      "coverage": 0.4141666666666667,
+      "hash": "b81b9add8866929a9f2126f2bb3d18c7948c5a0a535ce5ac73ece3e8092e53e3",
       "state": {
-        "t": 6.296428571428571,
+        "t": 4.73,
         "world": 4,
         "next": 5,
         "morph": 0,
@@ -939,28 +1389,29 @@
         "name": "Mathematics",
         "camera": {
           "position": [
-            -0.012056640000000013,
-            2.2514843876460606,
-            0.11051506106368834
+            -0.017194752000000008,
+            2.24454541604774,
+            0.097801295857739
           ],
           "target": [
-            0,
-            2.236584227646061,
-            0.07717522106368835
+            0.002169285472027421,
+            2.2360411687255946,
+            0.07735177844146837
           ],
-          "roll": -0.03499457255007016
+          "roll": -0.026722134921733094,
+          "fov": 64.54273246937723
         },
-        "calls": 2,
-        "triangles": 56528
+        "calls": 3,
+        "triangles": 71714
       }
     },
     {
-      "t": 7.760714285714285,
-      "file": "r3-frame-7_76.png",
-      "coverage": 0.22397569444444446,
-      "hash": "8223ef9ca1ac5741bbfdcde2708d0d2df1a0219d2cc79fdfd25241feef58daa9",
+      "t": 5.83,
+      "file": "r4-frame-5_83.png",
+      "coverage": 0.346318359375,
+      "hash": "f88d0017e6d04c5e573b03fddda049475e0fca63943d1b6e56974f86d3066c47",
       "state": {
-        "t": 7.760714285714285,
+        "t": 5.83,
         "world": 5,
         "next": 6,
         "morph": 0,
@@ -971,28 +1422,29 @@
         "name": "Astronomy",
         "camera": {
           "position": [
-            0.02083776000000001,
-            2.255456867646061,
-            0.11533906106368834
+            0.019554048000000008,
+            2.2493784400477397,
+            0.101133647857739
           ],
           "target": [
-            0,
-            2.236584227646061,
-            0.07717522106368835
+            0.0020870838283165655,
+            2.2348949870033463,
+            0.07562469577850518
           ],
-          "roll": -0.015324103314210143
+          "roll": -0.08222054378210811,
+          "fov": 58.0494735977255
         },
-        "calls": 2,
-        "triangles": 56672
+        "calls": 3,
+        "triangles": 72070
       }
     },
     {
-      "t": 9.225,
-      "file": "r3-frame-9_22.png",
-      "coverage": 0.20836371527777778,
-      "hash": "c68342cd39d668a555c9a48da889cd3a65cdf868197f2efa64622a75b815738e",
+      "t": 6.930000000000001,
+      "file": "r4-frame-6_93.png",
+      "coverage": 0.26243489583333335,
+      "hash": "46af898f0b7a02bf0f7ed7a3956e6e4ce36ac48e89ca07241ce8d6dc76a69b51",
       "state": {
-        "t": 9.225,
+        "t": 6.930000000000001,
         "world": 6,
         "next": 7,
         "morph": 0,
@@ -1003,28 +1455,29 @@
         "name": "Intelligence",
         "camera": {
           "position": [
-            -0.011737919999999964,
-            2.2397003876460606,
-            0.11375410106368836
+            -0.005079552000000012,
+            2.23458445604774,
+            0.098332751857739
           ],
           "target": [
-            0,
-            2.236584227646061,
-            0.07717522106368835
+            -0.002457922689905562,
+            2.239223492036963,
+            0.07770109548852121
           ],
-          "roll": 0.02109266489476908
+          "roll": 0.10219130386503471,
+          "fov": 63.1623947163767
         },
-        "calls": 2,
-        "triangles": 56660
+        "calls": 3,
+        "triangles": 72032
       }
     },
     {
-      "t": 10.689285714285715,
-      "file": "r3-frame-10_69.png",
-      "coverage": 0.17306098090277777,
-      "hash": "603315027acec4e2d5e0a536839656b9191923405104578d105323abbd8a1598",
+      "t": 8.030000000000001,
+      "file": "r4-frame-8_03.png",
+      "coverage": 0.23545789930555555,
+      "hash": "7c346dadfd33c5d666a009c98298d281322e72eb2fb787afe25f652e4a39d935",
       "state": {
-        "t": 10.689285714285715,
+        "t": 8.030000000000001,
         "world": 7,
         "next": 7,
         "morph": 0,
@@ -1035,28 +1488,29 @@
         "name": "Engineering",
         "camera": {
           "position": [
-            0.02184479999999999,
-            2.233232867646061,
-            0.11463922106368835
+            0.012881663999999965,
+            2.24284583204774,
+            0.09966599985773897
           ],
           "target": [
-            0,
-            2.236584227646061,
-            0.07717522106368835
+            -0.0017471607464793805,
+            2.234999197038692,
+            0.07848465342441288
           ],
-          "roll": 0.03436704180343867
+          "roll": -0.08629814980991844,
+          "fov": 59.769327795401765
         },
-        "calls": 2,
-        "triangles": 56864
+        "calls": 3,
+        "triangles": 72506
       }
     },
     {
-      "t": 11.714285714285714,
-      "file": "r3-frame-11_71.png",
-      "coverage": 0.18739691840277778,
-      "hash": "9fd27fcac95fe294825fd69a7c5d8dfb5e83585930229073be8e5770ad22bdba",
+      "t": 8.8,
+      "file": "r4-frame-8_80.png",
+      "coverage": 0.22984375,
+      "hash": "18f788638159c034ee0299e5ea7754cae2aaccdf6c94ac2e7ef3ef097592ca09",
       "state": {
-        "t": 11.714285714285714,
+        "t": 8.8,
         "world": 7,
         "next": 7,
         "morph": 0,
@@ -1068,27 +1522,28 @@
         "camera": {
           "position": [
             0.011999999999999999,
-            2.2413842276460607,
-            0.11077522106368834
+            2.2413843280477397,
+            0.11077435185773898
           ],
           "target": [
             0,
-            2.236584227646061,
-            0.07717522106368835
+            2.2365843280477398,
+            0.077174351857739
           ],
-          "roll": 0
+          "roll": 0,
+          "fov": 53
         },
-        "calls": 2,
-        "triangles": 56864
+        "calls": 3,
+        "triangles": 72506
       }
     },
     {
-      "t": 12.446428571428571,
-      "file": "r3-frame-12_45.png",
-      "coverage": 0.14013780381944443,
-      "hash": "26f3e4af63120213fbb1aed06770413cdbd7a2c5d80ffaac1136587fdc88b8ec",
+      "t": 9.233333333333334,
+      "file": "r4-frame-9_23.png",
+      "coverage": 0.19820638020833334,
+      "hash": "f8fa7e700203998229532f923e7e427f598ab5b7514a0b4cb8144eb71a2e7bec",
       "state": {
-        "t": 12.446428571428571,
+        "t": 9.233333333333334,
         "world": 7,
         "next": 7,
         "morph": 0,
@@ -1099,28 +1554,29 @@
         "name": "The mind",
         "camera": {
           "position": [
-            0.027191358024691355,
-            2.242988548633715,
-            0.13371843094023156
+            0.020092592592592592,
+            2.2408590194057645,
+            0.1283934876602081
           ],
           "target": [
             0,
-            2.236584227646061,
-            0.07717522106368835
+            2.2365843280477398,
+            0.077174351857739
           ],
-          "roll": 0
+          "roll": 0,
+          "fov": 53
         },
-        "calls": 3,
-        "triangles": 100304
+        "calls": 4,
+        "triangles": 121730
       }
     },
     {
-      "t": 12.8125,
-      "file": "r3-frame-12_81.png",
-      "coverage": 0.16495659722222222,
-      "hash": "408d454db63b77951141c85f2837291560ce1965832fa6e29388b16a1166c1d1",
+      "t": 9.450000000000001,
+      "file": "r4-frame-9_45.png",
+      "coverage": 0.16195203993055557,
+      "hash": "d6af2dc876a3d140f05130a5f104585deef360162a6ae8fa7cb2e585c871aa71",
       "state": {
-        "t": 12.8125,
+        "t": 9.450000000000001,
         "world": 7,
         "next": 7,
         "morph": 0,
@@ -1131,28 +1587,29 @@
         "name": "The mind",
         "camera": {
           "position": [
-            0.0563046875,
-            2.246063133896061,
-            0.17768772106368835
+            0.035601562499999996,
+            2.2398522967977397,
+            0.162159508107739
           ],
           "target": [
             0,
-            2.236584227646061,
-            0.07717522106368835
+            2.2365843280477398,
+            0.077174351857739
           ],
-          "roll": 0
+          "roll": 0,
+          "fov": 53
         },
-        "calls": 3,
-        "triangles": 100304
+        "calls": 4,
+        "triangles": 121730
       }
     },
     {
-      "t": 13.178571428571429,
-      "file": "r3-frame-13_18.png",
-      "coverage": 0.2797081163194444,
-      "hash": "ece6f7adbfa204d5f0dcf9e5fca40fc52876b0d863e0ec8c2f0f31baedf23598",
+      "t": 9.666666666666668,
+      "file": "r4-frame-9_67.png",
+      "coverage": 0.1252322048611111,
+      "hash": "441aea1172d25718e8349a085a77c1ae1732fad14369eb2fa9ee36df3dcad341",
       "state": {
-        "t": 13.178571428571429,
+        "t": 9.666666666666668,
         "world": 7,
         "next": 7,
         "morph": 0,
@@ -1163,28 +1620,29 @@
         "name": "The mind",
         "camera": {
           "position": [
-            0.10182716049382715,
-            2.250870647399147,
-            0.24643941859455254
+            0.059851851851851844,
+            2.2382781552082336,
+            0.2149570679071217
           ],
           "target": [
             0,
-            2.236584227646061,
-            0.07717522106368835
+            2.2365843280477398,
+            0.077174351857739
           ],
-          "roll": 0
+          "roll": 0,
+          "fov": 53
         },
-        "calls": 3,
-        "triangles": 100304
+        "calls": 4,
+        "triangles": 121730
       }
     },
     {
-      "t": 13.544642857142858,
-      "file": "r3-frame-13_54.png",
-      "coverage": 0.22879991319444445,
-      "hash": "075c76060d182a08a603f7ee79bcd24ec9da26cb7890312c517262a655b418cf",
+      "t": 9.883333333333335,
+      "file": "r4-frame-9_88.png",
+      "coverage": 0.15035047743055555,
+      "hash": "c4fbb740cc8c9e8ebc2d384b950e6fd8baa8ed162930a2fa07b66c7c21a1764f",
       "state": {
-        "t": 13.544642857142858,
+        "t": 9.883333333333335,
         "world": 7,
         "next": 7,
         "morph": 0,
@@ -1195,28 +1653,29 @@
         "name": "The mind",
         "camera": {
           "position": [
-            0.16035310570987654,
-            2.2570514247911224,
-            0.33483000501430565
+            0.09102922453703703,
+            2.2362543608409498,
+            0.2828362249287267
           ],
           "target": [
             0,
-            2.236584227646061,
-            0.07717522106368835
+            2.2365843280477398,
+            0.077174351857739
           ],
-          "roll": 0
+          "roll": 0,
+          "fov": 53
         },
-        "calls": 3,
-        "triangles": 100304
+        "calls": 4,
+        "triangles": 121730
       }
     },
     {
-      "t": 13.910714285714286,
-      "file": "r3-frame-13_91.png",
-      "coverage": 0.1490798611111111,
-      "hash": "482b6c1daf331efee9964e325c7d952a46125b1ea1d107080890d2161add1beb",
+      "t": 10.100000000000001,
+      "file": "r4-frame-10_10.png",
+      "coverage": 0.10937608506944445,
+      "hash": "c06f047d6795e0b0adae36afc307eb2892b9100e3b6351febacff6451020613b",
       "state": {
-        "t": 13.910714285714286,
+        "t": 10.100000000000001,
         "world": 7,
         "next": 7,
         "morph": 0,
@@ -1227,28 +1686,29 @@
         "name": "The mind",
         "camera": {
           "position": [
-            0.226,
-            2.263984227646061,
-            0.43397522106368835
+            0.126,
+            2.2339843280477396,
+            0.358974351857739
           ],
           "target": [
             0,
-            2.236584227646061,
-            0.07717522106368835
+            2.2365843280477398,
+            0.077174351857739
           ],
-          "roll": 0
+          "roll": 0,
+          "fov": 53
         },
-        "calls": 6,
-        "triangles": 237558
+        "calls": 7,
+        "triangles": 237180
       }
     },
     {
-      "t": 14.276785714285714,
-      "file": "r3-frame-14_28.png",
-      "coverage": 0.10227105034722223,
-      "hash": "4df08f159a284cda662249042300d555cb6045f97b76d661d360fbf81c2cfc1c",
+      "t": 10.316666666666666,
+      "file": "r4-frame-10_32.png",
+      "coverage": 0.07240668402777778,
+      "hash": "b1e38920c71f9308dc6a7f51e4e90033e6dd2f60441f9f136e294da7cc21e752",
       "state": {
-        "t": 14.276785714285714,
+        "t": 10.316666666666666,
         "world": 7,
         "next": 7,
         "morph": 0,
@@ -1259,28 +1719,29 @@
         "name": "The mind",
         "camera": {
           "position": [
-            0.29164689429012347,
-            2.270917030500999,
-            0.5331204371130711
+            0.16097077546296298,
+            2.23171429525453,
+            0.4351124787867514
           ],
           "target": [
             0,
-            2.236584227646061,
-            0.07717522106368835
+            2.2333898836032953,
+            0.07877157407996122
           ],
-          "roll": 0
+          "roll": 0,
+          "fov": 53
         },
-        "calls": 7,
-        "triangles": 272810
+        "calls": 8,
+        "triangles": 272432
       }
     },
     {
-      "t": 14.642857142857142,
-      "file": "r3-frame-14_64.png",
-      "coverage": 0.06450629340277778,
-      "hash": "1bce57f8987e11a9b7282d1d4663df804c839dc795b2c6825a304564f987bd8b",
+      "t": 10.533333333333333,
+      "file": "r4-frame-10_53.png",
+      "coverage": 0.04314887152777778,
+      "hash": "63f1851a2a278cc7f69d3055b21de00332a4e5669e22e2e4221e9707382f1d73",
       "state": {
-        "t": 14.642857142857142,
+        "t": 10.533333333333333,
         "world": 7,
         "next": 7,
         "morph": 0,
@@ -1291,28 +1752,29 @@
         "name": "The mind",
         "camera": {
           "position": [
-            0.3501728395061729,
-            2.2770978078929742,
-            0.6215110235328243
+            0.19214814814814815,
+            2.229690500887246,
+            0.5029916358083564
           ],
           "target": [
             0,
-            2.236584227646061,
-            0.07717522106368835
+            2.217695439158851,
+            0.08661879630218344
           ],
-          "roll": 0
+          "roll": 0,
+          "fov": 53
         },
         "calls": 7,
-        "triangles": 272810
+        "triangles": 257990
       }
     },
     {
-      "t": 15.008928571428571,
-      "file": "r3-frame-15_01.png",
-      "coverage": 0.05249240451388889,
-      "hash": "3ab5fa1087c4074e21a4b7cdca3044d04bff000c0948c99e6e1d026bca17ede0",
+      "t": 10.75,
+      "file": "r4-frame-10_75.png",
+      "coverage": 0.03631293402777778,
+      "hash": "57ba7831e3cba020b3bfd8903688c4f41c21fc8bcf108764ca9173ab204bfbc1",
       "state": {
-        "t": 15.008928571428571,
+        "t": 10.75,
         "world": 7,
         "next": 7,
         "morph": 0,
@@ -1323,28 +1785,29 @@
         "name": "The mind",
         "camera": {
           "position": [
-            0.3956953125,
-            2.2819053213960605,
-            0.6902627210636884
+            0.21639843749999998,
+            2.22811635929774,
+            0.555789195607739
           ],
           "target": [
             0,
-            2.2303732901460607,
-            0.08079826793868834
+            2.19158432804774,
+            0.09967435185773899
           ],
-          "roll": 0
+          "roll": 0,
+          "fov": 53
         },
         "calls": 7,
-        "triangles": 272810
+        "triangles": 257990
       }
     },
     {
-      "t": 15.375,
-      "file": "r3-frame-15_38.png",
-      "coverage": 0.05178493923611111,
-      "hash": "5ce6e803c5094001235201b924bc545e441d762704accf775f1243ba3779c8dd",
+      "t": 10.966666666666667,
+      "file": "r4-frame-10_97.png",
+      "coverage": 0.036279296875,
+      "hash": "d020a04c3a4b24b29c7aacd05a248595ffdb72e1f48286f7c2287b342e927cf4",
       "state": {
-        "t": 15.375,
+        "t": 10.966666666666667,
         "world": 7,
         "next": 7,
         "morph": 0,
@@ -1355,28 +1818,29 @@
         "name": "The mind",
         "camera": {
           "position": [
-            0.4248086419753086,
-            2.2849799066584064,
-            0.7342320111871451
+            0.23190740740740737,
+            2.227109636689715,
+            0.5895552160552698
           ],
           "target": [
             0,
-            2.2065842276460605,
-            0.09467522106368835
+            2.1654732169366286,
+            0.11272990741329456
           ],
-          "roll": 0
+          "roll": 0,
+          "fov": 53
         },
         "calls": 7,
-        "triangles": 272810
+        "triangles": 257990
       }
     },
     {
-      "t": 15.741071428571429,
-      "file": "r3-frame-15_74.png",
-      "coverage": 0.0533203125,
-      "hash": "07fcc13f80d45da86be0430c8fdcfa188a1a34056446a15dc63ad8ad579dfb33",
+      "t": 11.183333333333334,
+      "file": "r4-frame-11_18.png",
+      "coverage": 0.03602973090277778,
+      "hash": "141a43ea059939a1a31525d28614b8921cd9ce55c032a7f27ef8da05cb25e60d",
       "state": {
-        "t": 15.741071428571429,
+        "t": 11.183333333333334,
         "world": 7,
         "next": 7,
         "morph": 0,
@@ -1387,28 +1851,29 @@
         "name": "The mind",
         "camera": {
           "position": [
-            0.4378224344135806,
-            2.2863542604392704,
-            0.7538864864957877
+            0.2388399884259261,
+            2.2266596270446537,
+            0.6046487827990975
           ],
           "target": [
             0,
-            2.182795165146061,
-            0.10855217418868834
+            2.1497787724921844,
+            0.12057712963551676
           ],
-          "roll": 0
+          "roll": 0,
+          "fov": 53
         },
         "calls": 7,
-        "triangles": 272810
+        "triangles": 257990
       }
     },
     {
-      "t": 16.107142857142858,
-      "file": "r3-frame-16_11.png",
-      "coverage": 0.055678168402777777,
-      "hash": "64f898758b1f7534fde8b634a590d4189b15e88c24937ee84fd347d56d717f56",
+      "t": 11.4,
+      "file": "r4-frame-11_40.png",
+      "coverage": 0.03693576388888889,
+      "hash": "557734b99aa878e9bea80354a20084725414c9c5983ebabd4c246b8724838a3f",
       "state": {
-        "t": 16.107142857142858,
+        "t": 11.4,
         "world": 7,
         "next": 7,
         "morph": 0,
@@ -1419,28 +1884,29 @@
         "name": "The creator",
         "camera": {
           "position": [
-            0.44,
-            2.2865842276460606,
-            0.7571752210636884
+            0.24,
+            2.22658432804774,
+            0.607174351857739
           ],
           "target": [
             0,
-            2.1765842276460607,
-            0.11217522106368835
+            2.14658432804774,
+            0.12217435185773899
           ],
-          "roll": 0
+          "roll": 0,
+          "fov": 53
         },
         "calls": 7,
-        "triangles": 272810
+        "triangles": 257990
       }
     },
     {
-      "t": 17.571428571428573,
-      "file": "r3-frame-17_57.png",
-      "coverage": 0.047416449652777776,
-      "hash": "bcc59e0766d0b3a53e7a5ea4a3a4431f600f1ca2d32608461dad9c57c090ef95",
+      "t": 12.6,
+      "file": "r4-frame-12_60.png",
+      "coverage": 0.053972439236111114,
+      "hash": "4ebf5a7fdd0748245464f83535d2ff3857306e8ed3a930d8be940f89c8eed7d1",
       "state": {
-        "t": 17.571428571428573,
+        "t": 12.6,
         "world": 7,
         "next": 7,
         "morph": 0,
@@ -1451,60 +1917,62 @@
         "name": "The creator",
         "camera": {
           "position": [
-            2.1861728395061766,
-            2.494715208271396,
-            3.1613824538034954
+            1.828148148148148,
+            2.403110291071748,
+            2.695332888661501
           ],
           "target": [
             0,
-            1.4207645909874431,
-            0.30008615750719425
+            1.4776781923063158,
+            0.3258884442170563
           ],
-          "roll": 0
+          "roll": 0,
+          "fov": 53
         },
         "calls": 7,
-        "triangles": 272810
+        "triangles": 257990
       }
     },
     {
-      "t": 18.889285714285712,
-      "file": "r3-frame-18_89.png",
-      "coverage": 0.047760416666666666,
-      "hash": "6da614d833ea44fda3c3c64f64e7acfbb5d49b2bdb76f8c4ffa3a289064c80f0",
+      "t": 13.466666666666667,
+      "file": "r4-frame-13_47.png",
+      "coverage": 0.0485546875,
+      "hash": "ba27e89bc706cb755ee73ae5b2d0f359ed7b7cf03520e206c9e01bef77ab5a0a",
       "state": {
-        "t": 18.889285714285712,
+        "t": 13.466666666666667,
         "world": 7,
         "next": 7,
         "morph": 0,
         "head": 1,
         "body": 1,
-        "signature": 0.12186864197530757,
+        "signature": 0.12186864197531029,
         "fade": 1,
         "name": "Hi, I am Tire",
         "camera": {
           "position": [
-            2.936391308641973,
-            2.6779620740740726,
-            4.189979654320984
+            2.5120175802469173,
+            2.553588345679014,
+            3.6338862222222277
           ],
           "target": [
             0,
-            1.2297494913580247,
-            0.33171970370370385
+            1.3,
+            0.35806364444444416
           ],
-          "roll": 0
+          "roll": 0,
+          "fov": 53
         },
         "calls": 5,
-        "triangles": 272810
+        "triangles": 257990
       }
     },
     {
-      "t": 19.767857142857142,
-      "file": "r3-frame-19_77.png",
-      "coverage": 0.02861979166666667,
-      "hash": "e4055422cabcd65e9bbbd0b851a9664f7eff6cc594acfe2a38d6e3fcdedf2543",
+      "t": 13.866666666666665,
+      "file": "r4-frame-13_87.png",
+      "coverage": 0.03390190972222222,
+      "hash": "55658501ff20e9c3326390d29b86e103e8fca2e2664f2670ea709c57caf98be5",
       "state": {
-        "t": 19.767857142857142,
+        "t": 13.866666666666665,
         "world": 7,
         "next": 7,
         "morph": 0,
@@ -1515,28 +1983,29 @@
         "name": "Hi, I am Tire",
         "camera": {
           "position": [
-            4.50679012345679,
-            3.3796296296296298,
-            6.328395061728395
+            3.948765432098766,
+            3.121604938271605,
+            5.738888888888889
           ],
           "target": [
             0,
-            1.2832098765432098,
-            0.23148148148148145
+            1.3,
+            0.23777777777777778
           ],
-          "roll": 0
+          "roll": 0,
+          "fov": 53
         },
         "calls": 1,
-        "triangles": 160278
+        "triangles": 144258
       }
     },
     {
-      "t": 20.928571428571427,
-      "file": "r3-frame-20_93.png",
-      "coverage": 0.003740234375,
-      "hash": "5fca2ccc26c275c695bf169dd1a82ba85a4bc6562100307cce76e487e11a0b56",
+      "t": 14.414285714285713,
+      "file": "r4-frame-14_41.png",
+      "coverage": 0.004918619791666667,
+      "hash": "3dbed11e24975de7df888793ac8360babfdfb1b75f4a1626b97fb4b27b38afdf",
       "state": {
-        "t": 20.928571428571427,
+        "t": 14.414285714285713,
         "world": 7,
         "next": 7,
         "morph": 0,
@@ -1547,28 +2016,29 @@
         "name": "Hi, I am Tire",
         "camera": {
           "position": [
-            5,
-            3.6,
-            7
+            4.4,
+            3.3,
+            6.4
           ],
           "target": [
             0,
             1.3,
             0.2
           ],
-          "roll": 0
+          "roll": 0,
+          "fov": 53
         },
         "calls": 1,
-        "triangles": 160278
+        "triangles": 144258
       }
     },
     {
-      "t": 22.642857142857142,
-      "file": "r3-frame-22_64.png",
-      "coverage": 0.003740234375,
-      "hash": "5fca2ccc26c275c695bf169dd1a82ba85a4bc6562100307cce76e487e11a0b56",
+      "t": 15.27142857142857,
+      "file": "r4-frame-15_27.png",
+      "coverage": 0.004918619791666667,
+      "hash": "3dbed11e24975de7df888793ac8360babfdfb1b75f4a1626b97fb4b27b38afdf",
       "state": {
-        "t": 22.642857142857142,
+        "t": 15.27142857142857,
         "world": 7,
         "next": 7,
         "morph": 0,
@@ -1579,32 +2049,33 @@
         "name": "Hi, I am Tire",
         "camera": {
           "position": [
-            5,
-            3.6,
-            7
+            4.4,
+            3.3,
+            6.4
           ],
           "target": [
             0,
             1.3,
             0.2
           ],
-          "roll": 0
+          "roll": 0,
+          "fov": 53
         },
         "calls": 1,
-        "triangles": 160278
+        "triangles": 144258
       }
     }
   ],
   "portraitShots": [
-    "r3-face-front.png",
-    "r3-face-three-quarter.png",
-    "r3-face-profile.png",
-    "r3-hands.png"
+    "r4-face-front.png",
+    "r4-face-three-quarter.png",
+    "r4-face-profile.png",
+    "r4-hands.png"
   ],
   "limits": [
     "Artistic acceptance requires human review of the diagnostic frames and running program.",
     "Physical GPU not validated. See per-engine software compatibility results.",
-    "GitHub README SVG image-context compatibility needs a separate actual GitHub observation.",
+    "SVG results cover the declarative compatibility probe only, not embedding the WebGL program.",
     "Mobile composition must be visually inspected."
   ]
 }
