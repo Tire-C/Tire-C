@@ -1,3 +1,7 @@
+# Documento storico — revisione 3
+
+Questa versione non è stata approvata dall'utente. Il candidato corrente e le nuove evidenze sono descritti in [REVISION_4.md](REVISION_4.md). Il documento sottostante conserva lo stato della revisione 3; i suoi collegamenti immutabili identificano l'anteprima e i test di allora.
+
 # Binary Mind Odyssey — revisione 3
 
 Candidato per la valutazione artistica dell'utente. Il personaggio della revisione 2 è stato considerato non approvato e il suo metodo di costruzione è stato sostituito. Concept, estetica binaria, otto mondi, rivelazione della mente e frase finale sono conservati.

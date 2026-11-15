@@ -6,7 +6,7 @@ A deterministic WebGL 2 program. Every visible surface is a spatial cloud of 0/1
 
 ## Review
 
-See [revision 3: anatomical character, secondary motion, 24-second pacing and visual review](REVISION_3.md).
+See [revision 4: anatomical microtypography, dense activity in all worlds and a 16-second journey](REVISION_4.md).
 
 The remote workflow creates [a self-contained application](review/odyssey.html), [rendered diagnostic frames](diagnostics/README.md) and [machine-readable evidence](diagnostics/report.json). The HTML includes its code and dependencies; it requires no build or installation to observe in a browser. GitHub serves HTML source as a download, not an interactive page. Pages is deliberately not enabled.
 
@@ -16,27 +16,28 @@ Diagnostics are still images for inspection, never playback frames. All animatio
 
 | Time | Scene |
 |---|---|
-| 0–1.46 s | Twisting spatial binary tunnel |
-| 1.46–2.93 s | Multilevel data architecture |
-| 2.93–4.39 s | Atomic and field structures |
-| 4.39–5.86 s | Molecular helix and cages |
-| 5.86–7.32 s | Mathematical surfaces and projected hypercube |
-| 7.32–8.79 s | Spiral galaxy and ringed planet |
-| 8.79–10.25 s | Neural architecture |
-| 10.25–11.71 s | Mechanical assemblies |
-| 11.71–16.11 s | Continuous camera withdrawal from the cranial volume |
-| 16.11–18.30 s | Seated creator, hands, keyboard, monitor and chair |
-| 18.30–20.50 s | Spatial glyph morph into the signature |
-| 20.50–23.50 s | Hi, I am Tire |
-| 23.50–24.00 s | Fade into the next journey |
+| 0–1.10 s | Spatial binary tunnel |
+| 1.10–2.20 s | Multilevel data architecture |
+| 2.20–3.30 s | Atomic and field structures |
+| 3.30–4.40 s | Molecular helix and cages |
+| 4.40–5.50 s | Mathematical surfaces and nested frames |
+| 5.50–6.60 s | Galaxy and orbital bodies |
+| 6.60–7.70 s | Neural architecture |
+| 7.70–8.80 s | Mechanical assemblies |
+| 8.80–11.40 s | Cranial reveal and complete portrait |
+| 11.40–13.20 s | Seated creator and workstation |
+| 13.20–14.20 s | Spatial glyph morph into the signature |
+| 14.20–15.70 s | Hi, I am Tire |
+| 15.70–16.00 s | Fade into the next journey |
 
 ## Architecture
 
 - `geometry.js`: seeded surface/volume sampling; all eight environments fit a sphere of radius 34. With scale 0.0024 their radius is at most 0.0816 world units, inside the cranial vault.
-- `tools/prepare-character.py`: pinned CC0 MakeHuman graphical data, original skeletal posing/IK, garment construction, subdivision, deterministic spatial sampling and quantization, executed on the remote runner. See `assets/README.md` and the provenance report.
+- `tools/prepare-character.py`: pinned CC0 MakeHuman anatomy and detailed ocular data, original skeletal posing/IK and garments, ray-intersected rows of surface glyphs, adaptive eye sampling, six-direction anatomical visibility and quantization. Executed only on the remote runner; see `assets/README.md` and the provenance report.
 - `character.js`: generated anatomical glyph clouds, original short coils, footwear and workstation. Anatomical depth proxies use `colorWrite:false`; no solid mesh writes visible colour. No specific real-person likenesses or proprietary characters.
-- `flow.js`: one instanced pass for restrained, deterministic secondary motion along the actual structures of all eight environments.
-- `renderer.js`: instanced typographic quads, real depth test/write, glyph alpha cutout, directional luminance, atmospheric distance attenuation, seeded opacity dissolve, per-surface luminance contrast and GPU morphing.
+- `flow.js`: stronger, faster deterministic packets along the actual structures of all eight environments.
+- `activity.js`: one instanced pass for 60 moving groups in each world, spanning three depth layers; complete glyph assemblies, directional crossing events and verified spatial bounds.
+- `renderer.js`: instanced typographic quads, real depth test/write, glyph alpha cutout, directional luminance, atmospheric distance attenuation, seeded opacity dissolve, surface-oriented portrait typography, key/fill lighting, highlight compression and GPU morphing.
 - `timeline.js`: absolute-time camera and scene state; random access never relies on accumulated simulation state.
 - `signature.js`: typography sampled into world-space positions and assembled from the existing creator glyphs.
 - `main.js`: UI, pause/scrub, interactive 3D orbit inspection, reduced motion, capped pixel density and graphics-context handling.
@@ -48,9 +49,9 @@ Worlds morph through stable particle indices with a bounded curved displacement.
 
 ## Cloud and cost boundary
 
-Only `ubuntu-24.04` standard GitHub-hosted runners on this public repository. No paid runner, API, GPU rental, artifact-storage upload, Pages deployment or external hosting. Dependencies, browser binaries, build and tests are confined to the disposable remote runner. Small review outputs are committed to this experimental branch with a head-SHA check. No credentials are embedded.
+Only `ubuntu-24.04` standard GitHub-hosted runners on this public repository, [free for public repositories under GitHub's documented runner policy](https://docs.github.com/en/actions/how-tos/write-workflows/choose-where-workflows-run/choose-the-runner-for-a-job). No paid runner, API, GPU rental, artifact-storage upload, Pages deployment or external hosting. Dependencies, browser binaries, build and tests are confined to the disposable remote runner. Small review outputs are committed to this experimental branch with a head-SHA check. No credentials are embedded.
 
-CI uses Chromium with ANGLE SwiftShader: **software rasterization on remote CPU, not a physical GPU test**. Browser playback on the viewer's device uses its available WebGL implementation. Revision 3 shortens the cycle from 28 to 24 seconds. The moving story goes from 24 to 20.5 seconds, approximately 17.1% faster. The signature remains fully formed for three seconds before a half-second fade. All eight scientific environment generators are preserved exactly. Firefox and WebKit also render the creator scene; no physical GPU validation is claimed.
+CI uses Chromium with ANGLE SwiftShader: **software rasterization on remote CPU, not a physical GPU test**. Browser playback on the viewer's device uses its available WebGL implementation. Revision 4 shortens the cycle from 24 to 16 seconds. The worlds take 8.8 seconds, the mind reveal 2.6, the creator 1.8 and the signature morph 1.0. The signature remains fully formed for 1.5 seconds before a 0.3-second fade. Camera banking, closer passes and continuous field-of-view changes strengthen the journey. All eight scientific environment generators are preserved exactly. Firefox and WebKit also render the creator scene; no physical GPU validation is claimed.
 
 ## Profile preservation and later integration
 
