@@ -1,0 +1,42 @@
+{
+  "repository": "makehumancommunity/makehuman",
+  "commit": "a8bc2d54ff0ac92e78ff71431b1023eda42bf482",
+  "license": "CC0-1.0 (graphical assets only)",
+  "files": [
+    {
+      "path": "makehuman/data/3dobjs/base.obj",
+      "gitBlob": "d26635e9326e3cca30778fd7b9c00062b03cce09",
+      "size": 1749303
+    },
+    {
+      "path": "makehuman/data/targets/macrodetails/african-male-young.target",
+      "gitBlob": "dd5743e48700267d76596f575bf17b4b5cc3b3e0",
+      "size": 406170
+    },
+    {
+      "path": "makehuman/data/targets/head/head-square.target",
+      "gitBlob": "8d156ed42db13219844e01bf4ab3185d9205befa",
+      "size": 12618
+    },
+    {
+      "path": "makehuman/data/rigs/default.mhskel",
+      "gitBlob": "b02cbecae00143856410d7561adf006d83bf9b3e",
+      "size": 117790
+    },
+    {
+      "path": "makehuman/data/rigs/default_weights.mhw",
+      "gitBlob": "66185806afacf87749be8e5cf6dbf66496b2a6b0",
+      "size": 897521
+    },
+    {
+      "path": "LICENSE.ASSETS.md",
+      "gitBlob": "f3ede1fc3318f8d794e2cb51924186c62f02f71a",
+      "size": 6962
+    },
+    {
+      "path": "LICENSE.md",
+      "gitBlob": "5d1a49d31ebdaa46b06c52eae2c005c678a63ffa",
+      "size": 3598
+    }
+  ]
+}

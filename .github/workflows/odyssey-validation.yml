@@ -4,6 +4,7 @@ on:
     branches: [work/binary-mind-odyssey]
     paths:
       - 'odyssey/src/**'
+      - 'odyssey/assets/makehuman-manifest.json'
       - 'odyssey/tools/**'
       - 'odyssey/index.html'
       - 'odyssey/package.json'
@@ -34,6 +35,11 @@ jobs:
         run: |
           if test -f package-lock.json; then npm ci --ignore-scripts --no-audit --no-fund; else npm install --ignore-scripts --no-audit --no-fund; fi
           npx playwright install --with-deps chromium firefox webkit
+      - name: Prepare pinned CC0 anatomy on remote CPU
+        working-directory: odyssey
+        run: |
+          python -m pip install --disable-pip-version-check numpy==2.2.6
+          python tools/prepare-character.py
       - name: Build standalone application
         working-directory: odyssey
         run: npm run build
@@ -54,9 +60,10 @@ jobs:
           mkdir -p odyssey/review
           cp odyssey/.build/odyssey.html odyssey/review/odyssey.html
           cp odyssey/.build/THREE-LICENSE.txt odyssey/review/THREE-LICENSE.txt
+          cp odyssey/assets/MAKEHUMAN-CC0.txt odyssey/review/MAKEHUMAN-CC0.txt
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add odyssey/diagnostics odyssey/review odyssey/package-lock.json
+          git add odyssey/diagnostics odyssey/review odyssey/package-lock.json odyssey/src/generated odyssey/assets/MAKEHUMAN-CC0.txt
           git diff --cached --quiet && exit 0
           git diff --exit-code 0f00154f3651c7bed8cf8660780bb3c1750ed9bc -- README.md
           git commit -m "Record remote software-rendering evidence [skip ci]"
