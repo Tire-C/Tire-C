@@ -47,7 +47,7 @@ function render(t){
  cosmos.uniforms.fogDistance.value=.55*UNIVERSE_SCALE/.008+2*ramp(story,16,19);
  head.uniforms.minimumPixels.value=1.9;body.uniforms.minimumPixels.value=2.3;
  cosmos.uniforms.intensity.value=1.7+1.5*ramp(story,16,19);
- head.uniforms.cutaway.value=ramp(story,17,18.5)*(1-ramp(story,21.5,23.5));
+ head.uniforms.cutaway.value=ramp(story,17,18.5)*(1-ramp(story,19.8,21));
  cosmos.uniforms.morph.value=state.morph;cosmos.uniforms.time.value=story;
  cosmos.uniforms.opacity.value=(1-ramp(story,24.5,26))*state.fade;
  cosmos.mesh.visible=story<26;
