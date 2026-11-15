@@ -20,7 +20,7 @@ const route=new THREE.CatmullRomCurve3([
  [-7,3,14],[2,-3,6],[9,-2,12],[3,5,8],[5,2,14]
 ].map(p=>new THREE.Vector3(...p)),false,'catmullrom',.38);
 const exitPoint=[5,2,14].map((v,i)=>HEAD[i]+v*UNIVERSE_SCALE);
-const portrait=HEAD.map((v,i)=>v+[.24,-.01,.53][i]),studio=[2.25,2.45,3.25];
+const portrait=HEAD.map((v,i)=>v+[.24,-.19,.57][i]),studio=[2.25,2.45,3.25];
 export function cameraAt(seconds){
  const t=storyTime(seconds);let position,target,roll=0,fov=53;
  if(t<=16){

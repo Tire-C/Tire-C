@@ -5,21 +5,23 @@ import {TAU,rng} from './math.js';
 // Each world has complete secondary objects at three spatial scales. These are
 // real glyph assemblies, not a screen-space particle overlay or star texture.
 export const ACTIVITY_DESCRIPTIONS=[
- 'Moving ribs, helical knots and crossing binary streams at three depths.',
+ 'Moving ribs and crossing binary streams at three depths.',
  'Data blocks, routing modules and vertical transfer traffic around the server city.',
  'Satellite nuclei and orbital systems throughout the electromagnetic volume.',
  'Rotating tetrahedral molecules and bond chains around the primary double helix.',
- 'Nested hypercube frames and transforming mathematical knots at multiple scales.',
- 'Orbiting bodies, spiral packets and directional comet trains across the stellar field.',
+ 'Rotating nested cubic frames around the original mathematical surfaces.',
+ 'Orbiting bodies and directional binary trains across the stellar field.',
  'Active neuron coronas, rotating compute clusters and propagating tensor packets.',
- 'Secondary gear trains, moving pistons and synchronized transmission assemblies.'
+ 'Secondary gear trains, shafts and axial transfer traffic.'
 ];
 export function activityWorlds(){
  return Array.from({length:8},(_,world)=>{
   const R=rng(4000+world),positions=[],normals=[],centres=[],vectors=[],motions=[],weights=[],digits=[],seeds=[];
-  const layers=[0,0,0],objects=[0,0,0];
+  const layers=[0,0,0],objects=[0,0,0];let radiusBound=0;
   function append(cloud,centre,layer,mode,rate,phase,axis,amplitude,scale=1){
    const d=cloud.data();objects[layer]++;
+   let localRadius=0;for(let i=0;i<d.count;i++)localRadius=Math.max(localRadius,Math.hypot(...d.p.subarray(i*3,i*3+3))*scale);
+   radiusBound=Math.max(radiusBound,Math.hypot(...centre)+localRadius+Math.abs(amplitude));
    for(let i=0;i<d.count;i++){
     positions.push(...d.p.subarray(i*3,i*3+3).map(v=>v*scale));
     normals.push(...d.n.subarray(i*3,i*3+3));centres.push(...centre);
@@ -92,7 +94,7 @@ export function activityWorlds(){
    const axis=world===3?[0,1,0]:world===6?[0,0,1]:world===1?[1,0,0]:[Math.sin(a),.3,Math.cos(a)];
    append(c,centre,layer,1,1.8+j*.04,j*.17,axis,3.6,.8);
   }
-  return {count:weights.length,layerCounts:layers,objectCounts:objects,
+  return {count:weights.length,radiusBound,layerCounts:layers,objectCounts:objects,
    p:new Float32Array(positions),n:new Float32Array(normals),centres:new Float32Array(centres),
    vectors:new Float32Array(vectors),motions:new Float32Array(motions),w:new Float32Array(weights),
    digit:new Float32Array(digits),seed:new Float32Array(seeds)};

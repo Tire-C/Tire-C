@@ -47,7 +47,7 @@ check('Depth proxies are invisible and anatomical',()=>assert.equal(surfaces.fil
 check('Every approved world has secondary 3D dynamics',()=>{assert.equal(info.flowCounts.length,8);assert(info.flowCounts.every(n=>n>500&&n<2000))});
 
 check('Three populated activity layers and substantial secondary objects in every world',()=>{
- assert.equal(info.activityCounts.length,8);assert(info.activityCounts.every(n=>n>5000&&n<25000));
+ assert.equal(info.activityCounts.length,8);assert(info.activityBounds.every(r=>r<=34),'Secondary structures leave the cranial universe');assert(info.activityCounts.every(n=>n>5000&&n<25000));
  assert(info.activityLayers.every(l=>l.length===3&&l.every(n=>n>1000)));
  assert(info.activityObjects.every(l=>l.every(n=>n>=16)));
 });
@@ -109,9 +109,9 @@ for(const [name,pos] of [['side',[4,2.8,.2]],['back',[2,2.8,-4]],['front',[-3,2.
 check('Three spatial viewpoints produce distinct rendered images',()=>assert.equal(new Set(orbitHashes).size,3));
 const portraitShots=[];
 for(const [name,pos,target] of [
- ['face-front',[0,info.headCenter[1]-.035,info.headCenter[2]+.68],[0,info.headCenter[1]-.09,info.headCenter[2]+.04]],
- ['face-three-quarter',[.42,info.headCenter[1]+.02,info.headCenter[2]+.66],[0,info.headCenter[1]-.09,info.headCenter[2]+.04]],
- ['face-profile',[.85,info.headCenter[1],info.headCenter[2]+.03],[0,info.headCenter[1]-.09,info.headCenter[2]+.04]],
+ ['face-front',[0,info.headCenter[1]-.19,info.headCenter[2]+.68],[0,info.headCenter[1]-.09,info.headCenter[2]+.04]],
+ ['face-three-quarter',[.42,info.headCenter[1]-.17,info.headCenter[2]+.66],[0,info.headCenter[1]-.09,info.headCenter[2]+.04]],
+ ['face-profile',[.85,info.headCenter[1]-.12,info.headCenter[2]+.03],[0,info.headCenter[1]-.09,info.headCenter[2]+.04]],
  ['hands',[.75,1.90,1.05],[0,1.35,.77]]
 ]){
  await page.evaluate(({pos,target})=>odyssey.viewFrom(pos,target),{pos,target});

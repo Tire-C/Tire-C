@@ -17,15 +17,15 @@ catch(e){message.textContent='This experience needs WebGL 2. Your browser could 
 renderer.setClearColor(0x000000,1);renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.outputColorSpace=THREE.LinearSRGBColorSpace;
 const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(53,1,.00015,100),texture=atlas();
 const worldData=worlds(),parts=creator(),all=join([
- {...parts.head,glyphScale:.0056/.024,minimum:1.9,gain:1.65/1.7,contrast:1,surface:.88,portrait:1},
- {...parts.body,glyphScale:.0115/.024,minimum:2.3,gain:1.65/1.7,contrast:1,surface:.70,portrait:1},
- {...parts.desk,glyphScale:1,minimum:4.2,gain:1.45/1.7}
+ {...parts.head,glyphScale:.0056/.024,minimum:1.9,gain:2.05/1.7,contrast:1,surface:.88,portrait:1},
+ {...parts.body,glyphScale:.0115/.024,minimum:2.3,gain:2.05/1.7,contrast:1,surface:.70,portrait:1},
+ {...parts.desk,glyphScale:1,minimum:4.2,gain:1.20/1.7}
 ]);
 const cosmos=binaryCloud(worldData[0],texture,{size:.28,fog:.55,intensity:1.7});
 cosmos.mesh.position.set(...HEAD);cosmos.mesh.scale.setScalar(UNIVERSE_SCALE);cosmos.uniforms.turbulence.value=2;
-const head=binaryCloud(parts.head,texture,{size:.0056,fog:25,intensity:1.65,surface:.88,portrait:1});
-const body=binaryCloud(parts.body,texture,{size:.0115,fog:25,intensity:1.65,surface:.70,portrait:1});
-const desk=binaryCloud(parts.desk,texture,{size:.024,fog:25,intensity:1.45});
+const head=binaryCloud(parts.head,texture,{size:.0056,fog:25,intensity:2.05,surface:.88,portrait:1});
+const body=binaryCloud(parts.body,texture,{size:.0115,fog:25,intensity:2.05,surface:.70,portrait:1});
+const desk=binaryCloud(parts.desk,texture,{size:.024,fog:25,intensity:1.20});
 const finale=binaryCloud(all,texture,{size:.024,fog:40,intensity:1.7});finale.setTargets(all,signature(all.count));
 const flowData=flowWorlds(),flow=binaryFlow(flowData[0],texture),depth=depthOccluders();
 const activityData=activityWorlds(),activity=binaryActivity(activityData[0],texture);
@@ -96,6 +96,6 @@ window.odyssey={ready:true,seek:render,duration:DURATION,creatorTime:CREATOR_TIM
  secondaryVisible:visible=>{flow.mesh.visible=visible;activity.mesh.visible=visible;renderer.render(scene,camera)},
  surfaces:()=>scene.children.filter(o=>o.isMesh).map(o=>({colorWrite:o.material.colorWrite,instanced:!!o.geometry.isInstancedBufferGeometry})),
  viewFrom:(position,target)=>{camera.position.set(...position);camera.lookAt(...target);renderer.render(scene,camera)},
- info:()=>({renderer:debug?gl.getParameter(debug.UNMASKED_RENDERER_WEBGL):gl.getParameter(gl.RENDERER),webgl:gl.getParameter(gl.VERSION),revision:4,flowCounts:flowData.map(d=>d.count),activityCounts:activityData.map(d=>d.count),activityLayers:activityData.map(d=>d.layerCounts),activityObjects:activityData.map(d=>d.objectCounts),headCenter:HEAD,worldCount:worldData.length,worldPoints:worldData[0].count,headPoints:parts.head.count,bodyPoints:parts.body.count,deskPoints:parts.desk.count,playing,reduced:reduced.matches,current,drawCalls:renderer.info.render.calls}),
+ info:()=>({renderer:debug?gl.getParameter(debug.UNMASKED_RENDERER_WEBGL):gl.getParameter(gl.RENDERER),webgl:gl.getParameter(gl.VERSION),revision:4,flowCounts:flowData.map(d=>d.count),activityCounts:activityData.map(d=>d.count),activityBounds:activityData.map(d=>d.radiusBound),activityLayers:activityData.map(d=>d.layerCounts),activityObjects:activityData.map(d=>d.objectCounts),headCenter:HEAD,worldCount:worldData.length,worldPoints:worldData[0].count,headPoints:parts.head.count,bodyPoints:parts.body.count,deskPoints:parts.desk.count,playing,reduced:reduced.matches,current,drawCalls:renderer.info.render.calls}),
  geometry:()=>worldData.map(d=>({name:d.name,count:d.count,min:[0,1,2].map(a=>{let m=Infinity;for(let i=a;i<d.p.length;i+=3)m=Math.min(m,d.p[i]);return m}),max:[0,1,2].map(a=>{let m=-Infinity;for(let i=a;i<d.p.length;i+=3)m=Math.max(m,d.p[i]);return m}),radius:d.p.reduce((m,_,i)=>i%3?m:Math.max(m,Math.hypot(d.p[i],d.p[i+1],d.p[i+2])),0)}))};
 resize();syncButton();requestAnimationFrame(tick);
