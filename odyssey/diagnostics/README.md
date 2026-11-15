@@ -1,6 +1,6 @@
 # Rendering diagnostics — review candidate
 
-Source commit: c52314f40d84ccfd91d51afe3699a9a5ece0d238
+Source commit: 7029ce51cd7df005ad24e1101d81333876cfb1e3
 
 Remote CPU rendering with Chromium / SwiftShader. These images are test evidence, never the animation product.
 
@@ -46,7 +46,7 @@ Remote CPU rendering with Chromium / SwiftShader. These images are test evidence
 - PASS Frame 20.928571428571427 contains monochrome rendered geometry
 - PASS Frame 22.642857142857142 contains monochrome rendered geometry
 - PASS Secondary motion changes pixels with camera and primary world frozen in all eight worlds
-- FAIL Creator-to-signature handover preserves glyph appearance without a visible cut
+- PASS Creator-to-signature handover preserves glyph appearance without a visible cut
 - PASS Random-access timeline is pixel deterministic
 - PASS No JavaScript or shader errors
 - PASS Invisible creator does not consume draw calls during immersion

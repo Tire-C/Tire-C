@@ -1,7 +1,7 @@
 {
   "revision": 3,
-  "sourceCommit": "c52314f40d84ccfd91d51afe3699a9a5ece0d238",
-  "runId": "43660025397",
+  "sourceCommit": "7029ce51cd7df005ad24e1101d81333876cfb1e3",
+  "runId": "43660581170",
   "environment": "GitHub Actions ubuntu-24.04 standard public runner",
   "rendering": "Chromium / ANGLE SwiftShader software on remote CPU; NO real GPU validation",
   "baseline": "0f00154f3651c7bed8cf8660780bb3c1750ed9bc",
@@ -159,7 +159,7 @@
     }
   ],
   "anatomyAudit": {
-    "sourceCommit": "c52314f40d84ccfd91d51afe3699a9a5ece0d238",
+    "sourceCommit": "7029ce51cd7df005ad24e1101d81333876cfb1e3",
     "upstream": {
       "repository": "makehumancommunity/makehuman",
       "commit": "a8bc2d54ff0ac92e78ff71431b1023eda42bf482",
@@ -385,19 +385,19 @@
     }
   ],
   "benchmark": {
-    "medianMs": 195.8000000000029,
-    "p95Ms": 221.5,
+    "medianMs": 361.20000000001164,
+    "p95Ms": 419.80000000001746,
     "note": "Pixel-readback SwiftShader diagnostic on remote CPU. Not real GPU or display frame rate."
   },
-  "transitionError": 0.19715603298611112,
+  "transitionError": 0,
   "svgCompatibility": {
     "verified": true,
     "animated": true,
     "src": "/Tire-C/Tire-C/raw/work/binary-mind-odyssey/odyssey/compatibility/probe.svg",
     "context": "Actual GitHub rendered Markdown image in remote Chromium",
     "hashes": [
-      "659fab52cd608618f1434ff62eadd291962a8f7b3af69cf48a4b3f0223602616",
-      "9c3d573946cd7099e93c27bcaa17938becb94dca08adfd89d10b0de490657d26"
+      "beca0fdb9478e01c5e553de825c23365ad10c3c82b22e40c57d126056c6ce85a",
+      "aaaaefb2baadff7c79cdf5b15165606351ab03bfd445eee5999bc55394aff021"
     ]
   },
   "browserCompatibility": [
@@ -641,8 +641,7 @@
     },
     {
       "name": "Creator-to-signature handover preserves glyph appearance without a visible cut",
-      "pass": false,
-      "error": "Mean green-channel difference: 0.19715603298611112"
+      "pass": true
     },
     {
       "name": "Random-access timeline is pixel deterministic",
@@ -697,9 +696,7 @@
       "pass": true
     }
   ],
-  "failures": [
-    "Creator-to-signature handover preserves glyph appearance without a visible cut: Mean green-channel difference: 0.19715603298611112"
-  ],
+  "failures": [],
   "shots": [
     {
       "t": 0,
@@ -961,7 +958,7 @@
       "t": 7.760714285714285,
       "file": "r3-frame-7_76.png",
       "coverage": 0.22397569444444446,
-      "hash": "0570fe47665706cb3bedbcc8297840186dacef4c3819b722398b785d05b51440",
+      "hash": "8223ef9ca1ac5741bbfdcde2708d0d2df1a0219d2cc79fdfd25241feef58daa9",
       "state": {
         "t": 7.760714285714285,
         "world": 5,
@@ -1088,8 +1085,8 @@
     {
       "t": 12.446428571428571,
       "file": "r3-frame-12_45.png",
-      "coverage": 0.1511838107638889,
-      "hash": "12a04cbcc70f3ddceb75b5c1a6f94534a7ca46aeb890c6ec461648373b01d2b3",
+      "coverage": 0.14013780381944443,
+      "hash": "26f3e4af63120213fbb1aed06770413cdbd7a2c5d80ffaac1136587fdc88b8ec",
       "state": {
         "t": 12.446428571428571,
         "world": 7,
@@ -1120,8 +1117,8 @@
     {
       "t": 12.8125,
       "file": "r3-frame-12_81.png",
-      "coverage": 0.19510308159722223,
-      "hash": "02a5f535ae0a3f83a969b55bc68f03cfb38de03c49565d5653c599b39190c375",
+      "coverage": 0.16495659722222222,
+      "hash": "408d454db63b77951141c85f2837291560ce1965832fa6e29388b16a1166c1d1",
       "state": {
         "t": 12.8125,
         "world": 7,
@@ -1152,8 +1149,8 @@
     {
       "t": 13.178571428571429,
       "file": "r3-frame-13_18.png",
-      "coverage": 0.3183865017361111,
-      "hash": "f7eeb5f4072d56297602bde37dda7ffb1def219f78d7802f1628a62508f69eba",
+      "coverage": 0.2797081163194444,
+      "hash": "ece6f7adbfa204d5f0dcf9e5fca40fc52876b0d863e0ec8c2f0f31baedf23598",
       "state": {
         "t": 13.178571428571429,
         "world": 7,
@@ -1184,8 +1181,8 @@
     {
       "t": 13.544642857142858,
       "file": "r3-frame-13_54.png",
-      "coverage": 0.23939344618055555,
-      "hash": "c5207b1b8aef4ac011384ad58560879ab89056039b17d22858af20960aeb988c",
+      "coverage": 0.22879991319444445,
+      "hash": "075c76060d182a08a603f7ee79bcd24ec9da26cb7890312c517262a655b418cf",
       "state": {
         "t": 13.544642857142858,
         "world": 7,
@@ -1216,8 +1213,8 @@
     {
       "t": 13.910714285714286,
       "file": "r3-frame-13_91.png",
-      "coverage": 0.1547873263888889,
-      "hash": "d0680d140ff62e6655349d2975bb9c0bef9f0c791a8414754cada24b18695ebf",
+      "coverage": 0.1490798611111111,
+      "hash": "482b6c1daf331efee9964e325c7d952a46125b1ea1d107080890d2161add1beb",
       "state": {
         "t": 13.910714285714286,
         "world": 7,
@@ -1248,8 +1245,8 @@
     {
       "t": 14.276785714285714,
       "file": "r3-frame-14_28.png",
-      "coverage": 0.10601128472222222,
-      "hash": "0c75c95d9e7820291cf3ef0374d6710b67f51c7ff3a46bc0a2eea37d05d6ec42",
+      "coverage": 0.10227105034722223,
+      "hash": "4df08f159a284cda662249042300d555cb6045f97b76d661d360fbf81c2cfc1c",
       "state": {
         "t": 14.276785714285714,
         "world": 7,
@@ -1274,14 +1271,14 @@
           "roll": 0
         },
         "calls": 7,
-        "triangles": 271690
+        "triangles": 272810
       }
     },
     {
       "t": 14.642857142857142,
       "file": "r3-frame-14_64.png",
-      "coverage": 0.06893229166666667,
-      "hash": "5332bfcb85bbdc3bfb98c3adb5211c36ae979c1c61e7546608379be846d08043",
+      "coverage": 0.06450629340277778,
+      "hash": "1bce57f8987e11a9b7282d1d4663df804c839dc795b2c6825a304564f987bd8b",
       "state": {
         "t": 14.642857142857142,
         "world": 7,
@@ -1306,14 +1303,14 @@
           "roll": 0
         },
         "calls": 7,
-        "triangles": 271690
+        "triangles": 272810
       }
     },
     {
       "t": 15.008928571428571,
       "file": "r3-frame-15_01.png",
-      "coverage": 0.059032118055555555,
-      "hash": "d1ee7b3e4ebb214f018e7a0803739114df8ce263f6696ef14879b09bd91ee091",
+      "coverage": 0.05249240451388889,
+      "hash": "3ab5fa1087c4074e21a4b7cdca3044d04bff000c0948c99e6e1d026bca17ede0",
       "state": {
         "t": 15.008928571428571,
         "world": 7,
@@ -1338,14 +1335,14 @@
           "roll": 0
         },
         "calls": 7,
-        "triangles": 271690
+        "triangles": 272810
       }
     },
     {
       "t": 15.375,
       "file": "r3-frame-15_38.png",
-      "coverage": 0.05735026041666667,
-      "hash": "a08c896909a6a2acd154091a983f9f2df331ba158386818f6736915918e27f28",
+      "coverage": 0.05178493923611111,
+      "hash": "5ce6e803c5094001235201b924bc545e441d762704accf775f1243ba3779c8dd",
       "state": {
         "t": 15.375,
         "world": 7,
@@ -1370,14 +1367,14 @@
           "roll": 0
         },
         "calls": 7,
-        "triangles": 271690
+        "triangles": 272810
       }
     },
     {
       "t": 15.741071428571429,
       "file": "r3-frame-15_74.png",
-      "coverage": 0.05848307291666666,
-      "hash": "c34b82057fda7fbfe47287fb14a5d0ea82e4d39b7e348f84181062778cfa53a4",
+      "coverage": 0.0533203125,
+      "hash": "07fcc13f80d45da86be0430c8fdcfa188a1a34056446a15dc63ad8ad579dfb33",
       "state": {
         "t": 15.741071428571429,
         "world": 7,
@@ -1402,14 +1399,14 @@
           "roll": 0
         },
         "calls": 7,
-        "triangles": 271690
+        "triangles": 272810
       }
     },
     {
       "t": 16.107142857142858,
       "file": "r3-frame-16_11.png",
-      "coverage": 0.06111545138888889,
-      "hash": "2880d1ede0852c742130931d8eb88551489a330adba688f7f8bdafa69fd87c9b",
+      "coverage": 0.055678168402777777,
+      "hash": "64f898758b1f7534fde8b634a590d4189b15e88c24937ee84fd347d56d717f56",
       "state": {
         "t": 16.107142857142858,
         "world": 7,
@@ -1434,14 +1431,14 @@
           "roll": 0
         },
         "calls": 7,
-        "triangles": 271690
+        "triangles": 272810
       }
     },
     {
       "t": 17.571428571428573,
       "file": "r3-frame-17_57.png",
-      "coverage": 0.04888997395833333,
-      "hash": "fc7b5b9176dcfa648a5b2a27a1c17dbfb5e5cd5f02a2216c2661148c516a8e68",
+      "coverage": 0.047416449652777776,
+      "hash": "bcc59e0766d0b3a53e7a5ea4a3a4431f600f1ca2d32608461dad9c57c090ef95",
       "state": {
         "t": 17.571428571428573,
         "world": 7,
@@ -1466,14 +1463,14 @@
           "roll": 0
         },
         "calls": 7,
-        "triangles": 271690
+        "triangles": 272810
       }
     },
     {
       "t": 18.889285714285712,
       "file": "r3-frame-18_89.png",
-      "coverage": 0.04875108506944444,
-      "hash": "746a0212d45b065166dfd9a5466e5d5602390783404363305ae1e9f207b160b3",
+      "coverage": 0.047760416666666666,
+      "hash": "6da614d833ea44fda3c3c64f64e7acfbb5d49b2bdb76f8c4ffa3a289064c80f0",
       "state": {
         "t": 18.889285714285712,
         "world": 7,
@@ -1498,14 +1495,14 @@
           "roll": 0
         },
         "calls": 5,
-        "triangles": 271690
+        "triangles": 272810
       }
     },
     {
       "t": 19.767857142857142,
       "file": "r3-frame-19_77.png",
-      "coverage": 0.03060546875,
-      "hash": "9f491311c0db71146739beb7260dfc151f4b8ea157a490b021713727d487c10b",
+      "coverage": 0.02861979166666667,
+      "hash": "e4055422cabcd65e9bbbd0b851a9664f7eff6cc594acfe2a38d6e3fcdedf2543",
       "state": {
         "t": 19.767857142857142,
         "world": 7,
