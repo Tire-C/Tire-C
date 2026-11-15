@@ -1,6 +1,6 @@
 # Documento storico — prima versione
 
-La versione corrente è descritta in [REVISION_2.md](REVISION_2.md). Il rapporto qui sotto conserva le verifiche della prima versione.
+La versione corrente è descritta in [REVISION_3.md](REVISION_3.md). Il rapporto qui sotto conserva le verifiche della prima versione.
 
 # Prima versione da valutare — verifica tecnica e visiva
 

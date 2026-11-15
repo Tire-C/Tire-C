@@ -1,3 +1,7 @@
+# Documento storico — revisione 2
+
+Il personaggio di questa versione non è stato approvato dall'utente. La revisione corrente è descritta in [REVISION_3.md](REVISION_3.md); il rapporto sottostante conserva lo stato precedente. I collegamenti relativi ai rapporti generati possono ora mostrare l'ultima esecuzione: per le evidenze R2 usare il commit immutabile indicato nella sezione anteprima.
+
 # Binary Mind Odyssey — revisione mirata 2
 
 Candidato per la valutazione artistica dell'utente. Il concept e gli otto generatori dei mondi approvati sono conservati; nessuna integrazione nel profilo è stata eseguita.

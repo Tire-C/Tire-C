@@ -6,7 +6,7 @@ A deterministic WebGL 2 program. Every visible surface is a spatial cloud of 0/1
 
 ## Review
 
-See [revision 2: character, pacing and visual review](REVISION_2.md).
+See [revision 3: anatomical character, secondary motion, 24-second pacing and visual review](REVISION_3.md).
 
 The remote workflow creates [a self-contained application](review/odyssey.html), [rendered diagnostic frames](diagnostics/README.md) and [machine-readable evidence](diagnostics/report.json). The HTML includes its code and dependencies; it requires no build or installation to observe in a browser. GitHub serves HTML source as a download, not an interactive page. Pages is deliberately not enabled.
 
@@ -16,25 +16,27 @@ Diagnostics are still images for inspection, never playback frames. All animatio
 
 | Time | Scene |
 |---|---|
-| 0–1.71 s | Twisting spatial binary tunnel |
-| 1.71–3.43 s | Multilevel data architecture |
-| 3.43–5.14 s | Atomic and field structures |
-| 5.14–6.86 s | Molecular helix and cages |
-| 6.86–8.57 s | Mathematical surfaces and projected hypercube |
-| 8.57–10.29 s | Spiral galaxy and ringed planet |
-| 10.29–12.00 s | Neural architecture |
-| 12.00–13.71 s | Mechanical assemblies |
-| 13.71–18.86 s | Continuous camera withdrawal from the cranial volume |
-| 18.86–21.43 s | Seated creator, hands, keyboard, monitor and chair |
-| 21.43–24.00 s | Spatial glyph morph into the signature |
-| 24.00–27.50 s | Hi, I am Tire |
-| 27.50–28.00 s | Fade into the next journey |
+| 0–1.46 s | Twisting spatial binary tunnel |
+| 1.46–2.93 s | Multilevel data architecture |
+| 2.93–4.39 s | Atomic and field structures |
+| 4.39–5.86 s | Molecular helix and cages |
+| 5.86–7.32 s | Mathematical surfaces and projected hypercube |
+| 7.32–8.79 s | Spiral galaxy and ringed planet |
+| 8.79–10.25 s | Neural architecture |
+| 10.25–11.71 s | Mechanical assemblies |
+| 11.71–16.11 s | Continuous camera withdrawal from the cranial volume |
+| 16.11–18.30 s | Seated creator, hands, keyboard, monitor and chair |
+| 18.30–20.50 s | Spatial glyph morph into the signature |
+| 20.50–23.50 s | Hi, I am Tire |
+| 23.50–24.00 s | Fade into the next journey |
 
 ## Architecture
 
-- `geometry.js`: seeded surface/volume sampling; all eight environments fit a sphere of radius 34. With scale 0.0038 their radius is at most 0.1292 world units, inside the cranial vault.
-- `character.js`: original anatomical surface sampling, recessed facial features, short procedural coils, clothing sections, tapered limbs, posed fingers and workstation. No external character assets or proprietary likenesses.
-- `renderer.js`: instanced typographic quads, real depth test/write, glyph alpha cutout, directional luminance, atmospheric distance attenuation, seeded opacity dissolve and GPU morphing.
+- `geometry.js`: seeded surface/volume sampling; all eight environments fit a sphere of radius 34. With scale 0.0024 their radius is at most 0.0816 world units, inside the cranial vault.
+- `tools/prepare-character.py`: pinned CC0 MakeHuman graphical data, original skeletal posing/IK, garment construction, subdivision, deterministic spatial sampling and quantization, executed on the remote runner. See `assets/README.md` and the provenance report.
+- `character.js`: generated anatomical glyph clouds, original short coils, footwear and workstation. Anatomical depth proxies use `colorWrite:false`; no solid mesh writes visible colour. No specific real-person likenesses or proprietary characters.
+- `flow.js`: one instanced pass for restrained, deterministic secondary motion along the actual structures of all eight environments.
+- `renderer.js`: instanced typographic quads, real depth test/write, glyph alpha cutout, directional luminance, atmospheric distance attenuation, seeded opacity dissolve, per-surface luminance contrast and GPU morphing.
 - `timeline.js`: absolute-time camera and scene state; random access never relies on accumulated simulation state.
 - `signature.js`: typography sampled into world-space positions and assembled from the existing creator glyphs.
 - `main.js`: UI, pause/scrub, interactive 3D orbit inspection, reduced motion, capped pixel density and graphics-context handling.
@@ -48,7 +50,7 @@ Worlds morph through stable particle indices with a bounded curved displacement.
 
 Only `ubuntu-24.04` standard GitHub-hosted runners on this public repository. No paid runner, API, GPU rental, artifact-storage upload, Pages deployment or external hosting. Dependencies, browser binaries, build and tests are confined to the disposable remote runner. Small review outputs are committed to this experimental branch with a head-SHA check. No credentials are embedded.
 
-CI uses Chromium with ANGLE SwiftShader: **software rasterization on remote CPU, not a physical GPU test**. Browser playback on the viewer's device uses its available WebGL implementation. Revision 2 shortens the cycle from 32 to 28 seconds. The moving story runs 16.7% faster (14.3% shorter), while the final 3.5-second reading hold and half-second fade remain unchanged. All eight scientific environment generators are preserved exactly.
+CI uses Chromium with ANGLE SwiftShader: **software rasterization on remote CPU, not a physical GPU test**. Browser playback on the viewer's device uses its available WebGL implementation. Revision 3 shortens the cycle from 28 to 24 seconds. The moving story goes from 24 to 20.5 seconds, approximately 17.1% faster. The signature remains fully formed for three seconds before a half-second fade. All eight scientific environment generators are preserved exactly. Firefox and WebKit also render the creator scene; no physical GPU validation is claimed.
 
 ## Profile preservation and later integration
 
@@ -71,6 +73,15 @@ An SVG embedded as an image cannot run the JavaScript/WebGL engine. A dedicated 
 
 ## Development commands (remote environment only)
 
-`npm ci --ignore-scripts`, `npx playwright install --with-deps chromium firefox webkit`, `npm run build`, `xvfb-run -a npm test`.
+Use the existing workflow on the authorized public standard runner. Its remote sequence is:
 
-The first remote run generates the dependency lock; subsequent runs use it. Dependencies are pinned directly. The standalone build retains upstream license notices and includes Three.js's MIT license alongside it.
+1. `npm ci --ignore-scripts`
+2. `npx playwright install --with-deps chromium firefox webkit`
+3. `python -m pip install numpy==2.2.6`
+4. `python tools/prepare-character.py`
+5. `npm run build`
+6. `xvfb-run -a npm test`
+
+The character builder verifies the pinned source assets before emitting `src/generated/character-data.json`, metadata and provenance. The build validates the exact script embedded in the standalone HTML.
+
+The first remote run generates the dependency lock; subsequent runs use it. Dependencies are pinned directly. The standalone build retains upstream license notices and includes Three.js's MIT license and the MakeHuman graphical-asset CC0 license alongside it.
