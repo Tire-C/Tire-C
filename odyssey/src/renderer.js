@@ -18,6 +18,7 @@ attribute float digit;
 attribute float seed;
 attribute float localGlyphScale;
 attribute float localMinimum;
+attribute float localContrast;
 uniform float morph;
 uniform float glyphSize;
 uniform float time;
@@ -27,6 +28,7 @@ uniform float minimumPixels;
 uniform float cutaway;
 uniform vec2 cutRange;
 uniform float lodStrength;
+uniform float surfaceContrast;
 varying float vDensity;
 varying float vCut;
 varying vec2 vUv;
@@ -56,7 +58,7 @@ void main(){
  center.xy+=position.xy*size;
  gl_Position=projectionMatrix*center;
  vUv=uv;vDigit=digit;vSeed=seed;vDepth=-center.z;
- vLight=mix(weight,toWeight,morph)*(.25+.75*max(0.0,dot(worldN,normalize(vec3(-.5,.85,1.0)))));
+ vLight=mix(weight,toWeight,morph)*pow(.25+.75*max(0.0,dot(worldN,normalize(vec3(-.5,.85,1.0)))),mix(localContrast*surfaceContrast,1.,morph));
 }`;
 const fragment=`
 uniform sampler2D glyphAtlas;
@@ -77,7 +79,7 @@ void main(){
  float light=clamp(vLight*intensity*fog,0.0,1.0);
  gl_FragColor=vec4(vec3(0.0,1.0,.25)*light,1.0);
 }`;
-export function binaryCloud(data,texture,{size=.2,fog=100,intensity=1.4}={}){
+export function binaryCloud(data,texture,{size=.2,fog=100,intensity=1.4,contrast=1}={}){
  const g=new THREE.InstancedBufferGeometry(),q=new THREE.PlaneGeometry(.64,1);
  g.index=q.index;g.setAttribute('position',q.attributes.position);g.setAttribute('uv',q.attributes.uv);
  for(const [key,value] of Object.entries({fromPosition:data.p,toPosition:data.p,fromNormal:data.n,toNormal:data.n}))g.setAttribute(key,new THREE.InstancedBufferAttribute(value,3));
@@ -87,10 +89,11 @@ export function binaryCloud(data,texture,{size=.2,fog=100,intensity=1.4}={}){
  const random=rng(987);g.setAttribute('weight',new THREE.InstancedBufferAttribute(data.w,1));
  g.setAttribute('digit',new THREE.InstancedBufferAttribute(data.digit||Float32Array.from({length:data.count},()=>random()>.5?1:0),1));
  g.setAttribute('seed',new THREE.InstancedBufferAttribute(data.seed||Float32Array.from({length:data.count},()=>random()),1));
- g.setAttribute('localGlyphScale',new THREE.InstancedBufferAttribute(data.glyphScale||new Float32Array(data.count).fill(1),1));
+ g.setAttribute('localGlyphScale',new THREE.InstancedBufferAttribute(data.glyphScale||data.sampleScale||new Float32Array(data.count).fill(1),1));
  g.setAttribute('localMinimum',new THREE.InstancedBufferAttribute(data.minimum||new Float32Array(data.count),1));
+ g.setAttribute('localContrast',new THREE.InstancedBufferAttribute(data.contrast||new Float32Array(data.count).fill(1),1));
  g.instanceCount=data.count;
- const uniforms={glyphAtlas:{value:texture},morph:{value:0},glyphSize:{value:size},time:{value:0},turbulence:{value:0},opacity:{value:1},fogDistance:{value:fog},intensity:{value:intensity},viewportHeight:{value:720},minimumPixels:{value:4.2},cutaway:{value:0},cutRange:{value:new THREE.Vector2(2.125,2.190)},lodStrength:{value:1}};
+ const uniforms={glyphAtlas:{value:texture},morph:{value:0},glyphSize:{value:size},time:{value:0},turbulence:{value:0},opacity:{value:1},fogDistance:{value:fog},intensity:{value:intensity},viewportHeight:{value:720},minimumPixels:{value:4.2},cutaway:{value:0},cutRange:{value:new THREE.Vector2(2.125,2.190)},lodStrength:{value:1},surfaceContrast:{value:contrast}};
  const material=new THREE.ShaderMaterial({uniforms,vertexShader:vertex,fragmentShader:fragment,depthTest:true,depthWrite:true,transparent:false,side:THREE.DoubleSide});
  const mesh=new THREE.Mesh(g,material);mesh.frustumCulled=false;
  return {mesh,uniforms,setTargets(a,b){g.setAttribute('toWeight',new THREE.InstancedBufferAttribute(b.w,1));g.setAttribute('fromSpin',new THREE.InstancedBufferAttribute(a.spin||new Float32Array(a.count*4),4));g.setAttribute('toSpin',new THREE.InstancedBufferAttribute(b.spin||new Float32Array(b.count*4),4));for(const [key,value] of Object.entries({fromPosition:a.p,toPosition:b.p,fromNormal:a.n,toNormal:b.n}))g.setAttribute(key,new THREE.InstancedBufferAttribute(value,3));g.setAttribute('weight',new THREE.InstancedBufferAttribute(a.w,1))}};

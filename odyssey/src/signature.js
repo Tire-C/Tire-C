@@ -15,16 +15,17 @@ export function signature(count){
 }
 export function join(parts){
  const count=parts.reduce((s,d)=>s+d.count,0),p=new Float32Array(count*3),n=new Float32Array(count*3),w=new Float32Array(count),
-  glyphScale=new Float32Array(count),minimum=new Float32Array(count),digit=new Float32Array(count),seed=new Float32Array(count);
+  contrast=new Float32Array(count),glyphScale=new Float32Array(count),minimum=new Float32Array(count),digit=new Float32Array(count),seed=new Float32Array(count);
  let at=0;
  for(const d of parts){
   p.set(d.p,at*3);n.set(d.n,at*3);w.set(d.w.map(v=>v*(d.gain??1)),at);
-  glyphScale.fill(d.glyphScale??1,at,at+d.count);minimum.fill(d.minimum??0,at,at+d.count);
+  for(let i=0;i<d.count;i++)glyphScale[at+i]=(d.glyphScale??1)*(d.sampleScale?.[i]??1);
+  contrast.fill(d.contrast??1,at,at+d.count);minimum.fill(d.minimum??0,at,at+d.count);
   // Match the independent clouds' digit and dissolve RNG exactly at the morph handover.
   const random=rng(987);
   digit.set(Float32Array.from({length:d.count},()=>random()>.5?1:0),at);
   seed.set(Float32Array.from({length:d.count},()=>random()),at);
   at+=d.count;
  }
- return {p,n,w,glyphScale,minimum,digit,seed,count};
+ return {p,n,w,contrast,glyphScale,minimum,digit,seed,count};
 }

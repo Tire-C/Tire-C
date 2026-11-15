@@ -16,14 +16,14 @@ catch(e){message.textContent='This experience needs WebGL 2. Your browser could 
 renderer.setClearColor(0x000000,1);renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.outputColorSpace=THREE.LinearSRGBColorSpace;
 const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(53,1,.00015,100),texture=atlas();
 const worldData=worlds(),parts=creator(),all=join([
- {...parts.head,glyphScale:.0074/.024,minimum:2.1,gain:1.65/1.7},
- {...parts.body,glyphScale:.015/.024,minimum:2.7,gain:1.6/1.7},
- {...parts.desk,glyphScale:1,minimum:4.2,gain:1.6/1.7}
+ {...parts.head,glyphScale:.0074/.024,minimum:2.1,gain:1.4/1.7,contrast:1.6},
+ {...parts.body,glyphScale:.015/.024,minimum:2.7,gain:1.5/1.7,contrast:1.1},
+ {...parts.desk,glyphScale:1,minimum:4.2,gain:1.45/1.7}
 ]);
 const cosmos=binaryCloud(worldData[0],texture,{size:.28,fog:.55,intensity:1.7});
 cosmos.mesh.position.set(...HEAD);cosmos.mesh.scale.setScalar(UNIVERSE_SCALE);cosmos.uniforms.turbulence.value=2;
-const head=binaryCloud(parts.head,texture,{size:.0074,fog:25,intensity:1.65});
-const body=binaryCloud(parts.body,texture,{size:.015,fog:25,intensity:1.6});
+const head=binaryCloud(parts.head,texture,{size:.0074,fog:25,intensity:1.4,contrast:1.6});
+const body=binaryCloud(parts.body,texture,{size:.015,fog:25,intensity:1.5,contrast:1.1});
 const desk=binaryCloud(parts.desk,texture,{size:.024,fog:25,intensity:1.45});
 const finale=binaryCloud(all,texture,{size:.024,fog:40,intensity:1.7});finale.setTargets(all,signature(all.count));
 const flowData=flowWorlds(),flow=binaryFlow(flowData[0],texture),depth=depthOccluders();

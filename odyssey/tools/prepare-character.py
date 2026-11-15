@@ -242,11 +242,15 @@ def occluder(p,faces):
     assert len(ids)<65536
     return {'vertices':encoded(np.rint(q*8192),'<i2'),'indices':encoded(tri,'<u2')}
 # Head depth proxy uses the subdivided face, cloth proxy uses smooth clothed topology.
-headProxy=occluder(SP,headFaces)
+HP=SP.copy();HF=list(headFaces)
+for side in ['L','R']:
+    ep,er,ef=subdivide(P,V,groups['helper-'+side.lower()+'-eye'])
+    start=len(HP);HP=np.concatenate([HP,ep]);HF.extend([[i+start for i in f] for f in ef])
+headProxy=occluder(HP,HF)
 bodyProxy=occluder(CP,CF)
 brain=point('head',np.array([0,9.35,.35])*scale)
 meta={'head':brain.tolist(),'universeScale':.0024,'cutRange':[float(brain[1]-.045),float(brain[1]+.012)],'pose':pose,'source':MANIFEST['commit']}
-model={'head':cloud(head),'body':cloud(body),'occlusion':{'head':headProxy,'body':bodyProxy},'meta':meta}
+model={'head':cloud(head),'body':cloud(body),'skinCount':len(neck),'occlusion':{'head':headProxy,'body':bodyProxy},'meta':meta}
 gen=ROOT/'src/generated';gen.mkdir(exist_ok=True)
 (gen/'character-data.json').write_text(json.dumps(model,separators=(',',':'))+'\n')
 (gen/'character-meta.json').write_text(json.dumps(meta,separators=(',',':'))+'\n')

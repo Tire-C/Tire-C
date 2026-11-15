@@ -41,7 +41,8 @@ export function buildCharacter(Cloud){
  for(let j=0;j<14;j++)desk.line([.65,.75-j*.034,.9],[.9,.75-j*.034,.9],.02,.7);
  for(let j=-14;j<=14;j++){desk.line([-2.1,.015,j*.15],[2.1,.015,j*.15],.10,.14);desk.line([j*.15,.015,-2.1],[j*.15,.015,2.1],.10,.14)}
 
- return {head,body:body.data(),desk:desk.data()};
+ const bodyData=body.data();bodyData.sampleScale=new Float32Array(bodyData.count).fill(1);bodyData.sampleScale.fill(.5,0,model.skinCount);
+ return {head,body:bodyData,desk:desk.data()};
 }
 
 // Anatomical triangle proxies only write depth. They never contribute a visible colour.
