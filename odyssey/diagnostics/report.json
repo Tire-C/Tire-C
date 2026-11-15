@@ -1,16 +1,17 @@
 {
-  "revision": 4,
-  "sourceCommit": "ea39297353cda40293c4236ab26860a1eb26efc0",
-  "runId": "43753898633",
+  "revision": 5,
+  "sourceCommit": "8cd8eb5898bda763b201d66c4bd95ef490a03250",
+  "runId": "43759898102",
   "environment": "GitHub Actions ubuntu-24.04 standard public runner",
-  "rendering": "Chromium / ANGLE SwiftShader software on remote CPU; NO real GPU validation",
+  "rendering": "Chromium ANGLE SwiftShader on remote CPU; no physical GPU validation",
   "baseline": "0f00154f3651c7bed8cf8660780bb3c1750ed9bc",
   "readmeBlob": "1d0114fe01e78f186042fc760e37b66d6cf9c090",
   "readmeSha256": "f1abfb3998faf6b417398d8755de720779cc0b874e667d113a4134c207673b3e",
   "info": {
     "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
     "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
-    "revision": 4,
+    "revision": 5,
+    "architecture": "Coexisting spatial chambers, arc-length flight, persistent point buffers",
     "flowCounts": [
       1032,
       1232,
@@ -30,16 +31,6 @@
       12798,
       16461,
       19068
-    ],
-    "activityBounds": [
-      33.77369928809706,
-      32.83413581352068,
-      30.923519753988707,
-      31.12542616724271,
-      31.729724901089586,
-      30.53379865442718,
-      30.44663578796048,
-      29.66832363394986
     ],
     "activityLayers": [
       [
@@ -131,19 +122,28 @@
       0.077174351857739
     ],
     "worldCount": 8,
-    "worldPoints": 28000,
+    "worldPoints": 22000,
     "headPoints": 24861,
     "bodyPoints": 27154,
     "deskPoints": 20363,
     "playing": false,
     "reduced": false,
     "current": 0,
-    "drawCalls": 1
+    "drawCalls": 13,
+    "pointVertices": 159894,
+    "pixelRatio": 1,
+    "frameEMA": 16.7,
+    "quality": "auto"
   },
   "geometry": [
     {
       "name": "Immersion",
-      "count": 28000,
+      "count": 22000,
+      "chamber": [
+        -60.20238529734696,
+        -3.3443456570960537,
+        -28.01447401056314
+      ],
       "min": [
         -23.977279663085938,
         -23.89822006225586,
@@ -154,11 +154,16 @@
         23.92239761352539,
         29.99293327331543
       ],
-      "radius": 34.000001266592186
+      "cranialBound": 0.0653155793368993
     },
     {
       "name": "Programming",
-      "count": 28000,
+      "count": 22000,
+      "chamber": [
+        -23.717016682795766,
+        8.355069861689342,
+        -62.01994097903681
+      ],
       "min": [
         -22.200000762939453,
         -8,
@@ -169,11 +174,16 @@
         8,
         26
       ],
-      "radius": 34.00000016741993
+      "cranialBound": 0.06560038329282138
     },
     {
       "name": "Physics",
-      "count": 28000,
+      "count": 22000,
+      "chamber": [
+        26.60416871651754,
+        0.8815673827872259,
+        -60.83875964874093
+      ],
       "min": [
         -17.991674423217773,
         -16,
@@ -184,26 +194,36 @@
         14,
         17.99396324157715
       ],
-      "radius": 24.083135146517947
+      "cranialBound": 0.06526466736310023
     },
     {
       "name": "Chemistry",
-      "count": 28000,
+      "count": 22000,
+      "chamber": [
+        61.675497942761595,
+        -11.095608224881572,
+        -24.59888082084104
+      ],
       "min": [
-        -18.812408447265625,
+        -18.800989151000977,
         -22.2450008392334,
         -19.66145133972168
       ],
       "max": [
-        20.49631690979004,
-        22.235000610351562,
-        19.654815673828125
+        20.476762771606445,
+        22.2450008392334,
+        19.6702938079834
       ],
-      "radius": 23.061400176332242
+      "cranialBound": 0.06585849293322796
     },
     {
       "name": "Mathematics",
-      "count": 28000,
+      "count": 22000,
+      "chamber": [
+        60.78550539263232,
+        -3.7598872853115113,
+        26.725590378794614
+      ],
       "min": [
         -25,
         -11.994990348815918,
@@ -214,11 +234,16 @@
         9.84609603881836,
         25
       ],
-      "radius": 34.00000118678491
+      "cranialBound": 0.06532999249036933
     },
     {
       "name": "Astronomy",
-      "count": 28000,
+      "count": 22000,
+      "chamber": [
+        25.070516546651564,
+        8.248599900398007,
+        61.48531026538811
+      ],
       "min": [
         -32.56957244873047,
         -32.606903076171875,
@@ -229,11 +254,16 @@
         32.664363861083984,
         32.12137985229492
       ],
-      "radius": 32.99984539682395
+      "cranialBound": 0.06559181804644941
     },
     {
       "name": "Intelligence",
-      "count": 28000,
+      "count": 22000,
+      "chamber": [
+        -25.30861018969276,
+        1.2927729430540853,
+        61.388983836578284
+      ],
       "min": [
         -14,
         -14,
@@ -244,26 +274,40 @@
         14,
         25
       ],
-      "radius": 30.858548475945604
+      "cranialBound": 0.06526902636235671
     },
     {
       "name": "Engineering",
-      "count": 28000,
+      "count": 22000,
+      "chamber": [
+        -61.465902097738244,
+        -11.133853666555794,
+        16.896206558989824
+      ],
       "min": [
         -20.19997787475586,
         -15.933333396911621,
         -15.199999809265137
       ],
       "max": [
-        20.199996948242188,
+        20.199939727783203,
         15.933333396911621,
         10.993332862854004
       ],
-      "radius": 29.751867749090398
+      "cranialBound": 0.0641620902002843
     }
   ],
+  "kinematics": {
+    "minSpeed": 0.021323912445461304,
+    "maxSpeed": 0.021325704253168206,
+    "maxTurnRadiansPerSecond": 0.6314470309839013
+  },
+  "bufferTraffic": {
+    "data": 0,
+    "subData": 0
+  },
   "anatomyAudit": {
-    "sourceCommit": "ea39297353cda40293c4236ab26860a1eb26efc0",
+    "sourceCommit": "8cd8eb5898bda763b201d66c4bd95ef490a03250",
     "upstream": {
       "repository": "makehumancommunity/makehuman",
       "commit": "a8bc2d54ff0ac92e78ff71431b1023eda42bf482",
@@ -509,208 +553,8 @@
     },
     "pipeline": "Pinned CC0 anatomy, original skeletal pose and garments; ray-intersected, surface-conforming anatomical microtypography replaces stochastic facial point sprites. Remote CPU generation; depth-only meshes never write colour."
   },
-  "flowComparisons": [
-    {
-      "world": 0,
-      "story": 1,
-      "changed": true,
-      "activityMotionPixels": 21593,
-      "secondaryContributionPixels": 18341,
-      "coverage": 0.112158203125,
-      "occupiedTiles": 12,
-      "tiles": [
-        4777,
-        7999,
-        7738,
-        4139,
-        6482,
-        15682,
-        13362,
-        4732,
-        9970,
-        12129,
-        11272,
-        5083
-      ]
-    },
-    {
-      "world": 1,
-      "story": 2.6,
-      "changed": true,
-      "activityMotionPixels": 37760,
-      "secondaryContributionPixels": 32832,
-      "coverage": 0.22562608506944445,
-      "occupiedTiles": 12,
-      "tiles": [
-        33990,
-        12976,
-        17516,
-        31607,
-        15552,
-        24124,
-        20742,
-        16042,
-        11674,
-        5094,
-        9721,
-        8899
-      ]
-    },
-    {
-      "world": 2,
-      "story": 4.6,
-      "changed": true,
-      "activityMotionPixels": 61980,
-      "secondaryContributionPixels": 53305,
-      "coverage": 0.2762575954861111,
-      "occupiedTiles": 12,
-      "tiles": [
-        15720,
-        12215,
-        14226,
-        35141,
-        6989,
-        24876,
-        42513,
-        19220,
-        28900,
-        24102,
-        25605,
-        5092
-      ]
-    },
-    {
-      "world": 3,
-      "story": 6.6,
-      "changed": true,
-      "activityMotionPixels": 47557,
-      "secondaryContributionPixels": 41014,
-      "coverage": 0.19255208333333335,
-      "occupiedTiles": 11,
-      "tiles": [
-        0,
-        5106,
-        14925,
-        20328,
-        10316,
-        22074,
-        16706,
-        15431,
-        10696,
-        40381,
-        15627,
-        5866
-      ]
-    },
-    {
-      "world": 4,
-      "story": 8.6,
-      "changed": true,
-      "activityMotionPixels": 64026,
-      "secondaryContributionPixels": 53676,
-      "coverage": 0.4141666666666667,
-      "occupiedTiles": 12,
-      "tiles": [
-        23227,
-        24787,
-        29075,
-        25708,
-        38444,
-        32321,
-        33431,
-        34857,
-        40700,
-        40481,
-        34737,
-        23928
-      ]
-    },
-    {
-      "world": 5,
-      "story": 10.6,
-      "changed": true,
-      "activityMotionPixels": 57368,
-      "secondaryContributionPixels": 51014,
-      "coverage": 0.346318359375,
-      "occupiedTiles": 12,
-      "tiles": [
-        7696,
-        17672,
-        56230,
-        43520,
-        16661,
-        38700,
-        37791,
-        36061,
-        3073,
-        29718,
-        14072,
-        17973
-      ]
-    },
-    {
-      "world": 6,
-      "story": 12.6,
-      "changed": true,
-      "activityMotionPixels": 123166,
-      "secondaryContributionPixels": 92672,
-      "coverage": 0.2622526041666667,
-      "occupiedTiles": 12,
-      "tiles": [
-        18339,
-        10945,
-        14045,
-        6521,
-        10520,
-        29124,
-        20653,
-        13488,
-        17278,
-        24135,
-        55967,
-        20677
-      ]
-    },
-    {
-      "world": 7,
-      "story": 14.6,
-      "changed": true,
-      "activityMotionPixels": 58052,
-      "secondaryContributionPixels": 74871,
-      "coverage": 0.235224609375,
-      "occupiedTiles": 12,
-      "tiles": [
-        7654,
-        15623,
-        40135,
-        15949,
-        7206,
-        19645,
-        21598,
-        23381,
-        7491,
-        14417,
-        17936,
-        25748
-      ]
-    }
-  ],
-  "benchmark": {
-    "medianMs": 364.79999999998836,
-    "p95Ms": 410.8999999999651,
-    "note": "Pixel-readback SwiftShader diagnostic on remote CPU. Not real GPU or display frame rate."
-  },
-  "transitionError": 0,
-  "svgCompatibility": {
-    "verified": true,
-    "animated": true,
-    "src": "/Tire-C/Tire-C/raw/work/binary-mind-odyssey/odyssey/compatibility/probe.svg",
-    "context": "Actual GitHub rendered Markdown image in remote Chromium",
-    "hashes": [
-      "23163b8336aef17c2eb5896ce90b268424a80e32d6bf9882ab169ed584086961",
-      "0e86a89fecd9d6f40954f8748e29ed19f0cf0cb000c795412ed5d059286c7d02"
-    ]
-  },
+  "activityComparisons": [],
+  "temporal": [],
   "browserCompatibility": [
     {
       "name": "Firefox",
@@ -718,7 +562,8 @@
       "info": {
         "renderer": "llvmpipe, or similar",
         "webgl": "WebGL 2.0",
-        "revision": 4,
+        "revision": 5,
+        "architecture": "Coexisting spatial chambers, arc-length flight, persistent point buffers",
         "flowCounts": [
           1032,
           1232,
@@ -738,16 +583,6 @@
           12798,
           16461,
           19068
-        ],
-        "activityBounds": [
-          33.77369928809706,
-          32.83413581352068,
-          30.923519753988707,
-          31.12542616724271,
-          31.729724901089586,
-          30.53379865442718,
-          30.44663578796048,
-          29.66832363394986
         ],
         "activityLayers": [
           [
@@ -839,16 +674,33 @@
           0.077174351857739
         ],
         "worldCount": 8,
-        "worldPoints": 28000,
+        "worldPoints": 22000,
         "headPoints": 24861,
         "bodyPoints": 27154,
         "deskPoints": 20363,
         "playing": false,
         "reduced": false,
-        "current": 12.6,
-        "drawCalls": 7
+        "current": 13,
+        "drawCalls": 1,
+        "pointVertices": 0,
+        "pixelRatio": 1,
+        "frameEMA": 16.7,
+        "quality": "auto"
       },
-      "errors": []
+      "samples": [
+        {
+          "label": "physics",
+          "coverage": 0.2585394965277778
+        },
+        {
+          "label": "creator",
+          "coverage": 0.019855685763888888
+        },
+        {
+          "label": "signature",
+          "coverage": 0.009214409722222223
+        }
+      ]
     },
     {
       "name": "WebKit",
@@ -856,7 +708,8 @@
       "info": {
         "renderer": "Apple GPU",
         "webgl": "WebGL 2.0",
-        "revision": 4,
+        "revision": 5,
+        "architecture": "Coexisting spatial chambers, arc-length flight, persistent point buffers",
         "flowCounts": [
           1032,
           1232,
@@ -876,16 +729,6 @@
           12798,
           16461,
           19068
-        ],
-        "activityBounds": [
-          33.77369928809706,
-          32.83413581352068,
-          30.923519753988707,
-          31.12542616724271,
-          31.729724901089586,
-          30.53379865442718,
-          30.44663578796048,
-          29.66832363394986
         ],
         "activityLayers": [
           [
@@ -977,1189 +820,97 @@
           0.077174351857739
         ],
         "worldCount": 8,
-        "worldPoints": 28000,
+        "worldPoints": 22000,
         "headPoints": 24861,
         "bodyPoints": 27154,
         "deskPoints": 20363,
         "playing": false,
         "reduced": false,
-        "current": 12.6,
-        "drawCalls": 7
+        "current": 13,
+        "drawCalls": 1,
+        "pointVertices": 0,
+        "pixelRatio": 1,
+        "frameEMA": 16.7,
+        "quality": "auto"
       },
-      "errors": []
+      "samples": [
+        {
+          "label": "physics",
+          "coverage": 0.26341254340277775
+        },
+        {
+          "label": "creator",
+          "coverage": 0.020269097222222223
+        },
+        {
+          "label": "signature",
+          "coverage": 0.010235460069444445
+        }
+      ]
     }
   ],
   "checks": [
     {
-      "name": "Approved scientific worlds preserved exactly",
+      "name": "Profile README byte-for-byte intact; backup verified",
       "pass": true
     },
     {
-      "name": "Revised duration with preserved final hold",
+      "name": "Approved scientific geometry retained without a rewrite",
       "pass": true
     },
     {
-      "name": "README is byte-for-byte identical to baseline",
+      "name": "14 second film; creator 200 ms; signature holds 1.35 seconds",
       "pass": true
     },
     {
-      "name": "README original blob",
+      "name": "Interior arc-length speed is uniform within 2 percent",
       "pass": true
     },
     {
-      "name": "Verified backup",
+      "name": "Continuous measured orientation with no direction snaps",
       "pass": true
     },
     {
-      "name": "Camera continuity and finite coordinates over the complete revised timeline",
+      "name": "Straight creator withdrawal with no lateral orbit",
       "pass": true
     },
     {
-      "name": "Final phrase exact and held for 1.5 seconds",
+      "name": "All complete worlds lie within the cranial volume",
       "pass": true
     },
     {
-      "name": "Eight genuine 3D environments inside the head",
+      "name": "CC0 anatomy rebuilt with 11 verified source hashes in this cloud run",
       "pass": true
     },
     {
-      "name": "Software rendering explicitly identified",
+      "name": "Software rasterizer explicitly identified",
       "pass": true
     },
     {
-      "name": "Anatomical source assets pinned and verified in this cloud run",
+      "name": "Eight volumetric domains and genuine spatial glyphs",
       "pass": true
     },
     {
-      "name": "Only binary instanced geometry writes visible colour",
+      "name": "Only binary points or binary instances contribute visible colour",
       "pass": true
     },
     {
-      "name": "Depth proxies are invisible and anatomical",
+      "name": "Only the two anatomical depth proxies are invisible solid meshes",
       "pass": true
     },
     {
-      "name": "Every approved world has secondary 3D dynamics",
-      "pass": true
-    },
-    {
-      "name": "Three populated activity layers and substantial secondary objects in every world",
-      "pass": true
-    },
-    {
-      "name": "Frame 0 contains monochrome rendered geometry",
-      "pass": true
-    },
-    {
-      "name": "Frame 0.33 contains monochrome rendered geometry",
-      "pass": true
-    },
-    {
-      "name": "Frame 0.55 contains monochrome rendered geometry",
-      "pass": true
-    },
-    {
-      "name": "Frame 0.8800000000000001 contains monochrome rendered geometry",
-      "pass": true
-    },
-    {
-      "name": "Frame 1.4300000000000002 contains monochrome rendered geometry",
-      "pass": true
-    },
-    {
-      "name": "Frame 2.53 contains monochrome rendered geometry",
-      "pass": true
-    },
-    {
-      "name": "Frame 3.63 contains monochrome rendered geometry",
-      "pass": true
-    },
-    {
-      "name": "Frame 4.73 contains monochrome rendered geometry",
-      "pass": true
-    },
-    {
-      "name": "Frame 5.83 contains monochrome rendered geometry",
-      "pass": true
-    },
-    {
-      "name": "Frame 6.930000000000001 contains monochrome rendered geometry",
-      "pass": true
-    },
-    {
-      "name": "Frame 8.030000000000001 contains monochrome rendered geometry",
-      "pass": true
-    },
-    {
-      "name": "Frame 8.8 contains monochrome rendered geometry",
-      "pass": true
-    },
-    {
-      "name": "Frame 9.233333333333334 contains monochrome rendered geometry",
-      "pass": true
-    },
-    {
-      "name": "Frame 9.450000000000001 contains monochrome rendered geometry",
-      "pass": true
-    },
-    {
-      "name": "Frame 9.666666666666668 contains monochrome rendered geometry",
-      "pass": true
-    },
-    {
-      "name": "Frame 9.883333333333335 contains monochrome rendered geometry",
-      "pass": true
-    },
-    {
-      "name": "Frame 10.100000000000001 contains monochrome rendered geometry",
-      "pass": true
-    },
-    {
-      "name": "Frame 10.316666666666666 contains monochrome rendered geometry",
-      "pass": true
-    },
-    {
-      "name": "Frame 10.533333333333333 contains monochrome rendered geometry",
-      "pass": true
-    },
-    {
-      "name": "Frame 10.75 contains monochrome rendered geometry",
-      "pass": true
-    },
-    {
-      "name": "Frame 10.966666666666667 contains monochrome rendered geometry",
-      "pass": true
-    },
-    {
-      "name": "Frame 11.183333333333334 contains monochrome rendered geometry",
-      "pass": true
-    },
-    {
-      "name": "Frame 11.4 contains monochrome rendered geometry",
-      "pass": true
-    },
-    {
-      "name": "Frame 12.6 contains monochrome rendered geometry",
-      "pass": true
-    },
-    {
-      "name": "Frame 13.466666666666667 contains monochrome rendered geometry",
-      "pass": true
-    },
-    {
-      "name": "Frame 13.866666666666665 contains monochrome rendered geometry",
-      "pass": true
-    },
-    {
-      "name": "Frame 14.414285714285713 contains monochrome rendered geometry",
-      "pass": true
-    },
-    {
-      "name": "Frame 15.27142857142857 contains monochrome rendered geometry",
-      "pass": true
-    },
-    {
-      "name": "Secondary assemblies move perceptibly with primary world and camera frozen in all eight worlds",
-      "pass": true
-    },
-    {
-      "name": "Every world has substantial visible secondary activity and distributed screen occupancy",
-      "pass": true
-    },
-    {
-      "name": "Creator-to-signature handover preserves glyph appearance without a visible cut",
-      "pass": true
-    },
-    {
-      "name": "Random-access timeline is pixel deterministic",
-      "pass": true
-    },
-    {
-      "name": "No JavaScript or shader errors",
-      "pass": true
-    },
-    {
-      "name": "Invisible creator does not consume draw calls during immersion",
-      "pass": true
-    },
-    {
-      "name": "Glyph and depth passes use at most eight draw calls",
-      "pass": true
-    },
-    {
-      "name": "Three spatial viewpoints produce distinct rendered images",
-      "pass": true
-    },
-    {
-      "name": "Portrait signature has visible horizontal margins",
-      "pass": true
-    },
-    {
-      "name": "Reduced motion starts paused on creator, no automatic motion",
-      "pass": true
-    },
-    {
-      "name": "Standalone HTML works without network or installation",
-      "pass": true
-    },
-    {
-      "name": "Interactive inspection rotates the 3D image",
-      "pass": true
-    },
-    {
-      "name": "Returning from inspection restores the exact cinematic pose",
-      "pass": true
-    },
-    {
-      "name": "Real-time playback advances the timeline",
-      "pass": true
-    },
-    {
-      "name": "Pause freezes the timeline",
-      "pass": true
-    },
-    {
-      "name": "Actual GitHub README SVG declarative animation changes pixels",
+      "name": "Zero geometry buffer allocations or uploads throughout playback after warmup",
       "pass": true
     }
   ],
-  "failures": [],
-  "shots": [
-    {
-      "t": 0,
-      "file": "r4-frame-0_00.png",
-      "coverage": 0.16329969618055556,
-      "hash": "2a353fa25f5d4fca9179aebb23b1ee7d9ec2afc7ee23fa47a2065b7bbf795890",
-      "state": {
-        "t": 0,
-        "world": 0,
-        "next": 1,
-        "morph": 0,
-        "head": 0,
-        "body": 0,
-        "signature": 0,
-        "fade": 1,
-        "name": "Immersion",
-        "camera": {
-          "position": [
-            0,
-            2.23898432804774,
-            0.141974351857739
-          ],
-          "target": [
-            0,
-            2.2365843280477398,
-            0.077174351857739
-          ],
-          "roll": 0,
-          "fov": 53
-        },
-        "calls": 1,
-        "triangles": 56000
-      }
-    },
-    {
-      "t": 0.33,
-      "file": "r4-frame-0_33.png",
-      "coverage": 0.12219401041666667,
-      "hash": "5087237adabd77f705540fae4d6e034ea05f7e0f9505980fecccd84236a137b7",
-      "state": {
-        "t": 0.33,
-        "world": 0,
-        "next": 1,
-        "morph": 0,
-        "head": 0,
-        "body": 0,
-        "signature": 0,
-        "fade": 1,
-        "name": "Immersion",
-        "camera": {
-          "position": [
-            0.004534272,
-            2.23526106404774,
-            0.12530491185773898
-          ],
-          "target": [
-            0.0014738555877566728,
-            2.238227866350348,
-            0.07851237740066656
-          ],
-          "roll": 0.1332986143778317,
-          "fov": 64.40843208779745
-        },
-        "calls": 3,
-        "triangles": 72506
-      }
-    },
-    {
-      "t": 0.55,
-      "file": "r4-frame-0_55.png",
-      "coverage": 0.112158203125,
-      "hash": "779dd2b4d9dc9d67e2fd1cc613a056aad605e7fe16805090cbd2189caa35bb09",
-      "state": {
-        "t": 0.55,
-        "world": 0,
-        "next": 1,
-        "morph": 0,
-        "head": 0,
-        "body": 0,
-        "signature": 0,
-        "fade": 1,
-        "name": "Immersion",
-        "camera": {
-          "position": [
-            0.0072,
-            2.2341843280477396,
-            0.11557435185773898
-          ],
-          "target": [
-            0.0022811749887479147,
-            2.2389605932150856,
-            0.07814406340824123
-          ],
-          "roll": 0.16134368618442535,
-          "fov": 64.96665924180988
-        },
-        "calls": 3,
-        "triangles": 72506
-      }
-    },
-    {
-      "t": 0.8800000000000001,
-      "file": "r4-frame-0_88.png",
-      "coverage": 0.16847005208333332,
-      "hash": "7130e5a33b654f68947cc752bdc58bdbb47361f50cd7e23c6007da73229516e5",
-      "state": {
-        "t": 0.8800000000000001,
-        "world": 0,
-        "next": 1,
-        "morph": 0.1447016124233953,
-        "head": 0,
-        "body": 0,
-        "signature": 0,
-        "fade": 1,
-        "name": "Immersion",
-        "camera": {
-          "position": [
-            0.011798783999999998,
-            2.24031757604774,
-            0.10416263985773899
-          ],
-          "target": [
-            0.0030161000031699897,
-            2.239160001980105,
-            0.0773778128433705
-          ],
-          "roll": 0.11188300063033521,
-          "fov": 62.63685667868807
-        },
-        "calls": 3,
-        "triangles": 72506
-      }
-    },
-    {
-      "t": 1.4300000000000002,
-      "file": "r4-frame-1_43.png",
-      "coverage": 0.22562608506944445,
-      "hash": "9fc2a08cc6ead1e282a740d23f285e485af678c2c2ee7ccc60f378f53999eaba",
-      "state": {
-        "t": 1.4300000000000002,
-        "world": 1,
-        "next": 2,
-        "morph": 0,
-        "head": 0,
-        "body": 0,
-        "signature": 0,
-        "fade": 1,
-        "name": "Programming",
-        "camera": {
-          "position": [
-            -0.002151168000000006,
-            2.2407177040477397,
-            0.096124751857739
-          ],
-          "target": [
-            0.0026414391831689372,
-            2.2371851415844595,
-            0.07608927306845686
-          ],
-          "roll": 0.007706501279876455,
-          "fov": 57.16976797020291
-        },
-        "calls": 3,
-        "triangles": 72506
-      }
-    },
-    {
-      "t": 2.53,
-      "file": "r4-frame-2_53.png",
-      "coverage": 0.2762575954861111,
-      "hash": "3a0c77822bb8c0acf2c2d33e765c6f36bf5856567a4eaa4ccc1ceca7f04f621c",
-      "state": {
-        "t": 2.53,
-        "world": 2,
-        "next": 3,
-        "morph": 0,
-        "head": 0,
-        "body": 0,
-        "signature": 0,
-        "fade": 1,
-        "name": "Physics",
-        "camera": {
-          "position": [
-            -0.014635776000000008,
-            2.2428988240477397,
-            0.100016207857739
-          ],
-          "target": [
-            -0.001839158431217041,
-            2.2341953464368145,
-            0.07632939066247531
-          ],
-          "roll": -0.15845753524185885,
-          "fov": 64.99769071933811
-        },
-        "calls": 3,
-        "triangles": 71786
-      }
-    },
-    {
-      "t": 3.63,
-      "file": "r4-frame-3_63.png",
-      "coverage": 0.19255208333333335,
-      "hash": "b46bbda4f26f1696d7b4727220755686a96e1185514c0fb3abe0e75877cdab77",
-      "state": {
-        "t": 3.63,
-        "world": 3,
-        "next": 4,
-        "morph": 0,
-        "head": 0,
-        "body": 0,
-        "signature": 0,
-        "fade": 1,
-        "name": "Chemistry",
-        "camera": {
-          "position": [
-            0.014094336000000004,
-            2.23746906404774,
-            0.098063951857739
-          ],
-          "target": [
-            -0.0023870892784735457,
-            2.2389475794774647,
-            0.07864338455401769
-          ],
-          "roll": 0.1578200952039293,
-          "fov": 57.10031170590154
-        },
-        "calls": 3,
-        "triangles": 72458
-      }
-    },
-    {
-      "t": 4.73,
-      "file": "r4-frame-4_73.png",
-      "coverage": 0.4141666666666667,
-      "hash": "b81b9add8866929a9f2126f2bb3d18c7948c5a0a535ce5ac73ece3e8092e53e3",
-      "state": {
-        "t": 4.73,
-        "world": 4,
-        "next": 5,
-        "morph": 0,
-        "head": 0,
-        "body": 0,
-        "signature": 0,
-        "fade": 1,
-        "name": "Mathematics",
-        "camera": {
-          "position": [
-            -0.017194752000000008,
-            2.24454541604774,
-            0.097801295857739
-          ],
-          "target": [
-            0.002169285472027421,
-            2.2360411687255946,
-            0.07735177844146837
-          ],
-          "roll": -0.026722134921733094,
-          "fov": 64.54273246937723
-        },
-        "calls": 3,
-        "triangles": 71714
-      }
-    },
-    {
-      "t": 5.83,
-      "file": "r4-frame-5_83.png",
-      "coverage": 0.346318359375,
-      "hash": "f88d0017e6d04c5e573b03fddda049475e0fca63943d1b6e56974f86d3066c47",
-      "state": {
-        "t": 5.83,
-        "world": 5,
-        "next": 6,
-        "morph": 0,
-        "head": 0,
-        "body": 0,
-        "signature": 0,
-        "fade": 1,
-        "name": "Astronomy",
-        "camera": {
-          "position": [
-            0.019554048000000008,
-            2.2493784400477397,
-            0.101133647857739
-          ],
-          "target": [
-            0.0020870838283165655,
-            2.2348949870033463,
-            0.07562469577850518
-          ],
-          "roll": -0.08222054378210811,
-          "fov": 58.0494735977255
-        },
-        "calls": 3,
-        "triangles": 72070
-      }
-    },
-    {
-      "t": 6.930000000000001,
-      "file": "r4-frame-6_93.png",
-      "coverage": 0.26243489583333335,
-      "hash": "46af898f0b7a02bf0f7ed7a3956e6e4ce36ac48e89ca07241ce8d6dc76a69b51",
-      "state": {
-        "t": 6.930000000000001,
-        "world": 6,
-        "next": 7,
-        "morph": 0,
-        "head": 0,
-        "body": 0,
-        "signature": 0,
-        "fade": 1,
-        "name": "Intelligence",
-        "camera": {
-          "position": [
-            -0.005079552000000012,
-            2.23458445604774,
-            0.098332751857739
-          ],
-          "target": [
-            -0.002457922689905562,
-            2.239223492036963,
-            0.07770109548852121
-          ],
-          "roll": 0.10219130386503471,
-          "fov": 63.1623947163767
-        },
-        "calls": 3,
-        "triangles": 72032
-      }
-    },
-    {
-      "t": 8.030000000000001,
-      "file": "r4-frame-8_03.png",
-      "coverage": 0.23545789930555555,
-      "hash": "7c346dadfd33c5d666a009c98298d281322e72eb2fb787afe25f652e4a39d935",
-      "state": {
-        "t": 8.030000000000001,
-        "world": 7,
-        "next": 7,
-        "morph": 0,
-        "head": 0,
-        "body": 0,
-        "signature": 0,
-        "fade": 1,
-        "name": "Engineering",
-        "camera": {
-          "position": [
-            0.012881663999999965,
-            2.24284583204774,
-            0.09966599985773897
-          ],
-          "target": [
-            -0.0017471607464793805,
-            2.234999197038692,
-            0.07848465342441288
-          ],
-          "roll": -0.08629814980991844,
-          "fov": 59.769327795401765
-        },
-        "calls": 3,
-        "triangles": 72506
-      }
-    },
-    {
-      "t": 8.8,
-      "file": "r4-frame-8_80.png",
-      "coverage": 0.22984375,
-      "hash": "18f788638159c034ee0299e5ea7754cae2aaccdf6c94ac2e7ef3ef097592ca09",
-      "state": {
-        "t": 8.8,
-        "world": 7,
-        "next": 7,
-        "morph": 0,
-        "head": 0,
-        "body": 0,
-        "signature": 0,
-        "fade": 1,
-        "name": "The mind",
-        "camera": {
-          "position": [
-            0.011999999999999999,
-            2.2413843280477397,
-            0.11077435185773898
-          ],
-          "target": [
-            0,
-            2.2365843280477398,
-            0.077174351857739
-          ],
-          "roll": 0,
-          "fov": 53
-        },
-        "calls": 3,
-        "triangles": 72506
-      }
-    },
-    {
-      "t": 9.233333333333334,
-      "file": "r4-frame-9_23.png",
-      "coverage": 0.198974609375,
-      "hash": "736eb72fe31c072eeb7d320f618588adeac351714060462d53ebb2efd5319792",
-      "state": {
-        "t": 9.233333333333334,
-        "world": 7,
-        "next": 7,
-        "morph": 0,
-        "head": 0.1447016124233953,
-        "body": 0,
-        "signature": 0,
-        "fade": 1,
-        "name": "The mind",
-        "camera": {
-          "position": [
-            0.020092592592592592,
-            2.2344701305168755,
-            0.12981324074662787
-          ],
-          "target": [
-            0,
-            2.2365843280477398,
-            0.077174351857739
-          ],
-          "roll": 0,
-          "fov": 53
-        },
-        "calls": 4,
-        "triangles": 122228
-      }
-    },
-    {
-      "t": 9.450000000000001,
-      "file": "r4-frame-9_45.png",
-      "coverage": 0.16332682291666667,
-      "hash": "e9018197eef77b3717e59e2c24bf428fdf3052a069de16edfa9b1936b82073b7",
-      "state": {
-        "t": 9.450000000000001,
-        "world": 7,
-        "next": 7,
-        "morph": 0,
-        "head": 0.43326313533795463,
-        "body": 0,
-        "signature": 0,
-        "fade": 1,
-        "name": "The mind",
-        "camera": {
-          "position": [
-            0.035601562499999996,
-            2.2212194842977397,
-            0.16630013310773897
-          ],
-          "target": [
-            0,
-            2.2365843280477398,
-            0.077174351857739
-          ],
-          "roll": 0,
-          "fov": 53
-        },
-        "calls": 4,
-        "triangles": 122228
-      }
-    },
-    {
-      "t": 9.666666666666668,
-      "file": "r4-frame-9_67.png",
-      "coverage": 0.128544921875,
-      "hash": "fc479aa4b2d0cb5ddbb657f52d32a473654b6f0f9ffa69bab95e69159ae6379e",
-      "state": {
-        "t": 9.666666666666668,
-        "world": 7,
-        "next": 7,
-        "morph": 0,
-        "head": 0.7536368774915215,
-        "body": 0,
-        "signature": 0,
-        "fade": 1,
-        "name": "The mind",
-        "camera": {
-          "position": [
-            0.059851851851851844,
-            2.2005003774304557,
-            0.22335212963551676
-          ],
-          "target": [
-            0,
-            2.2365843280477398,
-            0.077174351857739
-          ],
-          "roll": 0,
-          "fov": 53
-        },
-        "calls": 4,
-        "triangles": 122228
-      }
-    },
-    {
-      "t": 9.883333333333335,
-      "file": "r4-frame-9_88.png",
-      "coverage": 0.19100694444444444,
-      "hash": "e48ad1f6287a1801eb156c288f91ca406b4890ad4e062c4584a6aa0b2357cdf7",
-      "state": {
-        "t": 9.883333333333335,
-        "world": 7,
-        "next": 7,
-        "morph": 0,
-        "head": 0.9572205544936636,
-        "body": 0,
-        "signature": 0,
-        "fade": 1,
-        "name": "The mind",
-        "camera": {
-          "position": [
-            0.09102922453703703,
-            2.173862867785394,
-            0.29670100116329456
-          ],
-          "target": [
-            0,
-            2.2365843280477398,
-            0.077174351857739
-          ],
-          "roll": 0,
-          "fov": 53
-        },
-        "calls": 4,
-        "triangles": 122228
-      }
-    },
-    {
-      "t": 10.100000000000001,
-      "file": "r4-frame-10_10.png",
-      "coverage": 0.11495985243055555,
-      "hash": "77d3e091d9cfcdaae82877a1986762b4cacb150d0c211e01dfc42f441d04507d",
-      "state": {
-        "t": 10.100000000000001,
-        "world": 7,
-        "next": 7,
-        "morph": 0,
-        "head": 1,
-        "body": 0.035493827160493825,
-        "signature": 0,
-        "fade": 1,
-        "name": "The mind",
-        "camera": {
-          "position": [
-            0.126,
-            2.1439843280477398,
-            0.378974351857739
-          ],
-          "target": [
-            0,
-            2.2365843280477398,
-            0.077174351857739
-          ],
-          "roll": 0,
-          "fov": 53
-        },
-        "calls": 7,
-        "triangles": 237678
-      }
-    },
-    {
-      "t": 10.316666666666666,
-      "file": "r4-frame-10_32.png",
-      "coverage": 0.07295030381944445,
-      "hash": "68394a67a4f838c3963547301920834c9acfdf58fe330202cea963760fece46a",
-      "state": {
-        "t": 10.316666666666666,
-        "world": 7,
-        "next": 7,
-        "morph": 0,
-        "head": 1,
-        "body": 0.20987654320987653,
-        "signature": 0,
-        "fade": 1,
-        "name": "The mind",
-        "camera": {
-          "position": [
-            0.16097077546296298,
-            2.1141057883100856,
-            0.46124770255218345
-          ],
-          "target": [
-            0,
-            2.2333898836032953,
-            0.07877157407996122
-          ],
-          "roll": 0,
-          "fov": 53
-        },
-        "calls": 8,
-        "triangles": 273850
-      }
-    },
-    {
-      "t": 10.533333333333333,
-      "file": "r4-frame-10_53.png",
-      "coverage": 0.041422526041666664,
-      "hash": "f1dc4dbaeb78abd357cd31dd9ec935e46c4e77390b664cf139d029f7cbba64fe",
-      "state": {
-        "t": 10.533333333333333,
-        "world": 7,
-        "next": 7,
-        "morph": 0,
-        "head": 1,
-        "body": 0.5,
-        "signature": 0,
-        "fade": 1,
-        "name": "The mind",
-        "camera": {
-          "position": [
-            0.19214814814814815,
-            2.087468278665024,
-            0.5345965740799612
-          ],
-          "target": [
-            0,
-            2.217695439158851,
-            0.08661879630218344
-          ],
-          "roll": 0,
-          "fov": 53
-        },
-        "calls": 7,
-        "triangles": 259408
-      }
-    },
-    {
-      "t": 10.75,
-      "file": "r4-frame-10_75.png",
-      "coverage": 0.036468098958333334,
-      "hash": "961ef986e982a30b348ac76820ac2bc07983dc091cf0123123eb65398debbc86",
-      "state": {
-        "t": 10.75,
-        "world": 7,
-        "next": 7,
-        "morph": 0,
-        "head": 1,
-        "body": 0.7901234567901235,
-        "signature": 0,
-        "fade": 1,
-        "name": "The mind",
-        "camera": {
-          "position": [
-            0.21639843749999998,
-            2.0667491717977398,
-            0.591648570607739
-          ],
-          "target": [
-            0,
-            2.19158432804774,
-            0.09967435185773899
-          ],
-          "roll": 0,
-          "fov": 53
-        },
-        "calls": 7,
-        "triangles": 259408
-      }
-    },
-    {
-      "t": 10.966666666666667,
-      "file": "r4-frame-10_97.png",
-      "coverage": 0.03760416666666667,
-      "hash": "e724d6ca687ff4a8ec98ea2c713ea1e08ab113a770b4ed47b922c9800b93d7ea",
-      "state": {
-        "t": 10.966666666666667,
-        "world": 7,
-        "next": 7,
-        "morph": 0,
-        "head": 1,
-        "body": 0.964506172839506,
-        "signature": 0,
-        "fade": 1,
-        "name": "The mind",
-        "camera": {
-          "position": [
-            0.23190740740740737,
-            2.053498525578604,
-            0.62813546296885
-          ],
-          "target": [
-            0,
-            2.1654732169366286,
-            0.11272990741329456
-          ],
-          "roll": 0,
-          "fov": 53
-        },
-        "calls": 7,
-        "triangles": 259408
-      }
-    },
-    {
-      "t": 11.183333333333334,
-      "file": "r4-frame-11_18.png",
-      "coverage": 0.03730685763888889,
-      "hash": "063b5782b026cd8a38a8daa6cc93e3c5e41c8100f8192d0cf00ddceb8a5d1e37",
-      "state": {
-        "t": 11.183333333333334,
-        "world": 7,
-        "next": 7,
-        "morph": 0,
-        "head": 1,
-        "body": 1,
-        "signature": 0,
-        "fade": 1,
-        "name": "The mind",
-        "camera": {
-          "position": [
-            0.2388399884259261,
-            2.047575425655764,
-            0.6444452719966283
-          ],
-          "target": [
-            0,
-            2.1497787724921844,
-            0.12057712963551676
-          ],
-          "roll": 0,
-          "fov": 53
-        },
-        "calls": 7,
-        "triangles": 259408
-      }
-    },
-    {
-      "t": 11.4,
-      "file": "r4-frame-11_40.png",
-      "coverage": 0.037266710069444445,
-      "hash": "cfda81f9944d8680d00689539c159e6deee406172f4f05aa1cbd28201fb5d9bc",
-      "state": {
-        "t": 11.4,
-        "world": 7,
-        "next": 7,
-        "morph": 0,
-        "head": 1,
-        "body": 1,
-        "signature": 0,
-        "fade": 1,
-        "name": "The creator",
-        "camera": {
-          "position": [
-            0.24,
-            2.04658432804774,
-            0.647174351857739
-          ],
-          "target": [
-            0,
-            2.14658432804774,
-            0.12217435185773899
-          ],
-          "roll": 0,
-          "fov": 53
-        },
-        "calls": 7,
-        "triangles": 259408
-      }
-    },
-    {
-      "t": 12.6,
-      "file": "r4-frame-12_60.png",
-      "coverage": 0.05413302951388889,
-      "hash": "271202320cecf55af9c42437bf11abdd79a5a23e53908b5c4848538221db2d4e",
-      "state": {
-        "t": 12.6,
-        "world": 7,
-        "next": 7,
-        "morph": 0,
-        "head": 1,
-        "body": 1,
-        "signature": 0,
-        "fade": 1,
-        "name": "The creator",
-        "camera": {
-          "position": [
-            1.828148148148148,
-            2.3653325132939704,
-            2.703727950389896
-          ],
-          "target": [
-            0,
-            1.4776781923063158,
-            0.3258884442170563
-          ],
-          "roll": 0,
-          "fov": 53
-        },
-        "calls": 7,
-        "triangles": 259408
-      }
-    },
-    {
-      "t": 13.466666666666667,
-      "file": "r4-frame-13_47.png",
-      "coverage": 0.04887478298611111,
-      "hash": "579a19b14ec96aafb33b7f66b50dfd4abef6600d08c5cd6292e28fc81e413d7e",
-      "state": {
-        "t": 13.466666666666667,
-        "world": 7,
-        "next": 7,
-        "morph": 0,
-        "head": 1,
-        "body": 1,
-        "signature": 0.12186864197531029,
-        "fade": 1,
-        "name": "Hi, I am Tire",
-        "camera": {
-          "position": [
-            2.5120175802469173,
-            2.553588345679014,
-            3.6338862222222277
-          ],
-          "target": [
-            0,
-            1.3,
-            0.35806364444444416
-          ],
-          "roll": 0,
-          "fov": 53
-        },
-        "calls": 5,
-        "triangles": 259408
-      }
-    },
-    {
-      "t": 13.866666666666665,
-      "file": "r4-frame-13_87.png",
-      "coverage": 0.03074652777777778,
-      "hash": "2f7dfe0a2d727728f3ea8c61613933fd054c1fda7fd5f7f5471857eb64808fbc",
-      "state": {
-        "t": 13.866666666666665,
-        "world": 7,
-        "next": 7,
-        "morph": 0,
-        "head": 1,
-        "body": 1,
-        "signature": 0.7901234567901235,
-        "fade": 1,
-        "name": "Hi, I am Tire",
-        "camera": {
-          "position": [
-            3.948765432098766,
-            3.121604938271605,
-            5.738888888888889
-          ],
-          "target": [
-            0,
-            1.3,
-            0.23777777777777778
-          ],
-          "roll": 0,
-          "fov": 53
-        },
-        "calls": 1,
-        "triangles": 144756
-      }
-    },
-    {
-      "t": 14.414285714285713,
-      "file": "r4-frame-14_41.png",
-      "coverage": 0.004918619791666667,
-      "hash": "3dbed11e24975de7df888793ac8360babfdfb1b75f4a1626b97fb4b27b38afdf",
-      "state": {
-        "t": 14.414285714285713,
-        "world": 7,
-        "next": 7,
-        "morph": 0,
-        "head": 1,
-        "body": 1,
-        "signature": 1,
-        "fade": 1,
-        "name": "Hi, I am Tire",
-        "camera": {
-          "position": [
-            4.4,
-            3.3,
-            6.4
-          ],
-          "target": [
-            0,
-            1.3,
-            0.2
-          ],
-          "roll": 0,
-          "fov": 53
-        },
-        "calls": 1,
-        "triangles": 144756
-      }
-    },
-    {
-      "t": 15.27142857142857,
-      "file": "r4-frame-15_27.png",
-      "coverage": 0.004918619791666667,
-      "hash": "3dbed11e24975de7df888793ac8360babfdfb1b75f4a1626b97fb4b27b38afdf",
-      "state": {
-        "t": 15.27142857142857,
-        "world": 7,
-        "next": 7,
-        "morph": 0,
-        "head": 1,
-        "body": 1,
-        "signature": 1,
-        "fade": 1,
-        "name": "Hi, I am Tire",
-        "camera": {
-          "position": [
-            4.4,
-            3.3,
-            6.4
-          ],
-          "target": [
-            0,
-            1.3,
-            0.2
-          ],
-          "roll": 0,
-          "fov": 53
-        },
-        "calls": 1,
-        "triangles": 144756
-      }
-    }
+  "failures": [
+    "Cloud browser execution: locator.screenshot: Timeout 29973.514ms exceeded.\nCall log:\n  - taking element screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n  - attempting scroll into view action\n    - waiting for element to be stable\n\n    at capture (/home/runner/work/Tire-C/Tire-C/odyssey/tools/test.mjs:71:39)\n    at async file:///home/runner/work/Tire-C/Tire-C/odyssey/tools/test.mjs:113:65"
   ],
-  "portraitShots": [
-    "r4-face-front.png",
-    "r4-face-three-quarter.png",
-    "r4-face-profile.png",
-    "r4-hands.png"
-  ],
+  "shots": [],
+  "errors": [],
   "limits": [
-    "Artistic acceptance requires human review of the diagnostic frames and running program.",
-    "Physical GPU not validated. See per-engine software compatibility results.",
-    "SVG results cover the declarative compatibility probe only, not embedding the WebGL program.",
-    "Mobile composition must be visually inspected."
+    "Software tests measure relative render cost, not physical GPU frame rate.",
+    "Artistic approval remains with Tire.",
+    "README SVG compatibility is unchanged: a separate WebGL program is required."
   ]
 }
