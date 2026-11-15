@@ -1,0 +1,48 @@
+name: Odyssey preview compatibility
+on:
+  push:
+    branches: [work/binary-mind-odyssey]
+    paths:
+      - 'odyssey/preview/codepen.html'
+      - 'odyssey/preview/test.mjs'
+      - '.github/workflows/odyssey-preview-compatibility.yml'
+permissions:
+  contents: write
+concurrency:
+  group: odyssey-preview-compatibility
+  cancel-in-progress: true
+jobs:
+  preview:
+    if: github.repository == 'Tire-C/Tire-C' && github.ref == 'refs/heads/work/binary-mind-odyssey'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install the existing pinned browser test dependencies
+        working-directory: odyssey
+        run: |
+          npm ci --ignore-scripts --no-audit --no-fund
+          npx playwright install --with-deps chromium
+      - name: Test anonymous download and CodePen-style embedding remotely
+        working-directory: odyssey
+        run: node preview/test.mjs
+      - name: Preserve preview evidence on the experimental branch
+        if: always()
+        env:
+          EXPECTED_SHA: ${{ github.sha }}
+        run: |
+          if ! test -f odyssey/preview/evidence/report.json; then exit 0; fi
+          report_sha=$(node -p "require('./odyssey/preview/evidence/report.json').sourceCommit")
+          if test "$report_sha" != "$EXPECTED_SHA"; then exit 0; fi
+          remote_sha="$(git ls-remote origin refs/heads/work/binary-mind-odyssey | cut -f1)"
+          if test "$remote_sha" != "$EXPECTED_SHA"; then exit 0; fi
+          test "$(git hash-object README.md)" = "1d0114fe01e78f186042fc760e37b66d6cf9c090"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add odyssey/preview/evidence
+          git diff --cached --quiet && exit 0
+          git commit -m "Record remote preview compatibility evidence [skip ci]"
+          git push origin HEAD:refs/heads/work/binary-mind-odyssey

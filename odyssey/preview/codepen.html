@@ -1,0 +1,17 @@
+<iframe id="odyssey" title="Binary Mind Odyssey"
+  style="position:fixed;inset:0;width:100%;height:100%;border:0;background:#000"
+  allow="fullscreen"></iframe>
+<script>
+fetch("https://raw.githubusercontent.com/Tire-C/Tire-C/8ebe01b24c3cf3e1557ac7a9adb98393040985f0/odyssey/review/odyssey.html")
+  .then(r => {
+    if (!r.ok) throw new Error("Download dell’opera: HTTP " + r.status);
+    return r.text();
+  })
+  .then(html => document.getElementById("odyssey").srcdoc = html)
+  .catch(error => {
+    document.getElementById("odyssey").remove();
+    const message = document.createElement("p");
+    message.textContent = error.message;
+    document.body.append(message);
+  });
+</script>
