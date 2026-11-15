@@ -1,0 +1,202 @@
+{
+  "sourceCommit": "10319415b9f858f1981ca6fa29915cf69634f1f0",
+  "runId": "43757214425",
+  "environment": "GitHub Actions ubuntu-24.04 public standard runner",
+  "rendering": "Remote CPU / Chromium ANGLE SwiftShader. No hardware GPU validation.",
+  "scope": "Anonymous public downloads and CodePen-style iframe wrapper. Not a saved or authenticated CodePen session.",
+  "downloads": [
+    {
+      "requested": "https://github.com/Tire-C/Tire-C/raw/8ebe01b24c3cf3e1557ac7a9adb98393040985f0/odyssey/review/odyssey.html",
+      "final": "https://raw.githubusercontent.com/Tire-C/Tire-C/8ebe01b24c3cf3e1557ac7a9adb98393040985f0/odyssey/review/odyssey.html",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "cors": "*",
+      "bytes": 2154675,
+      "standalone": true
+    },
+    {
+      "requested": "https://raw.githubusercontent.com/Tire-C/Tire-C/8ebe01b24c3cf3e1557ac7a9adb98393040985f0/odyssey/review/odyssey.html",
+      "final": "https://raw.githubusercontent.com/Tire-C/Tire-C/8ebe01b24c3cf3e1557ac7a9adb98393040985f0/odyssey/review/odyssey.html",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8",
+      "cors": "*",
+      "bytes": 2154675,
+      "standalone": true
+    }
+  ],
+  "checks": [
+    {
+      "name": "Canonical public URL returns the complete standalone HTML",
+      "pass": true
+    },
+    {
+      "name": "Original profile README blob preserved",
+      "pass": true
+    },
+    {
+      "name": "Revision 4 loads through cross-origin fetch and iframe srcdoc",
+      "pass": true
+    },
+    {
+      "name": "The running preview has a 16-second timeline",
+      "pass": true
+    },
+    {
+      "name": "Actual WebGL software renderer is identified",
+      "pass": true
+    },
+    {
+      "name": "No runtime JavaScript errors",
+      "pass": true
+    },
+    {
+      "name": "Public raw download succeeds from the browser",
+      "pass": true
+    },
+    {
+      "name": "The iframe renders real nonempty pixels",
+      "pass": true
+    }
+  ],
+  "failures": [],
+  "info": {
+    "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "webgl": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+    "revision": 4,
+    "flowCounts": [
+      1032,
+      1232,
+      672,
+      1008,
+      636,
+      814,
+      795,
+      1184
+    ],
+    "activityCounts": [
+      7221,
+      12501,
+      17880,
+      12270,
+      14910,
+      12798,
+      16461,
+      19068
+    ],
+    "activityBounds": [
+      33.77369928809706,
+      32.83413581352068,
+      30.923519753988707,
+      31.12542616724271,
+      31.729724901089586,
+      30.53379865442718,
+      30.44663578796048,
+      29.66832363394986
+    ],
+    "activityLayers": [
+      [
+        1643,
+        2407,
+        3171
+      ],
+      [
+        2763,
+        4167,
+        5571
+      ],
+      [
+        3904,
+        5960,
+        8016
+      ],
+      [
+        2714,
+        4090,
+        5466
+      ],
+      [
+        3274,
+        4970,
+        6666
+      ],
+      [
+        2826,
+        4266,
+        5706
+      ],
+      [
+        3603,
+        5487,
+        7371
+      ],
+      [
+        4156,
+        6356,
+        8556
+      ]
+    ],
+    "activityObjects": [
+      [
+        16,
+        20,
+        24
+      ],
+      [
+        16,
+        20,
+        24
+      ],
+      [
+        16,
+        20,
+        24
+      ],
+      [
+        16,
+        20,
+        24
+      ],
+      [
+        16,
+        20,
+        24
+      ],
+      [
+        16,
+        20,
+        24
+      ],
+      [
+        16,
+        20,
+        24
+      ],
+      [
+        16,
+        20,
+        24
+      ]
+    ],
+    "headCenter": [
+      0,
+      2.2365843280477398,
+      0.077174351857739
+    ],
+    "worldCount": 8,
+    "worldPoints": 28000,
+    "headPoints": 24861,
+    "bodyPoints": 27154,
+    "deskPoints": 20363,
+    "playing": false,
+    "reduced": true,
+    "current": 12.6,
+    "drawCalls": 7
+  },
+  "errors": [],
+  "requests": [
+    {
+      "url": "https://raw.githubusercontent.com/Tire-C/Tire-C/8ebe01b24c3cf3e1557ac7a9adb98393040985f0/odyssey/review/odyssey.html",
+      "status": 200
+    }
+  ]
+}
