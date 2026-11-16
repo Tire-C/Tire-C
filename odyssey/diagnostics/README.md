@@ -1,6 +1,6 @@
 # Revision 5 — remote visual evidence
 
-Source: 16eb47b38dd2e05783645b4c89534b1cc6b4faa9
+Source: b3abc0752ee7b0addd62f8d063c3408a97c4dddc
 
 CPU software rendering only. Images are diagnostics; the delivered work is the procedural program.
 
@@ -51,12 +51,12 @@ CPU software rendering only. Images are diagnostics; the delivered work is the p
 - PASS Creator-to-signature handover has no visible swap
 - PASS Random-access reproducibility after unrelated scene
 - PASS Remote software median frame cost improves at least 20 percent over R4
-- PASS Signature remains readable inside portrait margins
+- FAIL Signature remains readable inside portrait margins
 - PASS Reduced motion starts paused on the creator
 - PASS Reduced motion stays stationary
 - PASS Self-contained HTML runs without network requests
 - PASS Interactive inspection exposes real spatial geometry
-- FAIL Returning from inspection restores cinematic composition
+- PASS Returning from inspection restores cinematic composition
 - PASS Runtime advances by elapsed time
 - PASS Pause holds position
 - PASS No shader or JavaScript errors
