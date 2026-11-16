@@ -1,7 +1,7 @@
 {
   "revision": 5,
-  "sourceCommit": "8cd8eb5898bda763b201d66c4bd95ef490a03250",
-  "runId": "43759898102",
+  "sourceCommit": "16eb47b38dd2e05783645b4c89534b1cc6b4faa9",
+  "runId": "43894299594",
   "environment": "GitHub Actions ubuntu-24.04 standard public runner",
   "rendering": "Chromium ANGLE SwiftShader on remote CPU; no physical GPU validation",
   "baseline": "0f00154f3651c7bed8cf8660780bb3c1750ed9bc",
@@ -307,7 +307,7 @@
     "subData": 0
   },
   "anatomyAudit": {
-    "sourceCommit": "8cd8eb5898bda763b201d66c4bd95ef490a03250",
+    "sourceCommit": "16eb47b38dd2e05783645b4c89534b1cc6b4faa9",
     "upstream": {
       "repository": "makehumancommunity/makehuman",
       "commit": "a8bc2d54ff0ac92e78ff71431b1023eda42bf482",
@@ -521,10 +521,10 @@
         [
           -0.13828846850858503,
           1.9254962769850748,
-          -0.0633500599749256
+          -0.06335005997492558
         ],
         [
-          0.138288468508585,
+          0.13828846850858498,
           2.3567422852992324,
           0.26242672383185567
         ]
@@ -553,8 +553,342 @@
     },
     "pipeline": "Pinned CC0 anatomy, original skeletal pose and garments; ray-intersected, surface-conforming anatomical microtypography replaces stochastic facial point sprites. Remote CPU generation; depth-only meshes never write colour."
   },
-  "activityComparisons": [],
-  "temporal": [],
+  "activityComparisons": [
+    {
+      "world": 0,
+      "motionPixels": 30386,
+      "contributionPixels": 26057,
+      "coverage": 0.1511642795138889,
+      "greenRatio": 1,
+      "occupiedTiles": 12,
+      "left": 0,
+      "right": 1279,
+      "width": 1280
+    },
+    {
+      "world": 1,
+      "motionPixels": 47953,
+      "contributionPixels": 36917,
+      "coverage": 0.18505967881944443,
+      "greenRatio": 1,
+      "occupiedTiles": 12,
+      "left": 0,
+      "right": 1279,
+      "width": 1280
+    },
+    {
+      "world": 2,
+      "motionPixels": 59794,
+      "contributionPixels": 46231,
+      "coverage": 0.25937934027777776,
+      "greenRatio": 1,
+      "occupiedTiles": 12,
+      "left": 0,
+      "right": 1279,
+      "width": 1280
+    },
+    {
+      "world": 3,
+      "motionPixels": 62660,
+      "contributionPixels": 46695,
+      "coverage": 0.16152452256944444,
+      "greenRatio": 1,
+      "occupiedTiles": 12,
+      "left": 0,
+      "right": 1279,
+      "width": 1280
+    },
+    {
+      "world": 4,
+      "motionPixels": 94471,
+      "contributionPixels": 69983,
+      "coverage": 0.31489366319444445,
+      "greenRatio": 1,
+      "occupiedTiles": 12,
+      "left": 0,
+      "right": 1279,
+      "width": 1280
+    },
+    {
+      "world": 5,
+      "motionPixels": 89250,
+      "contributionPixels": 62811,
+      "coverage": 0.2547786458333333,
+      "greenRatio": 1,
+      "occupiedTiles": 12,
+      "left": 0,
+      "right": 1279,
+      "width": 1280
+    },
+    {
+      "world": 6,
+      "motionPixels": 53259,
+      "contributionPixels": 46026,
+      "coverage": 0.20684895833333333,
+      "greenRatio": 1,
+      "occupiedTiles": 12,
+      "left": 0,
+      "right": 1279,
+      "width": 1280
+    },
+    {
+      "world": 7,
+      "motionPixels": 58766,
+      "contributionPixels": 56123,
+      "coverage": 0.14432291666666666,
+      "greenRatio": 1,
+      "occupiedTiles": 12,
+      "left": 45,
+      "right": 1279,
+      "width": 1280
+    }
+  ],
+  "benchmark": {
+    "r4": {
+      "medianMs": 0.20000000001164153,
+      "p95Ms": 2.6000000000058208,
+      "samples": [
+        2.6000000000058208,
+        0.1999999999825377,
+        0.20000000001164153,
+        0.1999999999825377,
+        0.20000000001164153,
+        1.2000000000116415,
+        0.1999999999825377,
+        0.20000000001164153,
+        0.1999999999825377,
+        0.3000000000174623,
+        2.1000000000058208,
+        0.1999999999825377,
+        0.20000000001164153,
+        0.1999999999825377,
+        0.20000000001164153,
+        0.39999999999417923,
+        0.7000000000116415,
+        0.29999999998835847,
+        0.20000000001164153,
+        0.10000000000582077,
+        0.1999999999825377,
+        2.8999999999941792,
+        0.20000000001164153,
+        0.20000000001164153,
+        0.1999999999825377,
+        0.10000000000582077,
+        1.2000000000116415,
+        2,
+        0.29999999998835847,
+        0.29999999998835847,
+        0.20000000001164153,
+        0.7000000000116415,
+        0.39999999999417923,
+        0.1999999999825377,
+        0.20000000001164153,
+        0.29999999998835847,
+        1.5,
+        0.20000000001164153,
+        0.1999999999825377,
+        0.10000000000582077
+      ]
+    },
+    "r5": {
+      "medianMs": 0.10000000000582077,
+      "p95Ms": 0.39999999999417923,
+      "samples": [
+        0.20000000001164153,
+        0.1999999999825377,
+        0.20000000001164153,
+        2.8999999999941792,
+        0.20000000001164153,
+        0.09999999997671694,
+        0.20000000001164153,
+        0.10000000000582077,
+        0.10000000000582077,
+        0,
+        0.20000000001164153,
+        0.20000000001164153,
+        0.1999999999825377,
+        0.10000000000582077,
+        0.20000000001164153,
+        0.09999999997671694,
+        0.20000000001164153,
+        0.10000000000582077,
+        0.1999999999825377,
+        0.20000000001164153,
+        0.10000000000582077,
+        0.1999999999825377,
+        0.10000000000582077,
+        0.20000000001164153,
+        0.10000000000582077,
+        0.1999999999825377,
+        0.10000000000582077,
+        0.10000000000582077,
+        0.10000000000582077,
+        0.09999999997671694,
+        0.10000000000582077,
+        0.10000000000582077,
+        0.39999999999417923,
+        0.10000000000582077,
+        0.10000000000582077,
+        0.10000000000582077,
+        0.1999999999825377,
+        0.10000000000582077,
+        0.29999999998835847,
+        0.10000000000582077
+      ]
+    },
+    "speedup": 2,
+    "note": "Identical remote CPU and 1280x720 framebuffer; gl.finish includes GPU-command completion in SwiftShader. NOT a hardware GPU FPS result."
+  },
+  "transitionError": 0.08287868923611111,
+  "temporal": [
+    {
+      "t": 0.9851874999999999,
+      "changes": [
+        {
+          "changed": 262766,
+          "mean": 26.45363498263889
+        },
+        {
+          "changed": 271251,
+          "mean": 27.45618923611111
+        },
+        {
+          "changed": 282557,
+          "mean": 28.948924696180555
+        },
+        {
+          "changed": 290349,
+          "mean": 30.16443576388889
+        }
+      ]
+    },
+    {
+      "t": 2.4968125,
+      "changes": [
+        {
+          "changed": 211622,
+          "mean": 21.17399197048611
+        },
+        {
+          "changed": 215898,
+          "mean": 21.780577256944444
+        },
+        {
+          "changed": 218541,
+          "mean": 21.76559027777778
+        },
+        {
+          "changed": 218244,
+          "mean": 21.03472981770833
+        }
+      ]
+    },
+    {
+      "t": 4.0084375,
+      "changes": [
+        {
+          "changed": 143461,
+          "mean": 11.637957899305556
+        },
+        {
+          "changed": 153885,
+          "mean": 12.749487847222222
+        },
+        {
+          "changed": 167604,
+          "mean": 14.265081380208333
+        },
+        {
+          "changed": 178098,
+          "mean": 15.471016710069444
+        }
+      ]
+    },
+    {
+      "t": 5.520062500000001,
+      "changes": [
+        {
+          "changed": 153365,
+          "mean": 11.625387369791667
+        },
+        {
+          "changed": 155642,
+          "mean": 12.019922960069444
+        },
+        {
+          "changed": 155411,
+          "mean": 12.0313671875
+        },
+        {
+          "changed": 155380,
+          "mean": 12.122816840277778
+        }
+      ]
+    },
+    {
+      "t": 7.031687500000001,
+      "changes": [
+        {
+          "changed": 196834,
+          "mean": 18.013797743055555
+        },
+        {
+          "changed": 217127,
+          "mean": 20.492611762152777
+        },
+        {
+          "changed": 233898,
+          "mean": 22.823047960069445
+        },
+        {
+          "changed": 239075,
+          "mean": 23.892129991319443
+        }
+      ]
+    },
+    {
+      "t": 8.543312500000003,
+      "changes": [
+        {
+          "changed": 218183,
+          "mean": 20.35423285590278
+        },
+        {
+          "changed": 232407,
+          "mean": 21.206873914930554
+        },
+        {
+          "changed": 253916,
+          "mean": 23.30722873263889
+        },
+        {
+          "changed": 273922,
+          "mean": 25.585198567708332
+        }
+      ]
+    },
+    {
+      "t": 9.957062500000001,
+      "changes": [
+        {
+          "changed": 142755,
+          "mean": 12.308231336805555
+        },
+        {
+          "changed": 144393,
+          "mean": 12.463963758680556
+        },
+        {
+          "changed": 149482,
+          "mean": 13.41724609375
+        },
+        {
+          "changed": 156029,
+          "mean": 14.42261501736111
+        }
+      ]
+    }
+  ],
   "browserCompatibility": [
     {
       "name": "Firefox",
@@ -901,12 +1235,1172 @@
     {
       "name": "Zero geometry buffer allocations or uploads throughout playback after warmup",
       "pass": true
+    },
+    {
+      "name": "Visible green binary geometry at 0.00 s",
+      "pass": true
+    },
+    {
+      "name": "Visible green binary geometry at 0.23 s",
+      "pass": true
+    },
+    {
+      "name": "Visible green binary geometry at 0.50 s",
+      "pass": true
+    },
+    {
+      "name": "Visible green binary geometry at 1.74 s",
+      "pass": true
+    },
+    {
+      "name": "Visible green binary geometry at 1.80 s",
+      "pass": true
+    },
+    {
+      "name": "Visible green binary geometry at 3.25 s",
+      "pass": true
+    },
+    {
+      "name": "Visible green binary geometry at 3.30 s",
+      "pass": true
+    },
+    {
+      "name": "Visible green binary geometry at 4.76 s",
+      "pass": true
+    },
+    {
+      "name": "Visible green binary geometry at 4.80 s",
+      "pass": true
+    },
+    {
+      "name": "Visible green binary geometry at 6.28 s",
+      "pass": true
+    },
+    {
+      "name": "Visible green binary geometry at 6.30 s",
+      "pass": true
+    },
+    {
+      "name": "Visible green binary geometry at 7.79 s",
+      "pass": true
+    },
+    {
+      "name": "Visible green binary geometry at 7.80 s",
+      "pass": true
+    },
+    {
+      "name": "Visible green binary geometry at 9.30 s",
+      "pass": true
+    },
+    {
+      "name": "Visible green binary geometry at 9.30 s",
+      "pass": true
+    },
+    {
+      "name": "Visible green binary geometry at 10.50 s",
+      "pass": true
+    },
+    {
+      "name": "Visible green binary geometry at 10.62 s",
+      "pass": true
+    },
+    {
+      "name": "Visible green binary geometry at 11.00 s",
+      "pass": true
+    },
+    {
+      "name": "Visible green binary geometry at 11.25 s",
+      "pass": true
+    },
+    {
+      "name": "Visible green binary geometry at 11.45 s",
+      "pass": true
+    },
+    {
+      "name": "Visible green binary geometry at 11.60 s",
+      "pass": true
+    },
+    {
+      "name": "Visible green binary geometry at 11.75 s",
+      "pass": true
+    },
+    {
+      "name": "Visible green binary geometry at 11.85 s",
+      "pass": true
+    },
+    {
+      "name": "Visible green binary geometry at 11.94 s",
+      "pass": true
+    },
+    {
+      "name": "Visible green binary geometry at 12.05 s",
+      "pass": true
+    },
+    {
+      "name": "Visible green binary geometry at 12.18 s",
+      "pass": true
+    },
+    {
+      "name": "Visible green binary geometry at 12.32 s",
+      "pass": true
+    },
+    {
+      "name": "Visible green binary geometry at 12.50 s",
+      "pass": true
+    },
+    {
+      "name": "Visible green binary geometry at 13.40 s",
+      "pass": true
+    },
+    {
+      "name": "Moving secondary assemblies are visibly active in all eight domains",
+      "pass": true
+    },
+    {
+      "name": "Every domain has distributed screen-space activity",
+      "pass": true
+    },
+    {
+      "name": "Creator-to-signature handover has no visible swap",
+      "pass": true
+    },
+    {
+      "name": "Random-access reproducibility after unrelated scene",
+      "pass": true
+    },
+    {
+      "name": "Remote software median frame cost improves at least 20 percent over R4",
+      "pass": true
+    },
+    {
+      "name": "Signature remains readable inside portrait margins",
+      "pass": true
+    },
+    {
+      "name": "Reduced motion starts paused on the creator",
+      "pass": true
+    },
+    {
+      "name": "Reduced motion stays stationary",
+      "pass": true
+    },
+    {
+      "name": "Self-contained HTML runs without network requests",
+      "pass": true
+    },
+    {
+      "name": "Interactive inspection exposes real spatial geometry",
+      "pass": true
+    },
+    {
+      "name": "Returning from inspection restores cinematic composition",
+      "pass": false,
+      "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ '60af0e84c68549f6d1e6e3649ff654d03fa66e6a331b9f12183ad75eab2ee952'\n- 'b5eab1986bd5be1faaa6ba3197c93b88b59838f2686d2b2d2c9e139f1df3c0a6'\n"
+    },
+    {
+      "name": "Runtime advances by elapsed time",
+      "pass": true
+    },
+    {
+      "name": "Pause holds position",
+      "pass": true
+    },
+    {
+      "name": "No shader or JavaScript errors",
+      "pass": true
     }
   ],
   "failures": [
-    "Cloud browser execution: locator.screenshot: Timeout 29973.514ms exceeded.\nCall log:\n  - taking element screenshot\n  - waiting for fonts to load...\n  - fonts loaded\n  - attempting scroll into view action\n    - waiting for element to be stable\n\n    at capture (/home/runner/work/Tire-C/Tire-C/odyssey/tools/test.mjs:71:39)\n    at async file:///home/runner/work/Tire-C/Tire-C/odyssey/tools/test.mjs:113:65"
+    "Returning from inspection restores cinematic composition: Expected values to be strictly equal:\n+ actual - expected\n\n+ '60af0e84c68549f6d1e6e3649ff654d03fa66e6a331b9f12183ad75eab2ee952'\n- 'b5eab1986bd5be1faaa6ba3197c93b88b59838f2686d2b2d2c9e139f1df3c0a6'\n"
   ],
-  "shots": [],
+  "shots": [
+    {
+      "t": 0,
+      "file": "r5-frame-0_00.png",
+      "state": {
+        "t": 0,
+        "world": 0,
+        "morph": 0,
+        "head": 0,
+        "body": 0,
+        "signature": 0,
+        "fade": 1,
+        "name": "Immersion",
+        "camera": {
+          "position": [
+            -0.03964643031191262,
+            2.2323969130806947,
+            0.06994589673076633
+          ],
+          "target": [
+            -0.03487718133000625,
+            2.237654189207547,
+            0.051247893846110115
+          ],
+          "roll": 0,
+          "fov": 66,
+          "u": 0
+        },
+        "calls": 13,
+        "points": 159894,
+        "triangles": 0
+      },
+      "coverage": 0.13852105034722223,
+      "occupiedTiles": 12
+    },
+    {
+      "t": 0.229375,
+      "file": "r5-frame-0_23.png",
+      "state": {
+        "t": 0.229375,
+        "world": 0,
+        "morph": 0,
+        "head": 0,
+        "body": 0,
+        "signature": 0,
+        "fade": 1,
+        "name": "Immersion",
+        "camera": {
+          "position": [
+            -0.038529115470536175,
+            2.233666193793457,
+            0.06535922337523441
+          ],
+          "target": [
+            -0.03167569882560329,
+            2.2394949770584005,
+            0.04749708559888542
+          ],
+          "roll": -0.008607800347720873,
+          "fov": 66,
+          "u": 0.021091954022988506
+        },
+        "calls": 13,
+        "points": 159894,
+        "triangles": 0
+      },
+      "coverage": 0.1511642795138889,
+      "occupiedTiles": 12
+    },
+    {
+      "t": 0.5,
+      "file": "r5-frame-0_50.png",
+      "state": {
+        "t": 0.5,
+        "world": 0,
+        "morph": 0,
+        "head": 0,
+        "body": 0,
+        "signature": 0,
+        "fade": 1,
+        "name": "Immersion",
+        "camera": {
+          "position": [
+            -0.03655461587612112,
+            2.2353465486320063,
+            0.060208207388554646
+          ],
+          "target": [
+            -0.027375254088925702,
+            2.2414652798982986,
+            0.04352586807805407
+          ],
+          "roll": -0.018712110881635487,
+          "fov": 66,
+          "u": 0.04597701149425287
+        },
+        "calls": 16,
+        "points": 200446,
+        "triangles": 0
+      },
+      "coverage": 0.16449110243055556,
+      "occupiedTiles": 12
+    },
+    {
+      "t": 1.7409999999999999,
+      "file": "r5-frame-1_74.png",
+      "state": {
+        "t": 1.7409999999999999,
+        "world": 1,
+        "morph": 0,
+        "head": 0,
+        "body": 0,
+        "signature": 0,
+        "fade": 1,
+        "name": "Programming",
+        "camera": {
+          "position": [
+            -0.019441720123754058,
+            2.24229877564094,
+            0.041874075390980016
+          ],
+          "target": [
+            -0.0013905364735053091,
+            2.2445145656773775,
+            0.03355271472463366
+          ],
+          "roll": -0.06266088442841364,
+          "fov": 66,
+          "u": 0.1600919540229885
+        },
+        "calls": 13,
+        "points": 161190,
+        "triangles": 0
+      },
+      "coverage": 0.18505967881944443,
+      "occupiedTiles": 12
+    },
+    {
+      "t": 1.8,
+      "file": "r5-frame-1_80.png",
+      "state": {
+        "t": 1.8,
+        "world": 1,
+        "morph": 0,
+        "head": 0,
+        "body": 0,
+        "signature": 0,
+        "fade": 1,
+        "name": "Programming",
+        "camera": {
+          "position": [
+            -0.018341941411876346,
+            2.2424791598226816,
+            0.04129032776283994
+          ],
+          "target": [
+            -0.000006241761416000274,
+            2.2443220719675683,
+            0.03351821137447194
+          ],
+          "roll": -0.06459303586312097,
+          "fov": 66,
+          "u": 0.16551724137931034
+        },
+        "calls": 13,
+        "points": 161190,
+        "triangles": 0
+      },
+      "coverage": 0.1960991753472222,
+      "occupiedTiles": 12
+    },
+    {
+      "t": 3.252625,
+      "file": "r5-frame-3_25.png",
+      "state": {
+        "t": 3.252625,
+        "world": 2,
+        "morph": 0,
+        "head": 0,
+        "body": 0,
+        "signature": 0,
+        "fade": 1,
+        "name": "Physics",
+        "camera": {
+          "position": [
+            0.0114019437993864,
+            2.2396261545385143,
+            0.03852094738160475
+          ],
+          "target": [
+            0.029347516082745738,
+            2.2338373379957397,
+            0.04518773359812796
+          ],
+          "roll": -0.10495380006488564,
+          "fov": 66,
+          "u": 0.2990919540229885
+        },
+        "calls": 13,
+        "points": 154216,
+        "triangles": 0
+      },
+      "coverage": 0.25937934027777776,
+      "occupiedTiles": 12
+    },
+    {
+      "t": 3.3,
+      "file": "r5-frame-3_30.png",
+      "state": {
+        "t": 3.3,
+        "world": 2,
+        "morph": 0,
+        "head": 0,
+        "body": 0,
+        "signature": 0,
+        "fade": 1,
+        "name": "Physics",
+        "camera": {
+          "position": [
+            0.012329533443034035,
+            2.239346023019897,
+            0.03880675348258517
+          ],
+          "target": [
+            0.030085545145903426,
+            2.2334707979302206,
+            0.04589235709506627
+          ],
+          "roll": -0.10599379992751913,
+          "fov": 66,
+          "u": 0.30344827586206896
+        },
+        "calls": 13,
+        "points": 154216,
+        "triangles": 0
+      },
+      "coverage": 0.2857986111111111,
+      "occupiedTiles": 12
+    },
+    {
+      "t": 4.7642500000000005,
+      "file": "r5-frame-4_76.png",
+      "state": {
+        "t": 4.7642500000000005,
+        "world": 3,
+        "morph": 0,
+        "head": 0,
+        "body": 0,
+        "signature": 0,
+        "fade": 1,
+        "name": "Chemistry",
+        "camera": {
+          "position": [
+            0.03508422026563456,
+            2.2309394263018176,
+            0.05734539605183642
+          ],
+          "target": [
+            0.043598238074937824,
+            2.2285932812288194,
+            0.07528995244198754
+          ],
+          "roll": -0.12754903063222633,
+          "fov": 66,
+          "u": 0.43809195402298856
+        },
+        "calls": 13,
+        "points": 161509,
+        "triangles": 0
+      },
+      "coverage": 0.16152452256944444,
+      "occupiedTiles": 12
+    },
+    {
+      "t": 4.8,
+      "file": "r5-frame-4_80.png",
+      "state": {
+        "t": 4.8,
+        "world": 3,
+        "morph": 0,
+        "head": 0,
+        "body": 0,
+        "signature": 0,
+        "fade": 1,
+        "name": "Chemistry",
+        "camera": {
+          "position": [
+            0.03544876689351836,
+            2.230822908132678,
+            0.058004716344015814
+          ],
+          "target": [
+            0.043634524382175265,
+            2.2286990305584284,
+            0.07612880303511552
+          ],
+          "roll": -0.1278016990403543,
+          "fov": 66,
+          "u": 0.4413793103448276
+        },
+        "calls": 13,
+        "points": 161509,
+        "triangles": 0
+      },
+      "coverage": 0.15289496527777777,
+      "occupiedTiles": 12
+    },
+    {
+      "t": 6.275875000000001,
+      "file": "r5-frame-6_28.png",
+      "state": {
+        "t": 6.275875000000001,
+        "world": 4,
+        "morph": 0,
+        "head": 0,
+        "body": 0,
+        "signature": 0,
+        "fade": 1,
+        "name": "Mathematics",
+        "camera": {
+          "position": [
+            0.038773362959718095,
+            2.233420100338845,
+            0.08816144996387973
+          ],
+          "target": [
+            0.03229410448930414,
+            2.2391664290986926,
+            0.10618917626137261
+          ],
+          "roll": -0.12620591275755427,
+          "fov": 66,
+          "u": 0.5770919540229886
+        },
+        "calls": 13,
+        "points": 161388,
+        "triangles": 0
+      },
+      "coverage": 0.31489366319444445,
+      "occupiedTiles": 12
+    },
+    {
+      "t": 6.3,
+      "file": "r5-frame-6_30.png",
+      "state": {
+        "t": 6.3,
+        "world": 4,
+        "morph": 0,
+        "head": 0,
+        "body": 0,
+        "signature": 0,
+        "fade": 1,
+        "name": "Mathematics",
+        "camera": {
+          "position": [
+            0.03863550779231623,
+            2.2335605015056275,
+            0.08863679215768701
+          ],
+          "target": [
+            0.031941387590779656,
+            2.2393553169613614,
+            0.10657024883958097
+          ],
+          "roll": -0.12598556135490266,
+          "fov": 66,
+          "u": 0.5793103448275861
+        },
+        "calls": 13,
+        "points": 161388,
+        "triangles": 0
+      },
+      "coverage": 0.3074197048611111,
+      "occupiedTiles": 12
+    },
+    {
+      "t": 7.787500000000001,
+      "file": "r5-frame-7_79.png",
+      "state": {
+        "t": 7.787500000000001,
+        "world": 5,
+        "morph": 0,
+        "head": 0,
+        "body": 0,
+        "signature": 0,
+        "fade": 1,
+        "name": "Astronomy",
+        "camera": {
+          "position": [
+            0.020213422454603478,
+            2.2421570209653647,
+            0.11203848174322062
+          ],
+          "target": [
+            0.0023780828896541144,
+            2.244631996791862,
+            0.12074337446290453
+          ],
+          "roll": -0.10117652223888395,
+          "fov": 66,
+          "u": 0.7160919540229886
+        },
+        "calls": 13,
+        "points": 160092,
+        "triangles": 0
+      },
+      "coverage": 0.2547786458333333,
+      "occupiedTiles": 12
+    },
+    {
+      "t": 7.8,
+      "file": "r5-frame-7_80.png",
+      "state": {
+        "t": 7.8,
+        "world": 5,
+        "morph": 0,
+        "head": 0,
+        "body": 0,
+        "signature": 0,
+        "fade": 1,
+        "name": "Astronomy",
+        "camera": {
+          "position": [
+            0.019985437316342496,
+            2.2422002220178556,
+            0.11216967004852768
+          ],
+          "target": [
+            0.0020849290602036226,
+            2.2445988774646946,
+            0.12076142517884039
+          ],
+          "roll": -0.10088109839795951,
+          "fov": 66,
+          "u": 0.7172413793103448
+        },
+        "calls": 13,
+        "points": 160092,
+        "triangles": 0
+      },
+      "coverage": 0.25219618055555554,
+      "occupiedTiles": 12
+    },
+    {
+      "t": 9.299125000000002,
+      "file": "r5-frame-9_30.png",
+      "state": {
+        "t": 9.299125000000002,
+        "world": 6,
+        "morph": 0,
+        "head": 0,
+        "body": 0,
+        "signature": 0,
+        "fade": 1,
+        "name": "Intelligence",
+        "camera": {
+          "position": [
+            -0.010570624464151367,
+            2.239869609352107,
+            0.11606332071058832
+          ],
+          "target": [
+            -0.028679201100665852,
+            2.2341682903796682,
+            0.10977250087737173
+          ],
+          "roll": -0.057158364565337884,
+          "fov": 66,
+          "u": 0.8550919540229887
+        },
+        "calls": 13,
+        "points": 167066,
+        "triangles": 0
+      },
+      "coverage": 0.20684895833333333,
+      "occupiedTiles": 12
+    },
+    {
+      "t": 9.3,
+      "file": "r5-frame-9_30.png",
+      "state": {
+        "t": 9.3,
+        "world": 6,
+        "morph": 0,
+        "head": 0,
+        "body": 0,
+        "signature": 0,
+        "fade": 1,
+        "name": "Intelligence",
+        "camera": {
+          "position": [
+            -0.01058796890489647,
+            2.2398646048399624,
+            0.11605860206870419
+          ],
+          "target": [
+            -0.02869321089549684,
+            2.2341613645702885,
+            0.10975993055098145
+          ],
+          "roll": -0.057128849075887736,
+          "fov": 66,
+          "u": 0.8551724137931035
+        },
+        "calls": 13,
+        "points": 167066,
+        "triangles": 0
+      },
+      "coverage": 0.206533203125,
+      "occupiedTiles": 12
+    },
+    {
+      "t": 10.5,
+      "file": "r5-frame-10_50.png",
+      "state": {
+        "t": 10.5,
+        "world": 7,
+        "morph": 0,
+        "head": 0,
+        "body": 0,
+        "signature": 0,
+        "fade": 1,
+        "name": "Engineering",
+        "camera": {
+          "position": [
+            -0.030895708532679055,
+            2.2324643666167714,
+            0.10304992323816928
+          ],
+          "target": [
+            -0.04212087921455809,
+            2.2283499347344717,
+            0.08701661436418451
+          ],
+          "roll": -0.008884711056445203,
+          "fov": 66,
+          "u": 0.9655172413793104
+        },
+        "calls": 13,
+        "points": 159773,
+        "triangles": 0
+      },
+      "coverage": 0.11969835069444444,
+      "occupiedTiles": 12
+    },
+    {
+      "t": 10.615,
+      "file": "r5-frame-10_62.png",
+      "state": {
+        "t": 10.615,
+        "world": 7,
+        "morph": 0,
+        "head": 0,
+        "body": 0,
+        "signature": 0,
+        "fade": 1,
+        "name": "Engineering",
+        "camera": {
+          "position": [
+            -0.03237283620278133,
+            2.2318992256994328,
+            0.10117621587260023
+          ],
+          "target": [
+            -0.04248218880553653,
+            2.2284533739852983,
+            0.08426683693908044
+          ],
+          "roll": -0.0032177447337902974,
+          "fov": 66,
+          "u": 0.9760919540229885
+        },
+        "calls": 13,
+        "points": 159773,
+        "triangles": 0
+      },
+      "coverage": 0.14432291666666666,
+      "occupiedTiles": 12
+    },
+    {
+      "t": 11,
+      "file": "r5-frame-11_00.png",
+      "state": {
+        "t": 11,
+        "world": 7,
+        "morph": 0,
+        "head": 0,
+        "body": 0,
+        "signature": 0,
+        "fade": 1,
+        "name": "The mind",
+        "camera": {
+          "position": [
+            -0.03531150111966888,
+            2.230866305607924,
+            0.09659567747355689
+          ],
+          "target": [
+            -0.03995283636352986,
+            2.2293473231644785,
+            0.08815688612108238
+          ],
+          "roll": 0,
+          "fov": 66,
+          "u": 1
+        },
+        "calls": 13,
+        "points": 159773,
+        "triangles": 0
+      },
+      "coverage": 0.21556966145833334,
+      "occupiedTiles": 12
+    },
+    {
+      "t": 11.25,
+      "file": "r5-frame-11_25.png",
+      "state": {
+        "t": 11.25,
+        "world": 7,
+        "morph": 0,
+        "head": 0.10351562499999883,
+        "body": 0,
+        "signature": 0,
+        "fade": 1,
+        "name": "The mind",
+        "camera": {
+          "position": [
+            -0.031632990133082656,
+            2.2320701819308066,
+            0.10328387926735001
+          ],
+          "target": [
+            -0.03995283636352986,
+            2.2293473231644785,
+            0.08815688612108238
+          ],
+          "roll": 0,
+          "fov": 64.81231512149185,
+          "u": 1
+        },
+        "calls": 26,
+        "points": 308882,
+        "triangles": 49722
+      },
+      "coverage": 0.1503049045138889,
+      "occupiedTiles": 12
+    },
+    {
+      "t": 11.45,
+      "file": "r5-frame-11_45.png",
+      "state": {
+        "t": 11.45,
+        "world": 7,
+        "morph": 0,
+        "head": 0.8964843749999967,
+        "body": 0,
+        "signature": 0,
+        "fade": 1,
+        "name": "The mind",
+        "camera": {
+          "position": [
+            0.009109219724025681,
+            2.2362702475913507,
+            0.1777405574321319
+          ],
+          "target": [
+            -0.03956562251493186,
+            2.2203402992222374,
+            0.08924084427039095
+          ],
+          "roll": 0,
+          "fov": 61.21752841078124,
+          "u": 1
+        },
+        "calls": 26,
+        "points": 308882,
+        "triangles": 49722
+      },
+      "coverage": 0.16715169270833333,
+      "occupiedTiles": 11
+    },
+    {
+      "t": 11.6,
+      "file": "r5-frame-11_60.png",
+      "state": {
+        "t": 11.6,
+        "world": 7,
+        "morph": 0,
+        "head": 1,
+        "body": 0.34153679055229647,
+        "signature": 0,
+        "fade": 1,
+        "name": "The mind",
+        "camera": {
+          "position": [
+            0.23141208425821122,
+            2.127259179588524,
+            0.5894883804967259
+          ],
+          "target": [
+            -0.03185993389129612,
+            2.04109742819414,
+            0.11081198386125801
+          ],
+          "roll": 0,
+          "fov": 57.782471589218794,
+          "u": 1
+        },
+        "calls": 30,
+        "points": 308882,
+        "triangles": 201344
+      },
+      "coverage": 0.05293185763888889,
+      "occupiedTiles": 7
+    },
+    {
+      "t": 11.75,
+      "file": "r5-frame-11_75.png",
+      "state": {
+        "t": 11.75,
+        "world": 7,
+        "morph": 0,
+        "head": 1,
+        "body": 0.997049799599234,
+        "signature": 0,
+        "fade": 1,
+        "name": "The mind",
+        "camera": {
+          "position": [
+            1.079384268916169,
+            2.0328257603406175,
+            2.146727914016835
+          ],
+          "target": [
+            -0.01609151125708262,
+            1.674306414102099,
+            0.15495376824728724
+          ],
+          "roll": 0,
+          "fov": 54.881120961504145,
+          "u": 1
+        },
+        "calls": 30,
+        "points": 308882,
+        "triangles": 201344
+      },
+      "coverage": 0.10024305555555556,
+      "occupiedTiles": 10
+    },
+    {
+      "t": 11.85,
+      "file": "r5-frame-11_85.png",
+      "state": {
+        "t": 11.85,
+        "world": 7,
+        "morph": 0,
+        "head": 1,
+        "body": 1,
+        "signature": 0,
+        "fade": 1,
+        "name": "The creator",
+        "camera": {
+          "position": [
+            1.9885546963310006,
+            2.102634393760282,
+            3.8092381856216733
+          ],
+          "target": [
+            -0.006436841238443208,
+            1.4497280723739185,
+            0.18198084458632136
+          ],
+          "roll": 0,
+          "fov": 53.661264743452726,
+          "u": 1
+        },
+        "calls": 30,
+        "points": 308882,
+        "triangles": 201344
+      },
+      "coverage": 0.034268663194444444,
+      "occupiedTiles": 8
+    },
+    {
+      "t": 11.94,
+      "file": "r5-frame-11_94.png",
+      "state": {
+        "t": 11.94,
+        "world": 7,
+        "morph": 0,
+        "head": 1,
+        "body": 1,
+        "signature": 0,
+        "fade": 1,
+        "name": "The creator",
+        "camera": {
+          "position": [
+            2.592636512040812,
+            2.1806089130288866,
+            4.912548913067948
+          ],
+          "target": [
+            -0.0013612502060761783,
+            1.3316641908389961,
+            0.1961893453463331
+          ],
+          "roll": 0,
+          "fov": 53.12696596900029,
+          "u": 1
+        },
+        "calls": 30,
+        "points": 308882,
+        "triangles": 201344
+      },
+      "coverage": 0.020108506944444444,
+      "occupiedTiles": 4
+    },
+    {
+      "t": 12.05,
+      "file": "r5-frame-12_05.png",
+      "state": {
+        "t": 12.05,
+        "world": 7,
+        "morph": 0,
+        "head": 1,
+        "body": 1,
+        "signature": 0,
+        "fade": 1,
+        "name": "Hi, I am Tire",
+        "camera": {
+          "position": [
+            2.7609994271173,
+            2.2035998125111163,
+            5.219998958395091
+          ],
+          "target": [
+            0,
+            1.3,
+            0.2
+          ],
+          "roll": 0,
+          "fov": 53,
+          "u": 1
+        },
+        "calls": 3,
+        "points": 0,
+        "triangles": 201344
+      },
+      "coverage": 0.017333984375,
+      "occupiedTiles": 4
+    },
+    {
+      "t": 12.18,
+      "file": "r5-frame-12_18.png",
+      "state": {
+        "t": 12.18,
+        "world": 7,
+        "morph": 0,
+        "head": 1,
+        "body": 1,
+        "signature": 0.19768708984374808,
+        "fade": 1,
+        "name": "Hi, I am Tire",
+        "camera": {
+          "position": [
+            2.7609994271173,
+            2.2035998125111163,
+            5.219998958395091
+          ],
+          "target": [
+            0,
+            1.3,
+            0.2
+          ],
+          "roll": 0,
+          "fov": 53,
+          "u": 1
+        },
+        "calls": 1,
+        "points": 0,
+        "triangles": 144756
+      },
+      "coverage": 0.027900390625,
+      "occupiedTiles": 4
+    },
+    {
+      "t": 12.32,
+      "file": "r5-frame-12_32.png",
+      "state": {
+        "t": 12.32,
+        "world": 7,
+        "morph": 0,
+        "head": 1,
+        "body": 1,
+        "signature": 0.8023129101562518,
+        "fade": 1,
+        "name": "Hi, I am Tire",
+        "camera": {
+          "position": [
+            2.7609994271173,
+            2.2035998125111163,
+            5.219998958395091
+          ],
+          "target": [
+            0,
+            1.3,
+            0.2
+          ],
+          "roll": 0,
+          "fov": 53,
+          "u": 1
+        },
+        "calls": 1,
+        "points": 0,
+        "triangles": 144756
+      },
+      "coverage": 0.01593967013888889,
+      "occupiedTiles": 4
+    },
+    {
+      "t": 12.5,
+      "file": "r5-frame-12_50.png",
+      "state": {
+        "t": 12.5,
+        "world": 7,
+        "morph": 0,
+        "head": 1,
+        "body": 1,
+        "signature": 1,
+        "fade": 1,
+        "name": "Hi, I am Tire",
+        "camera": {
+          "position": [
+            2.7609994271173,
+            2.2035998125111163,
+            5.219998958395091
+          ],
+          "target": [
+            0,
+            1.3,
+            0.2
+          ],
+          "roll": 0,
+          "fov": 53,
+          "u": 1
+        },
+        "calls": 1,
+        "points": 0,
+        "triangles": 144756
+      },
+      "coverage": 0.009188368055555556,
+      "occupiedTiles": 4
+    },
+    {
+      "t": 13.4,
+      "file": "r5-frame-13_40.png",
+      "state": {
+        "t": 13.4,
+        "world": 7,
+        "morph": 0,
+        "head": 1,
+        "body": 1,
+        "signature": 1,
+        "fade": 1,
+        "name": "Hi, I am Tire",
+        "camera": {
+          "position": [
+            2.7609994271173,
+            2.2035998125111163,
+            5.219998958395091
+          ],
+          "target": [
+            0,
+            1.3,
+            0.2
+          ],
+          "roll": 0,
+          "fov": 53,
+          "u": 1
+        },
+        "calls": 1,
+        "points": 0,
+        "triangles": 144756
+      },
+      "coverage": 0.009188368055555556,
+      "occupiedTiles": 4
+    }
+  ],
   "errors": [],
   "limits": [
     "Software tests measure relative render cost, not physical GPU frame rate.",
