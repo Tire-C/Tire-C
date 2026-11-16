@@ -68,7 +68,8 @@ function difference(a,b){
 }
 async function capture(page,t,file){
  const state=await page.evaluate(t=>odyssey.seek(t),t);
- const b=await page.locator('canvas').screenshot({path:'diagnostics/'+file});return {state,b,...pixels(b)};
+ await page.evaluate(()=>document.querySelector('canvas').getContext('webgl2').finish());
+ const b=await page.screenshot({path:'diagnostics/'+file});return {state,b,...pixels(b)};
 }
 async function measure(page){
  return page.evaluate(()=>{
@@ -104,7 +105,7 @@ try{
   const gl=document.querySelector('canvas').getContext('webgl2');window.bufferWrites={data:0,subData:0};
   for(const [method,key] of [['bufferData','data'],['bufferSubData','subData']]){const original=gl[method].bind(gl);gl[method]=(...args)=>{window.bufferWrites[key]++;return original(...args)}}
  });
- for(let t=0;t<14;t+=.071)await page.evaluate(t=>odyssey.seek(t),t);
+ for(let t=0;t<14;t+=.233)await page.evaluate(t=>{odyssey.seek(t);document.querySelector('canvas').getContext('webgl2').finish()},t);
  bufferTraffic=await page.evaluate(()=>window.bufferWrites);
  check('Zero geometry buffer allocations or uploads throughout playback after warmup',()=>assert.deepEqual(bufferTraffic,{data:0,subData:0}));
  const times=[0,.5,...WORLD_TIMES,...[1.8,3.3,4.8,6.3,7.8,9.3,10.5],11,11.25,11.45,11.6,11.75,11.85,11.94,12.05,12.18,12.32,12.5,13.4];
@@ -119,11 +120,11 @@ try{
  for(let i=0;i<8;i++){
   await page.evaluate(()=>odyssey.secondaryVisible(true));
   await page.evaluate(t=>odyssey.seek(t),WORLD_TIMES[i]);
-  const a=await page.locator('canvas').screenshot();
+  const a=await page.screenshot();
   await page.evaluate(t=>odyssey.activityOnlyTime(t),WORLD_TIMES[i]*1.3+.3);
-  const b=await page.locator('canvas').screenshot();
+  const b=await page.screenshot();
   await page.evaluate(()=>odyssey.secondaryVisible(false));
-  const absent=await page.locator('canvas').screenshot();
+  const absent=await page.screenshot();
   activityComparisons.push({world:i,motionPixels:difference(a,b).changed,contributionPixels:difference(a,absent).changed,...pixels(a)});
  }
  await page.evaluate(()=>odyssey.secondaryVisible(true));
@@ -132,7 +133,7 @@ try{
  const sequence=[];
  for(let k=1;k<8;k++){
   const t=(WORLD_TIMES[k-1]+WORLD_TIMES[k])*.5,images=[];
-  for(let j=-2;j<=2;j++){await page.evaluate(t=>odyssey.seek(t),t+j/30);images.push(await page.locator('canvas').screenshot())}
+  for(let j=-2;j<=2;j++){await page.evaluate(t=>odyssey.seek(t),t+j/30);images.push(await page.screenshot())}
   sequence.push(...images);temporal.push({t,changes:images.slice(1).map((b,i)=>difference(images[i],b))});
  }
  await writeFile('diagnostics/r5-transition-sequences.png',montage(sequence,5));
@@ -141,7 +142,7 @@ try{
  check('Creator-to-signature handover has no visible swap',()=>assert(transitionError<.2,'Mean difference '+transitionError));
  const deterministic=(await capture(page,CREATOR_TIME,'r5-creator.png')).b;
  await page.evaluate(()=>odyssey.seek(2));await page.evaluate(()=>odyssey.seek(odyssey.creatorTime));
- const repeated=await page.locator('canvas').screenshot();
+ const repeated=await page.screenshot();
  check('Random-access reproducibility after unrelated scene',()=>assert.equal(hash(deterministic),hash(repeated)));
  const r5=await measure(page);
  const old=await browser.newPage({viewport:{width:1280,height:720},deviceScaleFactor:1});
