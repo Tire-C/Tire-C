@@ -55,7 +55,7 @@ function resize(){
 function render(t){
  current=Math.max(0,Math.min(DURATION,t));
  const state=stateAt(current),pose=cameraAt(current),reveal=smooth(11.2,11.85,current);
- camera.fov=THREE.MathUtils.radToDeg(2*Math.atan(Math.tan(THREE.MathUtils.degToRad(pose.fov)/2)*Math.max(1,1.5/camera.aspect)));camera.updateProjectionMatrix();
+ camera.fov=THREE.MathUtils.radToDeg(2*Math.atan(Math.tan(THREE.MathUtils.degToRad(pose.fov)/2)*Math.max(1,(16/9)/camera.aspect)));camera.updateProjectionMatrix();
  camera.position.set(...pose.position);camera.up.set(Math.sin(pose.roll),Math.cos(pose.roll),0);camera.lookAt(...pose.target);camera.updateMatrixWorld();
  localCamera.copy(camera.position).sub(new THREE.Vector3(...HEAD)).divideScalar(UNIVERSE_SCALE);
  const cosmosFade=(1-smooth(11.7,12.05,current))*state.fade;
