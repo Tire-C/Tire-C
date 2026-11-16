@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import meta from './generated/character-meta.json' with {type:'json'};
 export const DURATION=14, JOURNEY_END=11, CREATOR_TIME=11.94, SIGNATURE_START=12.05, SIGNATURE_END=12.45;
 export const HEAD=meta.head, UNIVERSE_SCALE=.00065;
-export const AXIS=new THREE.Vector3(.55,.18,1).normalize();
+export const AXIS=new THREE.Vector3(.75,.36,1).normalize();
 const clamp=x=>Math.max(0,Math.min(1,x));
 export const smooth=(a,b,t)=>{const x=clamp((t-a)/(b-a));return x*x*x*(10+x*(-15+6*x))};
 const up=new THREE.Vector3(0,1,0),rawEnd=new THREE.Vector3(-Math.sin(5.25),0,Math.cos(5.25)).normalize();
@@ -53,7 +53,7 @@ export function cameraAt(seconds){
  }
  // A single straight withdrawal, with a fixed viewing direction: no portrait orbit.
  const q=smooth(JOURNEY_END,SIGNATURE_START,t);
- const distance=15*UNIVERSE_SCALE*Math.exp(Math.log(5.8/(15*UNIVERSE_SCALE))*q);
+ const distance=15*UNIVERSE_SCALE*Math.exp(Math.log(4.8/(15*UNIVERSE_SCALE))*q);
  const target=internalTarget.clone().lerp(finalTarget,smooth(11.38,SIGNATURE_START,t));
  return {position:target.clone().addScaledVector(AXIS,distance).toArray(),target:target.toArray(),roll:0,fov:66-13*smooth(11,12.05,t),u:1};
 }

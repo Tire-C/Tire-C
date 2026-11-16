@@ -42,7 +42,8 @@ export function flightCloud(data,texture){
   vDepth=-cp.z;vDigit=glyph.y;
   vLight=glyph.x*(.42+.58*max(0.,dot(n,normalize(vec3(-.4,.7,1.)))));
  }`});
- const mesh=new THREE.Points(g,material);mesh.frustumCulled=false;
+ g.computeBoundingSphere();g.boundingSphere.radius=Math.max(g.boundingSphere.radius,35);
+ const mesh=new THREE.Points(g,material);mesh.frustumCulled=true;
  return {mesh,uniforms};
 }
 // Preserve approved world-specific motion equations, replacing only quad rasterization.
@@ -63,7 +64,8 @@ function convertToPoints(source,data,attributes,size){
  shader=shader.replace('vLight=weight*','vDensity*=life;vLight=weight*');
  material.vertexShader=shader;material.fragmentShader=fragment;
  material.transparent=true;material.depthWrite=true;
- const mesh=new THREE.Points(g,material);mesh.frustumCulled=false;old.dispose();
+ g.boundingSphere=new THREE.Sphere(new THREE.Vector3(),35);
+ const mesh=new THREE.Points(g,material);mesh.frustumCulled=true;old.dispose();
  return {mesh,uniforms:source.uniforms};
 }
 export function flightActivity(data,texture){

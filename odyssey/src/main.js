@@ -39,6 +39,7 @@ const body=binaryCloud(parts.body,texture,{size:.0115,fog:25,intensity:2.05,surf
 const desk=binaryCloud(parts.desk,texture,{size:.024,fog:25,intensity:1.20});
 const finale=binaryCloud(all,texture,{size:.024,fog:40,intensity:1.7});finale.setTargets(all,signature(all.count,all));
 const depth=depthOccluders();
+for(const c of [head,body,desk])c.uniforms.lodStrength.value=.6;
 head.uniforms.cutRange.value.set(...meta.cutRange);
 for(const cloud of [head,body,desk,finale,...depth])scene.add(cloud.mesh);
 const everyCloud=[...worldGroups.flatMap(w=>[w.core,w.flow,w.activity]),braid,head,body,desk,finale];
@@ -75,7 +76,7 @@ function render(t){
  head.uniforms.opacity.value=state.head*state.fade;body.uniforms.opacity.value=desk.uniforms.opacity.value=state.body*state.fade;
  for(const c of [head,body,desk])c.mesh.visible=current<SIGNATURE_START&&c.uniforms.opacity.value>0;
  finale.mesh.visible=current>=SIGNATURE_START;finale.uniforms.morph.value=state.signature;finale.uniforms.opacity.value=state.fade;
- finale.uniforms.glyphSize.value=.024+state.signature*.026;finale.uniforms.minimumPixels.value=2;finale.uniforms.lodStrength.value=1-state.signature;
+ finale.uniforms.glyphSize.value=.024+state.signature*.026;finale.uniforms.minimumPixels.value=2;finale.uniforms.lodStrength.value=.6*(1-state.signature);
  for(const proxy of depth){
   proxy.uniforms.coverage.value=(proxy.part==='head'?smooth(11.55,11.8,current):state.body)*(1-smooth(0,.18,state.signature))*state.fade;
   proxy.uniforms.cutaway.value=proxy.part==='head'?head.uniforms.cutaway.value:0;proxy.mesh.visible=proxy.uniforms.coverage.value>0;
@@ -125,10 +126,11 @@ window.odyssey={ready:false,seek:render,duration:DURATION,creatorTime:CREATOR_TI
 async function enter(){
  message.textContent='Entering the binary mind…';resize();
  // Upload every immutable buffer and warm all programs BEFORE starting the cinematic clock.
- for(const w of worldGroups)w.group.visible=true;
+ for(const w of worldGroups){w.group.visible=true;for(const c of [w.core,w.flow,w.activity])c.mesh.frustumCulled=false}
  camera.position.set(...cameraAt(0).position);camera.lookAt(...cameraAt(0).target);camera.updateMatrixWorld();
  await renderer.compileAsync(scene,camera);
  renderer.setSize(1,1,false);renderer.render(scene,camera);gl.finish();
+ for(const w of worldGroups)for(const c of [w.core,w.flow,w.activity])c.mesh.frustumCulled=true;
  ready=true;window.odyssey.ready=true;resize();message.textContent='';syncButton();last=0;requestAnimationFrame(tick);
 }
 enter().catch(e=>{message.textContent='Unable to initialize the binary universe: '+e.message;console.error(e)});

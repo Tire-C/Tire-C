@@ -74,9 +74,10 @@ async function capture(page,t,file){
 async function measure(page){
  return page.evaluate(()=>{
   const gl=document.querySelector('canvas').getContext('webgl2'),times=Array.from({length:40},(_,i)=>(i+.3)*odyssey.explorationDuration/41);
-  for(const t of times)odyssey.seek(t);gl.finish();
+  const readback=new Uint8Array(4);
+  for(const t of times){odyssey.seek(t);gl.readPixels(0,0,1,1,gl.RGBA,gl.UNSIGNED_BYTE,readback)}
   const samples=[];
-  for(const t of times){const start=performance.now();odyssey.seek(t);gl.finish();samples.push(performance.now()-start)}
+  for(const t of times){const start=performance.now();odyssey.seek(t);gl.readPixels(0,0,1,1,gl.RGBA,gl.UNSIGNED_BYTE,readback);samples.push(performance.now()-start)}
   const ordered=[...samples].sort((a,b)=>a-b);
   return {medianMs:ordered[20],p95Ms:ordered[38],samples};
  });
@@ -113,7 +114,7 @@ try{
  for(const t of [...new Set(times)].sort((a,b)=>a-b)){
   const file='r5-frame-'+t.toFixed(2).replace('.','_')+'.png',r=await capture(page,t,file);
   shots.push({t,file,state:r.state,coverage:r.coverage,occupiedTiles:r.occupiedTiles});
-  if(t<11&&WORLD_TIMES.some(w=>Math.abs(w-t)<.001))overview.push(r.b);
+  if(t<11&&WORLD_TIMES.some(w=>Math.abs(w-t)<1e-8))overview.push(r.b);
   check('Visible green binary geometry at '+t.toFixed(2)+' s',()=>{assert(r.coverage>.003,'Empty frame '+r.coverage);assert(r.greenRatio>.995)});
  }
  await writeFile('diagnostics/r5-worlds-contact-sheet.png',montage(overview,4));
@@ -136,7 +137,7 @@ try{
   for(let j=-2;j<=2;j++){await page.evaluate(t=>odyssey.seek(t),t+j/30);images.push(await page.screenshot())}
   sequence.push(...images);temporal.push({t,changes:images.slice(1).map((b,i)=>difference(images[i],b))});
  }
- await writeFile('diagnostics/r5-transition-sequences.png',montage(sequence,5));
+ await writeFile('diagnostics/r5-transition-sequences.png',montage(sequence,5,240,135));
  const pre=(await capture(page,SIGNATURE_START-1e-7,'r5-signature-handover-a.png')).b,post=(await capture(page,SIGNATURE_START+1e-7,'r5-signature-handover-b.png')).b;
  transitionError=difference(pre,post).mean;
  check('Creator-to-signature handover has no visible swap',()=>assert(transitionError<.2,'Mean difference '+transitionError));
@@ -148,7 +149,7 @@ try{
  const old=await browser.newPage({viewport:{width:1280,height:720},deviceScaleFactor:1});
  await old.goto(url+'/r4?test=1');await old.waitForFunction(()=>window.odyssey?.ready,{},{timeout:60000});
  const r4=await measure(old);await old.close();
- benchmark={r4,r5,speedup:r4.medianMs/r5.medianMs,note:'Identical remote CPU and 1280x720 framebuffer; gl.finish includes GPU-command completion in SwiftShader. NOT a hardware GPU FPS result.'};
+ benchmark={r4,r5,speedup:r4.medianMs/r5.medianMs,note:'Identical remote CPU and 1280x720 framebuffer; synchronous pixel readback includes raster completion in SwiftShader. NOT a hardware GPU FPS result.'};
  check('Remote software median frame cost improves at least 20 percent over R4',()=>assert(r5.medianMs<r4.medianMs*.8,JSON.stringify(benchmark)));
  await page.setViewportSize({width:390,height:844});
  await capture(page,CREATOR_TIME,'r5-mobile-creator.png');
@@ -165,13 +166,13 @@ try{
  await offline.goto(pathToFileURL(resolve('.build/odyssey.html')).href+'?test=1');await offline.waitForFunction(()=>window.odyssey?.ready);
  await offline.evaluate(()=>odyssey.seek(odyssey.creatorTime));
  check('Self-contained HTML runs without network requests',()=>assert.deepEqual(requests,[]));
- const initial=await offline.locator('canvas').screenshot();
+ const initial=await offline.evaluate(()=>document.querySelector('canvas').toDataURL());
  await offline.getByRole('button',{name:'Inspect 3D',exact:true}).click();
  await offline.mouse.move(480,250);await offline.mouse.down();await offline.mouse.move(660,290,{steps:8});await offline.mouse.up();
- const rotated=await offline.locator('canvas').screenshot();
+ const rotated=await offline.evaluate(()=>document.querySelector('canvas').toDataURL());
  check('Interactive inspection exposes real spatial geometry',()=>assert.notEqual(hash(initial),hash(rotated)));
  await offline.getByRole('button',{name:'Return to film',exact:true}).click();
- const returned=await offline.locator('canvas').screenshot();
+ const returned=await offline.evaluate(()=>document.querySelector('canvas').toDataURL());
  check('Returning from inspection restores cinematic composition',()=>assert.equal(hash(initial),hash(returned)));
  await offline.getByRole('button',{name:'Play animation',exact:true}).click();await offline.waitForTimeout(400);
  const advanced=await offline.evaluate(()=>odyssey.info().current);
