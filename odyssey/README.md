@@ -1,57 +1,52 @@
 # Tire — Binary Mind Odyssey
 
-Review candidate, not an approved profile integration.
+Review candidate; artistic approval and profile integration remain pending.
 
-A deterministic WebGL 2 program. Every visible surface is a spatial cloud of 0/1 glyphs. Three.js supplies perspective matrices and instanced draw submission; no conventional shaded mesh is visible.
+A deterministic WebGL 2 program. Every visible surface is built from spatial 0/1 glyphs. The voyage uses one point vertex per glyph; the human and signature use instanced typographic quads. No conventional shaded mesh writes visible colour.
 
 ## Review
 
-See [revision 4: anatomical microtypography, dense activity in all worlds and a 16-second journey](REVISION_4.md).
+See [revision 5: continuous flight and immediate creator-to-signature transition](REVISION_5.md).
 
-The remote workflow creates [a self-contained application](review/odyssey.html), [rendered diagnostic frames](diagnostics/README.md) and [machine-readable evidence](diagnostics/report.json). The HTML includes its code and dependencies; it requires no build or installation to observe in a browser. GitHub serves HTML source as a download, not an interactive page. Pages is deliberately not enabled.
+The workflow produces [the self-contained program](review/odyssey.html), [diagnostic images](diagnostics/README.md) and [test results](diagnostics/report.json). The HTML includes all code and dependencies and can be observed without installing or building anything.
 
-Diagnostics are still images for inspection, never playback frames. All animation geometry, camera motion and morphs are evaluated at runtime. Rendering software in CI validates actual GLSL/WebGL pixels but does not establish real GPU frame rates.
+[Open the verified live preview](https://htmlpreview.github.io/?https://github.com/Tire-C/Tire-C/blob/cb4e9728be6a690199a924a7b20a6533bf3249ee/odyssey/review/odyssey.html). This external viewer reads the public, immutable tested HTML; it does not enable Pages or publish a separate deployment. The [CodePen HTML wrapper](preview/codepen.html) remains available. Both paths are verified by the [remote preview test](preview/evidence/report.json).
+
+Diagnostic images are evidence, never playback frames. The animation evaluates its spatial geometry, motion, camera and signature at runtime.
 
 ## Narrative
 
 | Time | Scene |
 |---|---|
-| 0–1.10 s | Spatial binary tunnel |
-| 1.10–2.20 s | Multilevel data architecture |
-| 2.20–3.30 s | Atomic and field structures |
-| 3.30–4.40 s | Molecular helix and cages |
-| 4.40–5.50 s | Mathematical surfaces and nested frames |
-| 5.50–6.60 s | Galaxy and orbital bodies |
-| 6.60–7.70 s | Neural architecture |
-| 7.70–8.80 s | Mechanical assemblies |
-| 8.80–11.40 s | Cranial reveal and complete portrait |
-| 11.40–13.20 s | Seated creator and workstation |
-| 13.20–14.20 s | Spatial glyph morph into the signature |
-| 14.20–15.70 s | Hi, I am Tire |
-| 15.70–16.00 s | Fade into the next journey |
+| 0–11.00 s | One continuous flight through tunnel, data architecture, atom, molecular structures, mathematics, galaxy, neural architecture and machinery |
+| 11.00–11.85 s | Rapid cranial reveal and withdrawal to the workstation |
+| 11.85–12.05 s | Brief creator composition, with no portrait orbit |
+| 12.05–12.45 s | Spatially ordered glyph assembly into the signature |
+| 12.45–13.80 s | Hi, I am Tire |
+| 13.80–14.00 s | Fade into the next journey |
+
+The environments coexist inside the head in separate, connected regions. A smooth analytic curve with arc-length parametrization replaces per-world camera easings. The worlds no longer exchange arbitrary particle indices at chapter boundaries.
 
 ## Architecture
 
-- `geometry.js`: seeded surface/volume sampling; all eight environments fit a sphere of radius 34. With scale 0.0024 their radius is at most 0.0816 world units, inside the cranial vault.
-- `tools/prepare-character.py`: pinned CC0 MakeHuman anatomy and detailed ocular data, original skeletal posing/IK and garments, ray-intersected rows of surface glyphs, adaptive eye sampling, six-direction anatomical visibility and quantization. Executed only on the remote runner; see `assets/README.md` and the provenance report.
-- `character.js`: generated anatomical glyph clouds, original short coils, footwear and workstation. Anatomical depth proxies use `colorWrite:false`; no solid mesh writes visible colour. No specific real-person likenesses or proprietary characters.
-- `flow.js`: stronger, faster deterministic packets along the actual structures of all eight environments.
-- `activity.js`: one instanced pass for 60 moving groups in each world, spanning three depth layers; complete glyph assemblies, directional crossing events and verified spatial bounds.
-- `renderer.js`: instanced typographic quads, real depth test/write, glyph alpha cutout, directional luminance, atmospheric distance attenuation, seeded opacity dissolve, surface-oriented portrait typography, key/fill lighting, highlight compression and GPU morphing.
-- `timeline.js`: absolute-time camera and scene state; random access never relies on accumulated simulation state.
-- `signature.js`: typography sampled into world-space positions and assembled from the existing creator glyphs.
-- `main.js`: UI, pause/scrub, interactive 3D orbit inspection, reduced motion, capped pixel density and graphics-context handling.
-- `tools/`: remote build and diagnostic test suite.
+- `geometry.js`: the eight approved seeded scientific environment generators, retained exactly; 22,000 primary samples per environment in this revision.
+- `timeline.js`: analytic spatial path, equal-distance traversal, chamber frames, deterministic absolute time and straight final withdrawal. Complete rooms fit within a cranial radius of 0.075 world units.
+- `flight-renderer.js`: persistent point buffers, one vertex per glyph, continuous distance attenuation, capped foreground glyph size and spatial frustum culling.
+- `braid.js`: continuous 3D binary strands linking the domains into a single spatial route.
+- `flow.js` and `activity.js`: coherent signal packets and three layers of moving domain-specific objects in every environment, using a common timebase.
+- `tools/prepare-character.py`: verified CC0 MakeHuman graphical assets, original skeletal posing, garments, coils, anatomical glyph rows, eye geometry, visibility and quantization; generated exclusively on the remote CPU runner.
+- `character.js`: sampled human, workstation and two invisible anatomical depth proxies. No specific real-person likeness or proprietary character.
+- `renderer.js`: surface-oriented binary instances for the human; perspective, occlusion and glyph-only illumination.
+- `signature.js`: spatial correspondence between source glyphs and the exact final typography.
+- `main.js`: pre-upload/program warmup before playback, pause/scrub, 3D inspection, reduced motion, portrait framing and Auto/Detail/Fluidity choices. Automatic resolution adaptation does not alter narrative timing.
 
-A binary glyph uses a camera-facing quad at an actual 3D center. The quad is a typographic primitive, not a flat representation of its containing object. Different depths, occlusion and perspective are evaluated for every glyph.
+## Cloud and performance boundary
 
-Worlds morph through stable particle indices with a bounded curved displacement. Orbital samples and mechanical assemblies also move through explicit per-instance 3D rotations. A single camera traverses the internal universe and retreats into the surrounding human scene. The universe is already inside the skull throughout: it is not replaced by an unrelated symbol during the reveal.
+Development execution, anatomy generation, dependency installation, build and tests use only the public repository's standard `ubuntu-24.04` GitHub Actions runner, [free under GitHub's published policy](https://docs.github.com/en/billing/concepts/product-billing/github-actions). No paid runner, rental GPU, billing activation, Pages deployment, artifact upload or cache service is used.
 
-## Cloud and cost boundary
+Chromium uses ANGLE SwiftShader on remote CPU. Firefox and WebKit checks also use software rendering on that Linux runner. WebKit's “Apple GPU” privacy string is not evidence of Apple hardware. See the recorded same-run R4/R5 rasterization benchmark in [the report](diagnostics/report.json). It measures relative software rendering cost, not physical GPU frame rate.
 
-Only `ubuntu-24.04` standard GitHub-hosted runners on this public repository, [free for public repositories under GitHub's documented runner policy](https://docs.github.com/en/actions/how-tos/write-workflows/choose-where-workflows-run/choose-the-runner-for-a-job). No paid runner, API, GPU rental, artifact-storage upload, Pages deployment or external hosting. Dependencies, browser binaries, build and tests are confined to the disposable remote runner. Small review outputs are committed to this experimental branch with a head-SHA check. No credentials are embedded.
-
-CI uses Chromium with ANGLE SwiftShader: **software rasterization on remote CPU, not a physical GPU test**. Browser playback on the viewer's device uses its available WebGL implementation. Revision 4 shortens the cycle from 24 to 16 seconds. The worlds take 8.8 seconds, the mind reveal 2.6, the creator 1.8 and the signature morph 1.0. The signature remains fully formed for 1.5 seconds before a 0.3-second fade. Camera banking, closer passes and continuous field-of-view changes strengthen the journey. All eight scientific environment generators are preserved exactly. Firefox and WebKit also render the creator scene; no physical GPU validation is claimed.
+The viewer's browser supplies the WebGL implementation for observation. Auto quality caps pixel density and can lower resolution when sustained frame times are high. Detail and Fluidity are explicit user choices. Physical GPU smoothness remains unverified by CI.
 
 ## Profile preservation and later integration
 
